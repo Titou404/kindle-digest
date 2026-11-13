@@ -1,0 +1,18 @@
+# Secrets
+.env
+
+# Python / uv
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Sorties générées (journaux EPUB)
+out/
+
+# Jeux d'articles figés : contiennent le texte d'articles de presse (droits d'auteur)
+eval/fixtures/
+
+# macOS
+.DS_Store
