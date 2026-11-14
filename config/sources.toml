@@ -22,7 +22,9 @@ url = "https://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=30"
 # summarized), and the best post of each subreddit is added on top of the quotas.
 # Not one combined feed (r/a+b): its top was 100% r/MachineLearning on 2026-11-14,
 # so r/datascience could never be guaranteed (and ?limit= is ignored by the RSS feed).
-# delay_s: Reddit answers 429 to two requests in a row, so the second one waits.
+# delay_s: anonymous clients get 1 request per window (headers on 2026-11-14:
+# x-ratelimit-remaining 0.0, x-ratelimit-reset 19 s), so the second one waits 30 s.
+# If 429 keeps showing in the run reports: switch to Reddit's official API (OAuth).
 [[sources]]
 name = "reddit/datascience"
 kind = "feed"
@@ -36,7 +38,7 @@ kind = "feed"
 section = "data"
 url = "https://www.reddit.com/r/MachineLearning/top/.rss?t=day"
 raw = true
-delay_s = 10
+delay_s = 30
 
 # --- monde ---
 [[sources]]
