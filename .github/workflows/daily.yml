@@ -1,0 +1,42 @@
+name: Daily digest
+
+on:
+  schedule:
+    # Cron is in UTC: 4:30 UTC = 5:30 in Paris in winter (6:30 in summer).
+    # Scheduled runs can start late when GitHub is busy: early on purpose.
+    - cron: "30 4 * * *"
+  workflow_dispatch: # "Run workflow" button: for tests and demos
+
+permissions:
+  contents: read
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: astral-sh/setup-uv@v10
+
+      # Exact versions from uv.lock; uv installs the Python of .python-version (3.12).
+      - run: uv sync --locked
+
+      - name: Build and send the journal
+        run: uv run python -m digest
+        env:
+          SEND: "1"
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_APP_PASSWORD: ${{ secrets.SMTP_APP_PASSWORD }}
+          KINDLE_EMAIL: ${{ secrets.KINDLE_EMAIL }}
+
+      # Keep the journal and its measures, even when a step failed.
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: digest-${{ github.run_number }}
+          path: |
+            out/*.epub
+            runs/*.json
+          retention-days: 30
