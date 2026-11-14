@@ -32,13 +32,16 @@ def git_sha() -> str | None:
     return result.stdout.strip() or None
 
 
-def write_run_report(state: DigestState, seconds: float, llm) -> Path:
-    today = datetime.now(ZoneInfo("Europe/Paris"))
+def write_run_report(
+    state: DigestState, seconds: float, llm, now: datetime | None = None
+) -> Path:
+    today = now or datetime.now(ZoneInfo("Europe/Paris"))
     calls = state.get("llm_calls", [])
     fake = llm.model == "fake"
     selected_urls = {a.url for a in state.get("selected", [])}
     report = {
         "date": f"{today:%Y-%m-%d}",
+        "finished_at": today.isoformat(timespec="seconds"),
         "git_sha": git_sha(),
         "mode": "fake" if fake else "real",
         "config": {
@@ -75,6 +78,8 @@ def write_run_report(state: DigestState, seconds: float, llm) -> Path:
     }
     folder = FAKE_DIR if fake else RUNS_DIR
     folder.mkdir(exist_ok=True)
-    path = folder / (f"run-{today:%Y-%m-%d}-fake.json" if fake else f"{today:%Y-%m-%d}.json")
+    # Date and time (Paris) in the name: several runs on the same day must not overwrite each other.
+    stamp = f"{today:%Y-%m-%d_%H%M}"
+    path = folder / (f"run-{stamp}-fake.json" if fake else f"{stamp}.json")
     path.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")
     return path
