@@ -1,8 +1,14 @@
-# Candidate sources. Each one is checked by scripts/probe_sources.py before we keep it:
-# working feed, publication dates, readable full text (no paywall).
+# Sources of the digest: 2 per section. Re-run scripts/probe_sources.py after any change:
+# a source is kept only if its feed works, has publication dates and readable full text.
 #
 # kind:    "hn" (Hacker News JSON API) or "feed" (RSS / Atom)
 # section: "data", "monde", "eco" or "france"
+#
+# Dropped after probing on 2026-11-14:
+# - Les Echos: feed URL answered 503, lesechos.fr answers 403 to non-browser clients
+#   (anti-bot), and most articles are paywalled anyway.
+# - Le Monde (international, economie, politique): feeds work, but every article page
+#   returned an anti-bot page (286 chars, "disable any ad blockers...") instead of the text.
 
 # --- data ---
 [[sources]]
@@ -11,25 +17,15 @@ kind = "hn"
 section = "data"
 url = "https://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=30"
 
+# Both subreddits in one request ("+" combines them): on 2026-11-14, Reddit answered
+# 429 (too many requests) to a second request made right after the first one.
 [[sources]]
-name = "reddit/datascience"
+name = "reddit"
 kind = "feed"
 section = "data"
-url = "https://www.reddit.com/r/datascience/top/.rss?t=day"
-
-[[sources]]
-name = "reddit/machinelearning"
-kind = "feed"
-section = "data"
-url = "https://www.reddit.com/r/MachineLearning/top/.rss?t=day"
+url = "https://www.reddit.com/r/datascience+MachineLearning/top/.rss?t=day"
 
 # --- monde ---
-[[sources]]
-name = "lemonde/international"
-kind = "feed"
-section = "monde"
-url = "https://www.lemonde.fr/international/rss_full.xml"
-
 [[sources]]
 name = "bbc/world"
 kind = "feed"
@@ -43,20 +39,11 @@ section = "monde"
 url = "https://www.theguardian.com/world/rss"
 
 # --- eco ---
-# Les Echos: dropped on 2026-11-14. Feed URL answered 503, lesechos.fr answers 403 to
-# non-browser clients (anti-bot), and most articles are paywalled anyway.
-
 [[sources]]
 name = "bbc/business"
 kind = "feed"
 section = "eco"
 url = "https://feeds.bbci.co.uk/news/business/rss.xml"
-
-[[sources]]
-name = "lemonde/economie"
-kind = "feed"
-section = "eco"
-url = "https://www.lemonde.fr/economie/rss_full.xml"
 
 [[sources]]
 name = "franceinfo/economie"
@@ -65,12 +52,6 @@ section = "eco"
 url = "https://www.francetvinfo.fr/economie.rss"
 
 # --- france ---
-[[sources]]
-name = "lemonde/politique"
-kind = "feed"
-section = "france"
-url = "https://www.lemonde.fr/politique/rss_full.xml"
-
 [[sources]]
 name = "franceinfo/politique"
 kind = "feed"
@@ -81,4 +62,6 @@ url = "https://www.francetvinfo.fr/politique.rss"
 name = "theconversation/fr"
 kind = "feed"
 section = "france"
-url = "https://theconversation.com/fr/articles.atom"
+# French-language articles only: the FR edition feed (/fr/articles.atom) also
+# republishes English articles, which would land in the "france" section.
+url = "https://theconversation.com/articles.atom?language=fr"
