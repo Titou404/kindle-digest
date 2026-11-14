@@ -1,0 +1,431 @@
+{
+  "date": "2026-11-14",
+  "git_sha": "bf97355",
+  "mode": "real",
+  "config": {
+    "model": "claude-haiku-5-5",
+    "effort": "medium",
+    "prompts": {
+      "rank": "v1",
+      "summarize": "v1"
+    }
+  },
+  "counts": {
+    "collected": 259,
+    "after_clean": 118,
+    "selected": 12,
+    "summarized": 12
+  },
+  "totals": {
+    "seconds": 41.13,
+    "llm_calls": 13,
+    "input_tokens": 46745,
+    "output_tokens": 14009,
+    "thinking_tokens": 3685,
+    "cache_read_input_tokens": 0,
+    "cost_usd": 0.011679
+  },
+  "nodes": [
+    {
+      "node": "collect:hackernews",
+      "duration_s": 0.443,
+      "counts": {
+        "articles": 30
+      }
+    },
+    {
+      "node": "collect:reddit",
+      "duration_s": 0.673,
+      "counts": {
+        "articles": 13
+      }
+    },
+    {
+      "node": "collect:bbc/world",
+      "duration_s": 0.214,
+      "counts": {
+        "articles": 25
+      }
+    },
+    {
+      "node": "collect:guardian/world",
+      "duration_s": 0.201,
+      "counts": {
+        "articles": 45
+      }
+    },
+    {
+      "node": "collect:bbc/business",
+      "duration_s": 0.235,
+      "counts": {
+        "articles": 56
+      }
+    },
+    {
+      "node": "collect:franceinfo/economie",
+      "duration_s": 0.509,
+      "counts": {
+        "articles": 20
+      }
+    },
+    {
+      "node": "collect:franceinfo/politique",
+      "duration_s": 0.595,
+      "counts": {
+        "articles": 20
+      }
+    },
+    {
+      "node": "collect:theconversation/fr",
+      "duration_s": 0.647,
+      "counts": {
+        "articles": 50
+      }
+    },
+    {
+      "node": "clean",
+      "duration_s": 0.005,
+      "counts": {
+        "articles_in": 259,
+        "invalid": 0,
+        "undated": 0,
+        "too_old": 138,
+        "duplicates": 3,
+        "articles_out": 118
+      }
+    },
+    {
+      "node": "rank",
+      "duration_s": 29.257,
+      "counts": {
+        "articles_in": 118,
+        "scored": 118,
+        "missing": 0,
+        "invalid": 0
+      }
+    },
+    {
+      "node": "select",
+      "duration_s": 0.0,
+      "counts": {
+        "candidates": 117,
+        "selected": 12,
+        "duplicate_topics": 0,
+        "rank_failed": 0
+      }
+    },
+    {
+      "node": "fetch_text",
+      "duration_s": 4.6,
+      "counts": {
+        "from_feed": 2,
+        "downloaded": 10,
+        "failed": 0,
+        "too_short": 0,
+        "truncated": 7
+      }
+    },
+    {
+      "node": "summarize:hackernews",
+      "duration_s": 5.013,
+      "counts": {
+        "input_chars": 5999,
+        "summary_words": 204
+      }
+    },
+    {
+      "node": "summarize:hackernews",
+      "duration_s": 6.121,
+      "counts": {
+        "input_chars": 5989,
+        "summary_words": 202
+      }
+    },
+    {
+      "node": "summarize:hackernews",
+      "duration_s": 4.487,
+      "counts": {
+        "input_chars": 2845,
+        "summary_words": 168
+      }
+    },
+    {
+      "node": "summarize:bbc/world",
+      "duration_s": 4.351,
+      "counts": {
+        "input_chars": 3678,
+        "summary_words": 162
+      }
+    },
+    {
+      "node": "summarize:guardian/world",
+      "duration_s": 4.679,
+      "counts": {
+        "input_chars": 5995,
+        "summary_words": 200
+      }
+    },
+    {
+      "node": "summarize:bbc/world",
+      "duration_s": 4.536,
+      "counts": {
+        "input_chars": 1553,
+        "summary_words": 204
+      }
+    },
+    {
+      "node": "summarize:franceinfo/economie",
+      "duration_s": 4.305,
+      "counts": {
+        "input_chars": 3678,
+        "summary_words": 199
+      }
+    },
+    {
+      "node": "summarize:franceinfo/economie",
+      "duration_s": 4.017,
+      "counts": {
+        "input_chars": 2316,
+        "summary_words": 147
+      }
+    },
+    {
+      "node": "summarize:franceinfo/economie",
+      "duration_s": 4.826,
+      "counts": {
+        "input_chars": 5986,
+        "summary_words": 183
+      }
+    },
+    {
+      "node": "summarize:theconversation/fr",
+      "duration_s": 4.018,
+      "counts": {
+        "input_chars": 6000,
+        "summary_words": 160
+      }
+    },
+    {
+      "node": "summarize:theconversation/fr",
+      "duration_s": 4.393,
+      "counts": {
+        "input_chars": 5995,
+        "summary_words": 175
+      }
+    },
+    {
+      "node": "summarize:franceinfo/politique",
+      "duration_s": 4.389,
+      "counts": {
+        "input_chars": 5998,
+        "summary_words": 183
+      }
+    },
+    {
+      "node": "render_epub",
+      "duration_s": 0.01,
+      "counts": {
+        "articles": 12,
+        "size_bytes": 27895
+      }
+    },
+    {
+      "node": "deliver",
+      "duration_s": 0.436,
+      "counts": {
+        "enabled": 1,
+        "sent": 0
+      }
+    }
+  ],
+  "llm_calls": [
+    {
+      "task": "rank",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v1",
+      "input_tokens": 16713,
+      "output_tokens": 7339,
+      "thinking_tokens": 3685,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 29.254,
+      "cost_usd": 0.0053408,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch3Bq6ZgfVKJAveNcBJog"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v1",
+      "input_tokens": 3225,
+      "output_tokens": 653,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 5.007,
+      "cost_usd": 0.0006490000000000001,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch3Bsbx4xWNm9Yfhpi138"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v1",
+      "input_tokens": 3209,
+      "output_tokens": 670,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 6.117,
+      "cost_usd": 0.0006559000000000001,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch3BsbcyXenYG5eP6NobQ"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v1",
+      "input_tokens": 1687,
+      "output_tokens": 530,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 4.48,
+      "cost_usd": 0.00043369999999999997,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch3Bsc3nbuUhYDM1j1c7J"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v1",
+      "input_tokens": 1862,
+      "output_tokens": 540,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 4.345,
+      "cost_usd": 0.00045620000000000003,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch3BsbQaYDSbe9xMBm4aK"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v1",
+      "input_tokens": 2823,
+      "output_tokens": 623,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 4.676,
+      "cost_usd": 0.0005938,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch3BsbCgEiKbQMRpsCRd1"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v1",
+      "input_tokens": 1146,
+      "output_tokens": 587,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 4.534,
+      "cost_usd": 0.0004081,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch3Bsb41NUiVwYH97v48W"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v1",
+      "input_tokens": 2148,
+      "output_tokens": 566,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 4.301,
+      "cost_usd": 0.0004978000000000001,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch3BsbqsdqDbq9yFwwXmY"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v1",
+      "input_tokens": 1630,
+      "output_tokens": 416,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 4.01,
+      "cost_usd": 0.000371,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch3BsbWnSTRa6T7coPkif"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v1",
+      "input_tokens": 3185,
+      "output_tokens": 536,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 4.82,
+      "cost_usd": 0.0005865,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch3BsbHtDa8hm6MnV5dVS"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v1",
+      "input_tokens": 2970,
+      "output_tokens": 496,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 4.009,
+      "cost_usd": 0.000545,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch3BsbjvKqJYDqs4jLcPv"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v1",
+      "input_tokens": 3124,
+      "output_tokens": 557,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 4.388,
+      "cost_usd": 0.0005909,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch3BscGRzLt8AXUNcuGcn"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v1",
+      "input_tokens": 3023,
+      "output_tokens": 496,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 4.382,
+      "cost_usd": 0.0005503000000000001,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch3BscAiT29cNT8PdQY69"
+    }
+  ],
+  "errors": [
+    {
+      "source": "deliver",
+      "error": "SMTPServerDisconnected"
+    }
+  ]
+}
