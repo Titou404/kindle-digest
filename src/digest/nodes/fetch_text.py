@@ -11,14 +11,17 @@ from digest.extract import extract_text
 from digest.nodes.clean import shorten
 from digest.state import DigestState, NodeMetrics, SourceError
 
-MAX_TEXT = 6000  # characters (~1,500 tokens): bounds the cost of each summary (experiment E2)
+# Characters (~5,000 tokens). Was 6,000 until 2026-11-14: it cut 7 articles out of 12, so
+# summaries described the start of an article and missed its conclusion. No article measured
+# so far reaches 20,000; the limit only guards against a broken page. Experiment E2 compares.
+MAX_TEXT = 20000
 MIN_TEXT = 500  # below this, it is not an article (video page, paywall teaser...)
 
 
 def fetch_text(state: DigestState) -> dict:
     start = time.perf_counter()
     counts = {"from_feed": 0, "downloaded": 0, "failed": 0, "too_short": 0, "truncated": 0,
-              "raw": 0}
+              "raw": 0, "chars_kept": 0, "chars_cut": 0}
     articles, errors = [], []
 
     with make_client() as client:
@@ -44,7 +47,10 @@ def fetch_text(state: DigestState) -> dict:
                 text = ""  # summarize will fall back to the snippet
             if len(text) > MAX_TEXT:
                 counts["truncated"] += 1
+                original_length = len(text)
                 text = shorten(text, MAX_TEXT)
+                counts["chars_cut"] += original_length - len(text)
+            counts["chars_kept"] += len(text)
             articles.append(replace(article, text=text))
 
     metrics = NodeMetrics("fetch_text", round(time.perf_counter() - start, 3), counts)

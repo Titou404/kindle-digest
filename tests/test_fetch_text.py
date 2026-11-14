@@ -9,7 +9,7 @@ from digest.state import Article
 
 PAGES = {
     "https://ok.example": "word " * 400,  # 2,000 characters: kept as is
-    "https://long.example": "word " * 3000,  # 15,000 characters: cut
+    "https://long.example": "word " * 5000,  # 25,000 characters: cut
     "https://video.example": "Watch on YouTube",  # not an article
 }
 
@@ -58,6 +58,9 @@ def test_every_case_is_handled_and_counted():
     assert video == ""  # too short: summarize will use the snippet
     assert down == ""
     assert result["errors"][0].error == "ConnectTimeout"
-    assert result["metrics"][0].counts == {
-        "from_feed": 0, "downloaded": 3, "failed": 1, "too_short": 1, "truncated": 1, "raw": 0,
+    counts = result["metrics"][0].counts
+    assert {k: counts[k] for k in ("from_feed", "downloaded", "failed", "too_short", "truncated")} == {
+        "from_feed": 0, "downloaded": 3, "failed": 1, "too_short": 1, "truncated": 1,
     }
+    assert counts["chars_kept"] == len(ok) + len(long)
+    assert counts["chars_cut"] == 25000 - len(long)  # what the cut removed is measured
