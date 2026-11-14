@@ -16,6 +16,8 @@ from digest.state import Article
 
 USER_AGENT = "kindle-digest/0.1 (personal project)"
 TAG = re.compile(r"<[^>]+>")
+# Reddit appends this line to every post in its feeds.
+REDDIT_FOOTER = re.compile(r"\s*submitted by /u/\S+ to r/\S+ \[link\] \[comments\]$")
 
 
 def make_client() -> httpx.Client:
@@ -24,6 +26,13 @@ def make_client() -> httpx.Client:
         timeout=10.0,
         follow_redirects=True,
     )
+
+
+def describe_error(e: Exception) -> str:
+    """Short label for an error, e.g. "HTTP 429" or "ConnectTimeout"."""
+    if isinstance(e, httpx.HTTPStatusError):
+        return f"HTTP {e.response.status_code}"
+    return type(e).__name__
 
 
 def clean_html(text: str) -> str:
@@ -55,10 +64,11 @@ def fetch_feed(client: httpx.Client, source: Source) -> list[Article]:
     response = client.get(source.url)
     response.raise_for_status()
     feed = feedparser.parse(response.content)
-    # An HTML page (anti-bot, error) served with status 200 is not a feed:
-    # fail loudly rather than return an empty list that looks like a quiet day.
-    if feed.bozo and not feed.entries:
-        raise ValueError(f"not a valid feed: {feed.bozo_exception}")
+    # An HTML page (anti-bot, error) served with status 200 is not a feed: feedparser
+    # recognizes no format (empty version) but reports no error either. Fail loudly
+    # rather than return an empty list that looks like a quiet day.
+    if not feed.version:
+        raise ValueError("response is not an RSS/Atom feed")
     return [
         Article(
             source=source.name,
@@ -66,10 +76,17 @@ def fetch_feed(client: httpx.Client, source: Source) -> list[Article]:
             title=clean_html(entry.get("title", "")),
             url=entry.get("link", ""),
             published=_entry_date(entry),
-            snippet=clean_html(entry.get("summary", "")),
+            snippet=_feed_text(entry.get("summary", "")),
+            # Some feeds (Reddit, The Conversation) include the full text:
+            # no need to download the page later.
+            text=_feed_text(entry.content[0].value) if entry.get("content") else "",
         )
         for entry in feed.entries
     ]
+
+
+def _feed_text(raw_html: str) -> str:
+    return REDDIT_FOOTER.sub("", clean_html(raw_html))
 
 
 def _entry_date(entry) -> datetime | None:
