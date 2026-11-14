@@ -1,0 +1,84 @@
+# Candidate sources. Each one is checked by scripts/probe_sources.py before we keep it:
+# working feed, publication dates, readable full text (no paywall).
+#
+# kind:    "hn" (Hacker News JSON API) or "feed" (RSS / Atom)
+# section: "data", "monde", "eco" or "france"
+
+# --- data ---
+[[sources]]
+name = "hackernews"
+kind = "hn"
+section = "data"
+url = "https://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=30"
+
+[[sources]]
+name = "reddit/datascience"
+kind = "feed"
+section = "data"
+url = "https://www.reddit.com/r/datascience/top/.rss?t=day"
+
+[[sources]]
+name = "reddit/machinelearning"
+kind = "feed"
+section = "data"
+url = "https://www.reddit.com/r/MachineLearning/top/.rss?t=day"
+
+# --- monde ---
+[[sources]]
+name = "lemonde/international"
+kind = "feed"
+section = "monde"
+url = "https://www.lemonde.fr/international/rss_full.xml"
+
+[[sources]]
+name = "bbc/world"
+kind = "feed"
+section = "monde"
+url = "https://feeds.bbci.co.uk/news/world/rss.xml"
+
+[[sources]]
+name = "guardian/world"
+kind = "feed"
+section = "monde"
+url = "https://www.theguardian.com/world/rss"
+
+# --- eco ---
+# Les Echos: dropped on 2026-11-14. Feed URL answered 503, lesechos.fr answers 403 to
+# non-browser clients (anti-bot), and most articles are paywalled anyway.
+
+[[sources]]
+name = "bbc/business"
+kind = "feed"
+section = "eco"
+url = "https://feeds.bbci.co.uk/news/business/rss.xml"
+
+[[sources]]
+name = "lemonde/economie"
+kind = "feed"
+section = "eco"
+url = "https://www.lemonde.fr/economie/rss_full.xml"
+
+[[sources]]
+name = "franceinfo/economie"
+kind = "feed"
+section = "eco"
+url = "https://www.francetvinfo.fr/economie.rss"
+
+# --- france ---
+[[sources]]
+name = "lemonde/politique"
+kind = "feed"
+section = "france"
+url = "https://www.lemonde.fr/politique/rss_full.xml"
+
+[[sources]]
+name = "franceinfo/politique"
+kind = "feed"
+section = "france"
+url = "https://www.francetvinfo.fr/politique.rss"
+
+[[sources]]
+name = "theconversation/fr"
+kind = "feed"
+section = "france"
+url = "https://theconversation.com/fr/articles.atom"
