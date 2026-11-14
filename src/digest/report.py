@@ -36,6 +36,7 @@ def write_run_report(state: DigestState, seconds: float, llm) -> Path:
     today = datetime.now(ZoneInfo("Europe/Paris"))
     calls = state.get("llm_calls", [])
     fake = llm.model == "fake"
+    selected_urls = {a.url for a in state.get("selected", [])}
     report = {
         "date": f"{today:%Y-%m-%d}",
         "git_sha": git_sha(),
@@ -50,6 +51,7 @@ def write_run_report(state: DigestState, seconds: float, llm) -> Path:
             "after_clean": len(state.get("cleaned", [])),
             "selected": len(state.get("selected", [])),
             "summarized": sum(bool(a.summary) for a in state.get("summarized", [])),
+            "raw": sum(a.raw for a in state.get("selected", [])),
         },
         "totals": {
             "seconds": round(seconds, 2),
@@ -63,6 +65,13 @@ def write_run_report(state: DigestState, seconds: float, llm) -> Path:
         "nodes": [asdict(m) for m in state.get("metrics", [])],
         "llm_calls": [asdict(c) for c in calls],
         "errors": [asdict(e) for e in state.get("errors", [])],
+        # Every candidate with its score: answers "why was this kept, or not?"
+        # and is the raw material for evaluating the ranking against my own judgment.
+        "candidates": [
+            {"source": a.source, "section": a.section, "title": a.title, "score": a.score,
+             "topic": a.topic, "selected": a.url in selected_urls}
+            for a in state.get("ranked", [])
+        ],
     }
     folder = FAKE_DIR if fake else RUNS_DIR
     folder.mkdir(exist_ok=True)
