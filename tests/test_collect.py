@@ -19,6 +19,8 @@ BROKEN = Source("broken-source", "feed", "monde", "https://broken.example/rss")
 def fake_fetch(client, source):
     if source == BROKEN:
         raise httpx.ConnectTimeout("timed out")
+    if source.name == "empty-source":
+        return []
     return [
         Article(source.name, source.section, "A title", "https://ok.example/a",
                 published=datetime.now(UTC))
@@ -51,6 +53,15 @@ def test_collect_waits_before_the_request_when_asked(monkeypatch):
     collect({"source": slow})
 
     assert waits == [10]
+
+
+def test_empty_feed_is_recorded_as_an_anomaly():
+    empty = Source("empty-source", "feed", "data", "https://empty.example/rss")
+
+    result = collect({"source": empty})
+
+    assert result["collected"] == []
+    assert result["errors"] == [SourceError("empty-source", "empty feed")]
 
 
 def test_collect_records_error_instead_of_raising():

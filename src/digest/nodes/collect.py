@@ -27,6 +27,11 @@ def collect(state: CollectInput) -> dict:
             articles = FETCHERS[source.kind](client, source)
     except Exception as e:  # noqa: BLE001
         errors.append(SourceError(source=source.name, error=describe_error(e)))
+    else:
+        # A valid but empty feed is suspicious (seen with Reddit when it throttles us):
+        # record it, so that it does not look like a quiet day.
+        if not articles:
+            errors.append(SourceError(source=source.name, error="empty feed"))
 
     metrics = NodeMetrics(
         node=f"collect:{source.name}",
