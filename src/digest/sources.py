@@ -4,7 +4,9 @@ import tomllib
 from dataclasses import dataclass
 from pathlib import Path
 
-DEFAULT_PATH = Path(__file__).resolve().parents[2] / "config" / "sources.toml"
+from digest.paths import CONFIG_DIR
+
+DEFAULT_PATH = CONFIG_DIR / "sources.toml"
 KINDS = {"hn", "feed"}
 SECTIONS = {"data", "monde", "eco", "france"}
 
