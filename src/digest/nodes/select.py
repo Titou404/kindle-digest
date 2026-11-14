@@ -17,11 +17,19 @@ def select_articles(
 ) -> tuple[list[Article], dict[str, int]]:
     # If every score is 0, rank failed: fall back to the most recent articles.
     rank_failed = all(not a.score for a in ranked)
-    # Otherwise a 0 means "excluded by the profile" (or not scored): never selected.
-    candidates = ranked if rank_failed else [a for a in ranked if a.score]
     # Best score first; on a tie (or when rank failed), the most recent first.
-    candidates = sorted(candidates, key=lambda a: (a.score or 0, a.published or OLDEST), reverse=True)
+    by_merit = sorted(ranked, key=lambda a: (a.score or 0, a.published or OLDEST), reverse=True)
 
+    # 1. Raw sources (Reddit): the best post of each sub-source (subreddit), always,
+    #    on top of the quotas: they never take the place of another article.
+    raw_picks = {}
+    for article in by_merit:
+        if article.raw and article.source not in raw_picks:
+            raw_picks[article.source] = article
+
+    # 2. Quotas, among the other articles. A 0 means "excluded by the profile"
+    #    (or not scored): never selected, unless rank failed.
+    candidates = [a for a in by_merit if not a.raw and (rank_failed or a.score)]
     selected, seen_topics, duplicate_topics = [], set(), 0
     for section, quota in quotas.items():
         kept = 0
@@ -41,10 +49,11 @@ def select_articles(
     counts = {
         "candidates": len(candidates),
         "selected": len(selected),
+        "raw": len(raw_picks),
         "duplicate_topics": duplicate_topics,
         "rank_failed": int(rank_failed),
     }
-    return selected, counts
+    return selected + list(raw_picks.values()), counts
 
 
 def select(state: DigestState) -> dict:

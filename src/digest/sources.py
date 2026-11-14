@@ -17,6 +17,10 @@ class Source:
     kind: str  # "hn" (Hacker News JSON API) or "feed" (RSS / Atom)
     section: str
     url: str
+    # Raw source (Reddit): posts shown as written, never summarized, and the best post
+    # of each raw source is added on top of the section quotas.
+    raw: bool = False
+    delay_s: float = 0  # wait before the request (sites that refuse requests in a row)
 
 
 def load_sources(path: Path = DEFAULT_PATH) -> list[Source]:

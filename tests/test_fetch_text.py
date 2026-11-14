@@ -25,8 +25,17 @@ def no_network(monkeypatch):
     monkeypatch.setattr(fetch_text_module, "extract_text", fake_extract_text)
 
 
-def article(url, text=""):
-    return Article("source", "data", "A title", url, snippet="A snippet", text=text)
+def article(url, text="", raw=False):
+    return Article("source", "data", "A title", url, snippet="A snippet", text=text, raw=raw)
+
+
+def test_raw_post_is_left_as_written():
+    long_post = "paragraph\n\n" * 1000  # longer than MAX_TEXT, but not cut
+
+    result = fetch_text({"selected": [article("https://unknown.example", long_post, raw=True)]})
+
+    assert result["selected"][0].text == long_post
+    assert result["metrics"][0].counts["raw"] == 1
 
 
 def test_text_already_in_the_feed_is_not_downloaded():
@@ -50,5 +59,5 @@ def test_every_case_is_handled_and_counted():
     assert down == ""
     assert result["errors"][0].error == "ConnectTimeout"
     assert result["metrics"][0].counts == {
-        "from_feed": 0, "downloaded": 3, "failed": 1, "too_short": 1, "truncated": 1,
+        "from_feed": 0, "downloaded": 3, "failed": 1, "too_short": 1, "truncated": 1, "raw": 0,
     }

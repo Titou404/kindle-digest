@@ -83,6 +83,20 @@ def test_render_writes_an_epub_with_sections_and_report(tmp_path, monkeypatch):
     assert "A &lt;b&gt;title&lt;/b&gt;" in monde  # the title is escaped, not interpreted
 
 
+def test_raw_reddit_posts_get_their_own_chapter_as_written(tmp_path, monkeypatch):
+    monkeypatch.setattr(render_module, "OUT_DIR", tmp_path)
+    post = Article("reddit/MachineLearning", "data", "ICML 2027 Changes", "https://reddit.example",
+                   text="First paragraph.\n\nSecond paragraph.", raw=True)
+    state = {"summarized": [article(summary="Un résumé.")], "selected": [post]}
+
+    book = epub.read_epub(render_epub(state)["epub_path"])
+
+    assert [chapter.title for chapter in book.toc] == ["Data & IA", "Reddit", "Bilan du jour"]
+    reddit = book.get_item_with_href("reddit.xhtml").get_content().decode()
+    assert "<p>First paragraph.</p>" in reddit
+    assert "<p>Second paragraph.</p>" in reddit
+
+
 def test_deliver_does_nothing_without_send(monkeypatch):
     monkeypatch.delenv("SEND", raising=False)
 

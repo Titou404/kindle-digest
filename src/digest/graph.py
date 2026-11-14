@@ -24,11 +24,12 @@ def build_graph(sources: list[Source], llm: LLM):
         return [Send("collect", {"source": source}) for source in sources]
 
     def dispatch_summaries(state: DigestState) -> list[Send] | str:
-        # One "summarize" run per selected article, all in parallel.
-        # Nothing selected: go straight to the journal (it will hold the report page).
-        if not state["selected"]:
+        # One "summarize" run per selected article, all in parallel. Raw posts (Reddit)
+        # are not summarized: render_epub takes them as they are from "selected".
+        to_summarize = [article for article in state["selected"] if not article.raw]
+        if not to_summarize:
             return "render_epub"
-        return [Send("summarize", {"article": article}) for article in state["selected"]]
+        return [Send("summarize", {"article": article}) for article in to_summarize]
 
     def rank_node(state: DigestState) -> dict:
         return rank(state, llm)

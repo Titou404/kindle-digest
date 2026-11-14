@@ -47,16 +47,32 @@ def article_html(article: Article) -> str:
     return "\n".join(parts)
 
 
+def raw_post_html(article: Article) -> str:
+    """A Reddit post as its author wrote it: no summary, paragraphs kept."""
+    parts = [
+        f"<h2>{esc(article.title)}</h2>",
+        f'<p class="meta">{esc(article.source)} · tel qu\'écrit</p>',
+    ]
+    paragraphs = [p for p in article.text.split("\n\n") if p]
+    if paragraphs:
+        parts += [f"<p>{esc(p)}</p>" for p in paragraphs]
+    else:
+        parts.append('<p class="meta">Lien sans texte.</p>')
+    parts.append(f'<p><a href="{esc(article.url)}">Voir la discussion</a></p>')
+    return "\n".join(parts)
+
+
 def report_html(state: DigestState) -> str:
     """Last page: what this journal cost and what went wrong."""
     calls = state.get("llm_calls", [])
     errors = state.get("errors", [])
+    raw_posts = [a for a in state.get("selected", []) if a.raw]
     lines = [
         "<h1>Bilan du jour</h1>",
         (
             f"<p>{len(state.get('collected', []))} articles collectés, "
             f"{len(state.get('cleaned', []))} après nettoyage, "
-            f"{len(state.get('summarized', []))} retenus.</p>"
+            f"{len(state.get('summarized', []))} résumés et {len(raw_posts)} posts bruts.</p>"
         ),
         f"<p>{len(calls)} appels au modèle, coût total : {sum(c.cost_usd for c in calls):.4f} $.</p>",
     ]
@@ -77,23 +93,26 @@ def build_book(state: DigestState, today: datetime) -> epub.EpubBook:
     style = epub.EpubItem(uid="style", file_name="style.css", media_type="text/css", content=CSS)
     book.add_item(style)
 
+    def chapter(title: str, file_name: str, content: str) -> epub.EpubHtml:
+        page = epub.EpubHtml(title=title, file_name=file_name, lang="fr")
+        page.content = content
+        page.add_item(style)
+        return page
+
     chapters = []
     articles = state.get("summarized", [])
+    raw_posts = [a for a in state.get("selected", []) if a.raw]
     for key, name in SECTIONS.items():
         in_section = sorted(
             (a for a in articles if a.section == key), key=lambda a: a.score or 0, reverse=True
         )
-        if not in_section:
-            continue
-        chapter = epub.EpubHtml(title=name, file_name=f"{key}.xhtml", lang="fr")
-        chapter.content = f"<h1>{esc(name)}</h1>\n" + "\n".join(map(article_html, in_section))
-        chapter.add_item(style)
-        chapters.append(chapter)
-
-    report = epub.EpubHtml(title="Bilan du jour", file_name="bilan.xhtml", lang="fr")
-    report.content = report_html(state)
-    report.add_item(style)
-    chapters.append(report)
+        if in_section:
+            body = "\n".join(map(article_html, in_section))
+            chapters.append(chapter(name, f"{key}.xhtml", f"<h1>{esc(name)}</h1>\n{body}"))
+        if key == "data" and raw_posts:  # Reddit posts right after Data & IA
+            body = "\n".join(map(raw_post_html, raw_posts))
+            chapters.append(chapter("Reddit", "reddit.xhtml", f"<h1>Reddit</h1>\n{body}"))
+    chapters.append(chapter("Bilan du jour", "bilan.xhtml", report_html(state)))
 
     for chapter in chapters:
         book.add_item(chapter)
@@ -114,6 +133,10 @@ def render_epub(state: DigestState) -> dict:
     metrics = NodeMetrics(
         "render_epub",
         round(time.perf_counter() - start, 3),
-        {"articles": len(state.get("summarized", [])), "size_bytes": path.stat().st_size},
+        {
+            "articles": len(state.get("summarized", [])),
+            "raw_posts": sum(a.raw for a in state.get("selected", [])),
+            "size_bytes": path.stat().st_size,
+        },
     )
     return {"epub_path": str(path), "metrics": [metrics]}

@@ -8,11 +8,28 @@ from digest.state import Article
 NOW = datetime(2026, 11, 14, 6, 0, tzinfo=UTC)
 
 
-def article(section, score, topic="", hours_ago=1, title=None):
+def article(section, score, topic="", hours_ago=1, title=None, source="source", raw=False):
     return Article(
-        "source", section, title or f"{section} {score} {topic}", "https://example.com",
-        published=NOW - timedelta(hours=hours_ago), score=score, topic=topic,
+        source, section, title or f"{section} {score} {topic}", "https://example.com",
+        published=NOW - timedelta(hours=hours_ago), score=score, topic=topic, raw=raw,
     )
+
+
+def test_one_raw_post_per_subreddit_on_top_of_the_quotas():
+    ranked = [
+        article("data", 9, title="HN 9"),
+        article("data", 8, title="HN 8"),
+        article("data", 3, title="ML 3", source="reddit/MachineLearning", raw=True),
+        article("data", 6, title="ML 6", source="reddit/MachineLearning", raw=True),
+        article("data", 1, title="DS 1", source="reddit/datascience", raw=True),
+    ]
+
+    selected, counts = select_articles(ranked, {"data": 2})
+
+    # The 2 quota places go to the best non-raw articles, then the best post of each
+    # subreddit is added, however low its score.
+    assert [a.title for a in selected] == ["HN 9", "HN 8", "ML 6", "DS 1"]
+    assert counts["raw"] == 2
 
 
 def test_best_scores_first_within_each_quota():

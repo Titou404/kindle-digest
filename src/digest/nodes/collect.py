@@ -17,6 +17,7 @@ class CollectInput(TypedDict):
 
 def collect(state: CollectInput) -> dict:
     source = state["source"]
+    time.sleep(source.delay_s)  # 0 for most sources; not counted in the duration
     start = time.perf_counter()
     articles, errors = [], []
     # Broad except on purpose: a source that fails must not stop the run.

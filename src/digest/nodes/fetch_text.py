@@ -17,11 +17,16 @@ MIN_TEXT = 500  # below this, it is not an article (video page, paywall teaser..
 
 def fetch_text(state: DigestState) -> dict:
     start = time.perf_counter()
-    counts = {"from_feed": 0, "downloaded": 0, "failed": 0, "too_short": 0, "truncated": 0}
+    counts = {"from_feed": 0, "downloaded": 0, "failed": 0, "too_short": 0, "truncated": 0,
+              "raw": 0}
     articles, errors = [], []
 
     with make_client() as client:
         for article in state["selected"]:
+            if article.raw:  # shown as written: no download, no cut, no summary
+                counts["raw"] += 1
+                articles.append(article)
+                continue
             text = article.text  # Reddit and The Conversation give it in the feed
             if text:
                 counts["from_feed"] += 1

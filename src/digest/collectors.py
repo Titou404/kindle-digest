@@ -16,8 +16,9 @@ from digest.state import Article
 
 USER_AGENT = "kindle-digest/0.1 (personal project)"
 TAG = re.compile(r"<[^>]+>")
-# Reddit appends this line to every post in its feeds.
-REDDIT_FOOTER = re.compile(r"\s*submitted by /u/\S+ to r/\S+ \[link\] \[comments\]$")
+# Reddit appends this line to every post in its feeds (split by a <br> in the HTML).
+REDDIT_FOOTER = re.compile(r"\s*submitted by\s+/u/\S+\s+to\s+r/\S+\s+\[link\]\s+\[comments\]\s*$")
+BLOCK_END = re.compile(r"</(?:p|div|li|h[1-6]|blockquote|pre)>|<br\s*/?>", re.IGNORECASE)
 
 
 def make_client() -> httpx.Client:
@@ -38,6 +39,12 @@ def describe_error(e: Exception) -> str:
 def clean_html(text: str) -> str:
     """Strip tags, decode entities (&amp; ...) and collapse whitespace."""
     return " ".join(html.unescape(TAG.sub(" ", text)).split())
+
+
+def html_to_text(raw_html: str) -> str:
+    """Like clean_html, but keeps the paragraphs, separated by a blank line."""
+    paragraphs = (clean_html(part) for part in BLOCK_END.sub("\n\n", raw_html).split("\n\n"))
+    return "\n\n".join(p for p in paragraphs if p)
 
 
 def fetch_hn(client: httpx.Client, source: Source) -> list[Article]:
@@ -76,17 +83,16 @@ def fetch_feed(client: httpx.Client, source: Source) -> list[Article]:
             title=clean_html(entry.get("title", "")),
             url=entry.get("link", ""),
             published=_entry_date(entry),
-            snippet=_feed_text(entry.get("summary", "")),
+            snippet=REDDIT_FOOTER.sub("", clean_html(entry.get("summary", ""))),
             # Some feeds (Reddit, The Conversation) include the full text:
-            # no need to download the page later.
-            text=_feed_text(entry.content[0].value) if entry.get("content") else "",
+            # no need to download the page later. Paragraphs are kept.
+            text=REDDIT_FOOTER.sub("", html_to_text(entry.content[0].value))
+            if entry.get("content")
+            else "",
+            raw=source.raw,
         )
         for entry in feed.entries
     ]
-
-
-def _feed_text(raw_html: str) -> str:
-    return REDDIT_FOOTER.sub("", clean_html(raw_html))
 
 
 def _entry_date(entry) -> datetime | None:

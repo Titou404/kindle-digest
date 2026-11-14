@@ -17,7 +17,7 @@ from digest.sources import Source
 FIXTURES = Path(__file__).parent / "fixtures"
 HN = Source("hackernews", "hn", "data", "https://hn.example/api")
 BBC = Source("bbc/world", "feed", "monde", "https://bbc.example/rss")
-REDDIT = Source("reddit", "feed", "data", "https://reddit.example/rss")
+REDDIT = Source("reddit", "feed", "data", "https://reddit.example/rss", raw=True)
 
 
 def client_returning(body: bytes, status: int = 200) -> httpx.Client:
@@ -73,6 +73,8 @@ def test_fetch_feed_reddit_uses_full_text_without_footer():
         assert article.text
         assert "submitted by" not in article.text
         assert "submitted by" not in article.snippet
+        assert article.raw  # inherited from the source
+    assert "\n\n" in articles[0].text  # the post's paragraphs are kept
 
 
 def test_fetch_feed_rejects_html_page():

@@ -19,6 +19,7 @@ class Article:
     why_it_matters: str = ""  # one sentence, filled by the summarize node
     score: int | None = None  # 0 to 10, set by the rank node
     topic: str = ""  # short subject, set by the rank node (same event, same topic)
+    raw: bool = False  # from a raw source: shown as written, never summarized
 
 
 @dataclass

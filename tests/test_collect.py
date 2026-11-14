@@ -43,6 +43,16 @@ def test_collect_returns_articles_and_metrics():
     assert metrics.counts == {"articles": 1}
 
 
+def test_collect_waits_before_the_request_when_asked(monkeypatch):
+    waits = []
+    monkeypatch.setattr("digest.nodes.collect.time.sleep", waits.append)
+    slow = Source("reddit/MachineLearning", "feed", "data", "https://ok.example/rss", delay_s=10)
+
+    collect({"source": slow})
+
+    assert waits == [10]
+
+
 def test_collect_records_error_instead_of_raising():
     result = collect({"source": BROKEN})
 

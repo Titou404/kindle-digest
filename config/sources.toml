@@ -1,4 +1,5 @@
-# Sources of the digest: 2 per section. Re-run scripts/probe_sources.py after any change:
+# Sources of the digest: 2 per section, plus 2 raw Reddit sources in "data".
+# Re-run scripts/probe_sources.py after any change:
 # a source is kept only if its feed works, has publication dates and readable full text.
 #
 # kind:    "hn" (Hacker News JSON API) or "feed" (RSS / Atom)
@@ -17,13 +18,25 @@ kind = "hn"
 section = "data"
 url = "https://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=30"
 
-# Both subreddits in one request ("+" combines them): on 2026-11-14, Reddit answered
-# 429 (too many requests) to a second request made right after the first one.
+# Reddit: one source per subreddit. raw = true: posts shown as written (never
+# summarized), and the best post of each subreddit is added on top of the quotas.
+# Not one combined feed (r/a+b): its top was 100% r/MachineLearning on 2026-11-14,
+# so r/datascience could never be guaranteed (and ?limit= is ignored by the RSS feed).
+# delay_s: Reddit answers 429 to two requests in a row, so the second one waits.
 [[sources]]
-name = "reddit"
+name = "reddit/datascience"
 kind = "feed"
 section = "data"
-url = "https://www.reddit.com/r/datascience+MachineLearning/top/.rss?t=day"
+url = "https://www.reddit.com/r/datascience/top/.rss?t=day"
+raw = true
+
+[[sources]]
+name = "reddit/MachineLearning"
+kind = "feed"
+section = "data"
+url = "https://www.reddit.com/r/MachineLearning/top/.rss?t=day"
+raw = true
+delay_s = 10
 
 # --- monde ---
 [[sources]]
