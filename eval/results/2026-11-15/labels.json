@@ -1,0 +1,447 @@
+[
+ {
+  "url": "https://www.spacex.com/launches/starship-flight-15",
+  "title": "SpaceX catches the Starship to end Flight 15",
+  "keep": 1
+ },
+ {
+  "url": "https://www.crissyfield.de/research/lovable-en",
+  "title": "Lovable apps expose passport details and more than 200K private messages",
+  "keep": 1
+ },
+ {
+  "url": "https://tube.kockatoo.org/w/fFinNHfanLT7aBEb2B8y4c",
+  "title": "KDE: The documentary [video]",
+  "keep": 0
+ },
+ {
+  "url": "https://zwischenzugs.com/2026/11/03/a-family-tree-of-software-job-titles",
+  "title": "A family tree of software job titles",
+  "keep": 0
+ },
+ {
+  "url": "https://www.eff.org/deeplinks/2026/11/were-asking-appeals-court-require-warrant-alpr-searches",
+  "title": "We're Asking an Appeals Court to Require a Warrant for ALPR Searches",
+  "keep": 0
+ },
+ {
+  "url": "https://litnews.ai/articles/garciaguirre-samsung-sk-hynix-micron-dram-conspiracy-suit-survives-dismissal",
+  "title": "Court denies motion to dismiss DRAM price fixing case",
+  "keep": 0
+ },
+ {
+  "url": "https://blog.pypi.org/posts/2026-11-06-ui-updates-complete",
+  "title": "PyPI's redesigned project pages with clearer security signals are now live",
+  "keep": 0
+ },
+ {
+  "url": "https://github.com/Vaibhaav-Tiwari/deepseek-v3-jax",
+  "title": "Show HN: DeepSeek V3 in ~200 lines of pure Jax",
+  "keep": 1
+ },
+ {
+  "url": "https://retrocomputing.stackexchange.com/questions/17957",
+  "title": "How did Woz write the Apple 1 BASIC before building the computer?",
+  "keep": 1
+ },
+ {
+  "url": "https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature",
+  "title": "Advancing science and engineering with Antigravity's /teamwork",
+  "keep": 1
+ },
+ {
+  "url": "https://jordi.inversethought.com/blog/25-of-my-favourite-modern-nes-games",
+  "title": "My favourite modern NES games",
+  "keep": 1
+ },
+ {
+  "url": "https://space.stackexchange.com/questions/37775",
+  "title": "Why did some Apollo missions carry a grenade launcher?",
+  "keep": 1
+ },
+ {
+  "url": "https://runkiri.com",
+  "title": "Kiri – The Modern Container Runtime",
+  "keep": 0
+ },
+ {
+  "url": "https://netbsd.org/~nia/disk-encrypt",
+  "title": "Disk encryption on NetBSD – achieving secrecy",
+  "keep": 0
+ },
+ {
+  "url": "https://nick-black.com/dankwiki/index.php?title=Book_list_for_streetfighting_computer_scientists",
+  "title": "Book list for streetfighting computer scientists",
+  "keep": 0
+ },
+ {
+  "url": "https://github.com/Tthanh2k6/turbo-browser-mcp",
+  "title": "Show HN: Turbo-Browser-MCP – Batch forms, DOM deltas and submit guards for MCP",
+  "keep": 0
+ },
+ {
+  "url": "https://www.nytimes.com/2026/11/15/us/politics/lutnick-pushed-to-weaken-chip-rules-that-overlap-with-his-family-business.html",
+  "title": "Lutnick Pushed to Weaken Chip Rules That Overlap with His Family Business",
+  "keep": 0
+ },
+ {
+  "url": "https://www.bbc.co.uk/news/articles/cwe89y2r5j20o",
+  "title": "New Orleans port files $1m lawsuit over 'miracle on the Mississippi' tanker collision",
+  "keep": 1
+ },
+ {
+  "url": "https://www.bbc.co.uk/news/articles/c3rrg9xgqlwpo",
+  "title": "Three men sentenced to death in Jordan over fatal church mass shooting",
+  "keep": 0
+ },
+ {
+  "url": "https://www.bbc.co.uk/news/articles/cqrkg4r6mg7xo",
+  "title": "Israel kills Hamas commander in strike on Gaza camp, officials say",
+  "keep": 0
+ },
+ {
+  "url": "https://www.bbc.co.uk/news/articles/cmrlgn4x2xw8o",
+  "title": "Fifth Canadian soldier dies from injuries caused by large fire at military base",
+  "keep": 0
+ },
+ {
+  "url": "https://www.bbc.co.uk/news/articles/c6wy9lynq4qno",
+  "title": "Copper wire upgrade behind US flight suspension, transport secretary says",
+  "keep": 1
+ },
+ {
+  "url": "https://www.bbc.co.uk/news/articles/c6j9mn7l14y0o",
+  "title": "Judge temporarily blocks Trump from closing Washington DC golf course for renovation",
+  "keep": 1
+ },
+ {
+  "url": "https://www.bbc.co.uk/news/articles/cr4gnz0lv2vlo",
+  "title": "Pope Leo speaks of community 'suffering' on visit to remote Andes town",
+  "keep": 0
+ },
+ {
+  "url": "https://www.bbc.co.uk/news/articles/cwvg2l312ylqo",
+  "title": "US has floated Ukraine ceding Donbas for Nato membership, Zelensky says",
+  "keep": 1
+ },
+ {
+  "url": "https://www.bbc.co.uk/news/articles/cqrlgnx9dx6eo",
+  "title": "Philippines wins first Eurovision Song Contest Asia",
+  "keep": 0
+ },
+ {
+  "url": "https://www.bbc.co.uk/news/articles/cwn83gxemk35o",
+  "title": "Italy fines Meta €805m over accessing users' photos",
+  "keep": 1
+ },
+ {
+  "url": "https://www.bbc.co.uk/news/articles/cmwy05gg75lvo",
+  "title": "Sotheby's auction of $180m Van Gogh challenged over claims it was 'sold under duress'",
+  "keep": 0
+ },
+ {
+  "url": "https://www.bbc.co.uk/news/articles/ckz74jzpy18do",
+  "title": "Trump, Putin and Xi plan historic joint meeting in China next week, White House says",
+  "keep": 1
+ },
+ {
+  "url": "https://www.bbc.co.uk/news/articles/cmz6qjpdy2wqo",
+  "title": "Nigeria cautions against travel via Ethiopia's main airport due to altitude",
+  "keep": 0
+ },
+ {
+  "url": "https://www.bbc.co.uk/news/videos/cwlym2gy3y3eo",
+  "title": "'Can you believe it?': SpaceX catches part of its Starship rocket on return to Earth",
+  "keep": 1
+ },
+ {
+  "url": "https://www.bbc.co.uk/news/videos/ck4gn4y77m40o",
+  "title": "Watch: Cruise ship overturns after collision with tanker in New Orleans",
+  "keep": 0
+ },
+ {
+  "url": "https://www.bbc.co.uk/news/articles/c6dj1e8wyykmo",
+  "title": "Judo champion shakes up French presidential race with surprise candidacy",
+  "keep": 1
+ },
+ {
+  "url": "https://www.bbc.co.uk/news/articles/cmvg2e2q28w1o",
+  "title": "My mother told me I would die if I sought treatment for Ebola - I am proof you can survive",
+  "keep": 0
+ },
+ {
+  "url": "https://www.bbc.co.uk/news/articles/cqx2wyvyr3zzo",
+  "title": "How telecoms upgrade work sparked US flight chaos",
+  "keep": 1
+ },
+ {
+  "url": "https://www.theguardian.com/technology/2026/nov/15/ai-cheating-south-korea-college-entrance-exam",
+  "title": "160 questions, only one wrong: top scorer in South Korea tax exam admits AI cheating",
+  "keep": 1
+ },
+ {
+  "url": "https://www.theguardian.com/world/2026/nov/15/asia-diplomatic-summits-trump-xi-putin-apec-asean",
+  "title": "World leaders head to Asia for back-to-back diplomatic summits",
+  "keep": 1
+ },
+ {
+  "url": "https://www.theguardian.com/tv-and-radio/2026/nov/14/philippines-carmelle-wins-first-eurovision-contest-in-asia",
+  "title": "Philippines’ Carmelle wins first Eurovision contest in Asia",
+  "keep": 0
+ },
+ {
+  "url": "https://www.theguardian.com/australia-news/2026/nov/15/anthony-albanese-welcomes-trump-xi-putin-summit-even-as-european-leaders-express-reservations",
+  "title": "Anthony Albanese welcomes Trump-Xi-Putin summit – even as European leaders express reservations",
+  "keep": 0
+ },
+ {
+  "url": "https://www.theguardian.com/australia-news/2026/nov/15/anthony-albanese-apologises-for-hot-mic-gaffe-after-coalition-criticises-locker-room-talk",
+  "title": "Anthony Albanese apologises for hot-mic gaffe after Coalition criticises ‘locker-room talk’",
+  "keep": 0
+ },
+ {
+  "url": "https://www.theguardian.com/australia-news/2026/nov/15/katherine-deves-among-four-nsw-upper-house-candidates-revealed-by-one-nation-ntwnfb",
+  "title": "Katherine Deves among four NSW upper house candidates revealed by One Nation",
+  "keep": 0
+ },
+ {
+  "url": "https://www.theguardian.com/australia-news/2026/nov/15/australia-weather-east-coast-thunderstorms-giant-hail-and-powerful-winds-ettalong-beach-swimmer-lightning-strike",
+  "title": "Thunderstorms, giant hail and powerful winds forecast for NSW as wild weather hits east coast",
+  "keep": 0
+ },
+ {
+  "url": "https://www.theguardian.com/business/2026/nov/15/myer-david-jones-stores-closures-administration",
+  "title": "David Jones’ future looks grim. Is Myer next?",
+  "keep": 0
+ },
+ {
+  "url": "https://www.theguardian.com/world/2026/nov/15/czechia-protest-prague-media-freedom",
+  "title": "Protest in Prague over media freedom expected to be one of biggest in Czechia’s history",
+  "keep": 1
+ },
+ {
+  "url": "https://www.theguardian.com/us-news/2026/nov/14/activist-extradition-gaza-hamas-spanish-court",
+  "title": "How a US extradition bid over Hamas allegations put a wealthy activist before a Spanish court",
+  "keep": 1
+ },
+ {
+  "url": "https://www.theguardian.com/world/live/2026/nov/15/middle-east-crisis-live-iran-bahrain-strikes-gulf-donald-trump-us-israel-yemen-houthis",
+  "title": "Iran targets Bahrain airbase as strikes resume in Gulf - Middle East crisis live",
+  "keep": 0
+ },
+ {
+  "url": "https://www.theguardian.com/world/2026/nov/15/myanmar-rohingya-genocide-icj",
+  "title": "World’s top court to rule if Myanmar committed genocide against Rohingya",
+  "keep": 1
+ },
+ {
+  "url": "https://www.theguardian.com/money/2026/nov/15/christmas-dupes-gift-aldi-candles-quince-cashmere-jumpers-price",
+  "title": "Christmas ‘dupes’: the cheaper gift versions proving a festive hit in the cost of living crisis",
+  "keep": 0
+ },
+ {
+  "url": "https://www.theguardian.com/society/2026/nov/15/no-free-lunch-milburn-mcfadden-kuenssberg-uk-benefits-youth-unemployment-neet",
+  "title": "‘No such thing as a free lunch,’ says Milburn as he warns it will take a decade for UK benefits bill to come down",
+  "keep": 1
+ },
+ {
+  "url": "https://www.theguardian.com/uk-news/2026/nov/15/trident-nuclear-submarine-hms-vengeance-record-tour",
+  "title": "Trident nuclear submarine concludes record underwater deployment",
+  "keep": 0
+ },
+ {
+  "url": "https://www.theguardian.com/society/2026/nov/15/obama-portrait-artist-draws-burnham-big-issue-rough-sleeping-vow-shepard-fairey",
+  "title": "Obama portrait artist draws Burnham for Big Issue cover to highlight rough sleeping vow",
+  "keep": 0
+ },
+ {
+  "url": "https://www.theguardian.com/politics/2026/nov/15/reform-uk-losing-support-to-labour-after-difficult-year-says-danny-kruger",
+  "title": "Reform UK losing support to Labour after ‘difficult year’, says Danny Kruger",
+  "keep": 0
+ },
+ {
+  "url": "https://www.theguardian.com/us-news/2026/nov/15/trump-self-enrichment-lawsuits",
+  "title": "‘Shameless venality’: how a flurry of lawsuits has thwarted Trump’s self-enrichment schemes",
+  "keep": 1
+ },
+ {
+  "url": "https://www.theguardian.com/us-news/2026/nov/15/vaccine-policy-rfk-jr-trump-administration",
+  "title": "Trump administration planning to reimburse doctors treating vaccine ‘injury’",
+  "keep": 0
+ },
+ {
+  "url": "https://www.theguardian.com/us-news/2026/nov/15/georgia-midterm-elections-black-voters",
+  "title": "Black voters helped Democrats win in Georgia. Now they expect to be heard",
+  "keep": 0
+ },
+ {
+  "url": "https://www.theguardian.com/science/2026/nov/14/spacex-starship-double-catch",
+  "title": "SpaceX’s Starship returns to launch pad from orbit in victory for company",
+  "keep": 0
+ },
+ {
+  "url": "https://www.theguardian.com/us-news/2026/nov/14/peoria-illinois-evacuation-bomb",
+  "title": "Evacuation zone lifted after bomb found at Illinois ethanol plant",
+  "keep": 0
+ },
+ {
+  "url": "https://www.bbc.co.uk/news/articles/cqn83l442724o",
+  "title": "Beauty advent calendars can cost hundreds but are they value for money?",
+  "keep": 1
+ },
+ {
+  "url": "https://www.franceinfo.fr/economie/commerce/ca-ne-rattrapera-pas-un-bon-samedi-les-commercants-lyonnais-peu-convaincus-par-les-ouvertures-dominicales-supplementaires_8283347.html",
+  "title": "\"Ça ne rattrapera pas un bon samedi\" : les commerçants lyonnais peu convaincus par les ouvertures dominicales supplémentaires",
+  "keep": 1
+ },
+ {
+  "url": "https://www.franceinfo.fr/economie/david-amiel-annonce-une-revalorisation-du-point-d-indice-pour-les-fonctionnaires-aux-plus-bas-salaires_8283416.html",
+  "title": "David Amiel annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires",
+  "keep": 0
+ },
+ {
+  "url": "https://www.franceinfo.fr/economie/crise/crise-de-la-dette/dette-publique-francaise-la-france-ne-va-pas-etre-la-grece-affirme-clement-beaune_8283317.html",
+  "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+  "keep": 1
+ },
+ {
+  "url": "https://www.franceinfo.fr/monde/royaume-uni/au-royaume-uni-deux-affaires-de-violences-sexuelles-relancent-le-debat-sur-la-culture-du-silence-dans-le-monde-du-divertissement_8282621.html",
+  "title": "Au Royaume-Uni, deux affaires de violences sexuelles relancent le débat sur la \"culture du silence\" dans le monde du divertissement",
+  "keep": 0
+ },
+ {
+  "url": "https://www.franceinfo.fr/replay-radio/c-est-mon-boulot/83-des-dirigeants-de-pme-trouvent-difficile-de-recruter-et-d-employer-une-personne-en-situation-de-handicap_8242261.html",
+  "title": "83 % des dirigeants de PME trouvent difficile de recruter et d'employer une personne en situation de handicap",
+  "keep": 1
+ },
+ {
+  "url": "https://www.franceinfo.fr/economie/pouvoir-achat/il-y-aura-bien-une-hausse-des-points-pour-les-plus-bas-salaires-de-la-fonction-publique-confirme-le-ministre-david-amiel_8283254.html",
+  "title": "Les revalorisations annoncées pour les plus bas salaires coûteront \"un peu plus d'un milliard d'euros\" aux finances publiques, déclare le ministre David Amiel",
+  "keep": 1
+ },
+ {
+  "url": "https://www.franceinfo.fr/monde/usa/des-cables-en-cuivre-vetustes-a-l-origine-des-perturbations-de-milliers-de-vols-aux-etats-unis-selon-l-administration-trump_8283218.html",
+  "title": "Des câbles en cuivre vétustes sont à l'origine des perturbations de milliers de vols aux Etats-Unis, assure l'administration Trump",
+  "keep": 0
+ },
+ {
+  "url": "https://www.franceinfo.fr/economie/emploi/metiers/agriculture/on-n-en-est-pas-encore-la-les-vins-de-de-bourgogne-resistent-mieux-a-la-crise-grace-a-ses-exportations_8282870.html",
+  "title": "REPORTAGE. \"On n'en est pas encore là\" : les vins de de Bourgogne résistent mieux à la crise grâce à ses exportations",
+  "keep": 0
+ },
+ {
+  "url": "https://www.franceinfo.fr/replay-jt/france-2/20-heures/pouvoir-d-achat-les-antillais-en-premiere-ligne-face-a-la-vie-chere_8282885.html",
+  "title": "Pouvoir d'achat : les Antillais en première ligne face à la vie chère",
+  "keep": 1
+ },
+ {
+  "url": "https://www.franceinfo.fr/replay-jt/france-2/20-heures/comment-la-chine-fait-elle-plier-les-grandes-marques_8282879.html",
+  "title": "Comment la Chine fait-elle plier les grandes marques ?",
+  "keep": 1
+ },
+ {
+  "url": "https://www.franceinfo.fr/economie/sur-les-reseaux-sociaux-des-astuces-pour-lutter-contre-le-froid-chez-soi_8281457.html",
+  "title": "Sur les réseaux sociaux, des astuces pour lutter contre le froid chez soi",
+  "keep": 0
+ },
+ {
+  "url": "https://www.franceinfo.fr/economie/pouvoir-achat/logement/des-milliers-de-portugais-manifestent-contre-la-crise-du-logement_8282765.html",
+  "title": "Des milliers de Portugais manifestent contre la crise du logement",
+  "keep": 1
+ },
+ {
+  "url": "https://www.franceinfo.fr/replay-radio/l-empire-des-series/les-1001-vies-de-jean-chalopin-createur-du-dessin-anime-inspecteur-gadget_8261270.html",
+  "title": "Les 1001 vies de Jean Chalopin, créateur du dessin animé \"Inspecteur Gadget\"",
+  "keep": 0
+ },
+ {
+  "url": "https://www.franceinfo.fr/economie/transports/mobilisation-du-17-novembre/les-revendications-ne-sont-pas-satisfaites-les-gilets-jaunes-appellent-a-un-acte-vi-de-mobilisation-samedi-21-novembre_8282648.html",
+  "title": "\"Les revendications ne sont pas satisfaites\" : les gilets jaunes appellent à une nouvelle journée de mobilisation samedi 21 novembre",
+  "keep": 1
+ },
+ {
+  "url": "https://www.franceinfo.fr/replay-radio/l-info-de-l-histoire/comment-finissent-les-greves_8261279.html",
+  "title": "Comment finissent les grèves ?",
+  "keep": 1
+ },
+ {
+  "url": "https://www.franceinfo.fr/replay-radio/info-immobilier/le-projet-de-loi-pour-relancer-le-logement-enfin-a-l-assemblee-nationale_8261225.html",
+  "title": "Le projet de loi pour relancer le logement enfin à l’Assemblée nationale",
+  "keep": 1
+ },
+ {
+  "url": "https://www.franceinfo.fr/economie/surendettement-10-2-de-dossiers-supplementaires-deposes-a-la-banque-de-france-depuis-le-debut-de-l-annee-2026_8282537.html",
+  "title": "Surendettement : 10,2% de dossiers supplémentaires déposés à la Banque de France depuis le début de l'année 2026",
+  "keep": 0
+ },
+ {
+  "url": "https://www.franceinfo.fr/economie/une-hausse-des-tarifs-des-assurances-de-3-a-8-prevue-pour-la-maaf-mma-et-gmf-en-2027_8282498.html",
+  "title": "Une hausse des tarifs des assurances de \"3 à 8%\" prévue pour la MAAF, MMA et GMF en 2027",
+  "keep": 0
+ },
+ {
+  "url": "https://www.franceinfo.fr/economie/inflation/ces-francais-tentes-de-voler-en-supermarche_8282471.html",
+  "title": "Ces Français tentés de voler en supermarché",
+  "keep": 0
+ },
+ {
+  "url": "https://www.franceinfo.fr/politique/agression-d-un-responsable-universitaire-tout-ca-s-inscrit-dans-un-contexte-de-violence-croissante-estime-le-ministre-de-l-enseignement-superieur-et-de-la-recherche-philippe-baptiste_8283326.html",
+  "title": "Agression d’un responsable universitaire : \"Tout ça s'inscrit dans un contexte de violence croissante\", estime le ministre de l'Enseignement supérieur et de la Recherche Philippe Baptiste",
+  "keep": 1
+ },
+ {
+  "url": "https://www.franceinfo.fr/elections/presidentielle-2027-je-ne-suis-pas-un-macroniste-affirme-teddy-riner_8283248.html",
+  "title": "Présidentielle 2027 : \"Je ne suis pas un macroniste\", affirme Teddy Riner",
+  "keep": 1
+ },
+ {
+  "url": "https://www.franceinfo.fr/politique/emmanuel-macron/le-president-veut-maintenir-l-ukraine-en-situation-de-donner-des-coups-alors-que-les-americains-s-occupent-de-l-enfoncer-affirme-l-entourage-d-emmanuel-macron_8283194.html",
+  "title": "Pour le président, la position de Marine Le Pen sur l'Ukraine \"est antipatriotique et irréaliste\", déclare l'entourage d'Emmanuel Macron",
+  "keep": 1
+ },
+ {
+  "url": "https://www.franceinfo.fr/replay-radio/le-rendez-vous-du-mediateur/le-grand-oral-des-candidats-sur-franceinfo_8261240.html",
+  "title": "Le grand oral des candidats sur franceinfo",
+  "keep": 1
+ },
+ {
+  "url": "https://www.franceinfo.fr/politique/emmanuel-macron/emmanuel-macron-est-arrive-au-cambodge-pour-le-sommet-de-la-francophonie_8282396.html",
+  "title": "Emmanuel Macron est arrivé au Cambodge pour le sommet de la Francophonie",
+  "keep": 0
+ },
+ {
+  "url": "https://www.franceinfo.fr/replay-radio/le-brief-politique/info-franceinfo-raphael-glucksmann-va-diffuser-ce-week-end-un-tract-presentant-dix-propositions-pour-sortir-de-la-crise_8261228.html",
+  "title": "INFO FRANCEINFO. Raphaël Glucksmann va diffuser ce week-end un tract présentant dix propositions pour \"sortir de la crise\"",
+  "keep": 0
+ },
+ {
+  "url": "https://theconversation.com/feux-dartifice-quelques-minutes-de-fete-des-couts-durables-pour-la-sante-et-lenvironnement-296305",
+  "title": "Feux d’artifice : quelques minutes de fête, des coûts durables pour la santé et l’environnement",
+  "keep": 1
+ },
+ {
+  "url": "https://theconversation.com/le-pastoralisme-risque-ou-solution-face-au-changement-climatique-levolution-du-regard-porte-par-les-cop-climat-296191",
+  "title": "Le pastoralisme, risque ou solution face au changement climatique ? L’évolution du regard porté par les COP climat",
+  "keep": 0
+ },
+ {
+  "url": "https://theconversation.com/si-je-te-punis-cest-pour-ton-bien-vraiment-contre-ladultisme-penser-une-education-mutuelle-293002",
+  "title": "« Si je te punis, c’est pour ton bien », vraiment ? Contre l’adultisme, penser une éducation mutuelle",
+  "keep": 1
+ },
+ {
+  "url": "https://theconversation.com/cop31-la-bourse-ne-recompense-plus-la-decouverte-de-reserves-dhydrocarbures-en-cas-dexposition-aux-risques-reglementaires-environnementaux-285014",
+  "title": "COP31 : la Bourse ne récompense plus la découverte de réserves d’hydrocarbures en cas d’exposition aux risques réglementaires environnementaux",
+  "keep": 0
+ },
+ {
+  "url": "https://theconversation.com/est-il-encore-possible-de-stabiliser-la-dette-publique-francaise-296298",
+  "title": "Est-il encore possible de stabiliser la dette publique française ?",
+  "keep": 0
+ },
+ {
+  "url": "https://theconversation.com/dosto-evskia-la-litterature-russe-au-service-de-la-propagande-296076",
+  "title": "« DostoïevskIA » : la littérature russe au service de la propagande",
+  "keep": 1
+ }
+]

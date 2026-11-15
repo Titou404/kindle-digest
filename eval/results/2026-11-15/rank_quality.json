@@ -1,0 +1,91 @@
+{
+ "labels": 89,
+ "kept": 41,
+ "chance_precision": 0.461,
+ "runs": {
+  "R1-1": {
+   "precision": 0.5,
+   "selected": 12,
+   "auc": 0.623,
+   "cost_usd": 0.004891,
+   "thinking_tokens": 4237
+  },
+  "R1-2": {
+   "precision": 0.583,
+   "selected": 12,
+   "auc": 0.652,
+   "cost_usd": 0.00277,
+   "thinking_tokens": 0
+  },
+  "R1-3": {
+   "precision": 0.5,
+   "selected": 12,
+   "auc": 0.657,
+   "cost_usd": 0.0051,
+   "thinking_tokens": 4573
+  },
+  "R2-1": {
+   "precision": 0.583,
+   "selected": 12,
+   "auc": 0.644,
+   "cost_usd": 0.002722,
+   "thinking_tokens": 0
+  },
+  "R2-2": {
+   "precision": 0.5,
+   "selected": 12,
+   "auc": 0.645,
+   "cost_usd": 0.002715,
+   "thinking_tokens": 0
+  },
+  "R2-3": {
+   "precision": 0.667,
+   "selected": 12,
+   "auc": 0.628,
+   "cost_usd": 0.002653,
+   "thinking_tokens": 0
+  },
+  "R3-1": {
+   "precision": 0.417,
+   "selected": 12,
+   "auc": 0.618,
+   "cost_usd": 0.007104,
+   "thinking_tokens": 8666
+  },
+  "R3-2": {
+   "precision": 0.75,
+   "selected": 12,
+   "auc": 0.629,
+   "cost_usd": 0.005736,
+   "thinking_tokens": 5942
+  },
+  "R3-3": {
+   "precision": 0.667,
+   "selected": 12,
+   "auc": 0.659,
+   "cost_usd": 0.005616,
+   "thinking_tokens": 5636
+  },
+  "R4-1": {
+   "precision": 0.5,
+   "selected": 12,
+   "auc": 0.627,
+   "cost_usd": 0.05467,
+   "thinking_tokens": 0
+  },
+  "R4-2": {
+   "precision": 0.583,
+   "selected": 12,
+   "auc": 0.641,
+   "cost_usd": 0.05519,
+   "thinking_tokens": 0
+  },
+  "R5-1": {
+   "precision": 0.5,
+   "selected": 12,
+   "auc": 0.593,
+   "cost_usd": 0.019243,
+   "thinking_tokens": 3968
+  }
+ }
+}
