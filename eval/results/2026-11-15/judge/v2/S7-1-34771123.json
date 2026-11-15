@@ -1,0 +1,61 @@
+{
+ "config": "S7",
+ "repeat": 1,
+ "url": "https://www.franceinfo.fr/economie/david-amiel-annonce-une-revalorisation-du-point-d-indice-pour-les-fonctionnaires-aux-plus-bas-salaires_8283416.html",
+ "title": "David Amiel annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "David Amiel est ministre de l'Action et des Comptes publics.",
+    "evidence": "« le ministre de l'Action et des Comptes publics ajoute que les plus bas salaires parmi les fonctionnaires verront également leur point d'indice revalorisé »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires.",
+    "evidence": "Titre : « David Amiel annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le gouvernement a annoncé une hausse du smic à 1502 euros net le 1er décembre.",
+    "evidence": "« le gouvernement a annoncé une hausse du smic à 1502 euros net le 1er décembre »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Selon le ministre, ces revalorisations coûteront « un peu plus d'un milliard d'euros » aux finances publiques.",
+    "evidence": "« Les revalorisations annoncées pour les plus bas salaires coûteront \"un peu plus d'un milliard d'euros\" aux finances publiques, déclare le ministre David Amiel »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle reprend le coût d'un peu plus d'un milliard d'euros, les agents aux plus bas salaires et la hausse du smic, tous présents dans l'article, sans rien ajouter."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 4,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 2561,
+  "output_tokens": 554,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 4.258,
+  "cost_usd": 0.010662,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rcduXo1X5E7XxA11st"
+ }
+}

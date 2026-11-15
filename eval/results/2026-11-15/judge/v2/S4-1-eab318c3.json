@@ -1,0 +1,96 @@
+{
+ "config": "S4",
+ "repeat": 1,
+ "url": "https://theconversation.com/cop31-la-bourse-ne-recompense-plus-la-decouverte-de-reserves-dhydrocarbures-en-cas-dexposition-aux-risques-reglementaires-environnementaux-285014",
+ "title": "COP31 : la Bourse ne récompense plus la découverte de réserves d’hydrocarbures en cas d’exposition aux risques réglementaires environnementaux",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "L'étude est publiée dans le cadre de la COP31, qui se tient en Turquie jusqu'au 20 novembre.",
+    "evidence": "L'article situe la COP31 « en Turquie jusqu'au 20 novembre » mais ne dit pas que l'étude est publiée dans le cadre de la COP; la COP31 n'est citée que comme contexte (titre « COP31 : ... »).",
+    "verdict": "non_soutenue"
+   },
+   {
+    "claim": "L'étude analyse seize grandes entreprises pétrolières et gazières internationales, dont TotalEnergies, BP, Eni et Petrobras.",
+    "evidence": "« seize grandes entreprises pétrolières et gazières internationales – dont TotalEnergies, British Petroleum, Eni ou Petrobras »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'analyse porte sur la période 2002-2022.",
+    "evidence": "« entre 2002 et 2022 »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La découverte de nouvelles réserves ne fait plus automatiquement monter le cours en Bourse.",
+    "evidence": "« Les réserves de pétrole et de gaz ne sont plus toujours une bonne nouvelle pour la bourse. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Lorsque la réglementation climatique se durcit, les investisseurs accordent moins de valeur à ces réserves, qui risquent de ne jamais être exploitées.",
+    "evidence": "« Les investisseurs accordent davantage de crédit à la possibilité qu'une partie de ces réserves ne puisse finalement jamais être exploitée. » ; réserves pèsent sur les performances boursières quand la réglementation se durcit.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'exposition aux risques climatiques est mesurée à partir des échanges entre dirigeants et analystes financiers.",
+    "evidence": "« Ce dernier repose sur l'analyse des échanges entre les dirigeants d'entreprise et les analystes financiers. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'incertitude des politiques climatiques est mesurée à partir d'articles de presse.",
+    "evidence": "« l'indice d'incertitude des politiques climatiques (CPU) ... construit à partir d'articles de presse »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Près de 60 % des réserves mondiales de pétrole et de gaz devraient rester dans le sol d'ici 2050 pour limiter le réchauffement à 1,5 °C.",
+    "evidence": "« Près de 60 % des réserves mondiales de pétrole et de gaz fossile devraient rester dans le sol d'ici à 2050 pour tenir l'objectif ... 1,5 °C. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "En 2026, les investissements mondiaux dans le pétrole devraient atteindre un peu moins de 500 milliards de dollars et ceux dans le gaz près de 330 milliards.",
+    "evidence": "« les investissements mondiaux dans le pétrole devraient s'établir à un peu moins de 500 milliards de dollars ... gaz ... près de 330 milliards »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "BNP Paribas réduit déjà son exposition à ces entreprises.",
+    "evidence": "« BNP Paribas a cessé de financer de nouveaux projets pétrogaziers. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un grand fonds de pension new-yorkais réduit son exposition.",
+    "evidence": "« Le New York State Common Retirement Fund, le troisième plus grand fonds de pension public états-unien, a acté le désinvestissement de ses parts »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle reprend les conclusions de l'étude et la notion d'actifs échoués présentes dans l'article, sans ajouter de fait nouveau."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 11,
+  "unsupported": 1,
+  "supported_rate": 0.909,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 5704,
+  "output_tokens": 1383,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 8.111,
+  "cost_usd": 0.025238,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rckLjMb2na2qa5iDZf"
+ }
+}

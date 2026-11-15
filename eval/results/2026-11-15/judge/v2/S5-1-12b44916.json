@@ -1,0 +1,91 @@
+{
+ "config": "S5",
+ "repeat": 1,
+ "url": "https://www.theguardian.com/world/live/2026/nov/15/middle-east-crisis-live-iran-bahrain-strikes-gulf-donald-trump-us-israel-yemen-houthis",
+ "title": "Iran targets Bahrain airbase as strikes resume in Gulf - Middle East crisis live",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Dimanche 15 novembre, l'Iran a visé une base aérienne à Bahreïn.",
+    "evidence": "« the attack launched today, Sunday, November 15, 2026, by drones that were intercepted and destroyed » ; « Iran has targeted an airbase in Bahrain ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'attaque a utilisé six drones, selon les Gardiens de la Révolution, qui parlent d'un radar américain.",
+    "evidence": "« the IRGC said it had sent six drones to attack a US radar system hosted in the US-allied island state. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Bahreïn affirme avoir intercepté les drones.",
+    "evidence": "« Bahrain authorities say their air defences intercepted the attacks before they reached their targets. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Des explosions ont retenti près de Manama et des alertes ont été diffusées.",
+    "evidence": "« Explosions were heard around the capital, Manama » ; l'article mentionne aussi des alertes publiques et des sirènes.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Une attaque similaire avec deux drones a eu lieu vendredi.",
+    "evidence": "« a similar attack at dawn on Friday, November 13, 2026, by two drones that were also intercepted. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Cette attaque de vendredi est survenue après deux mois de calme.",
+    "evidence": "« the first escalations targeting Bahrain in two months » ; « After two months of calm, the explosions have started again ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'Arabie saoudite, le Qatar, la Jordanie et l'Égypte ont condamné ces tirs.",
+    "evidence": "« Jordan, Egypt, Saudi Arabia, and Qatar have all strongly condemned the attack and expressed solidarity with Bahrain. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les négociations restent bloquées, les États-Unis maintenant leur blocus naval et l'Iran son emprise sur le détroit d'Ormuz.",
+    "evidence": "« Negotiations to end the war remain at a stalemate, with the US maintaining its naval blockade and Iran its stranglehold over the strait of Hormuz. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Au Yémen, les forces gouvernementales se retirent de la zone de Bab el-Mandeb, au profit des Houthis.",
+    "evidence": "« have retreated from the Bab el-Mandeb area, giving the Iran-aligned rebels even greater control over the critical shipping lane »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "À Gaza, Hamas a confirmé la mort d'un commandant, tué par une frappe israélienne.",
+    "evidence": "« Hamas has confirmed the killing of Samir Mahmoud Hassan Abu Younis, commander of the group's Rafah Brigade, in an Israeli airstrike »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "L'article évoque la crainte d'une reprise de la guerre et les inquiétudes pour les flux pétroliers du Golfe (Ormuz, mer Rouge), mais ne parle pas d'un « cessez-le-feu fragile » en ces termes, d'où une déduction."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 10,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 7846,
+  "output_tokens": 1185,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 7.683,
+  "cost_usd": 0.027541999999999997,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rasghcMgLiXtBAnjkC"
+ }
+}

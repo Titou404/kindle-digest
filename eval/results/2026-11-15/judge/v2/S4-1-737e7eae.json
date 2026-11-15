@@ -1,0 +1,99 @@
+{
+ "config": "S4",
+ "repeat": 1,
+ "url": "https://www.franceinfo.fr/economie/crise/crise-de-la-dette/dette-publique-francaise-la-france-ne-va-pas-etre-la-grece-affirme-clement-beaune_8283317.html",
+ "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Le samedi 14 novembre, Clément Beaune, haut-commissaire à la Stratégie et au Plan, était l'invité du 7.40 de Franceinfo.",
+    "evidence": "« Clément Beaune, haut-commissaire à la Stratégie et au Plan était l'invité du 7.40 de Franceinfo ce samedi 14 novembre. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il s'agissait de la cinquième journée consécutive de mobilisation sociale avec lycéens, étudiants et gilets jaunes, notamment à Paris.",
+    "evidence": "« lycéens, étudiants, gilets jaunes se mobilisent à nouveau ce samedi 14 novembre ... avec un cinquième samedi consécutif de mobilisation sociale. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "On attendait jusqu'à 60 000 personnes à Paris selon les chiffres.",
+    "evidence": "« On attend encore jusqu'à 60 000 personnes dans les rues de Paris, par exemple, selon les chiffres. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Beaune estime que la mobilisation diminue tout en reconnaissant une colère qui persiste.",
+    "evidence": "« il y a quand même une diminution des mobilisations sociales. Ça ne veut pas dire qu'il n'y a pas de sujets ou qu'il n'y a pas de colère »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Selon lui, le gouvernement a apporté des réponses sur le SMIC, le pouvoir d'achat et les forfaits de transports publics.",
+    "evidence": "« un certain nombre de réponses ont été apportées ... sur le SMIC, sur un certain nombre de mesures de pouvoir d'achat, sur les forfaits de transports publics »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Selon Beaune, ces réponses ne suffisent pas.",
+    "evidence": "C'est l'intervieweur qui dit « Visiblement, ce n'est pas du tout suffisant » ; Beaune ne l'affirme pas, il note seulement que la mobilisation diminue.",
+    "verdict": "non_soutenue"
+   },
+   {
+    "claim": "Il juge inquiétant que la campagne présidentielle, à moins de six mois, n'offre pas de perspectives sociales ni de projet rassurant.",
+    "evidence": "« il faut aussi que la campagne présidentielle offre des perspectives sociales ... il n'y a pas de projet politique qui ... rassure sur le volet social ... C'est ça qui m'inquiète »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Jusqu'à 70 000 policiers étaient mobilisés, selon le texte.",
+    "evidence": "L'intervieweur dit : « jusqu'à 70 000 forces de l'ordre sur tout le territoire », ce sont des forces de l'ordre et non des policiers mobilisés par la colère.",
+    "verdict": "non_soutenue"
+   },
+   {
+    "claim": "Les policiers menacent de faire grève la semaine suivante après une réunion très mal passée avec Laurent Nuñez, ministre de l'Intérieur.",
+    "evidence": "« Ils ont été reçus hier par Laurent Nuñez, le ministre de l'Intérieur. Ça s'est très, très mal passé. Ils menacent de faire grève la semaine prochaine »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Beaune dit qu'un processus de discussion est en cours et que les difficultés sociales des policiers doivent être entendues.",
+    "evidence": "« Il y a un processus qui est en cours avec le ministre de l'Intérieur ... il faut entendre aussi leur difficulté sociale. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le texte est tronqué avant la fin de l'entretien, notamment sur la dette publique.",
+    "evidence": "L'article contient la partie sur la dette (« La France ne va pas être la Grèce », Moody's) ; il n'est pas tronqué sur ce sujet.",
+    "verdict": "non_soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle déduit des propos de Beaune et de la menace de grève une contestation durable avant la présidentielle, sans fait nouveau, mais le « pourrait peser sur le climat politique » est une extrapolation."
+  },
+  "omissions": [
+   "Le titre et le propos central sur la dette : Beaune affirme que « la France ne va pas être la Grèce » et écarte une crise de la dette.",
+   "La réponse à Nicolas Sarkozy, qui craint un tsunami de crise financière, et l'argument que Moody's n'a pas dégradé la note de la France."
+  ]
+ },
+ "scores": {
+  "claims": 11,
+  "unsupported": 3,
+  "supported_rate": 0.727,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 2
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 5368,
+  "output_tokens": 1634,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 9.345,
+  "cost_usd": 0.027076,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rc9Zwupm1PD2sxSeUc"
+ }
+}

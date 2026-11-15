@@ -1,0 +1,111 @@
+{
+ "config": "S4",
+ "repeat": 1,
+ "url": "https://www.franceinfo.fr/politique/agression-d-un-responsable-universitaire-tout-ca-s-inscrit-dans-un-contexte-de-violence-croissante-estime-le-ministre-de-l-enseignement-superieur-et-de-la-recherche-philippe-baptiste_8283326.html",
+ "title": "Agression d’un responsable universitaire : \"Tout ça s'inscrit dans un contexte de violence croissante\", estime le ministre de l'Enseignement supérieur et de la Recherche Philippe Baptiste",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Philippe Baptiste, ministre de l'Enseignement supérieur et de la Recherche, était l'invité du 7.40 le dimanche 15 novembre.",
+    "evidence": "« Philippe Baptiste, ministre de l'Enseignement supérieur et de la Recherche, était l'invité du 7.40 de ce dimanche 15 novembre. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'émission est celle de France Info.",
+    "evidence": "L'article cite franceinfo (affichage des articles de franceinfo) ; le 7.40 est présenté dans ce cadre.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le vice-président de l'université de Versailles Saint-Quentin-en-Yvelines a été agressé à l'arme blanche.",
+    "evidence": "« l'agression à l'arme blanche du Vice-président de l'université de Versailles Saint-Quentin-en-Yvelines. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'agression a eu lieu le vendredi soir précédent dans son bureau.",
+    "evidence": "« L'agression a eu lieu vendredi soir en début de soirée à son bureau. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'agresseur n'a pas été retrouvé et une enquête est en cours.",
+    "evidence": "« l'agresseur n'a pas été retrouvé » ; « Une enquête est en cours et il faut attendre les résultats. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le ministre dit qu'il est impossible à ce stade de faire un lien avec le mouvement social.",
+    "evidence": "« l'agresseur n'a pas été retrouvé, donc c'est absolument impossible de faire un lien entre quoi que ce soit. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il estime que l'acte s'inscrit dans un contexte de violence croissante autour des établissements.",
+    "evidence": "« tout ça s'inscrit évidemment dans un contexte de violence croissante aux abords des établissements. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Plusieurs présidents d'universités ont été menacés de mort.",
+    "evidence": "« j'ai plusieurs présidents d'universités en France qui ont été menacés de mort. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les coordonnées de la présidente de l'université de Lorraine ont été diffusées sur les réseaux sociaux.",
+    "evidence": "« ses coordonnées personnelles ont été divulguées sur les réseaux sociaux. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il exclut un semestre blanc ou un 10 sur 20 améliorable, jugés illégaux.",
+    "evidence": "« Il n'est pas question d'avoir un semestre blanc ou d'un 10 sur 20 améliorable... D'abord c'est illégal »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il admet une adaptation des modalités de contrôle.",
+    "evidence": "« Il faut adapter les modalités de ce qu'on appelle de contrôle pédagogique, c'est-à-dire adapter les examens »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il attribue les violences à une petite minorité.",
+    "evidence": "« les violences sont dues en général à une minorité, une toute petite minorité de personnes »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il cite 4 milliards de prêts, 1 milliard pour la rénovation, 20 000 places et le repas à un euro.",
+    "evidence": "« 4 milliards d'euros de prêts... 1 milliard d'euros d'argent frais pour les universités, pour la rénovation, 20 000 places en plus... repas à un euro. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il reconnaît que 20 à 25 % des universités restent perturbées, chiffre qu'il présente comme un indicateur global.",
+    "evidence": "Le chiffre est avancé par l'intervieweur ; le ministre répond que « c'est un indicateur » et « une enveloppe globale du mouvement », sans le contester.",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle découle des thèmes de l'entretien (mouvement étudiant, violences, validation des semestres) sans ajouter de fait extérieur."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 14,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 5727,
+  "output_tokens": 1517,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 8.455,
+  "cost_usd": 0.026624,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rc89P2HYiiQ8F697PG"
+ }
+}

@@ -1,0 +1,96 @@
+{
+ "config": "S5",
+ "repeat": 1,
+ "url": "https://www.franceinfo.fr/economie/crise/crise-de-la-dette/dette-publique-francaise-la-france-ne-va-pas-etre-la-grece-affirme-clement-beaune_8283317.html",
+ "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Clément Beaune, haut-commissaire à la Stratégie et au Plan, était invité de Franceinfo samedi 14 novembre.",
+    "evidence": "« Clément Beaune, haut-commissaire à la Stratégie et au Plan était l'invité du 7.40 de Franceinfo ce samedi 14 novembre. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il a commenté le cinquième samedi consécutif de mobilisation sociale.",
+    "evidence": "« ...se mobilisent à nouveau ce samedi 14 novembre... avec un cinquième samedi consécutif de mobilisation sociale. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il estime que les rassemblements diminuent.",
+    "evidence": "« il y a quand même une diminution des mobilisations sociales. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Cette diminution s'explique en partie par les mesures annoncées par le Premier ministre sur le SMIC, le pouvoir d'achat et les transports publics.",
+    "evidence": "« ça signifie aussi sans doute qu'un certain nombre de réponses ont été apportées... par le Premier ministre... sur le SMIC... pouvoir d'achat... forfaits de transports publics »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il s'inquiète d'une colère sans débouché politique à moins de six mois de la présidentielle.",
+    "evidence": "« c'est assez rare d'avoir des mobilisations sociales qui se poursuivent à moins de six mois d'une présidentielle... d'une démocratie qui n'a pas de débouché »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les policiers menacent de faire grève et ont été reçus la veille par Laurent Nuñez, ministre de l'Intérieur.",
+    "evidence": "« Ils ont été reçus hier par Laurent Nuñez, le ministre de l'Intérieur... Ils menacent de faire grève la semaine prochaine »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Beaune appelle à entendre les difficultés sociales des policiers.",
+    "evidence": "« il faut entendre aussi leur difficulté sociale. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Nicolas Sarkozy craint une crise financière.",
+    "evidence": "« Nicolas Sarkozy qui dit... craindre un tsunami de crise financière même avant la présidentielle. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Beaune affirme que la France ne sera pas la Grèce.",
+    "evidence": "« La France ne va pas être la Grèce. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il note que Moody's n'a pas dégradé la note de la France.",
+    "evidence": "« Moody's il y a quelques jours ne l'a pas fait. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il juge la situation sérieuse.",
+    "evidence": "« Ça ne veut pas dire que la situation n'est pas sérieuse. »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle relie la dette, la colère sociale, la présidentielle proche et la menace de grève des policiers, tous présents dans l'article, sans fait nouveau."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 11,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 5218,
+  "output_tokens": 1149,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 6.706,
+  "cost_usd": 0.021926,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rb3ya7eGQ5qwngAYAr"
+ }
+}

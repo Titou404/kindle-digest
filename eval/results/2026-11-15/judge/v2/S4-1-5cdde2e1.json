@@ -1,0 +1,106 @@
+{
+ "config": "S4",
+ "repeat": 1,
+ "url": "https://www.franceinfo.fr/replay-radio/c-est-mon-boulot/83-des-dirigeants-de-pme-trouvent-difficile-de-recruter-et-d-employer-une-personne-en-situation-de-handicap_8242261.html",
+ "title": "83 % des dirigeants de PME trouvent difficile de recruter et d'employer une personne en situation de handicap",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "La semaine européenne pour l'emploi des personnes handicapées est l'occasion de l'enquête de Bpifrance, banque publique d'investissement.",
+    "evidence": "\"La semaine européenne pour l'emploi des personnes handicapées débute demain. À cette occasion, la banque publique d'investissement Bpifrance a interrogé des dirigeants\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Bpifrance a interrogé 1.200 dirigeants de PME sur leur perception du handicap, les freins à l'embauche et le maintien dans l'emploi.",
+    "evidence": "\"Bpifrance a interrogé 1.200 patrons de petites et moyennes entreprises.\" et le thème est donné dans l'introduction.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le frein le plus cité est l'impact sur l'organisation du travail, mentionné par 57 % des dirigeants.",
+    "evidence": "\"Le frein le plus cité est l'impact sur l'organisation du travail. 57 % craignent avant tout des répercussions\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Ils craignent des répercussions sur le rythme, les horaires, la performance ou la dynamique d'équipe.",
+    "evidence": "\"répercussions sur le rythme de travail, les horaires de travail, la performance, la dynamique d'équipe ou les relations interpersonnelles\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le coût de l'accessibilité des locaux arrive à égalité en deuxième position.",
+    "evidence": "\"Le deuxième frein, qui arrive à égalité, est la crainte d'avoir à dépenser pour rendre les locaux accessibles.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "51 % citent le manque d'aides publiques adaptées.",
+    "evidence": "\"51 % des dirigeants citent le manque d'aides publiques adaptées.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Bpifrance attribue probablement ce manque à une méconnaissance des dispositifs existants.",
+    "evidence": "\"Probablement par méconnaissance, car les dispositifs d'aides à l'emploi sont assez importants\" selon Bpifrance.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Huit dirigeants sur dix jugent le recrutement difficile, voire très difficile.",
+    "evidence": "\"8 dirigeants sur 10 estiment que le recrutement de personnes en situation de handicap est difficile, voire très difficile.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Bpifrance note que les candidats qui signalent leur handicap sont peu ou jamais rappelés, ce qui les incite à le taire.",
+    "evidence": "L'article le dit (\"peu ou jamais rappelés. Donc elles le mentionnent rarement\") mais ne l'attribue pas à Bpifrance ; c'est le journaliste qui l'affirme.",
+    "verdict": "non_soutenue"
+   },
+   {
+    "claim": "Les entreprises peuvent s'appuyer sur l'Agefiph, Cap emploi et France Travail.",
+    "evidence": "\"les entreprises peuvent se tourner 3 acteurs principaux : l'association Agefiph, le réseau Cap emploi et France Travail.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La loi impose aux entreprises de plus de 20 salariés d'employer au moins 6 % de personnes handicapées.",
+    "evidence": "\"La loi oblige en effet les entreprises de plus de 20 salariés à embaucher au moins 6 % de personnes en situation de handicap.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La pénalité pour une PME est de 5.000 euros et peut atteindre 18.000 euros au bout de 3 ans.",
+    "evidence": "\"Pour une PME, la pénalité s'élève à 5.000 euros et 18.000 euros au bout de 3 ans.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "4 PME sur 10 ne respectent pas du tout cette obligation.",
+    "evidence": "\"Or 4 PME sur 10 ne respectent pas du tout cette obligation.\"",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "L'enjeu (préjugés, méconnaissance des aides, politiques d'accompagnement) découle des faits de l'article sans nouveau fait, mais l'article ne parle pas de politiques de sensibilisation."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 13,
+  "unsupported": 1,
+  "supported_rate": 0.923,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 4014,
+  "output_tokens": 1581,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 8.172,
+  "cost_usd": 0.023838,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rbYezL9JJDcAZo3mXk"
+ }
+}

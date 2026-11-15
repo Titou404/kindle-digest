@@ -1,0 +1,91 @@
+{
+ "config": "S5",
+ "repeat": 1,
+ "url": "https://theconversation.com/cop31-la-bourse-ne-recompense-plus-la-decouverte-de-reserves-dhydrocarbures-en-cas-dexposition-aux-risques-reglementaires-environnementaux-285014",
+ "title": "COP31 : la Bourse ne récompense plus la découverte de réserves d’hydrocarbures en cas d’exposition aux risques réglementaires environnementaux",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "L'étude porte sur seize grandes compagnies pétrolières et gazières, dont TotalEnergies, BP, Eni et Petrobras.",
+    "evidence": "« seize grandes entreprises pétrolières et gazières internationales – dont TotalEnergies, British Petroleum, Eni ou Petrobras »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'étude couvre la période 2002-2022.",
+    "evidence": "« entre 2002 et 2022 »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "De nouvelles réserves ne font plus forcément monter la valeur boursière quand l'exposition au risque réglementaire climatique est forte.",
+    "evidence": "« les marchés boursiers ne réagissent pas forcément positivement à l’augmentation de ses réserves en hydrocarbures »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Depuis l'accord de Paris de 2015, les scientifiques estiment que 58 % des réserves de pétrole et 56 % de gaz devraient rester dans le sol d'ici 2050.",
+    "evidence": "« les scientifiques prônent l’idée que 58 % des réserves mondiales de pétrole et 56 % de gaz fossile ne doivent pas être extraits d’ici 2050. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les exemples de Devon Energy et Pioneer Natural Resources illustrent cet effet en 2015.",
+    "evidence": "« Ces deux graphiques illustrent comment des réserves d’hydrocarbures plus importantes peuvent être associées à des rendements boursiers plus faibles »; rendements 2015 de -47,74 % et -15,79 %.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Certains investisseurs, comme BNP Paribas, se détournent du secteur.",
+    "evidence": "« BNP Paribas a cessé de financer de nouveaux projets pétrogaziers. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Des actifs peuvent devenir « échoués ».",
+    "evidence": "« peuvent devenir des actifs échoués, ou stranded asset »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "TotalEnergies a annoncé en 2020 une dépréciation de 7 milliards de dollars de ses actifs au Canada.",
+    "evidence": "« en 2020, le groupe français TotalEnergies a annoncé une dépréciation de 7 milliards de dollars de ses actifs pétroliers situés au Canada »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les États-Unis et le Canada ont assoupli récemment des politiques climatiques.",
+    "evidence": "Les États-Unis ont annulé en 2025 une redevance sur le méthane ; le Canada a renoncé à son plafonnement des émissions.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Cet assouplissement peut soutenir les valorisations à court terme, mais l'incertitude demeure.",
+    "evidence": "« À court terme, cette évolution peut réduire la perception du risque réglementaire et soutenir la valorisation boursière »; « les incertitudes ... demeurent »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle reformule la logique de l'article (réserves devenant un risque si la réglementation se durcit, effets sur investisseurs et entreprises) sans ajouter de fait extérieur."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 10,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 5590,
+  "output_tokens": 1198,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 6.757,
+  "cost_usd": 0.02316,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rc8zEB2HeYMziWgUfx"
+ }
+}

@@ -1,0 +1,106 @@
+{
+ "config": "S7",
+ "repeat": 1,
+ "url": "https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature",
+ "title": "Advancing science and engineering with Antigravity's /teamwork",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "/teamwork est un système multi-agents d'Antigravity utilisé avec les modèles Gemini 4 (Argon, Carbon, Hydrogen).",
+    "evidence": "« Using Gemini 4 Argon, Gemini 4 Carbon, Gemini 4 Hydrogen and multi-agent workflows such as Antigravity’s /teamwork »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les travaux ont été menés en collaboration avec des experts humains.",
+    "evidence": "« All of this work is done in collaboration with human experts »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'équipe a prouvé en toute généralité la conjecture de Courtade–Kumar de 2013.",
+    "evidence": "« to prove information theory's 2013 Courtade–Kumar conjecture in full generality »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La preuve a été formalisée entièrement en Lean 4, soit 50 millions de lignes de code.",
+    "evidence": "« The team formalized the entire proof in Lean 4, producing 50 million lines of code. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "LEAP a produit une formalisation de bout en bout des conjectures de Weil d'environ 1,8 million de lignes de Lean.",
+    "evidence": "« /teamwork-LEAP fully autonomously produced an end-to-end, machine-checked formalization of the Weil conjectures » ; « about 1.8 million lines of Lean »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le système a produit une formalisation de la conjecture de Birkhoff, ouverte depuis 1927.",
+    "evidence": "« it also generated the first formalization of the Birkhoff conjecture, a dynamical-systems problem open since 1927 »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "En chimie, 30 agents spécialisés atteignent 95 % de correspondance exacte au premier rang sur des molécules de test.",
+    "evidence": "« organizing 30 specialized agents ... we achieved 95% top-1 exact match and 100% top-3 accuracy on complex benchmark molecules »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le score d'un agent seul est proche de la moitié de celui du système multi-agents.",
+    "evidence": "« nearly doubling single-agent performance »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "libgav1 a été réécrit de C++ vers environ 170 000 lignes de Rust avec une parité bit à bit à 100 %.",
+    "evidence": "« rewrote libgav1 ... from C++ into around 170k lines Rust, achieving 100% bit-exact parity across a broad conformance test suite »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le port Rust de libgav1 est 20 à 30 % plus performant que l'original.",
+    "evidence": "« the Rust port became 20-30% faster than the original C++ and hand-optimized assembly code »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "800 000 lignes de Rust ont été ajoutées au microkernel Zircon.",
+    "evidence": "« adding about 800,000 lines of safe Rust that pass all kernel unit tests and boot on arm64 hardware »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Google annonce que ces outils seront accessibles aux chercheurs externes.",
+    "evidence": "« we are making these tools available externally »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "10 000 chercheurs académiques recevront six mois d'accès gratuit au niveau d'usage le plus élevé.",
+    "evidence": "« giving 10,000 academic researchers six months of free access to our highest usage tier »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "L'article dit que les problèmes étaient ouverts depuis des années, que Lean 4 vérifie chaque étape et que les outils sont ouverts aux externes ; le résumé en tire l'enjeu sans ajouter de fait."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 13,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 9503,
+  "output_tokens": 1384,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 8.504,
+  "cost_usd": 0.032846,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4raRbofxVKLvwifdWMf"
+ }
+}

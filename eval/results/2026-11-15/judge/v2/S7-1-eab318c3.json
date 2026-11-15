@@ -1,0 +1,96 @@
+{
+ "config": "S7",
+ "repeat": 1,
+ "url": "https://theconversation.com/cop31-la-bourse-ne-recompense-plus-la-decouverte-de-reserves-dhydrocarbures-en-cas-dexposition-aux-risques-reglementaires-environnementaux-285014",
+ "title": "COP31 : la Bourse ne récompense plus la découverte de réserves d’hydrocarbures en cas d’exposition aux risques réglementaires environnementaux",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Une étude porte sur seize grandes entreprises pétrolières et gazières internationales, dont TotalEnergies, BP, Eni et Petrobras.",
+    "evidence": "« seize grandes entreprises pétrolières et gazières internationales – dont TotalEnergies, British Petroleum, Eni ou Petrobras »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'étude couvre la période 2002-2022.",
+    "evidence": "« entre 2002 et 2022 »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Une même réserve peut être perçue comme créatrice de valeur ou source de risque selon la crédibilité des réglementations climatiques, notamment depuis l'accord de Paris de 2015.",
+    "evidence": "« Une même réserve d’hydrocarbure peut être perçue comme un actif créateur de valeur ou comme une source de risque selon la crédibilité des réglementations climatiques »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Quand l'exposition au risque réglementaire est forte, les marchés ne réagissent pas forcément positivement à l'augmentation des réserves.",
+    "evidence": "« les marchés boursiers ne réagissent pas forcément positivement à l’augmentation de ses réserves en hydrocarbures »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les auteurs citent Devon Energy et Pioneer Natural Resources en exemple.",
+    "evidence": "« C’est le cas pour deux majors pétrolières états-uniennes : Devon Energy et Pioneer Natural Resources. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "En 2015, le rendement boursier annuel de Devon Energy était de -47,74 %, contre -15,79 % pour Pioneer.",
+    "evidence": "« à – 47,74 %, contre – 15,79 % pour Pioneer Natural Resources »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Certains investisseurs réduisent leur exposition à ces entreprises, par exemple BNP Paribas, qui a cessé de financer de nouveaux projets pétrogaziers.",
+    "evidence": "« BNP Paribas a cessé de financer de nouveaux projets pétrogaziers. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les réserves peuvent devenir des actifs échoués.",
+    "evidence": "« peuvent devenir des actifs échoués, ou stranded asset »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "En 2020, TotalEnergies a annoncé une dépréciation de 7 milliards de dollars de ses actifs pétroliers au Canada.",
+    "evidence": "« en 2020, le groupe français TotalEnergies a annoncé une dépréciation de 7 milliards de dollars de ses actifs pétroliers situés au Canada »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Plusieurs pays, notamment les États-Unis et le Canada, ont récemment assoupli leurs politiques climatiques.",
+    "evidence": "« plusieurs pays ont assoupli certaines politiques climatiques [...] C’est le cas des États-Unis [...] Le gouvernement fédéral du Canada a renoncé »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les auteurs estiment que cela peut soutenir la valorisation boursière à court terme, mais que les incertitudes sur les futures politiques demeurent.",
+    "evidence": "« À court terme, cette évolution peut réduire la perception du risque réglementaire et soutenir la valorisation boursière [...] les incertitudes [...] demeurent. »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle reformule la conclusion de l'article (valeur des réserves dépendant du risque réglementaire) sans ajouter de fait extérieur."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 11,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 5746,
+  "output_tokens": 1336,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 7.335,
+  "cost_usd": 0.024852,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rb9ctmxMXoEZWXGrqx"
+ }
+}

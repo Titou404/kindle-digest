@@ -1,0 +1,106 @@
+{
+ "config": "S1",
+ "repeat": 1,
+ "url": "https://github.com/Tthanh2k6/turbo-browser-mcp",
+ "title": "Show HN: Turbo-Browser-MCP – Batch forms, DOM deltas and submit guards for MCP",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Turbo-browser-mcp est un serveur MCP basé sur Playwright.",
+    "evidence": "turbo-browser-mcp is a Playwright-based Model Context Protocol (MCP) server built to cut LLM token waste and multi-turn latency in browser automation.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il a été présenté sur Hacker News dans un message « Show HN ».",
+    "evidence": "Le titre commence par « Show HN: Turbo-Browser-MCP ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Son objectif est de réduire le gaspillage de tokens et la latence des automatisations de navigateur pilotées par un LLM.",
+    "evidence": "built to cut LLM token waste and multi-turn latency in browser automation.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il regroupe 25 à 33 primitives fines en 10 outils groupés.",
+    "evidence": "It consolidates 25-33 fine-grained browser primitives into 10 batched tools",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les benchmarks ont été réalisés avec Chromium headless et le tokenizer o200k_base.",
+    "evidence": "running headless Chromium locally with exact OpenAI o200k_base tokenization (tiktoken 0.14.0)",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un formulaire de 10 champs passe de 11 tours à un seul tour.",
+    "evidence": "10-Field Complex Form + Snapshot: 11 turns ... | 1 turn ... | 7x faster, 11 -> 1 turns",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'exécution est 7 fois plus rapide (574 ms contre 82 ms).",
+    "evidence": "11 turns (574 ms ...) | 1 turn (82 ms, 811 tok) | 7x faster",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le formulaire passe de 12 197 tokens directs à 811 tokens.",
+    "evidence": "11 turns (574 ms, 12,197 dir / 72,614 cum tok) | 1 turn (82 ms, 811 tok)",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'envoi d'un PDF de 48 Kio occupe 85 tokens via un chemin disque, au lieu de 44 728 tokens en Base64.",
+    "evidence": "44,728 tok inline Base64 tool arg | 85 tok disk path (68 ms)",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La liste d'outils statique fait 3 010 tokens contre 3 917 pour Playwright MCP.",
+    "evidence": "3,917 tok Playwright ... | 3,010 tok stripped (3,314 full w/ annotations)",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le projet propose des instantanés en deltas, le remplissage de formulaires React, Shadow DOM et iframes, et le blocage des ressources.",
+    "evidence": "featuring delta DOM snapshots, single-turn React/Shadow DOM/iframe form prefill ... network blocking presets",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Une garde de soumission bloque par défaut les envois de formulaires sans confirmation.",
+    "evidence": "a default human-in-the-loop Submit guard; Final actions resembling Submit ... are blocked unless allowSubmit: true is explicitly passed",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les chiffres proviennent de l'auteur et peuvent être vérifiés avec le script de benchmark fourni.",
+    "evidence": "All figures below come from benchmarks/benchmark.mjs (npm run benchmark); Run the benchmark suite yourself",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle déduit des chiffres de tours, de tokens et de la garde de soumission un gain de coût, de temps et de sécurité, sans ajouter de fait externe."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 13,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 11390,
+  "output_tokens": 1372,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 8.304,
+  "cost_usd": 0.0365,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rdDHE6C9vyvpmv6Dtp"
+ }
+}

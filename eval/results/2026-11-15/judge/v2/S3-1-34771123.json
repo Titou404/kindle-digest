@@ -1,0 +1,71 @@
+{
+ "config": "S3",
+ "repeat": 1,
+ "url": "https://www.franceinfo.fr/economie/david-amiel-annonce-une-revalorisation-du-point-d-indice-pour-les-fonctionnaires-aux-plus-bas-salaires_8283416.html",
+ "title": "David Amiel annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "David Amiel est ministre de l'Action et des Comptes publics.",
+    "evidence": "« le ministre de l'Action et des Comptes publics ajoute que les plus bas salaires parmi les fonctionnaires verront également leur point d'indice revalorisé »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il annonce une revalorisation du point d'indice pour les fonctionnaires aux salaires les plus bas.",
+    "evidence": "Titre : « David Amiel annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le gouvernement a décidé de relever le smic à 1 502 euros net à partir du 1er décembre.",
+    "evidence": "« le gouvernement a annoncé une hausse du smic à 1502 euros net le 1er décembre »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Selon le ministre, ces revalorisations coûteront « un peu plus d'un milliard d'euros » aux finances publiques.",
+    "evidence": "« Les revalorisations annoncées pour les plus bas salaires coûteront ",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'article a été publié par franceinfo dans sa rubrique économie.",
+    "evidence": "Le texte mentionne franceinfo et des hashtags (#Budget #Finances #smic), mais aucune rubrique « économie » n'est citée.",
+    "verdict": "non_soutenue"
+   },
+   {
+    "claim": "L'article est court et ne précise ni les modalités, ni le calendrier de la hausse, ni le nombre de fonctionnaires concernés, ni le montant de la hausse du point d'indice.",
+    "evidence": "Le texte ne donne aucun détail sur les modalités, le calendrier, le nombre d'agents ou le montant de la hausse.",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Le pouvoir d'achat et le coût budgétaire découlent des faits (revalorisation, coût d'un milliard), mais « finances publiques contraintes » et « environ un milliard » sont une interprétation non dite par l'article."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 6,
+  "unsupported": 1,
+  "supported_rate": 0.833,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 2725,
+  "output_tokens": 766,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 5.076,
+  "cost_usd": 0.01311,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rdDbKR3txNJ7sVM2nh"
+ }
+}

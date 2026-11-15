@@ -1,0 +1,101 @@
+{
+ "config": "S7",
+ "repeat": 1,
+ "url": "https://www.franceinfo.fr/economie/crise/crise-de-la-dette/dette-publique-francaise-la-france-ne-va-pas-etre-la-grece-affirme-clement-beaune_8283317.html",
+ "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Clément Beaune est haut-commissaire à la Stratégie et au Plan et était l'invité du 7.40 de Franceinfo le samedi 14 novembre.",
+    "evidence": "« Clément Beaune, haut-commissaire à la Stratégie et au Plan était l'invité du 7.40 de Franceinfo ce samedi 14 novembre. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il s'agit du cinquième samedi consécutif de mobilisation sociale, avec lycéens, étudiants et gilets jaunes, notamment à Paris.",
+    "evidence": "« lycéens, étudiants, gilets jaunes se mobilisent à nouveau ce samedi 14 novembre ... notamment à Paris avec un cinquième samedi consécutif »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Beaune estime que les mobilisations ont diminué et que des réponses ont été apportées.",
+    "evidence": "« il y a quand même une diminution des mobilisations sociales ... un certain nombre de réponses ont été apportées »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les réponses portent sur le SMIC, des mesures de pouvoir d'achat et les forfaits de transports publics.",
+    "evidence": "« sur le SMIC, sur un certain nombre de mesures de pouvoir d'achat, sur les forfaits de transports publics »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Beaune dit que cela ne suffit pas.",
+    "evidence": "Le « Visiblement, ce n'est pas du tout suffisant » est dit par l'intervieweur, pas par Beaune ; il dit seulement que cela ne veut pas dire qu'il n'y a pas de colère ou de sujets.",
+    "verdict": "non_soutenue"
+   },
+   {
+    "claim": "Il s'inquiète surtout de l'absence d'un projet politique qui rassure sur le social, à quelques mois de la présidentielle.",
+    "evidence": "« pas de projet politique qui crée de l'enthousiasme ou qui rassure sur le volet social ... C'est ça qui m'inquiète plus que telle ou telle mobilisation »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les policiers menacent de faire grève la semaine suivante après une réunion avec Laurent Nuñez, ministre de l'Intérieur.",
+    "evidence": "« Ils ont été reçus hier par Laurent Nuñez, le ministre de l'Intérieur ... Ils menacent de faire grève la semaine prochaine »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Beaune dit qu'il faut entendre leur difficulté sociale et rendre hommage à leur sens du service public.",
+    "evidence": "« il faut entendre aussi leur difficulté sociale » ; « Il faut rendre hommage aussi à ce sens du service public. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Nicolas Sarkozy craint une crise financière avant la présidentielle.",
+    "evidence": "« Nicolas Sarkozy qui dit ... craindre un tsunami de crise financière même avant la présidentielle »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Beaune affirme « La France ne va pas être la Grèce », car elle ne risque pas de ne plus pouvoir financer sa dette sur les marchés.",
+    "evidence": "« La France ne va pas être la Grèce ... La France n'est pas dans cette situation » (pays n'arrivant plus à financer leur dette sur les marchés)",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Moody's n'a pas dégradé la note de la France il y a quelques jours.",
+    "evidence": "« Moody's il y a quelques jours ne l'a pas fait. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Beaune juge la situation sérieuse.",
+    "evidence": "« Ça ne veut pas dire que la situation n'est pas sérieuse. »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle reprend les propos de Beaune sur l'absence de débouché politique et sur la dette, mais « ministre » est inexact (haut-commissaire) et le lien de cause est un peu appuyé."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 12,
+  "unsupported": 1,
+  "supported_rate": 0.917,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 5393,
+  "output_tokens": 1472,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 8.208,
+  "cost_usd": 0.025506,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4raYYW9DbKjFYduw8Bo"
+ }
+}

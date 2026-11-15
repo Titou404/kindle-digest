@@ -1,0 +1,121 @@
+{
+ "config": "S3",
+ "repeat": 1,
+ "url": "https://github.com/Tthanh2k6/turbo-browser-mcp",
+ "title": "Show HN: Turbo-Browser-MCP – Batch forms, DOM deltas and submit guards for MCP",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Turbo-browser-mcp est un serveur MCP basé sur Playwright",
+    "evidence": "turbo-browser-mcp is a Playwright-based Model Context Protocol (MCP) server built to cut LLM token waste and multi-turn latency in browser automation.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il a été présenté sur Hacker News",
+    "evidence": "Le titre commence par « Show HN: », ce qui indique une présentation sur Hacker News.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il vise à réduire la consommation de tokens et la latence de l'automatisation de navigateur par des LLM",
+    "evidence": "built to cut LLM token waste and multi-turn latency in browser automation.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il regroupe 25 à 33 primitives en 10 outils groupés",
+    "evidence": "It consolidates 25-33 fine-grained browser primitives into 10 batched tools",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il propose des snapshots DOM en delta",
+    "evidence": "featuring delta DOM snapshots, single-turn React/Shadow DOM/iframe form prefill",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il remplit un formulaire complet en un seul appel (React, Shadow DOM, iframes)",
+    "evidence": "single-turn React/Shadow DOM/iframe form prefill ; « Prefills an entire form in one MCP call »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il permet l'upload de fichiers depuis le disque sans Base64",
+    "evidence": "direct disk file uploads (no Base64 in context)",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Une garde de soumission bloque par défaut les envois de formulaire",
+    "evidence": "a default human-in-the-loop Submit guard ; « Final actions resembling Submit, Publish... are blocked unless allowSubmit: true is explicitly passed »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les chiffres viennent des benchmarks de l'auteur sur Chromium headless",
+    "evidence": "All figures below come from benchmarks/benchmark.mjs (npm run benchmark) running headless Chromium locally",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un formulaire de 10 champs passe de 11 tours à un seul",
+    "evidence": "11 turns (574 ms, 12,197 dir / 72,614 cum tok) | 1 turn (82 ms, 811 tok)",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le temps passe de 574 ms à 82 ms",
+    "evidence": "saves both 7x in browser execution (574 ms -> 82 ms)",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Environ 93 % de tokens économisés en direct sur le formulaire",
+    "evidence": "93.4% direct / 98.9% cumulative",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un PDF de 48 Kio tombe de 44 728 à 85 tokens",
+    "evidence": "44,728 tok inline Base64 tool arg | 85 tok disk path (68 ms)",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le schéma statique des outils est plus léger que ceux de @playwright/mcp et chrome-devtools-mcp",
+    "evidence": "3,010 tok stripped ... 23.2% vs Playwright / 55.3% vs DevTools",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le projet est en version 0.4.0",
+    "evidence": "Print server version ( 0.4.0)",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le projet est disponible sur GitHub et npm",
+    "evidence": "git clone https://github.com/Tthanh2k6/turbo-browser-mcp.git ; « npx -y turbo-browser-mcp »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Le moindre coût en tokens, la rapidité et la garde de soumission découlent des faits et benchmarks de l'article, sans ajout externe, et le conditionnel respecte le caractère auto-déclaré des mesures."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 16,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 11294,
+  "output_tokens": 1434,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 8.024,
+  "cost_usd": 0.036928,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rdvrnGLMFPqD5s3eYZ"
+ }
+}

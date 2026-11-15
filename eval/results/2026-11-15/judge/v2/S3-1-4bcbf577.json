@@ -1,0 +1,101 @@
+{
+ "config": "S3",
+ "repeat": 1,
+ "url": "https://www.franceinfo.fr/politique/agression-d-un-responsable-universitaire-tout-ca-s-inscrit-dans-un-contexte-de-violence-croissante-estime-le-ministre-de-l-enseignement-superieur-et-de-la-recherche-philippe-baptiste_8283326.html",
+ "title": "Agression d’un responsable universitaire : \"Tout ça s'inscrit dans un contexte de violence croissante\", estime le ministre de l'Enseignement supérieur et de la Recherche Philippe Baptiste",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Philippe Baptiste, ministre de l'Enseignement supérieur et de la Recherche, était l'invité du 7.40 de franceinfo dimanche 15 novembre.",
+    "evidence": "« Philippe Baptiste, ministre de l'Enseignement supérieur et de la Recherche, était l'invité du 7.40 de ce dimanche 15 novembre. » Le texte se termine par des liens franceinfo.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le vice-président de l'université de Versailles Saint-Quentin-en-Yvelines a été agressé à l'arme blanche.",
+    "evidence": "« l'agression à l'arme blanche du Vice-président de l'université de Versailles Saint-Quentin-en-Yvelines. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'agression a eu lieu vendredi soir en début de soirée, dans son bureau.",
+    "evidence": "« L'agression a eu lieu vendredi soir en début de soirée à son bureau. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le ministre a eu la victime au téléphone le lendemain matin ; elle sortait de l'hôpital, se remet et est choquée et traumatisée.",
+    "evidence": "« J'ai eu ce responsable universitaire le lendemain matin au téléphone. Il était en train de sortir de l'hôpital. Il est en train de se remettre. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'agresseur n'a pas encore été retrouvé et une enquête est en cours.",
+    "evidence": "« L'agresseur n'a pas été retrouvé. » et « Une enquête est en cours et il faut attendre les résultats. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le ministre refuse d'établir un lien entre l'agression et le mouvement social.",
+    "evidence": "« c'est absolument impossible de faire un lien entre quoi que ce soit. » et « Je suis absolument clair là-dessus »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il estime que l'agression s'inscrit dans un contexte de violence croissante autour des établissements.",
+    "evidence": "« tout ça s'inscrit évidemment dans un contexte qui est un contexte de violence croissante aux abords des établissements. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il cite plusieurs présidents d'université menacés de mort.",
+    "evidence": "« j'ai plusieurs présidents d'universités en France qui ont été menacés de mort. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La présidente de l'université de Lorraine a vu ses coordonnées diffusées sur les réseaux sociaux.",
+    "evidence": "« La présidente de l'université de Lorraine, ses coordonnées personnelles ont été divulguées sur les réseaux sociaux. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il exclut tout semestre blanc ou validation à 10 sur 20 améliorable, jugés illégaux.",
+    "evidence": "« Il n'est pas question d'avoir un semestre blanc ou d'un 10 sur 20 améliorable... D'abord c'est illégal »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il admet une adaptation des examens.",
+    "evidence": "« Il faut adapter les modalités de ce qu'on appelle de contrôle pédagogique, c'est-à-dire adapter les examens »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il évoque des mesures déjà proposées par le gouvernement et affirme que le dialogue reste ouvert.",
+    "evidence": "« On a mis sur la table au total... 4 milliards d'euros de prêts... le dialogue il est ouvert. »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle résume les thèmes de l'entretien (mouvement, violences, validation du semestre), mais l'effet sur « la rentrée universitaire » n'est pas dit par l'article."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 12,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 5676,
+  "output_tokens": 1394,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 7.407,
+  "cost_usd": 0.025292,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rbaPAzT5PPNe2SvGbd"
+ }
+}

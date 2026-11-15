@@ -1,0 +1,96 @@
+{
+ "config": "S3",
+ "repeat": 1,
+ "url": "https://theconversation.com/cop31-la-bourse-ne-recompense-plus-la-decouverte-de-reserves-dhydrocarbures-en-cas-dexposition-aux-risques-reglementaires-environnementaux-285014",
+ "title": "COP31 : la Bourse ne récompense plus la découverte de réserves d’hydrocarbures en cas d’exposition aux risques réglementaires environnementaux",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "L'étude analyse seize grandes entreprises pétrolières et gazières internationales entre 2002 et 2022.",
+    "evidence": "« les performances boursières de seize grandes entreprises pétrolières et gazières internationales – dont TotalEnergies, British Petroleum, Eni ou Petrobras – entre 2002 et 2022. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'étude est publiée dans The Conversation.",
+    "evidence": "L'article ne nomme aucun média ; il mentionne seulement « notre étude » et les auteurs, sans citer The Conversation.",
+    "verdict": "non_soutenue"
+   },
+   {
+    "claim": "Les entreprises incluent TotalEnergies, BP, Eni et Petrobras.",
+    "evidence": "« dont TotalEnergies, British Petroleum, Eni ou Petrobras »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Une même réserve peut être perçue comme créatrice de valeur ou source de risque selon la crédibilité des réglementations climatiques, notamment depuis l'accord de Paris de 2015.",
+    "evidence": "« Une même réserve d’hydrocarbure peut être perçue comme un actif créateur de valeur ou comme une source de risque selon la crédibilité des réglementations climatiques, notamment depuis l’accord de Paris »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Lorsque l'exposition au risque réglementaire est forte, les marchés réagissent moins favorablement à l'augmentation des réserves.",
+    "evidence": "« lorsqu’une entreprise est fortement exposée au risque réglementaire [...] les marchés boursiers ne réagissent pas forcément positivement à l’augmentation de ses réserves »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'article prend pour exemple Devon Energy et Pioneer Natural Resources.",
+    "evidence": "« C’est le cas pour deux majors pétrolières états-uniennes : Devon Energy et Pioneer Natural Resources. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "En 2015, le rendement annuel de Devon était de -47,74 %, contre -15,79 % pour Pioneer.",
+    "evidence": "« le rendement boursier annuel était plus négatif pour Devon Energy, à – 47,74 %, contre – 15,79 % pour Pioneer Natural Resources. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les auteurs évoquent le screening, soit le retrait progressif de certains investisseurs.",
+    "evidence": "« certains investisseurs réduisent progressivement leur exposition [...] C’est ce qu’on appelle le screening, ou tri. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "TotalEnergies a annoncé en 2020 une dépréciation de 7 milliards de dollars de ses actifs canadiens, illustrant les actifs échoués.",
+    "evidence": "« en 2020, le groupe français TotalEnergies a annoncé une dépréciation de 7 milliards de dollars de ses actifs pétroliers situés au Canada »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les États-Unis et le Canada ont récemment assoupli certaines politiques climatiques.",
+    "evidence": "« États-Unis qui a annulé en 2025 une réglementation [...] Le gouvernement fédéral du Canada a renoncé à son projet de plafonnement des émissions »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Cet assouplissement peut soutenir la valorisation à court terme, mais les incertitudes demeurent.",
+    "evidence": "« À court terme, cette évolution peut réduire la perception du risque réglementaire et soutenir la valorisation boursière [...] les incertitudes [...] demeurent. »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle découle des résultats de l'étude (réserves moins valorisées si la régulation se durcit, actifs échoués) sans ajouter de fait extérieur."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 11,
+  "unsupported": 1,
+  "supported_rate": 0.909,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 5690,
+  "output_tokens": 1407,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 7.816,
+  "cost_usd": 0.02545,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rbv7aUiFToEfGCF71d"
+ }
+}

@@ -1,0 +1,91 @@
+{
+ "config": "S2",
+ "repeat": 1,
+ "url": "https://theconversation.com/le-pastoralisme-risque-ou-solution-face-au-changement-climatique-levolution-du-regard-porte-par-les-cop-climat-296191",
+ "title": "Le pastoralisme, risque ou solution face au changement climatique ? L’évolution du regard porté par les COP climat",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "La COP31 sur le climat se tient en Turquie du 9 au 20 novembre.",
+    "evidence": "« À l’occasion de la COP31 sur le climat, qui se tient en Turquie du 9 au 20 novembre »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "The Conversation reproduit une partie d'un chapitre de l'ouvrage « Penser avec le pastoralisme », publié aux éditions Quae.",
+    "evidence": "« nous reproduisons une partie du chapitre » ; l'ouvrage est publié aux éditions Quae. Le nom « The Conversation » n'apparaît pas dans le texte.",
+    "verdict": "non_soutenue"
+   },
+   {
+    "claim": "L'élevage n'a été intégré aux discussions du Giec qu'à partir de 2011.",
+    "evidence": "« l’élevage n’a véritablement émergé dans les discussions qu’à partir de 2011. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Au 30 septembre 2022, sur 164 pays ayant soumis une contribution nationale, seuls 54 % mentionnaient l'élevage.",
+    "evidence": "« Au 30 septembre 2022, parmi les 164 pays ayant soumis une NDC, seuls 54 % mentionnaient explicitement l’élevage. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Dans les rapports du Giec de 2001 à 2022, deux visions s'opposent : techniciste et socioécosystémique.",
+    "evidence": "« Ces deux visions, techniciste et socioécosystémique, traversent l’ensemble de la période étudiée. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'approche techniciste mise sur la technologie, l'autre prend en compte les dimensions sociales et culturelles.",
+    "evidence": "« fondée sur l’idée que la technologie peut résoudre les problèmes de l’élevage » ; l'autre « prend en compte les implications sociales et culturelles »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Dans les négociations de la Convention-cadre, le pastoralisme est décrit comme victime, facteur d'impact et solution.",
+    "evidence": "« en faisant référence alternativement à cet élevage traditionnel comme victime, facteur d’impact ou solution. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le pastoralisme est un facteur d'impact lorsque les parcours sont mal gérés.",
+    "evidence": "« évoquent les risques associés à une gestion non durable des parcours »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le pastoralisme est vu comme solution grâce à sa mobilité et à sa capacité d'adaptation.",
+    "evidence": "« système de subsistance intrinsèquement adaptatif, fondé sur la mobilité, la flexibilité et la gestion extensive »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La visibilité du pastoralisme reste très limitée dans les décisions officielles.",
+    "evidence": "« sa visibilité reste très limitée dans les groupes de travail et les décisions officielles »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle reprend la marginalisation et le statut de solution décrits dans l'article ; l'effet possible sur les négociations futures est une déduction, non un fait ajouté."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 10,
+  "unsupported": 1,
+  "supported_rate": 0.9,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 6886,
+  "output_tokens": 1174,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 7.444,
+  "cost_usd": 0.025512,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rb2Y1GTUnJajsGDw3C"
+ }
+}

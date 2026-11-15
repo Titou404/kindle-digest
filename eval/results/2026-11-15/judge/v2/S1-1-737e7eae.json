@@ -1,0 +1,101 @@
+{
+ "config": "S1",
+ "repeat": 1,
+ "url": "https://www.franceinfo.fr/economie/crise/crise-de-la-dette/dette-publique-francaise-la-france-ne-va-pas-etre-la-grece-affirme-clement-beaune_8283317.html",
+ "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Clément Beaune, haut-commissaire à la Stratégie et au Plan, était l'invité du 7.40 de franceinfo le samedi 14 novembre.",
+    "evidence": "Clément Beaune, haut-commissaire à la Stratégie et au Plan était l'invité du 7.40 de Franceinfo ce samedi 14 novembre.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La mobilisation sociale en est à son cinquième samedi consécutif, avec lycéens, étudiants et gilets jaunes, notamment à Paris.",
+    "evidence": "lycéens, étudiants, gilets jaunes se mobilisent à nouveau ce samedi 14 novembre dans les rues de France et notamment à Paris avec un cinquième samedi consécutif",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "À Paris, on attendait jusqu'à 60 000 personnes.",
+    "evidence": "On attend encore jusqu'à 60 000 personnes dans les rues de Paris, par exemple, selon les chiffres.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Beaune estime que les violences des samedis précédents ne se répètent plus.",
+    "evidence": "de ce qu'on a pu connaître certains samedis, ce qui heureusement n'est plus le cas ces derniers jours.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il estime que la mobilisation tend à diminuer, grâce à des réponses du gouvernement (SMIC, pouvoir d'achat, forfaits de transports publics).",
+    "evidence": "il y a quand même une diminution des mobilisations sociales... un certain nombre de réponses ont été apportées... sur le SMIC... sur les forfaits de transports publics",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Selon lui, ces réponses ne suffisent pas.",
+    "evidence": "« Visiblement, ce n'est pas du tout suffisant » est dit par l'intervieweur, pas par Beaune ; Beaune dit seulement que cela ne veut pas dire qu'il n'y a pas de colère.",
+    "verdict": "non_soutenue"
+   },
+   {
+    "claim": "Il s'inquiète surtout de l'absence de projet politique rassurant sur le volet social avant la présidentielle, à moins de six mois.",
+    "evidence": "il n'y a pas de projet politique qui crée de l'enthousiasme ou qui rassure sur le volet social... C'est ça qui m'inquiète plus que telle ou telle mobilisation",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les policiers menacent de faire grève la semaine suivante après une rencontre difficile avec Laurent Nuñez, ministre de l'Intérieur.",
+    "evidence": "Ils ont été reçus hier par Laurent Nuñez, le ministre de l'Intérieur. Ça s'est très, très mal passé. Ils menacent de faire grève la semaine prochaine",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Beaune rappelle le sens du devoir des policiers et la nécessité d'entendre leurs difficultés sociales.",
+    "evidence": "Les policiers, les gendarmes, comme tous les agents publics, ils ont le sens du devoir... il faut entendre aussi leur difficulté sociale.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Sarkozy craint une crise financière avant la présidentielle.",
+    "evidence": "Nicolas Sarkozy qui dit... craindre un tsunami de crise financière même avant la présidentielle.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Beaune dit que la France ne connaîtra pas une crise comparable à celle de la Grèce, mais que la situation reste sérieuse.",
+    "evidence": "La France ne va pas être la Grèce... Ça ne veut pas dire que la situation n'est pas sérieuse.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Moody's n'a pas dégradé la note de la France il y a quelques jours.",
+    "evidence": "Moody's il y a quelques jours ne l'a pas fait.",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle replace les propos d'un membre du gouvernement dans le contexte de tensions décrit par l'article, sans ajouter de fait nouveau, même si l'enjeu n'y est pas formulé tel quel."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 12,
+  "unsupported": 1,
+  "supported_rate": 0.917,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 5428,
+  "output_tokens": 1521,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 8.228,
+  "cost_usd": 0.026066,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rcx4BUAV4YR55wHPtn"
+ }
+}

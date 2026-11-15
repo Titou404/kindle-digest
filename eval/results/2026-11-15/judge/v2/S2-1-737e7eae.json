@@ -1,0 +1,96 @@
+{
+ "config": "S2",
+ "repeat": 1,
+ "url": "https://www.franceinfo.fr/economie/crise/crise-de-la-dette/dette-publique-francaise-la-france-ne-va-pas-etre-la-grece-affirme-clement-beaune_8283317.html",
+ "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Clément Beaune, haut-commissaire à la Stratégie et au Plan, était l'invité du 7.40 de Franceinfo le samedi 14 novembre.",
+    "evidence": "Clément Beaune, haut-commissaire à la Stratégie et au Plan était l'invité du 7.40 de Franceinfo ce samedi 14 novembre.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "C'est la cinquième journée de mobilisation sociale consécutive un samedi, avec lycéens, étudiants et gilets jaunes, notamment à Paris.",
+    "evidence": "lycéens, étudiants, gilets jaunes se mobilisent à nouveau ce samedi 14 novembre dans les rues de France et notamment à Paris avec un cinquième samedi consécutif de mobilisation sociale.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "On attendait jusqu'à 60 000 personnes dans les rues de Paris.",
+    "evidence": "On attend encore jusqu'à 60 000 personnes dans les rues de Paris, par exemple, selon les chiffres.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Selon Beaune, la mobilisation diminue même si la colère persiste.",
+    "evidence": "il y a quand même une diminution des mobilisations sociales. Ça ne veut pas dire qu'il n'y a pas de sujets ou qu'il n'y a pas de colère",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le gouvernement a déjà apporté des réponses sur le SMIC, le pouvoir d'achat et les forfaits de transports publics.",
+    "evidence": "y compris cette semaine par le Premier ministre, par le gouvernement, sur le SMIC, sur un certain nombre de mesures de pouvoir d'achat, sur les forfaits de transports publics",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Ce qui l'inquiète surtout est l'absence de projet politique qui rassure sur le plan social avant la présidentielle, dans quelques mois.",
+    "evidence": "il n'y a pas de projet politique qui crée de l'enthousiasme ou qui rassure sur le volet social [...] C'est ça qui m'inquiète plus que telle ou telle mobilisation du moment.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les policiers menacent de faire grève la semaine suivante après une rencontre qui s'est mal passée avec le ministre de l'Intérieur Laurent Nuñez.",
+    "evidence": "Ils ont été reçus hier par Laurent Nuñez, le ministre de l'Intérieur. Ça s'est très, très mal passé. Ils menacent de faire grève la semaine prochaine",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Beaune dit comprendre les difficultés de pouvoir d'achat des policiers et rappelle leur sens du devoir.",
+    "evidence": "qui ont des difficultés de pouvoir d'achat [...] il faut entendre aussi leur difficulté sociale. [...] ils ont le sens du devoir.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Nicolas Sarkozy craint une crise financière avant la présidentielle.",
+    "evidence": "Nicolas Sarkozy qui dit [...] craindre un tsunami de crise financière même avant la présidentielle.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Beaune affirme que la France ne va pas être la Grèce, car elle ne risque pas de ne plus pouvoir financer sa dette sur les marchés.",
+    "evidence": "La France ne va pas être la Grèce. [...] des pays européens qui n'arrivaient même plus à financer leur dette [...] sur les marchés. La France n'est pas dans cette situation.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Moody's n'a pas dégradé la note de la France, mais Beaune juge la situation sérieuse.",
+    "evidence": "Moody's il y a quelques jours ne l'a pas fait. Ça ne veut pas dire que la situation n'est pas sérieuse.",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "La phrase résume le sujet de l'interview (contestation sociale, dette, présidentielle) sans ajouter de fait extérieur, mais l'article ne formule pas lui-même cet enjeu."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 11,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 5398,
+  "output_tokens": 1521,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 8.846,
+  "cost_usd": 0.026006,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4raNj9wSBrBSfeCadcK"
+ }
+}

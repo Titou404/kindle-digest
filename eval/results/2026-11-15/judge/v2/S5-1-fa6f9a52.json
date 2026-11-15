@@ -1,0 +1,81 @@
+{
+ "config": "S5",
+ "repeat": 1,
+ "url": "https://github.com/Tthanh2k6/turbo-browser-mcp",
+ "title": "Show HN: Turbo-Browser-MCP – Batch forms, DOM deltas and submit guards for MCP",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Turbo-Browser-MCP est un serveur MCP basé sur Playwright, conçu pour réduire le gaspillage de jetons et la latence.",
+    "evidence": "turbo-browser-mcp is a Playwright-based Model Context Protocol (MCP) server built to cut LLM token waste and multi-turn latency in browser automation.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il regroupe 25 à 33 outils fins en 10 outils par lots.",
+    "evidence": "It consolidates 25-33 fine-grained browser primitives into 10 batched tools",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il propose des instantanés DOM différentiels, le remplissage de formulaires en un seul appel et l'envoi de fichiers depuis le disque sans Base64.",
+    "evidence": "featuring delta DOM snapshots, single-turn React/Shadow DOM/iframe form prefill, direct disk file uploads (no Base64 in context)",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Selon ses propres benchmarks, un formulaire de 10 champs passe de 11 tours à un seul.",
+    "evidence": "10-Field Complex Form + Snapshot: 11 turns (574 ms...) vs 1 turn (82 ms, 811 tok); benchmarks/benchmark.mjs cited as source of figures.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un téléversement PDF économise 99,8 % des jetons.",
+    "evidence": "48 KiB PDF Upload: 44,728 tok inline Base64 tool arg vs 85 tok disk path, 99.8% saved.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le schéma des outils pèse 23,2 % de moins que Playwright MCP.",
+    "evidence": "Static MCP Tool Schema: 3,010 tok stripped vs 3,917 tok Playwright, '23.2% vs Playwright' / '23.2% fewer static tokens'.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Une protection par défaut bloque les soumissions sans validation humaine.",
+    "evidence": "Human-in-the-loop Submit Guard (allowSubmit=false by default): final actions resembling Submit, Publish... are blocked unless allowSubmit: true is explicitly passed.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les écritures de fichiers sont confinées à un répertoire autorisé.",
+    "evidence": "File outputs (savePath, saveStorageStatePath) and state inputs are strictly confined to the current working directory or TURBO_BROWSER_SAVE_ROOT.",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Plus rapide et moins coûteux découle des gains de tours et de jetons, et le garde-fou humain vient du Submit guard, sans ajout externe."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 8,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 11210,
+  "output_tokens": 1003,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 6.074,
+  "cost_usd": 0.03245,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rbgy448vwdmNAZ6gJS"
+ }
+}
