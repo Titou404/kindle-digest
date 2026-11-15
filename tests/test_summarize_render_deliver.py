@@ -83,6 +83,19 @@ def test_render_writes_an_epub_with_sections_and_report(tmp_path, monkeypatch):
     assert "A &lt;b&gt;title&lt;/b&gt;" in monde  # the title is escaped, not interpreted
 
 
+def test_no_summary_and_no_snippet_says_only_the_title_is_known(tmp_path, monkeypatch):
+    # A Hacker News link whose page could not be read: no text, hence no summary, and HN
+    # gives no snippet. The journal must not announce a snippet that does not exist.
+    monkeypatch.setattr(render_module, "OUT_DIR", tmp_path)
+    hn = Article("hackernews", "data", "Lovable apps expose passport details", "https://hn.example")
+
+    book = epub.read_epub(render_epub({"summarized": [hn]})["epub_path"])
+
+    data = book.get_item_with_href("data.xhtml").get_content().decode()
+    assert "seul le titre est disponible" in data
+    assert "Chapô de la source" not in data
+
+
 def test_raw_reddit_posts_get_their_own_chapter_as_written(tmp_path, monkeypatch):
     monkeypatch.setattr(render_module, "OUT_DIR", tmp_path)
     post = Article("reddit/MachineLearning", "data", "ICML 2027 Changes", "https://reddit.example",

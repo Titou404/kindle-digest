@@ -39,10 +39,15 @@ def article_html(article: Article) -> str:
         parts.append(f"<p>{esc(article.summary)}</p>")
         if article.why_it_matters:
             parts.append(f"<p><b>Pourquoi c'est important :</b> {esc(article.why_it_matters)}</p>")
-    else:
+    elif article.snippet:
         # No summary (unreadable page or failed call): the source's own snippet, nothing invented.
         parts.append(f"<p>{esc(article.snippet)}</p>")
         parts.append('<p class="meta">Chapô de la source, sans résumé.</p>')
+    else:
+        # Neither summary nor snippet (most Hacker News links): say so, rather than announce a
+        # snippet that does not exist (seen in the journal of 2026-11-15).
+        parts.append('<p class="meta">Ni résumé ni chapô pour cet article : seul le titre est '
+                     "disponible.</p>")
     parts.append(f'<p><a href="{esc(article.url)}">Lire l\'article</a></p>')
     return "\n".join(parts)
 
