@@ -19,6 +19,37 @@ from digest.state import DigestState
 
 RUNS_DIR = ROOT / "runs"  # real runs: versioned
 FAKE_DIR = ROOT / "out"  # --fake runs: ignored by git
+PARIS = ZoneInfo("Europe/Paris")
+# Who started the runs written before the report recorded it (from `gh run list`, 2026-11-15).
+# Reports keep their raw content: this table completes the index instead.
+KNOWN_TRIGGERS = {
+    "2026-11-14_1808": "local",  # before the workflow existed
+    "2026-11-14_1934": "workflow_dispatch",
+    "2026-11-14_1956": "workflow_dispatch",
+    "2026-11-14_2215": "workflow_dispatch",
+    "2026-11-15_1220": "workflow_dispatch",
+    "2026-11-15_1311": "schedule",  # the first cron run, 7 h 40 late
+}
+
+
+def write_runs_index(folder: Path) -> Path:
+    """List every run report, newest first, with who started it.
+
+    A static web page cannot list a folder: it reads this index, then the reports it names.
+    Trigger: "schedule" (the daily cron), "workflow_dispatch" (started by hand on GitHub)
+    or "local" (on a computer).
+    """
+    runs = []
+    for path in sorted(folder.glob("????-??-??_????.json"), reverse=True):
+        report = json.loads(path.read_text())
+        # The first reports have no finished_at: the name holds the same date and time.
+        finished = report.get("finished_at") or datetime.strptime(
+            path.stem, "%Y-%m-%d_%H%M").replace(tzinfo=PARIS).isoformat()
+        trigger = report.get("trigger") or KNOWN_TRIGGERS.get(path.stem, "local")
+        runs.append({"file": path.name, "finished_at": finished, "trigger": trigger})
+    index = folder / "index.json"
+    index.write_text(json.dumps({"runs": runs}, indent=2) + "\n")
+    return index
 
 
 def git_sha() -> str | None:
@@ -36,7 +67,7 @@ def write_run_report(
     state: DigestState, seconds: float, llms: dict, now: datetime | None = None
 ) -> Path:
     """llms: the LLM of each task, e.g. {"rank": ..., "summarize": ...}."""
-    today = now or datetime.now(ZoneInfo("Europe/Paris"))
+    today = now or datetime.now(PARIS)
     calls = state.get("llm_calls", [])
     fake = all(llm.model == "fake" for llm in llms.values())
     selected_urls = {a.url for a in state.get("selected", [])}
@@ -45,6 +76,9 @@ def write_run_report(
         "finished_at": today.isoformat(timespec="seconds"),
         "git_sha": git_sha(),
         "mode": "fake" if fake else "real",
+        # Set by GitHub Actions: "schedule" (the daily cron) or "workflow_dispatch" (by hand).
+        # None on a computer. The monitoring page shows the cron runs only.
+        "trigger": os.environ.get("GITHUB_EVENT_NAME"),
         # Per task since 2026-11-15 (earlier reports have a single model and effort).
         "config": {
             "model": {task: llm.model for task, llm in llms.items()},
@@ -84,4 +118,6 @@ def write_run_report(
     stamp = f"{today:%Y-%m-%d_%H%M}"
     path = folder / (f"run-{stamp}-fake.json" if fake else f"{stamp}.json")
     path.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")
+    if not fake:
+        write_runs_index(folder)  # committed with the report by the workflow (git add runs/)
     return path

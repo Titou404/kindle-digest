@@ -1,0 +1,34 @@
+{
+  "runs": [
+    {
+      "file": "2026-11-15_1311.json",
+      "finished_at": "2026-11-15T13:11:44+01:00",
+      "trigger": "schedule"
+    },
+    {
+      "file": "2026-11-15_1220.json",
+      "finished_at": "2026-11-15T12:20:12+01:00",
+      "trigger": "workflow_dispatch"
+    },
+    {
+      "file": "2026-11-14_2215.json",
+      "finished_at": "2026-11-14T22:15:12+01:00",
+      "trigger": "workflow_dispatch"
+    },
+    {
+      "file": "2026-11-14_1956.json",
+      "finished_at": "2026-11-14T19:56:00+01:00",
+      "trigger": "workflow_dispatch"
+    },
+    {
+      "file": "2026-11-14_1934.json",
+      "finished_at": "2026-11-14T19:34:00+01:00",
+      "trigger": "workflow_dispatch"
+    },
+    {
+      "file": "2026-11-14_1808.json",
+      "finished_at": "2026-11-14T18:08:00+01:00",
+      "trigger": "local"
+    }
+  ]
+}

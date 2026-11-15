@@ -35,6 +35,29 @@ def test_the_report_records_the_effort_of_each_task(tmp_path, monkeypatch):
     assert config["prompts"]["summarize"] == "v2"
 
 
+def test_the_report_says_who_started_the_run_and_the_index_follows(tmp_path, monkeypatch):
+    monkeypatch.setattr(report, "RUNS_DIR", tmp_path)
+    monkeypatch.setenv("GITHUB_EVENT_NAME", "schedule")
+    write_run_report({}, 40.0, LLMS, now=datetime(2026, 11, 16, 5, 31, tzinfo=PARIS))
+    monkeypatch.delenv("GITHUB_EVENT_NAME")
+    write_run_report({}, 40.0, LLMS, now=datetime(2026, 11, 16, 20, 0, tzinfo=PARIS))
+
+    index = json.loads((tmp_path / "index.json").read_text())
+    assert index["runs"] == [  # newest first
+        {"file": "2026-11-16_2000.json", "finished_at": "2026-11-16T20:00:00+01:00", "trigger": "local"},
+        {"file": "2026-11-16_0531.json", "finished_at": "2026-11-16T05:31:00+01:00", "trigger": "schedule"},
+    ]
+
+
+def test_old_reports_get_their_time_from_the_name_and_their_trigger_from_the_table(tmp_path):
+    (tmp_path / "2026-11-15_1311.json").write_text("{}")  # an old report: no trigger, no finished_at
+
+    [run] = json.loads(report.write_runs_index(tmp_path).read_text())["runs"]
+
+    assert run == {"file": "2026-11-15_1311.json", "finished_at": "2026-11-15T13:11:00+01:00",
+                   "trigger": "schedule"}
+
+
 def test_fake_runs_go_to_the_ignored_folder(tmp_path, monkeypatch):
     monkeypatch.setattr(report, "FAKE_DIR", tmp_path)
     fake = {"rank": SimpleNamespace(model="fake"), "summarize": SimpleNamespace(model="fake")}
