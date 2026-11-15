@@ -13,7 +13,9 @@ from digest.llm import LLM, LLMOutputError
 from digest.paths import PROMPTS_DIR
 from digest.state import Article, NodeMetrics, SourceError
 
-PROMPT_VERSION = "v1"
+# v2 since 2026-11-15: in the evaluation bench (eval/), 2 unsupported claims in 12 summaries
+# instead of 6 to 7 with v1, no padding on short articles, no outside fact; same cost.
+PROMPT_VERSION = "v2"
 MAX_TOKENS = 4000  # ~250 tokens of answer, the rest is room for thinking
 SCHEMA = {
     "type": "object",

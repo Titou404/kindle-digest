@@ -24,11 +24,11 @@ def main(argv: list[str] | None = None) -> None:
     mode = "fake" if args.fake else "real"
     print(f"digest: running in {mode} mode")
 
-    llm = make_llm(fake=args.fake)
+    llms = {task: make_llm(args.fake, task) for task in ("rank", "summarize")}
     start = time.perf_counter()
-    state = build_graph(load_sources(), llm).invoke({})
+    state = build_graph(load_sources(), llms["rank"], llms["summarize"]).invoke({})
     elapsed = time.perf_counter() - start
-    report_path = write_run_report(state, elapsed, llm)
+    report_path = write_run_report(state, elapsed, llms)
 
     for m in state["metrics"]:
         counts = ", ".join(f"{key}={value}" for key, value in m.counts.items())

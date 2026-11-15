@@ -52,6 +52,7 @@ class LLMCall:
     cost_usd: float
     stop_reason: str  # "end_turn" when the answer is complete
     request_id: str | None = None  # to find the call in the Anthropic console
+    effort: str | None = None  # "low", "medium"...: it depends on the task (None for the fake LLM)
 
 
 class DigestState(TypedDict, total=False):

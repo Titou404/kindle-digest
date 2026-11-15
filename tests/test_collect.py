@@ -76,7 +76,7 @@ def test_graph_runs_every_source_and_merges_results(tmp_path, monkeypatch):
     monkeypatch.setattr("digest.nodes.render_epub.OUT_DIR", tmp_path)
     monkeypatch.delenv("SEND", raising=False)
 
-    state = build_graph([OK, BROKEN], FakeLLM()).invoke({})
+    state = build_graph([OK, BROKEN], FakeLLM(), FakeLLM()).invoke({})
 
     assert [a.source for a in state["collected"]] == ["ok-source"]
     assert [e.source for e in state["errors"]] == ["broken-source"]

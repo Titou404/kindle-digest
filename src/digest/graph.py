@@ -16,9 +16,10 @@ from digest.sources import Source
 from digest.state import DigestState
 
 
-def build_graph(sources: list[Source], llm: LLM):
-    # The sources and the LLM (real or fake) are given from outside: the nodes that
-    # need them reach them through these inner functions (closures).
+def build_graph(sources: list[Source], rank_llm: LLM, summarize_llm: LLM):
+    # The sources and the LLMs (real or fake) are given from outside: the nodes that
+    # need them reach them through these inner functions (closures). One LLM per task,
+    # because each task has its own effort (see EFFORTS in llm.py).
     def dispatch_sources(_state: DigestState) -> list[Send]:
         # One "collect" run per source, all in parallel.
         return [Send("collect", {"source": source}) for source in sources]
@@ -32,10 +33,10 @@ def build_graph(sources: list[Source], llm: LLM):
         return [Send("summarize", {"article": article}) for article in to_summarize]
 
     def rank_node(state: DigestState) -> dict:
-        return rank(state, llm)
+        return rank(state, rank_llm)
 
     def summarize_node(state: SummarizeInput) -> dict:
-        return summarize(state, llm)
+        return summarize(state, summarize_llm)
 
     graph = StateGraph(DigestState)
     graph.add_node("collect", collect)

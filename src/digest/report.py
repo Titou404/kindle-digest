@@ -33,20 +33,22 @@ def git_sha() -> str | None:
 
 
 def write_run_report(
-    state: DigestState, seconds: float, llm, now: datetime | None = None
+    state: DigestState, seconds: float, llms: dict, now: datetime | None = None
 ) -> Path:
+    """llms: the LLM of each task, e.g. {"rank": ..., "summarize": ...}."""
     today = now or datetime.now(ZoneInfo("Europe/Paris"))
     calls = state.get("llm_calls", [])
-    fake = llm.model == "fake"
+    fake = all(llm.model == "fake" for llm in llms.values())
     selected_urls = {a.url for a in state.get("selected", [])}
     report = {
         "date": f"{today:%Y-%m-%d}",
         "finished_at": today.isoformat(timespec="seconds"),
         "git_sha": git_sha(),
         "mode": "fake" if fake else "real",
+        # Per task since 2026-11-15 (earlier reports have a single model and effort).
         "config": {
-            "model": llm.model,
-            "effort": getattr(llm, "effort", None),
+            "model": {task: llm.model for task, llm in llms.items()},
+            "effort": {task: getattr(llm, "effort", None) for task, llm in llms.items()},
             "prompts": {"rank": RANK_PROMPT, "summarize": SUMMARIZE_PROMPT},
         },
         "counts": {

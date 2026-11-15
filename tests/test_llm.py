@@ -10,7 +10,7 @@ import anthropic
 import httpx2
 import pytest
 
-from digest.llm import ClaudeLLM, FakeLLM, LLMOutputError
+from digest.llm import ClaudeLLM, FakeLLM, LLMOutputError, make_llm
 from digest.pricing import cost_usd
 
 SCHEMA = {
@@ -98,3 +98,16 @@ def test_fake_llm_is_free_and_returns_the_canned_answer():
     assert data == {"ok": False}
     assert call.cost_usd == 0.0
     assert call.model == "fake"
+
+
+def test_each_task_gets_its_production_effort(monkeypatch):
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")  # no request is sent
+    assert make_llm(fake=False, task="rank").effort == "low"
+    assert make_llm(fake=False, task="summarize").effort == "medium"
+    assert make_llm(fake=True, task="rank").model == "fake"
+
+
+def test_the_call_records_its_effort():
+    _, call = ask(ClaudeLLM(effort="low", client=api_returning()))
+
+    assert call.effort == "low"

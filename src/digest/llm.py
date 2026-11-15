@@ -16,8 +16,14 @@ from digest.state import LLMCall
 
 DEFAULT_MODEL = "claude-haiku-5-5"
 # Haiku 5.5 thinks by default (effort "medium") and thinking is billed as output:
-# always set the effort explicitly. Experiment E3 compares "medium" with "low".
+# always set the effort explicitly.
 DEFAULT_EFFORT = "medium"
+# Production effort per task, chosen with the evaluation bench of 2026-11-15 (eval/):
+# - rank "low": same quality as "medium" against my own labels (AUC 64 % for both), 37 %
+#   cheaper, and a steady duration (low never thinks; medium took 10 s to 68 s).
+# - summarize "medium": the model does not think before summarizing, so low and medium
+#   give the same result; medium is the model's default. High cost more for nothing.
+EFFORTS = {"rank": "low", "summarize": "medium"}
 
 
 class LLMOutputError(Exception):
@@ -85,6 +91,7 @@ class ClaudeLLM:
             ),
             stop_reason=response.stop_reason,
             request_id=response._request_id,
+            effort=self.effort,
         )
 
         # "max_tokens": the JSON was cut off; "refusal": the model declined.
@@ -122,5 +129,6 @@ class FakeLLM:
         return data, call
 
 
-def make_llm(fake: bool) -> LLM:
-    return FakeLLM() if fake else ClaudeLLM()
+def make_llm(fake: bool, task: str) -> LLM:
+    """The LLM of one task ("rank" or "summarize"), with that task's production effort."""
+    return FakeLLM() if fake else ClaudeLLM(effort=EFFORTS[task])
