@@ -1,0 +1,75 @@
+{
+ "totals": {
+  "S1": {
+   "texts": 72,
+   "numbers": 279,
+   "unsupported_numbers": 0,
+   "texts_with_unsupported_number": 0,
+   "quotes": 13,
+   "unsupported_quotes": 0,
+   "translated_quotes": 6,
+   "false_friends": 0
+  },
+  "S2": {
+   "texts": 72,
+   "numbers": 285,
+   "unsupported_numbers": 0,
+   "texts_with_unsupported_number": 0,
+   "quotes": 15,
+   "unsupported_quotes": 0,
+   "translated_quotes": 9,
+   "false_friends": 0
+  },
+  "S3": {
+   "texts": 72,
+   "numbers": 270,
+   "unsupported_numbers": 0,
+   "texts_with_unsupported_number": 0,
+   "quotes": 17,
+   "unsupported_quotes": 0,
+   "translated_quotes": 8,
+   "false_friends": 0
+  },
+  "S4": {
+   "texts": 72,
+   "numbers": 262,
+   "unsupported_numbers": 0,
+   "texts_with_unsupported_number": 0,
+   "quotes": 15,
+   "unsupported_quotes": 0,
+   "translated_quotes": 9,
+   "false_friends": 0
+  },
+  "S5": {
+   "texts": 48,
+   "numbers": 135,
+   "unsupported_numbers": 0,
+   "texts_with_unsupported_number": 0,
+   "quotes": 9,
+   "unsupported_quotes": 0,
+   "translated_quotes": 2,
+   "false_friends": 0
+  },
+  "S6": {
+   "texts": 24,
+   "numbers": 74,
+   "unsupported_numbers": 0,
+   "texts_with_unsupported_number": 0,
+   "quotes": 6,
+   "unsupported_quotes": 0,
+   "translated_quotes": 3,
+   "false_friends": 0
+  },
+  "S7": {
+   "texts": 72,
+   "numbers": 283,
+   "unsupported_numbers": 0,
+   "texts_with_unsupported_number": 0,
+   "quotes": 20,
+   "unsupported_quotes": 0,
+   "translated_quotes": 10,
+   "false_friends": 0
+  }
+ },
+ "flags": []
+}
