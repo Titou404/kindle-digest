@@ -1,0 +1,847 @@
+{
+ "fixture": "2026-11-15",
+ "repeat": 3,
+ "mode": "real",
+ "finished_at": "2026-11-15T14:27:38+01:00",
+ "git_sha": "8ff23c9",
+ "config": {
+  "id": "R1",
+  "task": "rank",
+  "question": "Référence : le réglage de production (un seul appel pour tous les candidats).",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "repeats": 3,
+  "prompt": "v1",
+  "max_text": 20000,
+  "mode": "batched"
+ },
+ "totals": {
+  "seconds": 67.88,
+  "llm_calls": 1,
+  "input_tokens": 13310,
+  "output_tokens": 7538,
+  "thinking_tokens": 4573,
+  "cost_usd": 0.0051,
+  "mean_latency_s": 67.873
+ },
+ "llm_calls": [
+  {
+   "task": "rank",
+   "model": "claude-haiku-5-5",
+   "prompt_version": "v1",
+   "input_tokens": 13310,
+   "output_tokens": 7538,
+   "thinking_tokens": 4573,
+   "cache_read_input_tokens": 0,
+   "cache_creation_input_tokens": 0,
+   "latency_s": 67.873,
+   "cost_usd": 0.0051,
+   "stop_reason": "end_turn",
+   "request_id": "req_011Ch4nmC6XsubdSa7BxVZeu"
+  }
+ ],
+ "errors": [],
+ "items": [
+  {
+   "url": "https://www.spacex.com/launches/starship-flight-15",
+   "source": "hackernews",
+   "section": "data",
+   "title": "SpaceX catches the Starship to end Flight 15",
+   "score": 4,
+   "topic": "Capture du Starship par SpaceX",
+   "selected": false
+  },
+  {
+   "url": "https://www.crissyfield.de/research/lovable-en",
+   "source": "hackernews",
+   "section": "data",
+   "title": "Lovable apps expose passport details and more than 200K private messages",
+   "score": 7,
+   "topic": "Fuite de données de Lovable",
+   "selected": true
+  },
+  {
+   "url": "https://tube.kockatoo.org/w/fFinNHfanLT7aBEb2B8y4c",
+   "source": "hackernews",
+   "section": "data",
+   "title": "KDE: The documentary [video]",
+   "score": 2,
+   "topic": "Documentaire sur KDE",
+   "selected": false
+  },
+  {
+   "url": "https://zwischenzugs.com/2026/11/03/a-family-tree-of-software-job-titles",
+   "source": "hackernews",
+   "section": "data",
+   "title": "A family tree of software job titles",
+   "score": 4,
+   "topic": "Arbre généalogique des métiers logiciels",
+   "selected": false
+  },
+  {
+   "url": "https://www.eff.org/deeplinks/2026/11/were-asking-appeals-court-require-warrant-alpr-searches",
+   "source": "hackernews",
+   "section": "data",
+   "title": "We're Asking an Appeals Court to Require a Warrant for ALPR Searches",
+   "score": 3,
+   "topic": "Recours contre les lecteurs de plaques",
+   "selected": false
+  },
+  {
+   "url": "https://litnews.ai/articles/garciaguirre-samsung-sk-hynix-micron-dram-conspiracy-suit-survives-dismissal",
+   "source": "hackernews",
+   "section": "data",
+   "title": "Court denies motion to dismiss DRAM price fixing case",
+   "score": 5,
+   "topic": "Procès d'entente sur les prix des DRAM",
+   "selected": false
+  },
+  {
+   "url": "https://blog.pypi.org/posts/2026-11-06-ui-updates-complete",
+   "source": "hackernews",
+   "section": "data",
+   "title": "PyPI's redesigned project pages with clearer security signals are now live",
+   "score": 4,
+   "topic": "Nouvelles pages de projets PyPI",
+   "selected": false
+  },
+  {
+   "url": "https://github.com/Vaibhaav-Tiwari/deepseek-v3-jax",
+   "source": "hackernews",
+   "section": "data",
+   "title": "Show HN: DeepSeek V3 in ~200 lines of pure Jax",
+   "score": 6,
+   "topic": "DeepSeek V3 implémenté en Jax",
+   "selected": false
+  },
+  {
+   "url": "https://retrocomputing.stackexchange.com/questions/17957",
+   "source": "hackernews",
+   "section": "data",
+   "title": "How did Woz write the Apple 1 BASIC before building the computer?",
+   "score": 2,
+   "topic": "Histoire de l'Apple 1",
+   "selected": false
+  },
+  {
+   "url": "https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature",
+   "source": "hackernews",
+   "section": "data",
+   "title": "Advancing science and engineering with Antigravity's /teamwork",
+   "score": 6,
+   "topic": "Antigravity et agents IA pour la science",
+   "selected": false
+  },
+  {
+   "url": "https://jordi.inversethought.com/blog/25-of-my-favourite-modern-nes-games",
+   "source": "hackernews",
+   "section": "data",
+   "title": "My favourite modern NES games",
+   "score": 1,
+   "topic": "Jeux NES préférés",
+   "selected": false
+  },
+  {
+   "url": "https://space.stackexchange.com/questions/37775",
+   "source": "hackernews",
+   "section": "data",
+   "title": "Why did some Apollo missions carry a grenade launcher?",
+   "score": 2,
+   "topic": "Histoire des missions Apollo",
+   "selected": false
+  },
+  {
+   "url": "https://runkiri.com",
+   "source": "hackernews",
+   "section": "data",
+   "title": "Kiri – The Modern Container Runtime",
+   "score": 3,
+   "topic": "Runtime de conteneurs Kiri",
+   "selected": false
+  },
+  {
+   "url": "https://netbsd.org/~nia/disk-encrypt",
+   "source": "hackernews",
+   "section": "data",
+   "title": "Disk encryption on NetBSD – achieving secrecy",
+   "score": 2,
+   "topic": "Chiffrement de disque sur NetBSD",
+   "selected": false
+  },
+  {
+   "url": "https://nick-black.com/dankwiki/index.php?title=Book_list_for_streetfighting_computer_scientists",
+   "source": "hackernews",
+   "section": "data",
+   "title": "Book list for streetfighting computer scientists",
+   "score": 3,
+   "topic": "Liste de livres en informatique",
+   "selected": false
+  },
+  {
+   "url": "https://github.com/Tthanh2k6/turbo-browser-mcp",
+   "source": "hackernews",
+   "section": "data",
+   "title": "Show HN: Turbo-Browser-MCP – Batch forms, DOM deltas and submit guards for MCP",
+   "score": 6,
+   "topic": "Serveur MCP pour navigateur",
+   "selected": true
+  },
+  {
+   "url": "https://www.nytimes.com/2026/11/15/us/politics/lutnick-pushed-to-weaken-chip-rules-that-overlap-with-his-family-business.html",
+   "source": "hackernews",
+   "section": "data",
+   "title": "Lutnick Pushed to Weaken Chip Rules That Overlap with His Family Business",
+   "score": 6,
+   "topic": "Lutnick et règles sur les puces",
+   "selected": true
+  },
+  {
+   "url": "https://www.bbc.co.uk/news/articles/cwe89y2r5j20o",
+   "source": "bbc/world",
+   "section": "monde",
+   "title": "New Orleans port files $1m lawsuit over 'miracle on the Mississippi' tanker collision",
+   "score": 3,
+   "topic": "Collision pétrolier et paquebot à La Nouvelle-Orléans",
+   "selected": false
+  },
+  {
+   "url": "https://www.bbc.co.uk/news/articles/c3rrg9xgqlwpo",
+   "source": "bbc/world",
+   "section": "monde",
+   "title": "Three men sentenced to death in Jordan over fatal church mass shooting",
+   "score": 3,
+   "topic": "Fusillade d'une église en Jordanie",
+   "selected": false
+  },
+  {
+   "url": "https://www.bbc.co.uk/news/articles/cqrkg4r6mg7xo",
+   "source": "bbc/world",
+   "section": "monde",
+   "title": "Israel kills Hamas commander in strike on Gaza camp, officials say",
+   "score": 6,
+   "topic": "Frappe israélienne contre un commandant du Hamas",
+   "selected": false
+  },
+  {
+   "url": "https://www.bbc.co.uk/news/articles/cmrlgn4x2xw8o",
+   "source": "bbc/world",
+   "section": "monde",
+   "title": "Fifth Canadian soldier dies from injuries caused by large fire at military base",
+   "score": 2,
+   "topic": "Incendie d'une base militaire canadienne",
+   "selected": false
+  },
+  {
+   "url": "https://www.bbc.co.uk/news/articles/c6wy9lynq4qno",
+   "source": "bbc/world",
+   "section": "monde",
+   "title": "Copper wire upgrade behind US flight suspension, transport secretary says",
+   "score": 4,
+   "topic": "Perturbations aériennes américaines liées au cuivre",
+   "selected": false
+  },
+  {
+   "url": "https://www.bbc.co.uk/news/articles/c6j9mn7l14y0o",
+   "source": "bbc/world",
+   "section": "monde",
+   "title": "Judge temporarily blocks Trump from closing Washington DC golf course for renovation",
+   "score": 2,
+   "topic": "Golf de Trump à Washington",
+   "selected": false
+  },
+  {
+   "url": "https://www.bbc.co.uk/news/articles/cr4gnz0lv2vlo",
+   "source": "bbc/world",
+   "section": "monde",
+   "title": "Pope Leo speaks of community 'suffering' on visit to remote Andes town",
+   "score": 2,
+   "topic": "Visite du pape Léon XIV au Pérou",
+   "selected": false
+  },
+  {
+   "url": "https://www.bbc.co.uk/news/articles/cwvg2l312ylqo",
+   "source": "bbc/world",
+   "section": "monde",
+   "title": "US has floated Ukraine ceding Donbas for Nato membership, Zelensky says",
+   "score": 7,
+   "topic": "Ukraine, Donbass et adhésion à l'OTAN",
+   "selected": true
+  },
+  {
+   "url": "https://www.bbc.co.uk/news/articles/cqrlgnx9dx6eo",
+   "source": "bbc/world",
+   "section": "monde",
+   "title": "Philippines wins first Eurovision Song Contest Asia",
+   "score": 0,
+   "topic": "Eurovision Asie remporté par les Philippines",
+   "selected": false
+  },
+  {
+   "url": "https://www.bbc.co.uk/news/articles/cwn83gxemk35o",
+   "source": "bbc/world",
+   "section": "monde",
+   "title": "Italy fines Meta €805m over accessing users' photos",
+   "score": 6,
+   "topic": "Amende italienne contre Meta",
+   "selected": false
+  },
+  {
+   "url": "https://www.bbc.co.uk/news/articles/cmwy05gg75lvo",
+   "source": "bbc/world",
+   "section": "monde",
+   "title": "Sotheby's auction of $180m Van Gogh challenged over claims it was 'sold under duress'",
+   "score": 2,
+   "topic": "Vente aux enchères d'un Van Gogh",
+   "selected": false
+  },
+  {
+   "url": "https://www.bbc.co.uk/news/articles/ckz74jzpy18do",
+   "source": "bbc/world",
+   "section": "monde",
+   "title": "Trump, Putin and Xi plan historic joint meeting in China next week, White House says",
+   "score": 8,
+   "topic": "Sommet Trump-Poutine-Xi",
+   "selected": true
+  },
+  {
+   "url": "https://www.bbc.co.uk/news/articles/cmz6qjpdy2wqo",
+   "source": "bbc/world",
+   "section": "monde",
+   "title": "Nigeria cautions against travel via Ethiopia's main airport due to altitude",
+   "score": 2,
+   "topic": "Mise en garde sur l'aéroport d'Addis-Abeba",
+   "selected": false
+  },
+  {
+   "url": "https://www.bbc.co.uk/news/videos/cwlym2gy3y3eo",
+   "source": "bbc/world",
+   "section": "monde",
+   "title": "'Can you believe it?': SpaceX catches part of its Starship rocket on return to Earth",
+   "score": 4,
+   "topic": "Capture du Starship par SpaceX",
+   "selected": false
+  },
+  {
+   "url": "https://www.bbc.co.uk/news/videos/ck4gn4y77m40o",
+   "source": "bbc/world",
+   "section": "monde",
+   "title": "Watch: Cruise ship overturns after collision with tanker in New Orleans",
+   "score": 3,
+   "topic": "Collision pétrolier et paquebot à La Nouvelle-Orléans",
+   "selected": false
+  },
+  {
+   "url": "https://www.bbc.co.uk/news/articles/c6dj1e8wyykmo",
+   "source": "bbc/world",
+   "section": "monde",
+   "title": "Judo champion shakes up French presidential race with surprise candidacy",
+   "score": 3,
+   "topic": "Teddy Riner et la présidentielle",
+   "selected": false
+  },
+  {
+   "url": "https://www.bbc.co.uk/news/articles/cmvg2e2q28w1o",
+   "source": "bbc/world",
+   "section": "monde",
+   "title": "My mother told me I would die if I sought treatment for Ebola - I am proof you can survive",
+   "score": 3,
+   "topic": "Ebola en RD Congo, témoignage",
+   "selected": false
+  },
+  {
+   "url": "https://www.bbc.co.uk/news/articles/cqx2wyvyr3zzo",
+   "source": "bbc/world",
+   "section": "monde",
+   "title": "How telecoms upgrade work sparked US flight chaos",
+   "score": 4,
+   "topic": "Perturbations aériennes américaines liées au cuivre",
+   "selected": false
+  },
+  {
+   "url": "https://www.theguardian.com/technology/2026/nov/15/ai-cheating-south-korea-college-entrance-exam",
+   "source": "guardian/world",
+   "section": "monde",
+   "title": "160 questions, only one wrong: top scorer in South Korea tax exam admits AI cheating",
+   "score": 6,
+   "topic": "Triche à l'IA à un examen coréen",
+   "selected": false
+  },
+  {
+   "url": "https://www.theguardian.com/world/2026/nov/15/asia-diplomatic-summits-trump-xi-putin-apec-asean",
+   "source": "guardian/world",
+   "section": "monde",
+   "title": "World leaders head to Asia for back-to-back diplomatic summits",
+   "score": 5,
+   "topic": "Sommets diplomatiques en Asie",
+   "selected": false
+  },
+  {
+   "url": "https://www.theguardian.com/tv-and-radio/2026/nov/14/philippines-carmelle-wins-first-eurovision-contest-in-asia",
+   "source": "guardian/world",
+   "section": "monde",
+   "title": "Philippines’ Carmelle wins first Eurovision contest in Asia",
+   "score": 0,
+   "topic": "Eurovision Asie remporté par les Philippines",
+   "selected": false
+  },
+  {
+   "url": "https://www.theguardian.com/australia-news/2026/nov/15/anthony-albanese-welcomes-trump-xi-putin-summit-even-as-european-leaders-express-reservations",
+   "source": "guardian/world",
+   "section": "monde",
+   "title": "Anthony Albanese welcomes Trump-Xi-Putin summit – even as European leaders express reservations",
+   "score": 7,
+   "topic": "Sommet Trump-Poutine-Xi",
+   "selected": false
+  },
+  {
+   "url": "https://www.theguardian.com/australia-news/2026/nov/15/anthony-albanese-apologises-for-hot-mic-gaffe-after-coalition-criticises-locker-room-talk",
+   "source": "guardian/world",
+   "section": "monde",
+   "title": "Anthony Albanese apologises for hot-mic gaffe after Coalition criticises ‘locker-room talk’",
+   "score": 1,
+   "topic": "Excuses d'Albanese pour un micro chaud",
+   "selected": false
+  },
+  {
+   "url": "https://www.theguardian.com/australia-news/2026/nov/15/katherine-deves-among-four-nsw-upper-house-candidates-revealed-by-one-nation-ntwnfb",
+   "source": "guardian/world",
+   "section": "monde",
+   "title": "Katherine Deves among four NSW upper house candidates revealed by One Nation",
+   "score": 1,
+   "topic": "Candidats de One Nation en Nouvelle-Galles du Sud",
+   "selected": false
+  },
+  {
+   "url": "https://www.theguardian.com/australia-news/2026/nov/15/australia-weather-east-coast-thunderstorms-giant-hail-and-powerful-winds-ettalong-beach-swimmer-lightning-strike",
+   "source": "guardian/world",
+   "section": "monde",
+   "title": "Thunderstorms, giant hail and powerful winds forecast for NSW as wild weather hits east coast",
+   "score": 2,
+   "topic": "Orages violents en Nouvelle-Galles du Sud",
+   "selected": false
+  },
+  {
+   "url": "https://www.theguardian.com/business/2026/nov/15/myer-david-jones-stores-closures-administration",
+   "source": "guardian/world",
+   "section": "monde",
+   "title": "David Jones’ future looks grim. Is Myer next?",
+   "score": 3,
+   "topic": "Crise des grands magasins australiens",
+   "selected": false
+  },
+  {
+   "url": "https://www.theguardian.com/world/2026/nov/15/czechia-protest-prague-media-freedom",
+   "source": "guardian/world",
+   "section": "monde",
+   "title": "Protest in Prague over media freedom expected to be one of biggest in Czechia’s history",
+   "score": 3,
+   "topic": "Manifestation pour la liberté des médias à Prague",
+   "selected": false
+  },
+  {
+   "url": "https://www.theguardian.com/us-news/2026/nov/14/activist-extradition-gaza-hamas-spanish-court",
+   "source": "guardian/world",
+   "section": "monde",
+   "title": "How a US extradition bid over Hamas allegations put a wealthy activist before a Spanish court",
+   "score": 3,
+   "topic": "Extradition de James Chambers vers les États-Unis",
+   "selected": false
+  },
+  {
+   "url": "https://www.theguardian.com/world/live/2026/nov/15/middle-east-crisis-live-iran-bahrain-strikes-gulf-donald-trump-us-israel-yemen-houthis",
+   "source": "guardian/world",
+   "section": "monde",
+   "title": "Iran targets Bahrain airbase as strikes resume in Gulf - Middle East crisis live",
+   "score": 8,
+   "topic": "Attaques iraniennes dans le Golfe",
+   "selected": true
+  },
+  {
+   "url": "https://www.theguardian.com/world/2026/nov/15/myanmar-rohingya-genocide-icj",
+   "source": "guardian/world",
+   "section": "monde",
+   "title": "World’s top court to rule if Myanmar committed genocide against Rohingya",
+   "score": 6,
+   "topic": "CIJ et génocide des Rohingyas",
+   "selected": false
+  },
+  {
+   "url": "https://www.theguardian.com/money/2026/nov/15/christmas-dupes-gift-aldi-candles-quince-cashmere-jumpers-price",
+   "source": "guardian/world",
+   "section": "monde",
+   "title": "Christmas ‘dupes’: the cheaper gift versions proving a festive hit in the cost of living crisis",
+   "score": 3,
+   "topic": "Dupes de Noël et pouvoir d'achat",
+   "selected": false
+  },
+  {
+   "url": "https://www.theguardian.com/society/2026/nov/15/no-free-lunch-milburn-mcfadden-kuenssberg-uk-benefits-youth-unemployment-neet",
+   "source": "guardian/world",
+   "section": "monde",
+   "title": "‘No such thing as a free lunch,’ says Milburn as he warns it will take a decade for UK benefits bill to come down",
+   "score": 3,
+   "topic": "Réforme des aides sociales au Royaume-Uni",
+   "selected": false
+  },
+  {
+   "url": "https://www.theguardian.com/uk-news/2026/nov/15/trident-nuclear-submarine-hms-vengeance-record-tour",
+   "source": "guardian/world",
+   "section": "monde",
+   "title": "Trident nuclear submarine concludes record underwater deployment",
+   "score": 2,
+   "topic": "Sous-marin nucléaire britannique Trident",
+   "selected": false
+  },
+  {
+   "url": "https://www.theguardian.com/society/2026/nov/15/obama-portrait-artist-draws-burnham-big-issue-rough-sleeping-vow-shepard-fairey",
+   "source": "guardian/world",
+   "section": "monde",
+   "title": "Obama portrait artist draws Burnham for Big Issue cover to highlight rough sleeping vow",
+   "score": 1,
+   "topic": "Portrait de Burnham dans le Big Issue",
+   "selected": false
+  },
+  {
+   "url": "https://www.theguardian.com/politics/2026/nov/15/reform-uk-losing-support-to-labour-after-difficult-year-says-danny-kruger",
+   "source": "guardian/world",
+   "section": "monde",
+   "title": "Reform UK losing support to Labour after ‘difficult year’, says Danny Kruger",
+   "score": 2,
+   "topic": "Reform UK en perte de vitesse",
+   "selected": false
+  },
+  {
+   "url": "https://www.theguardian.com/us-news/2026/nov/15/trump-self-enrichment-lawsuits",
+   "source": "guardian/world",
+   "section": "monde",
+   "title": "‘Shameless venality’: how a flurry of lawsuits has thwarted Trump’s self-enrichment schemes",
+   "score": 3,
+   "topic": "Procès contre les intérêts financiers de Trump",
+   "selected": false
+  },
+  {
+   "url": "https://www.theguardian.com/us-news/2026/nov/15/vaccine-policy-rfk-jr-trump-administration",
+   "source": "guardian/world",
+   "section": "monde",
+   "title": "Trump administration planning to reimburse doctors treating vaccine ‘injury’",
+   "score": 3,
+   "topic": "Remboursement des médecins pour effets vaccinaux",
+   "selected": false
+  },
+  {
+   "url": "https://www.theguardian.com/us-news/2026/nov/15/georgia-midterm-elections-black-voters",
+   "source": "guardian/world",
+   "section": "monde",
+   "title": "Black voters helped Democrats win in Georgia. Now they expect to be heard",
+   "score": 2,
+   "topic": "Électeurs noirs de Géorgie",
+   "selected": false
+  },
+  {
+   "url": "https://www.theguardian.com/science/2026/nov/14/spacex-starship-double-catch",
+   "source": "guardian/world",
+   "section": "monde",
+   "title": "SpaceX’s Starship returns to launch pad from orbit in victory for company",
+   "score": 4,
+   "topic": "Capture du Starship par SpaceX",
+   "selected": false
+  },
+  {
+   "url": "https://www.theguardian.com/us-news/2026/nov/14/peoria-illinois-evacuation-bomb",
+   "source": "guardian/world",
+   "section": "monde",
+   "title": "Evacuation zone lifted after bomb found at Illinois ethanol plant",
+   "score": 2,
+   "topic": "Bombe trouvée dans une usine d'éthanol",
+   "selected": false
+  },
+  {
+   "url": "https://www.bbc.co.uk/news/articles/cqn83l442724o",
+   "source": "bbc/business",
+   "section": "eco",
+   "title": "Beauty advent calendars can cost hundreds but are they value for money?",
+   "score": 1,
+   "topic": "Calendriers de l'Avent beauté",
+   "selected": false
+  },
+  {
+   "url": "https://www.franceinfo.fr/economie/commerce/ca-ne-rattrapera-pas-un-bon-samedi-les-commercants-lyonnais-peu-convaincus-par-les-ouvertures-dominicales-supplementaires_8283347.html",
+   "source": "franceinfo/economie",
+   "section": "eco",
+   "title": "\"Ça ne rattrapera pas un bon samedi\" : les commerçants lyonnais peu convaincus par les ouvertures dominicales supplémentaires",
+   "score": 4,
+   "topic": "Ouvertures dominicales des commerces lyonnais",
+   "selected": false
+  },
+  {
+   "url": "https://www.franceinfo.fr/economie/david-amiel-annonce-une-revalorisation-du-point-d-indice-pour-les-fonctionnaires-aux-plus-bas-salaires_8283416.html",
+   "source": "franceinfo/economie",
+   "section": "eco",
+   "title": "David Amiel annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires",
+   "score": 6,
+   "topic": "Revalorisation du point d'indice",
+   "selected": true
+  },
+  {
+   "url": "https://www.franceinfo.fr/economie/crise/crise-de-la-dette/dette-publique-francaise-la-france-ne-va-pas-etre-la-grece-affirme-clement-beaune_8283317.html",
+   "source": "franceinfo/economie",
+   "section": "eco",
+   "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+   "score": 7,
+   "topic": "Dette publique française",
+   "selected": true
+  },
+  {
+   "url": "https://www.franceinfo.fr/monde/royaume-uni/au-royaume-uni-deux-affaires-de-violences-sexuelles-relancent-le-debat-sur-la-culture-du-silence-dans-le-monde-du-divertissement_8282621.html",
+   "source": "franceinfo/economie",
+   "section": "eco",
+   "title": "Au Royaume-Uni, deux affaires de violences sexuelles relancent le débat sur la \"culture du silence\" dans le monde du divertissement",
+   "score": 0,
+   "topic": "Violences sexuelles dans le divertissement britannique",
+   "selected": false
+  },
+  {
+   "url": "https://www.franceinfo.fr/replay-radio/c-est-mon-boulot/83-des-dirigeants-de-pme-trouvent-difficile-de-recruter-et-d-employer-une-personne-en-situation-de-handicap_8242261.html",
+   "source": "franceinfo/economie",
+   "section": "eco",
+   "title": "83 % des dirigeants de PME trouvent difficile de recruter et d'employer une personne en situation de handicap",
+   "score": 6,
+   "topic": "Emploi des personnes handicapées en PME",
+   "selected": false
+  },
+  {
+   "url": "https://www.franceinfo.fr/economie/pouvoir-achat/il-y-aura-bien-une-hausse-des-points-pour-les-plus-bas-salaires-de-la-fonction-publique-confirme-le-ministre-david-amiel_8283254.html",
+   "source": "franceinfo/economie",
+   "section": "eco",
+   "title": "Les revalorisations annoncées pour les plus bas salaires coûteront \"un peu plus d'un milliard d'euros\" aux finances publiques, déclare le ministre David Amiel",
+   "score": 6,
+   "topic": "Revalorisation du point d'indice",
+   "selected": false
+  },
+  {
+   "url": "https://www.franceinfo.fr/monde/usa/des-cables-en-cuivre-vetustes-a-l-origine-des-perturbations-de-milliers-de-vols-aux-etats-unis-selon-l-administration-trump_8283218.html",
+   "source": "franceinfo/economie",
+   "section": "eco",
+   "title": "Des câbles en cuivre vétustes sont à l'origine des perturbations de milliers de vols aux Etats-Unis, assure l'administration Trump",
+   "score": 4,
+   "topic": "Perturbations aériennes américaines liées au cuivre",
+   "selected": false
+  },
+  {
+   "url": "https://www.franceinfo.fr/economie/emploi/metiers/agriculture/on-n-en-est-pas-encore-la-les-vins-de-de-bourgogne-resistent-mieux-a-la-crise-grace-a-ses-exportations_8282870.html",
+   "source": "franceinfo/economie",
+   "section": "eco",
+   "title": "REPORTAGE. \"On n'en est pas encore là\" : les vins de de Bourgogne résistent mieux à la crise grâce à ses exportations",
+   "score": 4,
+   "topic": "Vins de Bourgogne et exportations",
+   "selected": false
+  },
+  {
+   "url": "https://www.franceinfo.fr/replay-jt/france-2/20-heures/pouvoir-d-achat-les-antillais-en-premiere-ligne-face-a-la-vie-chere_8282885.html",
+   "source": "franceinfo/economie",
+   "section": "eco",
+   "title": "Pouvoir d'achat : les Antillais en première ligne face à la vie chère",
+   "score": 7,
+   "topic": "Vie chère dans les Antilles",
+   "selected": true
+  },
+  {
+   "url": "https://www.franceinfo.fr/replay-jt/france-2/20-heures/comment-la-chine-fait-elle-plier-les-grandes-marques_8282879.html",
+   "source": "franceinfo/economie",
+   "section": "eco",
+   "title": "Comment la Chine fait-elle plier les grandes marques ?",
+   "score": 5,
+   "topic": "Marques occidentales et censure en Chine",
+   "selected": false
+  },
+  {
+   "url": "https://www.franceinfo.fr/economie/sur-les-reseaux-sociaux-des-astuces-pour-lutter-contre-le-froid-chez-soi_8281457.html",
+   "source": "franceinfo/economie",
+   "section": "eco",
+   "title": "Sur les réseaux sociaux, des astuces pour lutter contre le froid chez soi",
+   "score": 6,
+   "topic": "Astuces contre le froid et précarité énergétique",
+   "selected": false
+  },
+  {
+   "url": "https://www.franceinfo.fr/economie/pouvoir-achat/logement/des-milliers-de-portugais-manifestent-contre-la-crise-du-logement_8282765.html",
+   "source": "franceinfo/economie",
+   "section": "eco",
+   "title": "Des milliers de Portugais manifestent contre la crise du logement",
+   "score": 4,
+   "topic": "Manifestation contre la crise du logement au Portugal",
+   "selected": false
+  },
+  {
+   "url": "https://www.franceinfo.fr/replay-radio/l-empire-des-series/les-1001-vies-de-jean-chalopin-createur-du-dessin-anime-inspecteur-gadget_8261270.html",
+   "source": "franceinfo/economie",
+   "section": "eco",
+   "title": "Les 1001 vies de Jean Chalopin, créateur du dessin animé \"Inspecteur Gadget\"",
+   "score": 2,
+   "topic": "Parcours de Jean Chalopin",
+   "selected": false
+  },
+  {
+   "url": "https://www.franceinfo.fr/economie/transports/mobilisation-du-17-novembre/les-revendications-ne-sont-pas-satisfaites-les-gilets-jaunes-appellent-a-un-acte-vi-de-mobilisation-samedi-21-novembre_8282648.html",
+   "source": "franceinfo/economie",
+   "section": "eco",
+   "title": "\"Les revendications ne sont pas satisfaites\" : les gilets jaunes appellent à une nouvelle journée de mobilisation samedi 21 novembre",
+   "score": 5,
+   "topic": "Mobilisation contre la vie chère",
+   "selected": false
+  },
+  {
+   "url": "https://www.franceinfo.fr/replay-radio/l-info-de-l-histoire/comment-finissent-les-greves_8261279.html",
+   "source": "franceinfo/economie",
+   "section": "eco",
+   "title": "Comment finissent les grèves ?",
+   "score": 5,
+   "topic": "Mobilisation contre la vie chère",
+   "selected": false
+  },
+  {
+   "url": "https://www.franceinfo.fr/replay-radio/info-immobilier/le-projet-de-loi-pour-relancer-le-logement-enfin-a-l-assemblee-nationale_8261225.html",
+   "source": "franceinfo/economie",
+   "section": "eco",
+   "title": "Le projet de loi pour relancer le logement enfin à l’Assemblée nationale",
+   "score": 6,
+   "topic": "Projet de loi Relance logement",
+   "selected": false
+  },
+  {
+   "url": "https://www.franceinfo.fr/economie/surendettement-10-2-de-dossiers-supplementaires-deposes-a-la-banque-de-france-depuis-le-debut-de-l-annee-2026_8282537.html",
+   "source": "franceinfo/economie",
+   "section": "eco",
+   "title": "Surendettement : 10,2% de dossiers supplémentaires déposés à la Banque de France depuis le début de l'année 2026",
+   "score": 6,
+   "topic": "Surendettement des ménages français",
+   "selected": false
+  },
+  {
+   "url": "https://www.franceinfo.fr/economie/une-hausse-des-tarifs-des-assurances-de-3-a-8-prevue-pour-la-maaf-mma-et-gmf-en-2027_8282498.html",
+   "source": "franceinfo/economie",
+   "section": "eco",
+   "title": "Une hausse des tarifs des assurances de \"3 à 8%\" prévue pour la MAAF, MMA et GMF en 2027",
+   "score": 5,
+   "topic": "Hausse des tarifs d'assurance MAAF",
+   "selected": false
+  },
+  {
+   "url": "https://www.franceinfo.fr/economie/inflation/ces-francais-tentes-de-voler-en-supermarche_8282471.html",
+   "source": "franceinfo/economie",
+   "section": "eco",
+   "title": "Ces Français tentés de voler en supermarché",
+   "score": 5,
+   "topic": "Vols en supermarché",
+   "selected": false
+  },
+  {
+   "url": "https://www.franceinfo.fr/politique/agression-d-un-responsable-universitaire-tout-ca-s-inscrit-dans-un-contexte-de-violence-croissante-estime-le-ministre-de-l-enseignement-superieur-et-de-la-recherche-philippe-baptiste_8283326.html",
+   "source": "franceinfo/politique",
+   "section": "france",
+   "title": "Agression d’un responsable universitaire : \"Tout ça s'inscrit dans un contexte de violence croissante\", estime le ministre de l'Enseignement supérieur et de la Recherche Philippe Baptiste",
+   "score": 6,
+   "topic": "Agression d'un responsable universitaire",
+   "selected": true
+  },
+  {
+   "url": "https://www.franceinfo.fr/elections/presidentielle-2027-je-ne-suis-pas-un-macroniste-affirme-teddy-riner_8283248.html",
+   "source": "franceinfo/politique",
+   "section": "france",
+   "title": "Présidentielle 2027 : \"Je ne suis pas un macroniste\", affirme Teddy Riner",
+   "score": 3,
+   "topic": "Teddy Riner et la présidentielle",
+   "selected": false
+  },
+  {
+   "url": "https://www.franceinfo.fr/politique/emmanuel-macron/le-president-veut-maintenir-l-ukraine-en-situation-de-donner-des-coups-alors-que-les-americains-s-occupent-de-l-enfoncer-affirme-l-entourage-d-emmanuel-macron_8283194.html",
+   "source": "franceinfo/politique",
+   "section": "france",
+   "title": "Pour le président, la position de Marine Le Pen sur l'Ukraine \"est antipatriotique et irréaliste\", déclare l'entourage d'Emmanuel Macron",
+   "score": 3,
+   "topic": "Position de Marine Le Pen sur l'Ukraine",
+   "selected": false
+  },
+  {
+   "url": "https://www.franceinfo.fr/replay-radio/le-rendez-vous-du-mediateur/le-grand-oral-des-candidats-sur-franceinfo_8261240.html",
+   "source": "franceinfo/politique",
+   "section": "france",
+   "title": "Le grand oral des candidats sur franceinfo",
+   "score": 4,
+   "topic": "Grand oral des candidats à la présidentielle",
+   "selected": false
+  },
+  {
+   "url": "https://www.franceinfo.fr/politique/emmanuel-macron/emmanuel-macron-est-arrive-au-cambodge-pour-le-sommet-de-la-francophonie_8282396.html",
+   "source": "franceinfo/politique",
+   "section": "france",
+   "title": "Emmanuel Macron est arrivé au Cambodge pour le sommet de la Francophonie",
+   "score": 5,
+   "topic": "Sommet de la Francophonie au Cambodge",
+   "selected": false
+  },
+  {
+   "url": "https://www.franceinfo.fr/replay-radio/le-brief-politique/info-franceinfo-raphael-glucksmann-va-diffuser-ce-week-end-un-tract-presentant-dix-propositions-pour-sortir-de-la-crise_8261228.html",
+   "source": "franceinfo/politique",
+   "section": "france",
+   "title": "INFO FRANCEINFO. Raphaël Glucksmann va diffuser ce week-end un tract présentant dix propositions pour \"sortir de la crise\"",
+   "score": 3,
+   "topic": "Propositions de Raphaël Glucksmann",
+   "selected": false
+  },
+  {
+   "url": "https://theconversation.com/feux-dartifice-quelques-minutes-de-fete-des-couts-durables-pour-la-sante-et-lenvironnement-296305",
+   "source": "theconversation/fr",
+   "section": "france",
+   "title": "Feux d’artifice : quelques minutes de fête, des coûts durables pour la santé et l’environnement",
+   "score": 4,
+   "topic": "Coûts des feux d'artifice",
+   "selected": false
+  },
+  {
+   "url": "https://theconversation.com/le-pastoralisme-risque-ou-solution-face-au-changement-climatique-levolution-du-regard-porte-par-les-cop-climat-296191",
+   "source": "theconversation/fr",
+   "section": "france",
+   "title": "Le pastoralisme, risque ou solution face au changement climatique ? L’évolution du regard porté par les COP climat",
+   "score": 5,
+   "topic": "Pastoralisme et changement climatique",
+   "selected": false
+  },
+  {
+   "url": "https://theconversation.com/si-je-te-punis-cest-pour-ton-bien-vraiment-contre-ladultisme-penser-une-education-mutuelle-293002",
+   "source": "theconversation/fr",
+   "section": "france",
+   "title": "« Si je te punis, c’est pour ton bien », vraiment ? Contre l’adultisme, penser une éducation mutuelle",
+   "score": 4,
+   "topic": "Éducation et adultisme",
+   "selected": false
+  },
+  {
+   "url": "https://theconversation.com/cop31-la-bourse-ne-recompense-plus-la-decouverte-de-reserves-dhydrocarbures-en-cas-dexposition-aux-risques-reglementaires-environnementaux-285014",
+   "source": "theconversation/fr",
+   "section": "france",
+   "title": "COP31 : la Bourse ne récompense plus la découverte de réserves d’hydrocarbures en cas d’exposition aux risques réglementaires environnementaux",
+   "score": 6,
+   "topic": "Majors pétrolières et risques réglementaires",
+   "selected": true
+  },
+  {
+   "url": "https://theconversation.com/est-il-encore-possible-de-stabiliser-la-dette-publique-francaise-296298",
+   "source": "theconversation/fr",
+   "section": "france",
+   "title": "Est-il encore possible de stabiliser la dette publique française ?",
+   "score": 7,
+   "topic": "Stabiliser la dette publique",
+   "selected": true
+  },
+  {
+   "url": "https://theconversation.com/dosto-evskia-la-litterature-russe-au-service-de-la-propagande-296076",
+   "source": "theconversation/fr",
+   "section": "france",
+   "title": "« DostoïevskIA » : la littérature russe au service de la propagande",
+   "score": 6,
+   "topic": "Propagande russe et IA",
+   "selected": false
+  }
+ ]
+}
