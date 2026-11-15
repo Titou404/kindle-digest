@@ -1,0 +1,66 @@
+{
+ "config": "S5",
+ "repeat": 1,
+ "url": "https://www.franceinfo.fr/economie/david-amiel-annonce-une-revalorisation-du-point-d-indice-pour-les-fonctionnaires-aux-plus-bas-salaires_8283416.html",
+ "title": "David Amiel annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "David Amiel est ministre de l'Action et des Comptes publics.",
+    "evidence": "« le ministre de l'Action et des Comptes publics ajoute que les plus bas salaires parmi les fonctionnaires verront également leur point d'indice revalorisé »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il annonce que les fonctionnaires aux plus bas salaires verront leur point d'indice revalorisé.",
+    "evidence": "« les plus bas salaires parmi les fonctionnaires verront également leur point d'indice revalorisé »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le gouvernement a annoncé une hausse du smic à 1502 euros net au 1er décembre.",
+    "evidence": "« le gouvernement a annoncé une hausse du smic à 1502 euros net le 1er décembre »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Selon le ministre, les revalorisations pour les plus bas salaires coûteront « un peu plus d'un milliard d'euros » aux finances publiques.",
+    "evidence": "« Les revalorisations annoncées pour les plus bas salaires coûteront \"un peu plus d'un milliard d'euros\" aux finances publiques, déclare le ministre David Amiel »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le texte ne précise ni le montant de la hausse du point d'indice, ni la date d'entrée en vigueur, ni le nombre d'agents concernés.",
+    "evidence": "L'article ne donne en effet aucun de ces trois éléments.",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "fait_exterieur",
+   "explanation": "L'article ne dit pas que la mesure vise à éviter un rattrapage par le smic ; ce motif est ajouté, seul le coût vient du texte."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 5,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "fait_exterieur",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 2649,
+  "output_tokens": 639,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 4.068,
+  "cost_usd": 0.011688,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rZQT4gRzeokYKwsnTL"
+ }
+}

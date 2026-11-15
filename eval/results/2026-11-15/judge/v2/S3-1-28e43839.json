@@ -1,0 +1,91 @@
+{
+ "config": "S3",
+ "repeat": 1,
+ "url": "https://theconversation.com/le-pastoralisme-risque-ou-solution-face-au-changement-climatique-levolution-du-regard-porte-par-les-cop-climat-296191",
+ "title": "Le pastoralisme, risque ou solution face au changement climatique ? L’évolution du regard porté par les COP climat",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "La COP31 se tient en Turquie du 9 au 20 novembre.",
+    "evidence": "« la COP31 sur le climat, qui se tient en Turquie du 9 au 20 novembre »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "The Conversation reproduit une partie d'un chapitre de l'ouvrage « Penser avec le pastoralisme », publié chez Quae.",
+    "evidence": "« nous reproduisons une partie du chapitre » ; l'ouvrage est publié aux éditions Quae. Le nom The Conversation n'apparaît pas dans l'article.",
+    "verdict": "non_soutenue"
+   },
+   {
+    "claim": "Le texte retrace la place marginale de l'élevage dans l'agenda climatique.",
+    "evidence": "« ce secteur est longtemps resté en marge de l'agenda climatique international »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'élevage n'émerge réellement dans les discussions qu'à partir de 2011.",
+    "evidence": "« l'élevage n'a véritablement émergé dans les discussions qu'à partir de 2011 »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Au 30 septembre 2022, sur 164 pays ayant soumis une NDC, seuls 54 % mentionnaient explicitement l'élevage.",
+    "evidence": "« Au 30 septembre 2022, parmi les 164 pays ayant soumis une NDC, seuls 54 % mentionnaient explicitement l'élevage. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Dans les rapports du Giec, deux visions s'opposent : l'élevage comme système de production, et une approche socioécosystémique attentive aux dimensions sociales et culturelles.",
+    "evidence": "« opposition marquée entre deux visions de l'élevage » ; l'approche prenant en compte « les implications sociales et culturelles » est dite socioécosystémique.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Dans les négociations de la CCNUCC, le pastoralisme est présenté tour à tour comme victime, facteur d'impact ou solution.",
+    "evidence": "« en faisant référence alternativement à cet élevage traditionnel comme victime, facteur d'impact ou solution. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les communautés pastorales sont décrites comme très vulnérables.",
+    "evidence": "« Les communautés pastorales sont souvent décrites comme des groupes particulièrement vulnérables aux impacts du changement climatique »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La mobilité pastorale est reconnue comme stratégie d'adaptation clé dans les zones sèches.",
+    "evidence": "« La mobilité pastorale est reconnue comme stratégie d'adaptation clé » ; il est question de la valorisation des zones sèches.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les auteurs soulignent que la visibilité du pastoralisme reste très limitée dans les décisions officielles.",
+    "evidence": "« sa visibilité reste très limitée dans les groupes de travail et les décisions officielles »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Le chiffre sur les centaines de millions de personnes et la reconnaissance comme solution viennent de l'article ; l'effet sur les politiques internationales est une déduction raisonnable non affirmée."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 10,
+  "unsupported": 1,
+  "supported_rate": 0.9,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 6906,
+  "output_tokens": 1189,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 6.644,
+  "cost_usd": 0.025702,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rUaSgkxqdP5XHqsjey"
+ }
+}

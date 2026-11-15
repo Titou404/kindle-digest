@@ -1,0 +1,101 @@
+{
+ "config": "S2",
+ "repeat": 1,
+ "url": "https://theconversation.com/cop31-la-bourse-ne-recompense-plus-la-decouverte-de-reserves-dhydrocarbures-en-cas-dexposition-aux-risques-reglementaires-environnementaux-285014",
+ "title": "COP31 : la Bourse ne récompense plus la découverte de réserves d’hydrocarbures en cas d’exposition aux risques réglementaires environnementaux",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "L'étude a été publiée dans The Conversation.",
+    "evidence": "Le texte ne nomme pas The Conversation (mentions : « notre étude », « Fourni par l'auteur ») ; la publication n'est pas indiquée.",
+    "verdict": "non_soutenue"
+   },
+   {
+    "claim": "L'étude analyse seize grandes entreprises pétrolières et gazières internationales, dont TotalEnergies, BP, Eni et Petrobras.",
+    "evidence": "« seize grandes entreprises pétrolières et gazières internationales – dont TotalEnergies, British Petroleum, Eni ou Petrobras »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'analyse porte sur la période 2002-2022.",
+    "evidence": "« entre 2002 et 2022 »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La découverte de nouvelles réserves ne fait plus systématiquement monter le cours de Bourse.",
+    "evidence": "« les marchés boursiers ne réagissent pas forcément positivement à l'augmentation de ses réserves en hydrocarbures »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Quand l'exposition au risque réglementaire climatique est forte, les investisseurs anticipent que ces réserves pourraient ne jamais être exploitées.",
+    "evidence": "« Les investisseurs accordent davantage de crédit à la possibilité qu'une partie de ces réserves ne puisse finalement jamais être exploitée. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Selon les scientifiques, environ 58 % des réserves de pétrole et 56 % de celles de gaz ne devraient pas être extraites d'ici 2050.",
+    "evidence": "« les scientifiques prônent l'idée que 58 % des réserves mondiales de pétrole et 56 % de gaz fossile ne doivent pas être extraits d'ici 2050. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Cet objectif de non-extraction vise à respecter l'objectif de 1,5 °C.",
+    "evidence": "« devraient rester dans le sol d'ici à 2050 pour tenir l'objectif de contenir la hausse de température moyenne de la planète à 1,5 °C. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Devon Energy et Pioneer Natural Resources, sociétés américaines, ont eu des rendements boursiers variant selon leur exposition.",
+    "evidence": "« des réserves d'hydrocarbures plus importantes peuvent être associées à des rendements boursiers plus faibles » ; en 2015, rendement de – 47,74 % pour Devon contre – 15,79 % pour Pioneer.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Des investisseurs se désengagent du secteur, comme BNP Paribas ou le fonds de pension new-yorkais.",
+    "evidence": "« BNP Paribas a cessé de financer de nouveaux projets pétrogaziers. Le New York State Common Retirement Fund [...] a acté le désinvestissement »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Plusieurs pays, dont les États-Unis et le Canada, ont récemment assoupli leurs règles climatiques.",
+    "evidence": "« plusieurs pays ont assoupli certaines politiques climatiques [...] C'est le cas des États-Unis [...] Le gouvernement fédéral du Canada a renoncé à son projet de plafonnement »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Cet assouplissement pourrait soutenir les valorisations à court terme.",
+    "evidence": "« À court terme, cette évolution peut réduire la perception du risque réglementaire et soutenir la valorisation boursière »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'incertitude sur les politiques futures demeure.",
+    "evidence": "« les incertitudes entourant les futures politiques climatiques demeurent »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "L'article évoque les actifs échoués en cas de durcissement réglementaire et leur effet sur la valorisation, la phrase en tire l'enjeu sans ajouter de fait nouveau."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 12,
+  "unsupported": 1,
+  "supported_rate": 0.917,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 5703,
+  "output_tokens": 1464,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 7.987,
+  "cost_usd": 0.026046,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rYhfP17FRNUAgfR3q6"
+ }
+}

@@ -1,0 +1,111 @@
+{
+ "config": "S6",
+ "repeat": 1,
+ "url": "https://github.com/Vaibhaav-Tiwari/deepseek-v3-jax",
+ "title": "Show HN: DeepSeek V3 in ~200 lines of pure Jax",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Le projet reproduit l'architecture du rapport technique de DeepSeek-V3 en 190 lignes de JAX pur.",
+    "evidence": "« The architecture from the DeepSeek-V3 technical report in 190 lines of pure JAX, pretrained from scratch on a MacBook Air »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le projet n'utilise ni Flax, ni Equinox, ni PyTorch.",
+    "evidence": "« No Flax, no Equinox, no PyTorch. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le projet est open source.",
+    "evidence": "« Code: MIT. » La licence MIT est une licence open source.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le modèle est entraîné de zéro sur un MacBook Air M5 de 24 Go.",
+    "evidence": "« One run of the default config on a MacBook Air M5 (24 GB) » ; « pretrained from scratch on a MacBook Air »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le modèle compte 36,2 millions de paramètres, dont 13,6 millions actifs par token.",
+    "evidence": "« 36.2M parameters, 13.6M active per token »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le modèle reprend l'attention latente multi-têtes.",
+    "evidence": "Le tableau cite « Multi-head Latent Attention (MLA) » parmi les idées du papier implémentées.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le modèle utilise un mélange d'experts avec un expert partagé et 16 experts routés.",
+    "evidence": "« 1 shared expert that always runs + 16 routed experts, top-4 per token »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le modèle reprend l'équilibrage sans perte auxiliaire et la prédiction multi-tokens.",
+    "evidence": "Le tableau liste « Auxiliary-loss-free balancing » et « Multi-token prediction (MTP) ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'entraînement porte sur 207 romans policiers du domaine public, soit 21,7 millions de tokens.",
+    "evidence": "« 207 books, 21.7M training tokens » ; « All training text is public domain in the United States » ; romans policiers et criminels.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'entraînement dure 12 000 steps en environ 2,6 heures.",
+    "evidence": "« 12,000 steps, ~98M tokens (~4.5 epochs), ~2.6 h »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La perte de validation passe de 5,02 à 3,51.",
+    "evidence": "« Validation loss | 5.02 (step 250) → 3.51 »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "À 2 000 steps, l'équilibrage donne la même perte qu'en son absence (3,921 contre 3,923).",
+    "evidence": "« With balancing on and off, validation loss at step 2000 was the same (3.921 vs 3.923). »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'équilibrage répartit mieux la charge des experts.",
+    "evidence": "« 5.7–6.9% per expert (even is 6.25%) » avec biais contre « 0.09–18.6% per expert » sans, à l'étape 2000.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'auteur précise qu'il s'agit d'une démonstration d'architecture, pas d'un modèle performant.",
+    "evidence": "« This is an architecture demo, not a strong language model. »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle découle du code court et lisible, de l'entraînement sur MacBook Air et de la fonction de démonstration, sans ajouter de fait extérieur."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 14,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 5931,
+  "output_tokens": 1336,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 7.417,
+  "cost_usd": 0.025222,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rTgYmyE2sJemHGKycD"
+ }
+}

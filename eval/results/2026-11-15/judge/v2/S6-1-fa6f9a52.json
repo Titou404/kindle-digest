@@ -1,0 +1,96 @@
+{
+ "config": "S6",
+ "repeat": 1,
+ "url": "https://github.com/Tthanh2k6/turbo-browser-mcp",
+ "title": "Show HN: Turbo-Browser-MCP – Batch forms, DOM deltas and submit guards for MCP",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Turbo-Browser-MCP est un serveur MCP basé sur Playwright",
+    "evidence": "turbo-browser-mcp is a Playwright-based Model Context Protocol (MCP) server built to cut LLM token waste and multi-turn latency in browser automation.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il est conçu pour réduire le gaspillage de jetons et la latence des agents LLM pilotant un navigateur",
+    "evidence": "built to cut LLM token waste and multi-turn latency in browser automation.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il regroupe 25 à 33 outils élémentaires en 10 outils par lots",
+    "evidence": "It consolidates 25-33 fine-grained browser primitives into 10 batched tools",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il offre des instantanés DOM différentiels, le remplissage de formulaires en un tour et l'envoi de fichiers depuis le disque sans Base64",
+    "evidence": "featuring delta DOM snapshots, single-turn React/Shadow DOM/iframe form prefill, direct disk file uploads (no Base64 in context)",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un garde-fou bloque par défaut les validations",
+    "evidence": "a default human-in-the-loop Submit guard; Final actions resembling Submit, Publish... are blocked unless allowSubmit: true is explicitly passed",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les chiffres proviennent de benchmarks locaux",
+    "evidence": "All figures below come from benchmarks/benchmark.mjs (npm run benchmark) running headless Chromium locally",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un formulaire de 10 champs passe de 11 tours à un seul",
+    "evidence": "10-Field Complex Form + Snapshot: 11 turns ... | 1 turn (82 ms, 811 tok) | 7x faster, 11 -> 1 turns",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le formulaire de 10 champs économise 93 % de jetons",
+    "evidence": "93.4% direct / 98.9% cumulative",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un instantané après clic coûte 56 jetons au lieu de 3 582",
+    "evidence": "Post-Click Delta Snapshot: 3,582 tok full ARIA rescan | 56 tok changed lines (18 ms)",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le schéma des outils pèse 23 % de moins que Playwright MCP",
+    "evidence": "3,010 tok stripped ... 23.2% vs Playwright / 55.3% vs DevTools",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'auteur reconnaît que Chrome DevTools MCP reste utile pour Lighthouse et le profilage",
+    "evidence": "When to keep Chrome DevTools MCP alongside turbo-browser-mcp: chrome-devtools-mcp provides Lighthouse audits, performance trace analysis, CSS computed style panels, and V8 heap snapshots.",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle découle des gains de jetons, de latence tours et du garde-fou de soumission décrits dans l'article, sans ajouter de fait extérieur."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 11,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 11260,
+  "output_tokens": 1169,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 6.603,
+  "cost_usd": 0.03421,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rVpcWhENTiJEuKLFyH"
+ }
+}

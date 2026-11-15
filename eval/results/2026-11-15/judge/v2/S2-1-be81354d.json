@@ -1,0 +1,111 @@
+{
+ "config": "S2",
+ "repeat": 1,
+ "url": "https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature",
+ "title": "Advancing science and engineering with Antigravity's /teamwork",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Le 13 novembre 2026, Vahab Mirrokni, vice-président de Google Research, présente les résultats de /teamwork.",
+    "evidence": "« November 13, 2026 Vahab Mirrokni, Google Fellow and VP, Google Research. We share recent results from Antigravity’s /teamwork multiagent systems »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "/teamwork est un système multi-agents d'Antigravity qui aide à résoudre des problèmes ouverts en maths, chimie, logiciels système et ML.",
+    "evidence": "« multiagent systems, which enhance human-AI collaborations to solve open problems across mathematics, chemistry, systems software, and ML engineering »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les équipes de Google et d'universités partenaires utilisent les modèles Gemini 4 (Argon, Carbon, Hydrogen).",
+    "evidence": "« teams across Google and academic partner institutions... Using Gemini 4 Argon, Gemini 4 Carbon, Gemini 4 Hydrogen »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le système associe des explorations parallèles à des vérificateurs automatiques comme Lean 4 ou des suites de tests.",
+    "evidence": "« pairing parallel exploration with dedicated falsifiers (e.g., the Lean 4 proof checker, unmodified software test suites...) »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il a contribué à prouver la conjecture de Courtade–Kumar de 2013.",
+    "evidence": "« used /teamwork's Long Proof pattern... to prove information theory's 2013 Courtade–Kumar conjecture in full generality »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La preuve de Courtade–Kumar a été formalisée en Lean 4 sur 50 millions de lignes.",
+    "evidence": "« The team formalized the entire proof in Lean 4, producing 50 million lines of code. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il a produit une formalisation des conjectures de Weil d'environ 1,8 million de lignes.",
+    "evidence": "« This formalization spans about 1.8 million lines of Lean, produced across 28,800 subagent invocations. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il y a d'autres résultats sur des problèmes ouverts depuis des décennies.",
+    "evidence": "« Birkhoff conjecture, a dynamical-systems problem open since 1927 »; « open for more than 50 years »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "En chimie, une structure moléculaire est déterminée avec 95 % de réussite au premier essai.",
+    "evidence": "« we achieved 95% top-1 exact match and 100% top-3 accuracy on complex benchmark molecules »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le score est d'environ la moitié pour un agent seul.",
+    "evidence": "« nearly doubling single-agent performance »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Des noyaux TPU sont plus rapides que le code C++ d'origine.",
+    "evidence": "Les noyaux TPU sont comparés à des implémentations de référence (accélérations de 8x à 15x, 4,09x), pas au code C++ ; seul le décodeur Rust est comparé au C++.",
+    "verdict": "non_soutenue"
+   },
+   {
+    "claim": "La réécriture en Rust du décodeur AV1 est plus rapide que le code C++ d'origine.",
+    "evidence": "« the Rust port became 20-30% faster than the original C++ code and hand-optimized assembly code on both x86_64 and ARM. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Google indique que des chercheurs externes peuvent utiliser ces outils dès maintenant.",
+    "evidence": "« External scientists and developers can use Gemini 4 models with /teamwork and /boost in Antigravity and Deep Review today. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "10 000 chercheurs académiques reçoivent six mois d'accès gratuit.",
+    "evidence": "« We have also opened applications giving 10,000 academic researchers six months of free access to our highest usage tier. »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle découle des résultats vérifiés par Lean 4 ou des tests et de la mise à disposition des outils, sans ajouter de fait extérieur."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 14,
+  "unsupported": 1,
+  "supported_rate": 0.929,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 9515,
+  "output_tokens": 1549,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 8.829,
+  "cost_usd": 0.034519999999999995,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rXQZU1WXJbdmkDSVRe"
+ }
+}

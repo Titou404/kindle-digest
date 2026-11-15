@@ -1,0 +1,111 @@
+{
+ "config": "S1",
+ "repeat": 1,
+ "url": "https://theconversation.com/cop31-la-bourse-ne-recompense-plus-la-decouverte-de-reserves-dhydrocarbures-en-cas-dexposition-aux-risques-reglementaires-environnementaux-285014",
+ "title": "COP31 : la Bourse ne récompense plus la découverte de réserves d’hydrocarbures en cas d’exposition aux risques réglementaires environnementaux",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "L'étude est publiée dans The Conversation.",
+    "evidence": "L'article ne mentionne nulle part The Conversation ; seul « Fourni par l'auteur » et « notre étude » apparaissent.",
+    "verdict": "non_soutenue"
+   },
+   {
+    "claim": "L'étude analyse seize grandes entreprises pétrolières et gazières internationales, dont TotalEnergies, BP, Eni et Petrobras.",
+    "evidence": "« seize grandes entreprises pétrolières et gazières internationales – dont TotalEnergies, British Petroleum, Eni ou Petrobras »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'analyse porte sur la période 2002-2022.",
+    "evidence": "« entre 2002 et 2022 »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La découverte de nouvelles réserves ne fait plus systématiquement grimper la valeur boursière de ces groupes.",
+    "evidence": "« Les réserves de pétrole et de gaz ne sont plus toujours une bonne nouvelle pour la bourse. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Quand l'exposition au risque réglementaire climatique est forte, les investisseurs anticipent que certaines réserves ne seront jamais exploitées, ce qui pèse sur les rendements.",
+    "evidence": "« Les investisseurs accordent davantage de crédit à la possibilité qu'une partie de ces réserves ne puisse finalement jamais être exploitée. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Pour respecter l'objectif de 1,5 °C, près de 60 % des réserves mondiales de pétrole et de gaz devraient rester dans le sol d'ici 2050.",
+    "evidence": "« Près de 60 % des réserves mondiales de pétrole et de gaz fossile devraient rester dans le sol d'ici à 2050 pour tenir l'objectif »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "En 2026, les investissements mondiaux seraient d'un peu moins de 500 milliards de dollars pour le pétrole.",
+    "evidence": "« les investissements mondiaux dans le pétrole devraient s'établir à un peu moins de 500 milliards de dollars »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "En 2026, les investissements dans le gaz seraient d'environ 330 milliards de dollars.",
+    "evidence": "« ceux consacrés au gaz devraient s'établir à près de 330 milliards de dollars »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le résumé présente ces investissements de 2026 comme acquis (« restent élevés en 2026 »).",
+    "evidence": "L'article parle de prévisions (« devraient s'établir »), pas de montants constatés ; le résumé en fait un état de fait.",
+    "verdict": "non_soutenue"
+   },
+   {
+    "claim": "BNP Paribas est cité comme exemple de désinvestissement.",
+    "evidence": "« BNP Paribas a cessé de financer de nouveaux projets pétrogaziers. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un fonds de pension new-yorkais est cité comme exemple de désinvestissement.",
+    "evidence": "« Le New York State Common Retirement Fund, le troisième plus grand fonds de pension public états-unien, a acté le désinvestissement »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "TotalEnergies a annoncé en 2020 une dépréciation de 7 milliards de dollars sur ses actifs canadiens.",
+    "evidence": "« en 2020, le groupe français TotalEnergies a annoncé une dépréciation de 7 milliards de dollars de ses actifs pétroliers situés au Canada »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les États-Unis et le Canada ont récemment assoupli leurs politiques climatiques.",
+    "evidence": "« les États-Unis qui a annulé en 2025 une réglementation... Le gouvernement fédéral du Canada a renoncé à son projet de plafonnement »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Cet assouplissement peut soutenir la valorisation à court terme, mais l'incertitude demeure.",
+    "evidence": "« À court terme, cette évolution peut réduire la perception du risque réglementaire et soutenir la valorisation boursière »; « les incertitudes... demeurent »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle reprend les actifs échoués, la valeur des majors et le décalage entre investissements et objectifs climatiques, qui découlent des faits de l'article sans ajout externe."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 14,
+  "unsupported": 2,
+  "supported_rate": 0.857,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 5760,
+  "output_tokens": 1615,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 8.701,
+  "cost_usd": 0.02767,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rX32ezDXMfSuHtRQeP"
+ }
+}

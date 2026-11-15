@@ -1,0 +1,106 @@
+{
+ "config": "S1",
+ "repeat": 1,
+ "url": "https://www.franceinfo.fr/politique/agression-d-un-responsable-universitaire-tout-ca-s-inscrit-dans-un-contexte-de-violence-croissante-estime-le-ministre-de-l-enseignement-superieur-et-de-la-recherche-philippe-baptiste_8283326.html",
+ "title": "Agression d’un responsable universitaire : \"Tout ça s'inscrit dans un contexte de violence croissante\", estime le ministre de l'Enseignement supérieur et de la Recherche Philippe Baptiste",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Philippe Baptiste, ministre de l'Enseignement supérieur et de la Recherche, était l'invité du 7.40 de franceinfo dimanche 15 novembre.",
+    "evidence": "« était l'invité du 7.40 de ce dimanche 15 novembre » ; le texte est issu de franceinfo.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le vice-président de l'université de Versailles Saint-Quentin-en-Yvelines a été agressé à l'arme blanche vendredi soir dans son bureau.",
+    "evidence": "« L'agression a eu lieu vendredi soir en début de soirée à son bureau. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Selon le ministre, la victime sortait de l'hôpital et est choquée et traumatisée.",
+    "evidence": "« Il était en train de sortir de l'hôpital... Il est évidemment choqué et traumatisé par ce qui s'est passé. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'agresseur n'a pas encore été retrouvé et une enquête est en cours.",
+    "evidence": "« L'agresseur n'a pas été retrouvé. » et « Une enquête est en cours et il faut attendre les résultats. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il estime que l'agression s'inscrit dans un contexte de violence croissante autour des établissements.",
+    "evidence": "« tout ça s'inscrit évidemment dans un contexte qui est un contexte de violence croissante aux abords des établissements »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il affirme qu'aucun lien ne peut être établi pour l'instant avec le mouvement social.",
+    "evidence": "« l'agresseur n'a pas été retrouvé, donc c'est absolument impossible de faire un lien entre quoi que ce soit. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Plusieurs présidents d'universités ont été menacés de mort.",
+    "evidence": "« j'ai plusieurs présidents d'universités en France qui ont été menacés de mort. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La présidente de l'université de Lorraine a vu ses coordonnées diffusées sur les réseaux sociaux.",
+    "evidence": "« La présidente de l'université de Lorraine, ses coordonnées personnelles ont été divulguées sur les réseaux sociaux. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il rejette un semestre blanc ou une validation automatique à 10 sur 20, jugée illégale.",
+    "evidence": "« Il n'est pas question d'avoir un semestre blanc ou d'un 10 sur 20 améliorable... D'abord c'est illégal »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il admet qu'il faut adapter les modalités de contrôle pédagogique.",
+    "evidence": "« Il faut adapter les modalités de ce qu'on appelle de contrôle pédagogique, c'est-à-dire adapter les examens »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il cite 1 milliard d'euros pour les universités, 20 000 places en plus et le repas à un euro.",
+    "evidence": "« 1 milliard d'euros d'argent frais pour les universités... 20 000 places en plus... assurer le repas à un euro. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il indique que 20 à 25 % des universités sont encore perturbées, chiffre qu'il présente comme un indicateur global.",
+    "evidence": "L'intervieweur avance « entre 20 et 25 % des universités perturbées » ; le ministre répond « c'est un indicateur... une enveloppe globale du mouvement ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il conclut que la violence doit cesser.",
+    "evidence": "« il faut que la violence cesse » et « il faut que ça s'arrête »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "La montée des tensions, les menaces et le conflit sur les examens découlent des propos du ministre, mais l'effet sur la suite de l'année universitaire est une projection absente du texte."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 13,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 5738,
+  "output_tokens": 1456,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 7.753,
+  "cost_usd": 0.026036,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rVFCq3HexoXw2ADPBF"
+ }
+}

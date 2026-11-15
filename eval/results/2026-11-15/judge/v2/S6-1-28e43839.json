@@ -1,0 +1,86 @@
+{
+ "config": "S6",
+ "repeat": 1,
+ "url": "https://theconversation.com/le-pastoralisme-risque-ou-solution-face-au-changement-climatique-levolution-du-regard-porte-par-les-cop-climat-296191",
+ "title": "Le pastoralisme, risque ou solution face au changement climatique ? L’évolution du regard porté par les COP climat",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Le texte est publié à l'occasion de la COP31 et reproduit un extrait d'un chapitre de l'ouvrage « Penser avec le pastoralisme ».",
+    "evidence": "« À l’occasion de la COP31 sur le climat [...] nous reproduisons une partie du chapitre consacré à la place du pastoralisme »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le chapitre porte sur la place du pastoralisme dans le Giec et les négociations climatiques.",
+    "evidence": "« la place du pastoralisme pour les experts du [Giec], les COP climat et la diplomatie mondiale »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'élevage est resté longtemps en marge de l'agenda climatique.",
+    "evidence": "« ce secteur est longtemps resté en marge de l’agenda climatique international dans le cadre du Giec »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Au 30 septembre 2022, seuls 54 % des 164 pays ayant soumis une NDC mentionnaient l'élevage.",
+    "evidence": "« Au 30 septembre 2022, parmi les 164 pays ayant soumis une NDC, seuls 54 % mentionnaient explicitement l’élevage. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les rapports du Giec opposent une vision techniciste à une approche socioécosystémique.",
+    "evidence": "« Une deuxième opposition se dessine entre une approche techniciste [...] et une approche prenant mieux en charge la complexité. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Ce n'est qu'en 2022 que l'adaptation, la vulnérabilité et la responsabilité sont vraiment intégrées dans les rapports du Giec.",
+    "evidence": "« ce n’est qu’à partir des rapports publiés en 2022 que les questions d’adaptation, de vulnérabilité et de responsabilité sont véritablement intégrées »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Dans les textes de la Convention-cadre de l'ONU, le pastoralisme reste peu visible comme catégorie propre.",
+    "evidence": "« sa visibilité reste très limitée [...] toujours sans mention explicite du pastoralisme comme catégorie spécifique. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le pastoralisme y est présenté tour à tour comme victime, facteur d'impact ou solution.",
+    "evidence": "« en faisant référence alternativement à cet élevage traditionnel comme victime, facteur d’impact ou solution. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le registre de la solution est le plus structurant récemment, notamment grâce à la mobilité pastorale.",
+    "evidence": "« Le troisième registre, et le plus structurant dans les cadres UNFCCC récents, positionne le pastoralisme « durable » [...] comme des solutions »; « La mobilité pastorale est reconnue comme stratégie d’adaptation clé »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "L'évolution vers la solution et les centaines de millions de personnes vivant du pastoralisme viennent du texte, mais l'influence sur les politiques d'adaptation est une déduction non affirmée par l'article."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 9,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 6782,
+  "output_tokens": 1164,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 6.74,
+  "cost_usd": 0.025203999999999997,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rYVcM68FQXcCmPTm8Y"
+ }
+}

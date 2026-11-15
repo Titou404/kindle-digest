@@ -1,0 +1,86 @@
+{
+ "config": "S5",
+ "repeat": 1,
+ "url": "https://www.bbc.co.uk/news/articles/cwvg2l312ylqo",
+ "title": "US has floated Ukraine ceding Donbas for Nato membership, Zelensky says",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Zelensky affirme que des négociateurs américains ont évoqué un retrait ukrainien des forces restantes du Donbas en échange d'une adhésion à l'Otan.",
+    "evidence": "\"US negotiators have touted the idea of Ukraine withdrawing its remaining forces from the eastern Donbas region in exchange for Nato membership, Volodymyr Zelensky has said.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Selon Zelensky, c'est la première fois que cette option est soulevée.",
+    "evidence": "\"This was the first time this had been raised,\" Zelensky said.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Washington ne confirme pas les propos de Zelensky.",
+    "evidence": "\"The US has not confirmed the Ukrainian president's comments.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un responsable américain parle de « nombreuses idées » et d'un accord final à valider par les deux parties.",
+    "evidence": "\"many ideas continue to be discussed but any final deal will have to be agreed to by both parties\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Zelensky soumettrait à référendum une proposition précise avec garanties de sécurité, sans limites pour l'armée et avec des fonds de reconstruction.",
+    "evidence": "\"if he received a specific proposal that contained security guarantees, no constraints on Ukraine's military and funds to rebuild the country, he would put it to a referendum.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Jared Kushner a ensuite appelé à la confidentialité.",
+    "evidence": "\"Hours after Zelensky's remarks, Jared Kushner appeared keen to dampen down... urging \"confidentiality\" in a sensitive process.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Moscou contrôle l'essentiel du Donbas.",
+    "evidence": "\"currently controls most of the industrial Donbas region.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Moscou n'a pas changé de position.",
+    "evidence": "\"Comments by both Putin and Kremlin officials suggest that Russia's position on the war has not shifted.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La Russie refuse un cessez-le-feu avant un accord final incluant des cessions territoriales.",
+    "evidence": "\"it will not agree to a ceasefire until a final peace deal is in place that would include Ukraine ceding control\"",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "fait_exterieur",
+   "explanation": "L'article ne dit pas que Moscou a « fermement rejeté » cette ouverture précise ni que les négociations sont « bloquées » ; ce sont des ajouts d'interprétation, la position russe étant décrite comme inchangée, sans réponse à cette idée."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 9,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "fait_exterieur",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 3873,
+  "output_tokens": 993,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 5.602,
+  "cost_usd": 0.017675999999999997,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rYzTvbLhyb1tGELCEK"
+ }
+}

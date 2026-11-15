@@ -1,0 +1,111 @@
+{
+ "config": "S7",
+ "repeat": 1,
+ "url": "https://www.franceinfo.fr/politique/agression-d-un-responsable-universitaire-tout-ca-s-inscrit-dans-un-contexte-de-violence-croissante-estime-le-ministre-de-l-enseignement-superieur-et-de-la-recherche-philippe-baptiste_8283326.html",
+ "title": "Agression d’un responsable universitaire : \"Tout ça s'inscrit dans un contexte de violence croissante\", estime le ministre de l'Enseignement supérieur et de la Recherche Philippe Baptiste",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Philippe Baptiste, ministre de l'Enseignement supérieur et de la Recherche, était l'invité du 7.40 de franceinfo dimanche 15 novembre.",
+    "evidence": "\"Philippe Baptiste, ministre de l'Enseignement supérieur et de la Recherche, était l'invité du 7.40 de ce dimanche 15 novembre.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le vice-président de l'université de Versailles Saint-Quentin-en-Yvelines a été agressé à l'arme blanche.",
+    "evidence": "\"l'agression à l'arme blanche du Vice-président de l'université de Versailles Saint-Quentin-en-Yvelines.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'agression a eu lieu vendredi soir dans son bureau.",
+    "evidence": "\"L'agression a eu lieu vendredi soir en début de soirée à son bureau.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Selon le ministre, la victime sortait de l'hôpital, se remet et est choquée et traumatisée.",
+    "evidence": "\"Il était en train de sortir de l'hôpital. Il est en train de se remettre. Il est évidemment choqué et traumatisé\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'agresseur n'a pas été retrouvé et une enquête est en cours.",
+    "evidence": "\"l'agresseur n'a pas été retrouvé\" ; \"Une enquête est en cours et il faut attendre les résultats.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le ministre dit qu'il est impossible de faire un lien avec quoi que ce soit, faute d'agresseur retrouvé.",
+    "evidence": "\"l'agresseur n'a pas été retrouvé, donc c'est absolument impossible de faire un lien entre quoi que ce soit.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il affirme que cela s'inscrit dans un contexte de violence croissante aux abords des établissements.",
+    "evidence": "\"tout ça s'inscrit évidemment dans un contexte qui est un contexte de violence croissante aux abords des établissements.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il cite plusieurs présidents d'universités menacés de mort, dont la présidente de l'université de Lorraine, dont les coordonnées ont été divulguées sur les réseaux sociaux.",
+    "evidence": "\"plusieurs présidents d'universités en France qui ont été menacés de mort. La présidente de l'université de Lorraine, ses coordonnées personnelles ont été divulguées\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il exclut un semestre blanc, qu'il juge illégal.",
+    "evidence": "\"Il n'est pas question d'avoir un semestre blanc [...] D'abord c'est illégal\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les modalités de contrôle pédagogique doivent être adaptées sans supprimer l'évaluation individuelle.",
+    "evidence": "\"Il faut adapter les modalités de ce qu'on appelle de contrôle pédagogique\" ; \"il doit y avoir une évaluation individuelle de chaque étudiant.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il défend le dialogue du gouvernement avec les étudiants et cite 4 milliards d'euros de prêts, 1 milliard pour la rénovation, 20 000 places en plus et le repas à un euro.",
+    "evidence": "\"4 milliards d'euros de prêts [...] 1 milliard d'euros d'argent frais pour les universités, pour la rénovation, 20 000 places en plus [...] le repas à un euro.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il conteste la notion de stratégie de pourrissement.",
+    "evidence": "\"le gouvernement jouait une stratégie de pourrissement. Mais pardon, pas du tout !\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il qualifie de minorité les auteurs des violences.",
+    "evidence": "\"les violences sont dues en général à une minorité, une toute petite minorité de personnes\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les 20 à 25 % d'universités perturbées sont un indicateur ministériel qui compte une université perturbée dès qu'un bâtiment l'est, non un chiffre d'étudiants touchés.",
+    "evidence": "\"c'est un chiffre qui vient de mon ministère [...] dès que vous avez un bâtiment [...] perturbée\" ; \"Ça ne veut pas dire qu'il y a 25 % des étudiants qui sont touchés\"",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "La poursuite de la mobilisation malgré les propositions est dite par le ministre et la question des violences est centrale dans l'entretien, mais la formulation de l'enjeu est une synthèse du résumeur."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 14,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 5828,
+  "output_tokens": 1762,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 10.273,
+  "cost_usd": 0.029276,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4qsWdGcpVc9EoSneG7t"
+ }
+}

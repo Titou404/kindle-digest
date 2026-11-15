@@ -1,0 +1,91 @@
+{
+ "config": "S5",
+ "repeat": 1,
+ "url": "https://www.franceinfo.fr/politique/agression-d-un-responsable-universitaire-tout-ca-s-inscrit-dans-un-contexte-de-violence-croissante-estime-le-ministre-de-l-enseignement-superieur-et-de-la-recherche-philippe-baptiste_8283326.html",
+ "title": "Agression d’un responsable universitaire : \"Tout ça s'inscrit dans un contexte de violence croissante\", estime le ministre de l'Enseignement supérieur et de la Recherche Philippe Baptiste",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Philippe Baptiste était invité de franceinfo le 15 novembre.",
+    "evidence": "« était l'invité du 7.40 de ce dimanche 15 novembre » ; l'article est de franceinfo.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il est revenu sur l'agression à l'arme blanche du vice-président de l'université de Versailles Saint-Quentin-en-Yvelines.",
+    "evidence": "« l'agression à l'arme blanche du Vice-président de l'université de Versailles Saint-Quentin-en-Yvelines ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'agression a eu lieu vendredi soir dans son bureau.",
+    "evidence": "« L'agression a eu lieu vendredi soir en début de soirée à son bureau. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'agresseur n'a pas été retrouvé et le ministre refuse donc de faire un lien avec la mobilisation étudiante.",
+    "evidence": "« l'agresseur n'a pas été retrouvé, donc c'est absolument impossible de faire un lien entre quoi que ce soit. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il évoque un contexte de violence croissante.",
+    "evidence": "« tout ça s'inscrit évidemment dans un contexte qui est un contexte de violence croissante aux abords des établissements. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Plusieurs présidents d'université ont reçu des menaces de mort.",
+    "evidence": "« j'ai plusieurs présidents d'universités en France qui ont été menacés de mort. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il exclut un semestre blanc ou un « 10 sur 20 améliorable ».",
+    "evidence": "« Il n'est pas question d'avoir un semestre blanc ou d'un 10 sur 20 améliorable »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il accepte d'adapter les examens.",
+    "evidence": "« Il faut adapter les modalités de ce qu'on appelle de contrôle pédagogique, c'est-à-dire adapter les examens »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il cite 4 milliards d'euros de prêts, 1 milliard pour les universités, 20 000 places supplémentaires et la réindexation des bourses.",
+    "evidence": "« 4 milliards d'euros de prêts [...] 1 milliard d'euros d'argent frais pour les universités [...] 20 000 places en plus, réindexation [...] des bourses étudiantes »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Selon son ministère, 20 à 25 % des universités sont encore perturbées.",
+    "evidence": "« entre 20 et 25 % des universités perturbées » ; « c'est un chiffre qui vient de mon ministère »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Le « sans équivalent » vient du ministre, et la pression sur le gouvernement est une déduction raisonnable du dialogue en cours et de la mobilisation qui se poursuit, sans fait nouveau."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 10,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 5529,
+  "output_tokens": 1109,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 6.304,
+  "cost_usd": 0.022148,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rTicJHLRWchZ1Vb8mr"
+ }
+}

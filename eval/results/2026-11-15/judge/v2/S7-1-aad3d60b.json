@@ -1,0 +1,86 @@
+{
+ "config": "S7",
+ "repeat": 1,
+ "url": "https://www.bbc.co.uk/news/articles/cwvg2l312ylqo",
+ "title": "US has floated Ukraine ceding Donbas for Nato membership, Zelensky says",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Zelensky affirme que des négociateurs américains ont évoqué un retrait ukrainien du Donbass contre une adhésion à l'OTAN.",
+    "evidence": "\"US negotiators have touted the idea of Ukraine withdrawing its remaining forces from the eastern Donbas region in exchange for Nato membership, Volodymyr Zelensky has said.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Zelensky a cité la question posée par les Américains, qui l'ont soulevée pour la première fois.",
+    "evidence": "\"The Americans raised a question: 'What if Ukraine joins Nato? Would Ukraine withdraw from Donbas?' This was the first time this had been raised\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il soumettrait à un référendum une proposition précise incluant garanties de sécurité, absence de contraintes sur l'armée et fonds de reconstruction.",
+    "evidence": "\"if he received a specific proposal that contained security guarantees, no constraints on Ukraine's military and funds to rebuild the country, he would put it to a referendum.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les États-Unis n'ont pas confirmé ces propos.",
+    "evidence": "\"The US has not confirmed the Ukrainian president's comments.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un responsable américain a dit que de nombreuses idées sont discutées mais que tout accord final devra être approuvé par les deux parties.",
+    "evidence": "\"many ideas continue to be discussed but any final deal will have to be agreed to by both parties\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Kushner et Witkoff ont rencontré Zelensky à Dublin après des discussions avec Poutine à Moscou.",
+    "evidence": "\"US envoys Jared Kushner and Steve Witkoff travelled to the Irish capital, Dublin, on Thursday to meet Zelensky, after a round of talks with Putin in Moscow.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Peu après les propos de Zelensky, Kushner a appelé à la confidentialité et évoqué des propositions maximalistes.",
+    "evidence": "\"Hours after Zelensky's remarks, Jared Kushner... urging \"confidentiality\"... \"maximalist\" proposals had been reported from the negotiations\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La Russie occupe environ un cinquième du territoire ukrainien.",
+    "evidence": "\"Russia currently occupies roughly a fifth of Ukrainian territory\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La Russie exige, avant tout cessez-le-feu, que l'Ukraine cède les parties du Donbass non capturées ainsi que la Crimée.",
+    "evidence": "\"it will not agree to a ceasefire until a final peace deal is in place that would include Ukraine ceding control of those parts of the Donbas Russian troops have not captured, in addition to the Crimean peninsula\"",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle s'appuie sur des faits de l'article (Kyiv refuse de céder du territoire souverain, Russie inchangée) sans ajouter d'élément extérieur."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 9,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 4118,
+  "output_tokens": 1159,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 6.782,
+  "cost_usd": 0.019826,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rUoGNEazDbv3K37ABP"
+ }
+}

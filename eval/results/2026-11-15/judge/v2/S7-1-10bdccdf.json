@@ -1,0 +1,96 @@
+{
+ "config": "S7",
+ "repeat": 1,
+ "url": "https://www.bbc.co.uk/news/articles/ckz74jzpy18do",
+ "title": "Trump, Putin and Xi plan historic joint meeting in China next week, White House says",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "La Maison Blanche affirme que Trump, Poutine et Xi prévoient une rencontre historique en marge du sommet de l'APEC à Shenzhen, en Chine, la semaine prochaine.",
+    "evidence": "« Donald Trump, Vladimir Putin and Xi Jinping are planning to meet on the sidelines of a summit in China next week, the White House has said. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Selon la porte-parole Olivia Wales, Trump abordera notamment la réduction des armes nucléaires, dont il juge la prolifération très dangereuse.",
+    "evidence": "« he will discuss the reduction of nuclear weapons in the world, whose proliferation President Trump believes is very dangerous »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'Iran pourrait aussi être évoqué, mais pas l'Ukraine.",
+    "evidence": "« It is understood Iran may also be discussed during the meeting of the world's biggest nuclear powers, but not Ukraine. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La Russie a confirmé la rencontre, tandis que la Chine n'a pas encore réagi.",
+    "evidence": "« Russia has confirmed the meeting. China has yet to react. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un haut responsable américain non identifié a indiqué qu'aucun accord n'était attendu.",
+    "evidence": "« No agreement was expected to follow the talks, an unnamed, senior US official said »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Trump arrivera à Shenzhen tard mercredi pour un sommet de deux jours réunissant 21 pays.",
+    "evidence": "« Trump will arrive in Shenzhen late on Wednesday for the two-day summit between the 21 member states. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Trump doit avoir des entretiens bilatéraux avec Xi jeudi, leur quatrième rencontre depuis son retour à la présidence en 2025.",
+    "evidence": "« bilateral talks with Xi on Thursday - their fourth meeting since the US president returned to office in 2025. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le traité américano-russe de contrôle des armements nucléaires a expiré en février, laissant les plus grands arsenaux sans cadre majeur.",
+    "evidence": "« A nuclear weapons control treaty between the US and Russia expired in February, leaving the world's biggest nuclear arsenals without major guardrails »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Trump a dit qu'il pourrait remplacer le traité par un accord incluant la Chine.",
+    "evidence": "« Trump however said he could replace the deal with a better agreement that included China, which has been building up its arsenal. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Selon la « médiatrice » de la Maison Blanche, la visite comprendra aussi un sommet de l'ASEAN aux Philippines mardi.",
+    "evidence": "Wales est la porte-parole (spokeswoman), pas « médiatrice » ; le reste (sommet de l'Asean aux Philippines mardi) est dit dans l'article.",
+    "verdict": "non_soutenue"
+   },
+   {
+    "claim": "Les médias d'État chinois ont annoncé que Xi participerait à des entretiens bilatéraux en marge de l'APEC, mais n'ont pas mentionné la rencontre trilatérale.",
+    "evidence": "« Chinese state media reported on Friday that Xi would take part in ",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "L'expiration du traité en février et l'absence de cadre majeur viennent de l'article, et l'enjeu pour le contrôle des armes nucléaires en découle sans ajout."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 11,
+  "unsupported": 1,
+  "supported_rate": 0.909,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 3671,
+  "output_tokens": 1326,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 7.481,
+  "cost_usd": 0.020602,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rVpLPbREbYicDSZtZG"
+ }
+}

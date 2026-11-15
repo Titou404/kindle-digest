@@ -1,0 +1,86 @@
+{
+ "config": "S4",
+ "repeat": 1,
+ "url": "https://www.bbc.co.uk/news/articles/cwvg2l312ylqo",
+ "title": "US has floated Ukraine ceding Donbas for Nato membership, Zelensky says",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Selon Zelensky, des négociateurs américains ont évoqué un retrait ukrainien des forces restantes du Donbas en échange d'une adhésion à l'OTAN.",
+    "evidence": "US negotiators have touted the idea of Ukraine withdrawing its remaining forces from the eastern Donbas region in exchange for Nato membership, Volodymyr Zelensky has said.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Zelensky a affirmé que les Américains avaient posé la question pour la première fois lors de leur rencontre.",
+    "evidence": "\"The Americans raised a question: 'What if Ukraine joins Nato? Would Ukraine withdraw from Donbas?' This was the first time this had been raised,\" Zelensky said.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Zelensky a dit qu'avec une proposition précise incluant garanties de sécurité, aucune contrainte sur l'armée et fonds de reconstruction, il la soumettrait à référendum.",
+    "evidence": "if he received a specific proposal that contained security guarantees, no constraints on Ukraine's military and funds to rebuild the country, he would put it to a referendum.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les États-Unis n'ont pas confirmé ces propos.",
+    "evidence": "The US has not confirmed the Ukrainian president's comments.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un responsable américain a dit que de nombreuses idées étaient discutées mais que tout accord final devrait être accepté par les deux parties.",
+    "evidence": "\"many ideas continue to be discussed but any final deal will have to be agreed to by both parties\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La Russie contrôle actuellement la plupart du Donbas industriel et a envahi l'Ukraine en février 2022.",
+    "evidence": "Russia launched a full-scale invasion of Ukraine in February 2022 and currently controls most of the industrial Donbas region.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La Russie maintient ses conditions : limites à l'armée ukrainienne, concessions territoriales et neutralité.",
+    "evidence": "Russia's position on the war has not shifted. It has previously proposed limits on the size of Ukraine's military, territorial concessions and Kyiv's guaranteed neutrality",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Jared Kushner a ensuite appelé à la confidentialité, évoquant des propositions « maximalistes ».",
+    "evidence": "Jared Kushner appeared keen to dampen down any US offer of Nato membership for Ukraine, urging \"confidentiality\"... \"maximalist\" proposals had been reported",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Kushner est présenté comme « conseiller américain ».",
+    "evidence": "L'article le qualifie d'envoyé américain (US envoy), pas de conseiller.",
+    "verdict": "non_soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "L'enjeu pour les conditions d'un accord de paix et la sécurité européenne découle des faits de l'article, sans ajout de fait nouveau."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 9,
+  "unsupported": 1,
+  "supported_rate": 0.889,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 3991,
+  "output_tokens": 1113,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 6.163,
+  "cost_usd": 0.019111999999999997,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rTmFJboGYzrBkykd2X"
+ }
+}

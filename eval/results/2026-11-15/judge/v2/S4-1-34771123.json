@@ -1,0 +1,76 @@
+{
+ "config": "S4",
+ "repeat": 1,
+ "url": "https://www.franceinfo.fr/economie/david-amiel-annonce-une-revalorisation-du-point-d-indice-pour-les-fonctionnaires-aux-plus-bas-salaires_8283416.html",
+ "title": "David Amiel annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "David Amiel est ministre de l'Action et des Comptes publics",
+    "evidence": "« le ministre de l'Action et des Comptes publics ajoute que les plus bas salaires parmi les fonctionnaires verront également leur point d'indice revalorisé »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il annonce une revalorisation du point d'indice pour les fonctionnaires aux salaires les plus bas",
+    "evidence": "« les plus bas salaires parmi les fonctionnaires verront également leur point d'indice revalorisé »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le gouvernement a fixé une hausse du smic à 1502 euros net à partir du 1er décembre",
+    "evidence": "« le gouvernement a annoncé une hausse du smic à 1502 euros net le 1er décembre »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Selon le ministre, ces revalorisations coûteront « un peu plus d'un milliard d'euros » aux finances publiques",
+    "evidence": "« Les revalorisations annoncées pour les plus bas salaires coûteront \"un peu plus d'un milliard d'euros\" aux finances publiques, déclare le ministre David Amiel »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'article a été publié par franceinfo dans la rubrique économie",
+    "evidence": "Le texte mentionne franceinfo et des hashtags (#Budget #Finances), mais aucune rubrique « économie » n'est indiquée.",
+    "verdict": "non_soutenue"
+   },
+   {
+    "claim": "L'article est court et ne précise ni le calendrier exact ni le montant de la hausse du point d'indice",
+    "evidence": "Le texte ne donne effectivement ni calendrier ni montant de la hausse du point d'indice.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les autres informations de la page (liens vers d'autres articles) ne concernent pas directement ce sujet",
+    "evidence": "Les liens sur la dette, le Royaume-Uni et les PME sont sans rapport, mais l'un d'eux répète le coût des revalorisations.",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle s'appuie sur les faits de l'article (bas salaires des fonctionnaires, coût d'un peu plus d'un milliard) sans ajouter de fait nouveau, même si l'enjeu n'est pas formulé tel quel."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 7,
+  "unsupported": 1,
+  "supported_rate": 0.857,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 2759,
+  "output_tokens": 862,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 5.805,
+  "cost_usd": 0.014137999999999998,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rTG7rEot37zL9hATra"
+ }
+}

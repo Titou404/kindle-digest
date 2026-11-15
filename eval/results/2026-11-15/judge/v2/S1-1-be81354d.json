@@ -1,0 +1,106 @@
+{
+ "config": "S1",
+ "repeat": 1,
+ "url": "https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature",
+ "title": "Advancing science and engineering with Antigravity's /teamwork",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Vahab Mirrokni est vice-président de Google Research et présente les résultats.",
+    "evidence": "« Vahab Mirrokni, Google Fellow and VP, Google Research »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "/teamwork est un système multi-agents d'Antigravity combinant des modèles Gemini 4 et des collaborations avec des experts humains.",
+    "evidence": "« All of this work is done in collaboration with human experts » ; « Using Gemini 4 Argon, Gemini 4 Carbon, Gemini 4 Hydrogen and multi-agent workflows such as Antigravity's /teamwork »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Ces équipes ont résolu plusieurs problèmes ouverts depuis des années en mathématiques, chimie, logiciels système et ingénierie ML.",
+    "evidence": "« teams across Google and academic partner institutions have tackled open problems in math, science, and complex systems engineering that had remained open for years »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La conjecture de Courtade–Kumar de 2013 a été prouvée en toute généralité.",
+    "evidence": "« to prove information theory's 2013 Courtade–Kumar conjecture in full generality »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La preuve a été formalisée en Lean 4, environ 50 millions de lignes.",
+    "evidence": "« The team formalized the entire proof in Lean 4, producing 50 million lines of code. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un résultat concerne la conjecture de Tarjan de 1985 sur les arbres splay.",
+    "evidence": "« significant progress on Tarjan's 1985 Deque Conjecture (whether self-adjusting splay trees handle insertions and deletions at both ends... »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Une preuve concerne la validation croisée leave-one-out approximative pour certaines pénalités parcimonieuses non lisses.",
+    "evidence": "« approximate leave-one-out cross-validation... remains accurate for non-smooth sparse penalties like elastic net. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le système a produit une formalisation de bout en bout de la conjecture de Weil, d'environ 1,8 million de lignes de Lean.",
+    "evidence": "« end-to-end, machine-checked formalization of the Weil conjectures... This formalization spans about 1.8 million lines of Lean »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le système a produit des formalisations de la conjecture de Birkhoff et de la régularité C¹ des fonctions infinity-harmonic.",
+    "evidence": "« it also generated the first formalization of the Birkhoff conjecture » ; « resolving the C¹ regularity of infinity-harmonic functions in three and higher dimensions »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "En chimie, 30 agents atteignent 95 % de correspondance exacte au premier rang pour déterminer la structure de molécules à partir de données RMN.",
+    "evidence": "« By organizing 30 specialized agents into a self-correcting loop... we achieved 95% top-1 exact match and 100% top-3 accuracy »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un moteur de Go 9x9 a gagné environ 2 600 Elo en moins de huit jours.",
+    "evidence": "« In under eight days, the engine gained roughly 2,600 Elo, reaching 1,885 Elo »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "libgav1 a été réécrit en Rust, plus rapide que la version C++ de 20 à 30 %.",
+    "evidence": "« the Rust port became 20-30% faster than the original C++ and hand-optimized assembly code on both x86_64 and ARM. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les outils sont mis à disposition des chercheurs externes, dont 10 000 académiques avec six mois d'accès gratuit au niveau d'usage le plus élevé.",
+    "evidence": "« giving 10,000 academic researchers six months of free access to our highest usage tier »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle découle des faits de l'article (vérificateurs Lean 4 et tests non modifiés, problèmes ouverts, outils ouverts aux chercheurs), mais l'article ne formule pas lui-même cet enjeu, et « décennies » est une généralisation."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 13,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 9605,
+  "output_tokens": 1563,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 9.913,
+  "cost_usd": 0.034839999999999996,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4qsWY5KF2fdCRSGtf43"
+ }
+}

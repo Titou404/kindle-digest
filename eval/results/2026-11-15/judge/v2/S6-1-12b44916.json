@@ -1,0 +1,101 @@
+{
+ "config": "S6",
+ "repeat": 1,
+ "url": "https://www.theguardian.com/world/live/2026/nov/15/middle-east-crisis-live-iran-bahrain-strikes-gulf-donald-trump-us-israel-yemen-houthis",
+ "title": "Iran targets Bahrain airbase as strikes resume in Gulf - Middle East crisis live",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Dimanche 15 novembre, l'Iran a visé une base aérienne à Bahreïn.",
+    "evidence": "« the attack launched today, Sunday, November 15, 2026, by drones » ; « Iran has targeted an airbase in Bahrain ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Bahreïn abrite la Ve flotte américaine.",
+    "evidence": "« Bahrain ... is home to the US Navy's Fifth Fleet ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un radar des États-Unis était visé sur la base.",
+    "evidence": "« six drones to attack a US radar system hosted in the US-allied island state ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les Gardiens de la révolution affirment avoir lancé six drones.",
+    "evidence": "« the IRGC said it had sent six drones to attack a US radar system ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Bahreïn assure avoir intercepté les drones.",
+    "evidence": "« Bahrain authorities say their air defences intercepted the attacks before they reached their targets. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Des explosions ont été entendues près de Manama et des sirènes ont retenti.",
+    "evidence": "« Explosions were heard around the capital, Manama » ; « prompting public warnings and sirens to ring out ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Une attaque similaire de deux drones a eu lieu vendredi.",
+    "evidence": "« a similar attack at dawn on Friday, November 13, 2026, by two drones that were also intercepted ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'attaque de vendredi est survenue après deux mois de calme.",
+    "evidence": "« the first escalations targeting Bahrain in two months » ; « After two months of calm, the explosions have started again ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'Arabie saoudite, le Qatar, la Jordanie et l'Égypte condamnent l'attaque.",
+    "evidence": "« Jordan, Egypt, Saudi Arabia, and Qatar have all strongly condemned the attack ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les négociations restent bloquées, avec blocus naval américain et contrôle iranien du détroit d'Ormuz.",
+    "evidence": "« Negotiations ... remain at a stalemate, with the US maintaining its naval blockade and Iran its stranglehold over the strait of Hormuz. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Au Yémen, les forces gouvernementales se retirent de Bab el-Mandeb, au profit des Houthis.",
+    "evidence": "« have retreated from the Bab el-Mandeb area, giving the Iran-aligned rebels even greater control over the critical shipping lane ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "À Gaza, Israël a tué un commandant du Hamas à Rafah.",
+    "evidence": "Hamas a confirmé la mort du commandant de la « Rafah Brigade » dans une frappe sur un camp de réfugiés de Gaza ; l'article ne dit pas que la frappe a eu lieu à Rafah.",
+    "verdict": "non_soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Les craintes de reprise de la guerre, l'impasse des négociations et les inquiétudes sur les flux pétroliers du Golfe (Ormuz, mer Rouge) figurent dans l'article, et le résumé les relie sans ajout."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 12,
+  "unsupported": 1,
+  "supported_rate": 0.917,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 7853,
+  "output_tokens": 1241,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 7.208,
+  "cost_usd": 0.028115999999999995,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rZtqNU9mqHYMNvJnYE"
+ }
+}

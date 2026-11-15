@@ -1,0 +1,101 @@
+{
+ "config": "S6",
+ "repeat": 1,
+ "url": "https://www.franceinfo.fr/politique/agression-d-un-responsable-universitaire-tout-ca-s-inscrit-dans-un-contexte-de-violence-croissante-estime-le-ministre-de-l-enseignement-superieur-et-de-la-recherche-philippe-baptiste_8283326.html",
+ "title": "Agression d’un responsable universitaire : \"Tout ça s'inscrit dans un contexte de violence croissante\", estime le ministre de l'Enseignement supérieur et de la Recherche Philippe Baptiste",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Philippe Baptiste était invité de franceinfo le 15 novembre.",
+    "evidence": "« était l'invité du 7.40 de ce dimanche 15 novembre » ; le texte est issu de franceinfo.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le vice-président de l'université de Versailles Saint-Quentin-en-Yvelines a été agressé à l'arme blanche.",
+    "evidence": "« l'agression à l'arme blanche du Vice-président de l'université de Versailles Saint-Quentin-en-Yvelines »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'agression a eu lieu vendredi soir dans son bureau.",
+    "evidence": "« L'agression a eu lieu vendredi soir en début de soirée à son bureau. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'agresseur n'a pas été retrouvé, donc le ministre refuse tout lien avec la mobilisation étudiante.",
+    "evidence": "« l'agresseur n'a pas été retrouvé, donc c'est absolument impossible de faire un lien entre quoi que ce soit. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le ministre évoque un contexte de violence croissante.",
+    "evidence": "« tout ça s'inscrit évidemment dans un contexte qui est un contexte de violence croissante aux abords des établissements »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Des présidents d'université ont été menacés de mort.",
+    "evidence": "« j'ai plusieurs présidents d'universités en France qui ont été menacés de mort. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La présidente de l'université de Lorraine fait partie des menacés de mort.",
+    "evidence": "Le ministre dit que ses coordonnées ont été divulguées ; la menace de mort vient d'une question du journaliste (« elle aurait refusé... »), non confirmée explicitement par lui.",
+    "verdict": "non_soutenue"
+   },
+   {
+    "claim": "Les coordonnées de la présidente de Lorraine ont été diffusées.",
+    "evidence": "« ses coordonnées personnelles ont été divulguées sur les réseaux sociaux. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il exclut un semestre blanc ou un « 10 sur 20 améliorable », jugés illégaux.",
+    "evidence": "« Il n'est pas question d'avoir un semestre blanc ou d'un 10 sur 20 améliorable... D'abord c'est illégal »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il admet d'adapter les examens.",
+    "evidence": "« Il faut adapter les modalités de ce qu'on appelle de contrôle pédagogique, c'est-à-dire adapter les examens »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il cite 4 milliards d'euros de prêts, 1 milliard pour les universités et 20 000 places supplémentaires.",
+    "evidence": "« 4 milliards d'euros de prêts du côté de l'Éducation nationale, 1 milliard d'euros d'argent frais pour les universités... 20 000 places en plus »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Selon son ministère, 20 à 25 % des universités restent perturbées, un indicateur qu'il relativise.",
+    "evidence": "« c'est un chiffre qui vient de mon ministère... Ça ne veut pas dire qu'il y a 25 % des étudiants qui sont touchés »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "L'inédit vient des propos du ministre et la tension dialogue/mobilisation/sécurité découle des faits de l'article, mais l'enjeu n'est pas énoncé tel quel."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 12,
+  "unsupported": 1,
+  "supported_rate": 0.917,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 5556,
+  "output_tokens": 1314,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 7.101,
+  "cost_usd": 0.024252000000000003,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rUBbGX7tyqqGMpJ8xs"
+ }
+}

@@ -1,0 +1,96 @@
+{
+ "config": "S5",
+ "repeat": 1,
+ "url": "https://www.franceinfo.fr/replay-radio/c-est-mon-boulot/83-des-dirigeants-de-pme-trouvent-difficile-de-recruter-et-d-employer-une-personne-en-situation-de-handicap_8242261.html",
+ "title": "83 % des dirigeants de PME trouvent difficile de recruter et d'employer une personne en situation de handicap",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "L'enquête de Bpifrance paraît à la veille de la semaine européenne pour l'emploi des personnes handicapées.",
+    "evidence": "« La semaine européenne pour l'emploi des personnes handicapées débute demain. À cette occasion, la banque publique d'investissement Bpifrance a interrogé des dirigeants »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'enquête a été menée auprès de 1.200 dirigeants de PME.",
+    "evidence": "« Bpifrance a interrogé 1.200 patrons de petites et moyennes entreprises. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "83 % jugent difficile, voire très difficile, de recruter et d'employer une personne handicapée.",
+    "evidence": "Le titre donne 83 % ; l'article dit « 8 dirigeants sur 10 estiment que le recrutement ... est difficile, voire très difficile ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le premier frein, cité par 57 %, est l'impact sur l'organisation du travail (rythme, horaires, performance, dynamique d'équipe).",
+    "evidence": "« Le frein le plus cité est l'impact sur l'organisation du travail. 57 % craignent avant tout des répercussions sur le rythme de travail, les horaires »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "À égalité arrive la crainte du coût de l'accessibilité des locaux.",
+    "evidence": "« Le deuxième frein, qui arrive à égalité, est la crainte d'avoir à dépenser pour rendre les locaux accessibles. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Bpifrance relie cette crainte à l'image persistante du fauteuil roulant.",
+    "evidence": "Marie Beauchet, de Bpifrance : « Cela montre que les dirigeants continuent d'associer handicap et chaise roulante »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "51 % évoquent un manque d'aides publiques adaptées.",
+    "evidence": "« 51 % des dirigeants citent le manque d'aides publiques adaptées. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Ce manque est sans doute dû à la méconnaissance, selon Bpifrance.",
+    "evidence": "« Probablement par méconnaissance, car les dispositifs d'aides à l'emploi sont assez importants » selon Bpifrance.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les candidats mentionnent rarement leur handicap car ils sont peu rappelés.",
+    "evidence": "« elles sont peu ou jamais rappelés. Donc elles le mentionnent rarement. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La loi impose 6 % de travailleurs handicapés dans les entreprises de plus de 20 salariés.",
+    "evidence": "« La loi oblige en effet les entreprises de plus de 20 salariés à embaucher au moins 6 % de personnes en situation de handicap. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "4 PME sur 10 ne respectent pas du tout cette obligation.",
+    "evidence": "« Or 4 PME sur 10 ne respectent pas du tout cette obligation. »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "La phrase synthétise les préjugés, la méconnaissance des aides et l'obligation légale comme première incitation, tous présents dans l'article, sans ajout externe."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 11,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 3825,
+  "output_tokens": 1221,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 6.538,
+  "cost_usd": 0.01986,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rYYAPjQjqoyKUDApGi"
+ }
+}

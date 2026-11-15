@@ -1,0 +1,96 @@
+{
+ "config": "S6",
+ "repeat": 1,
+ "url": "https://www.bbc.co.uk/news/articles/ckz74jzpy18do",
+ "title": "Trump, Putin and Xi plan historic joint meeting in China next week, White House says",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "La Maison-Blanche annonce une rencontre entre Trump, Poutine et Xi Jinping, qualifiée d'historique.",
+    "evidence": "\"Donald Trump, Vladimir Putin and Xi Jinping are planning to meet on the sidelines of a summit in China next week, the White House has said.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La rencontre a lieu en marge du sommet de l'Apec à Shenzhen, dans le sud de la Chine, la semaine prochaine.",
+    "evidence": "\"Apec summit in the southern city of Shenzhen\" et \"next week\".",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Selon la porte-parole Olivia Wales, Trump évoquera notamment la réduction des armes nucléaires.",
+    "evidence": "\"among other topics, he will discuss the reduction of nuclear weapons in the world\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'Iran pourrait aussi être abordé, mais pas l'Ukraine.",
+    "evidence": "\"It is understood Iran may also be discussed during the meeting... but not Ukraine.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La Russie a confirmé la rencontre, la Chine n'a pas encore réagi.",
+    "evidence": "\"Russia has confirmed the meeting. China has yet to react.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un responsable américain ne s'attend à aucun accord.",
+    "evidence": "\"No agreement was expected to follow the talks, an unnamed, senior US official said\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Trump arrive mercredi soir et s'entretiendra avec Xi jeudi.",
+    "evidence": "\"Trump will arrive in Shenzhen late on Wednesday... bilateral talks with Xi on Thursday\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Ce sera la quatrième rencontre Trump-Xi depuis son retour au pouvoir en 2025.",
+    "evidence": "\"their fourth meeting since the US president returned to office in 2025\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le traité américano-russe de contrôle des armes nucléaires a expiré en février.",
+    "evidence": "\"A nuclear weapons control treaty between the US and Russia expired in February\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Trump veut un nouvel accord incluant la Chine.",
+    "evidence": "\"Trump however said he could replace the deal with a better agreement that included China\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Cela pourrait prendre des années selon des analystes.",
+    "evidence": "\"Former senior US officials and analysts told the BBC... could create major hurdles and take years.\"",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle s'appuie sur l'expiration du traité, l'absence de garde-fous et le sujet nucléaire à l'ordre du jour, mais l'idée de relancer le dialogue est une inférence, non dite par l'article."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 11,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 3443,
+  "output_tokens": 1084,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 5.921,
+  "cost_usd": 0.017726,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rY4Kpgevh6Fcoz3ji3"
+ }
+}

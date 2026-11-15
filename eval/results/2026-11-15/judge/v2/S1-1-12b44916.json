@@ -1,0 +1,111 @@
+{
+ "config": "S1",
+ "repeat": 1,
+ "url": "https://www.theguardian.com/world/live/2026/nov/15/middle-east-crisis-live-iran-bahrain-strikes-gulf-donald-trump-us-israel-yemen-houthis",
+ "title": "Iran targets Bahrain airbase as strikes resume in Gulf - Middle East crisis live",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Dimanche 15 novembre 2026, l'Iran a visé une base aérienne de Bahreïn",
+    "evidence": "« the attack launched today, Sunday, November 15, 2026, by drones that were intercepted and destroyed » ; « Iran has targeted an airbase in Bahrain »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les Gardiens de la révolution affirment avoir envoyé six drones contre un radar américain",
+    "evidence": "« the IRGC said it had sent six drones to attack a US radar system hosted in the US-allied island state. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le radar est sur la base d'Al-Riffa",
+    "evidence": "« The US air defence radar system at the Al-Riffa helicopter base in Bahrain was targeted by six drones »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La base est à une trentaine de minutes au sud de Manama",
+    "evidence": "« The base is about a 30-minute drive south of Manama. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les autorités bahreïnies disent que leur défense aérienne a intercepté les attaques avant qu'elles n'atteignent leurs cibles",
+    "evidence": "« Bahrain authorities say their air defences intercepted the attacks before they reached their targets. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Des explosions ont été entendues autour de la capitale",
+    "evidence": "« Explosions were heard around the capital, Manama »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "C'est une reprise des frappes après environ deux mois de calme",
+    "evidence": "« After two months of calm, the explosions have started again for Bahrain citizens. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'attaque fait suite à une attaque de deux drones le vendredi précédent",
+    "evidence": "« a similar attack at dawn on Friday, November 13, 2026, by two drones that were also intercepted. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Bahreïn abrite la Ve flotte de l'US Navy",
+    "evidence": "« Bahrain ... is home to the US Navy’s Fifth Fleet »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Bahreïn a demandé au Conseil de sécurité de l'ONU de condamner ces attaques",
+    "evidence": "« calls upon the Council to condemn these repeated attacks and demands that it assume its responsibilities »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'Arabie saoudite, le Qatar, la Jordanie et l'Égypte ont condamné l'attaque",
+    "evidence": "« Jordan, Egypt, Saudi Arabia, and Qatar have all strongly condemned the attack and expressed solidarity with Bahrain. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les négociations sont dans l'impasse, avec un blocus naval américain et le contrôle iranien d'Ormuz",
+    "evidence": "« Negotiations to end the war remain at a stalemate, with the US maintaining its naval blockade and Iran its stranglehold over the strait of Hormuz. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les forces gouvernementales yéménites ont reculé de Bab el-Mandeb",
+    "evidence": "« have retreated from the Bab el-Mandeb area, giving the Iran-aligned rebels even greater control »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le Hamas a confirmé la mort de Samir Mahmoud Hassan Abu Younis, tué dans une frappe israélienne sur un camp de réfugiés de Gaza",
+    "evidence": "« Hamas has confirmed the killing of Samir Mahmoud Hassan Abu Younis ... in an Israeli airstrike on a Gaza refugee camp on Saturday night. »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "tiree_du_texte",
+   "explanation": "L'article évoque les craintes d'une reprise de la guerre et les inquiétudes pour les flux pétroliers du Golfe et le détroit d'Ormuz."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 14,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "tiree_du_texte",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 8036,
+  "output_tokens": 1421,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 7.561,
+  "cost_usd": 0.030282,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rWJpQQKkfJckaoHGze"
+ }
+}

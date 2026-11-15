@@ -1,0 +1,101 @@
+{
+ "config": "S2",
+ "repeat": 1,
+ "url": "https://www.theguardian.com/world/live/2026/nov/15/middle-east-crisis-live-iran-bahrain-strikes-gulf-donald-trump-us-israel-yemen-houthis",
+ "title": "Iran targets Bahrain airbase as strikes resume in Gulf - Middle East crisis live",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Dimanche 15 novembre 2026, l'Iran a visé une base aérienne de Bahreïn.",
+    "evidence": "« the attack launched today, Sunday, November 15, 2026, by drones that were intercepted » ; « Iran has targeted an airbase in Bahrain »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "C'est la première reprise de frappes depuis septembre.",
+    "evidence": "« Iran has targeted an airbase in Bahrain in the latest resumption of strikes since September » ; mais un attaque de deux drones a eu lieu le vendredi 13 novembre, donc ce n'est pas la première reprise.",
+    "verdict": "non_soutenue"
+   },
+   {
+    "claim": "Les Gardiens de la révolution affirment avoir envoyé six drones contre un radar américain hébergé dans un État insulaire allié des États-Unis.",
+    "evidence": "« the IRGC said it had sent six drones to attack a US radar system hosted in the US-allied island state. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Des explosions ont été entendues autour de Manama.",
+    "evidence": "« Explosions were heard around the capital, Manama »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les autorités bahreïnies disent que leurs défenses aériennes ont intercepté les attaques avant qu'elles n'atteignent leurs cibles.",
+    "evidence": "« Bahrain authorities say their air defences intercepted the attacks before they reached their targets. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le ministère bahreïni des Affaires étrangères condamne fermement ces attaques.",
+    "evidence": "« expressed the Kingdom of Bahrain's strongest condemnation of the continued Iranian aggression »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Ces attaques suivent une attaque similaire de deux drones le vendredi 13 novembre.",
+    "evidence": "« a similar attack at dawn on Friday, November 13, 2026, by two drones that were also intercepted. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'Arabie saoudite, le Qatar, la Jordanie et l'Égypte ont condamné l'attaque et exprimé leur solidarité avec Bahreïn.",
+    "evidence": "« Jordan, Egypt, Saudi Arabia, and Qatar have all strongly condemned the attack and expressed solidarity with Bahrain. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les négociations pour mettre fin à la guerre restent dans l'impasse, avec un blocus naval américain et le contrôle iranien du détroit d'Ormuz.",
+    "evidence": "« Negotiations to end the war remain at a stalemate, with the US maintaining its naval blockade and Iran its stranglehold over the strait of Hormuz. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Au Yémen, les forces gouvernementales soutenues par l'Arabie saoudite se sont retirées de la zone de Bab el-Mandeb face aux Houthis.",
+    "evidence": "« The Yemeni government forces supported by Saudi Arabia, fighting the Houthis, have retreated from the Bab el-Mandeb area »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le Hamas a confirmé la mort de Samir Mahmoud Hassan Abu Younis, commandant de sa brigade de Rafah.",
+    "evidence": "« Hamas has confirmed the killing of Samir Mahmoud Hassan Abu Younis, commander of the group's Rafah Brigade »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il a été tué dans une frappe israélienne sur un camp de réfugiés de Gaza.",
+    "evidence": "« in an Israeli airstrike on a Gaza refugee camp on Saturday night. »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "L'article évoque les craintes d'une reprise de la guerre et les inquiétudes pour les flux pétroliers du Golfe via Ormuz et la mer Rouge, ce dont la phrase découle sans ajout."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 12,
+  "unsupported": 1,
+  "supported_rate": 0.917,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 8046,
+  "output_tokens": 1438,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 8.395,
+  "cost_usd": 0.030472,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rWNMyW1gfcMm1rByj5"
+ }
+}

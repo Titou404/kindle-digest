@@ -1,0 +1,101 @@
+{
+ "config": "S7",
+ "repeat": 1,
+ "url": "https://www.theguardian.com/world/live/2026/nov/15/middle-east-crisis-live-iran-bahrain-strikes-gulf-donald-trump-us-israel-yemen-houthis",
+ "title": "Iran targets Bahrain airbase as strikes resume in Gulf - Middle East crisis live",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Iran a visé une base aérienne à Bahreïn dans la reprise des frappes signalée depuis septembre.",
+    "evidence": "« Iran has targeted an airbase in Bahrain in the latest resumption of strikes since September, prompting public warnings and sirens »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les attaques ont déclenché des alertes publiques et des sirènes dans le royaume.",
+    "evidence": "« prompting public warnings and sirens to ring out in the Gulf kingdom this morning »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Selon les médias iraniens, l'IRGC dit avoir envoyé six drones contre un radar américain.",
+    "evidence": "« According to Iranian media, the IRGC said it had sent six drones to attack a US radar system »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les autorités bahreïnies disent que leurs défenses ont intercepté les attaques avant qu'elles n'atteignent leurs cibles.",
+    "evidence": "« Bahrain authorities say their air defences intercepted the attacks before they reached their targets. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Des explosions ont été entendues autour de Manama.",
+    "evidence": "« Explosions were heard around the capital, Manama »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Bahreïn abrite la Ve flotte de la marine américaine.",
+    "evidence": "« is home to the US Navy’s Fifth Fleet »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le ministère bahreïni des Affaires étrangères a condamné l'attaque et tenu l'Iran pleinement responsable.",
+    "evidence": "« holds Iran fully responsible for these attacks and their consequences. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'Arabie saoudite, le Qatar, la Jordanie et l'Égypte ont aussi condamné l'attaque.",
+    "evidence": "« Jordan, Egypt, Saudi Arabia, and Qatar have all strongly condemned the attack and expressed solidarity with Bahrain. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les négociations pour mettre fin à la guerre sont dans l'impasse, avec le blocus naval américain et le contrôle iranien du détroit d'Ormuz.",
+    "evidence": "« Negotiations to end the war remain at a stalemate, with the US maintaining its naval blockade and Iran its stranglehold over the strait of Hormuz. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les forces gouvernementales yéménites soutenues par l'Arabie saoudite se sont retirées de la zone de Bab el-Mandeb face aux Houthis.",
+    "evidence": "« The Yemeni government forces supported by Saudi Arabia, fighting the Houthis, have retreated from the Bab el-Mandeb area »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le Hamas a confirmé la mort de Samir Mahmoud Hassan Abu Younis, commandant de sa brigade de Rafah.",
+    "evidence": "« Hamas has confirmed the killing of Samir Mahmoud Hassan Abu Younis, commander of the group’s Rafah Brigade »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il a été tué dans une frappe israélienne sur un camp de réfugiés de Gaza samedi soir.",
+    "evidence": "« in an Israeli airstrike on a Gaza refugee camp on Saturday night. »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "L'article évoque les craintes d'une reprise de la guerre, l'impasse des négociations et les inquiétudes pour les flux pétroliers du Golfe et de la mer Rouge, dont la phrase est une synthèse."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 12,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 8054,
+  "output_tokens": 1336,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 7.498,
+  "cost_usd": 0.029468,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rWwNaez5VcoSjQLBzF"
+ }
+}

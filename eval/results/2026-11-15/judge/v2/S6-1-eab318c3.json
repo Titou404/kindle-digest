@@ -1,0 +1,86 @@
+{
+ "config": "S6",
+ "repeat": 1,
+ "url": "https://theconversation.com/cop31-la-bourse-ne-recompense-plus-la-decouverte-de-reserves-dhydrocarbures-en-cas-dexposition-aux-risques-reglementaires-environnementaux-285014",
+ "title": "COP31 : la Bourse ne récompense plus la découverte de réserves d’hydrocarbures en cas d’exposition aux risques réglementaires environnementaux",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Une étude porte sur seize grandes compagnies pétrolières et gazières, dont TotalEnergies, BP, Eni et Petrobras.",
+    "evidence": "« seize grandes entreprises pétrolières et gazières internationales – dont TotalEnergies, British Petroleum, Eni ou Petrobras »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'étude couvre la période 2002-2022.",
+    "evidence": "« entre 2002 et 2022 »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La découverte de nouvelles réserves n'est plus toujours bien accueillie en Bourse quand l'entreprise est fortement exposée au risque réglementaire climatique.",
+    "evidence": "« les marchés boursiers ne réagissent pas forcément positivement à l’augmentation de ses réserves en hydrocarbures »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Cet effet s'observe surtout depuis l'accord de Paris de 2015.",
+    "evidence": "« selon la crédibilité des réglementations climatiques, notamment depuis l’accord de Paris sur le climat en 2015 »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Devon Energy a perdu 47,74 % en 2015, contre 15,79 % pour Pioneer.",
+    "evidence": "« le rendement boursier annuel était plus négatif pour Devon Energy, à – 47,74 %, contre – 15,79 % pour Pioneer Natural Resources »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Près de 60 % des réserves devraient rester dans le sol d'ici 2050.",
+    "evidence": "« Près de 60 % des réserves mondiales de pétrole et de gaz fossile devraient rester dans le sol d’ici à 2050 »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les actifs échoués sont évoqués, avec la dépréciation de 7 milliards de dollars de TotalEnergies au Canada en 2020.",
+    "evidence": "« en 2020, le groupe français TotalEnergies a annoncé une dépréciation de 7 milliards de dollars de ses actifs pétroliers situés au Canada »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'assouplissement récent de politiques climatiques aux États-Unis et au Canada peut soutenir les valorisations à court terme.",
+    "evidence": "« À court terme, cette évolution peut réduire la perception du risque réglementaire et soutenir la valorisation boursière »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'incertitude sur les politiques climatiques demeure.",
+    "evidence": "« Cependant, les incertitudes entourant les futures politiques climatiques demeurent. »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle découle des résultats de l'étude (investisseurs croyant que des réserves ne seront jamais exploitées, désinvestissement) sans ajouter de fait nouveau."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 9,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 5559,
+  "output_tokens": 1050,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 5.691,
+  "cost_usd": 0.021618,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rWzFibwrzYzph6zmqK"
+ }
+}

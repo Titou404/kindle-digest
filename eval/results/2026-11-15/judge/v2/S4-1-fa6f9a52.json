@@ -1,0 +1,131 @@
+{
+ "config": "S4",
+ "repeat": 1,
+ "url": "https://github.com/Tthanh2k6/turbo-browser-mcp",
+ "title": "Show HN: Turbo-Browser-MCP – Batch forms, DOM deltas and submit guards for MCP",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "turbo-browser-mcp est un serveur MCP basé sur Playwright",
+    "evidence": "« turbo-browser-mcp is a Playwright-based Model Context Protocol (MCP) server built to cut LLM token waste and multi-turn latency in browser automation. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il a été présenté sur Hacker News (Show HN)",
+    "evidence": "Le titre commence par « Show HN: Turbo-Browser-MCP », ce qui indique une présentation Show HN.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il vise à réduire la consommation de jetons et la latence des automatisations de navigateur",
+    "evidence": "« built to cut LLM token waste and multi-turn latency in browser automation »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il regroupe 25 à 33 primitives en 10 outils batchés",
+    "evidence": "« It consolidates 25-33 fine-grained browser primitives into 10 batched tools »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il propose des snapshots DOM incrémentaux (delta)",
+    "evidence": "« featuring delta DOM snapshots »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il remplit des formulaires complexes en un seul appel (React, Shadow DOM, iframes)",
+    "evidence": "« single-turn React/Shadow DOM/iframe form prefill »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il envoie des fichiers depuis le disque sans Base64",
+    "evidence": "« direct disk file uploads (no Base64 in context) »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il propose des sessions d'onglets parallèles et des blocages réseau",
+    "evidence": "« parallel tab sessions, network blocking presets »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il a une garde de validation humaine avant tout envoi de formulaire",
+    "evidence": "« a default human-in-the-loop Submit guard » ; les actions ressemblant à Submit, Publish, Send, Post, Apply, Confirm ou paiement sont bloquées sauf allowSubmit.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les benchmarks ont été faits avec Chromium headless et la tokenisation o200k_base",
+    "evidence": "« running headless Chromium locally with exact OpenAI o200k_base tokenization (tiktoken 0.14.0) »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un formulaire de 10 champs passe de 11 tours à 1 tour",
+    "evidence": "« 11 turns (574 ms, 12,197 dir / 72,614 cum tok) | 1 turn (82 ms, 811 tok) »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'exécution est 7 fois plus rapide (574 ms contre 82 ms)",
+    "evidence": "« 7x faster, 11 -> 1 turns » et « 7x in browser execution (574 ms -> 82 ms) »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Baisse de 93,4 % des jetons directs sur le formulaire",
+    "evidence": "« 93.4% direct / 98.9% cumulative »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un PDF de 48 KiB coûte 85 jetons au lieu de 44 728 en Base64",
+    "evidence": "« 44,728 tok inline Base64 tool arg | 85 tok disk path (68 ms) »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un snapshot compact d'une console SaaS dense économise 93,9 % des jetons par rapport au HTML",
+    "evidence": "« 93.9% vs HTML (68.2% vs ARIA) » pour la console SaaS à 140 boutons.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Quatre modes de connexion : auto, cdp, persistent, launch",
+    "evidence": "« 4 connection modes (--mode auto|cdp|persistent|launch) »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Modes de snapshot : interactive, forms, article, all",
+    "evidence": "« Snapshot modes: interactive, forms, article, and all. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les chiffres proviennent des benchmarks du projet et n'ont pas été vérifiés de façon indépendante",
+    "evidence": "L'article dit que les chiffres viennent de benchmarks/benchmark.mjs ; l'absence de vérification indépendante est implicite, car aucune source externe n'est citée.",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "L'enjeu (moins de jetons et d'allers-retours, validation humaine avant soumission) découle des fonctionnalités et des benchmarks décrits, sans fait extérieur, avec le conditionnel « pourrait »."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 18,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 11440,
+  "output_tokens": 1684,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 9.053,
+  "cost_usd": 0.03972,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rWNLUfJgzz5S4ap3ru"
+ }
+}

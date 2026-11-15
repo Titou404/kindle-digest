@@ -1,0 +1,111 @@
+{
+ "config": "S3",
+ "repeat": 1,
+ "url": "https://www.franceinfo.fr/economie/crise/crise-de-la-dette/dette-publique-francaise-la-france-ne-va-pas-etre-la-grece-affirme-clement-beaune_8283317.html",
+ "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Clément Beaune, haut-commissaire à la Stratégie et au Plan, était l'invité du 7.40 de franceinfo le samedi 14 novembre.",
+    "evidence": "« Clément Beaune, haut-commissaire à la Stratégie et au Plan était l'invité du 7.40 de Franceinfo ce samedi 14 novembre. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il faut distinguer les mobilisations sociales, respectables, des violences de certains samedis.",
+    "evidence": "« toujours distinguer les mobilisations sociales, qui sont respectables et le plus souvent respectueuses aussi de l'ordre public, de ce qu'on a pu connaître certains samedis »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Ces violences ne se produisent plus ces derniers jours.",
+    "evidence": "« ce qui heureusement n'est plus le cas ces derniers jours. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il constate une diminution des mobilisations.",
+    "evidence": "« il y a quand même une diminution des mobilisations sociales. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les mobilisations rassemblaient encore jusqu'à 60 000 personnes à Paris selon les chiffres cités.",
+    "evidence": "« On attend encore jusqu'à 60 000 personnes dans les rues de Paris, par exemple, selon les chiffres. » C'est une attente pour ce jour, dite par l'intervieweur.",
+    "verdict": "non_soutenue"
+   },
+   {
+    "claim": "Il y voit l'effet de discussions sociales et de mesures récentes, notamment sur le SMIC et les forfaits de transports publics.",
+    "evidence": "« un certain nombre de réponses ont été apportées... sur le SMIC... sur les forfaits de transports publics »; « un effet d'un certain nombre de discussions sociales et de mesures sans doute »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Son inquiétude vient surtout de l'absence de projet politique rassurant sur le social et le pouvoir d'achat.",
+    "evidence": "« il n'y a pas de projet politique qui crée de l'enthousiasme ou qui rassure sur le volet social... C'est ça qui m'inquiète plus que telle ou telle mobilisation »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La présidentielle est prévue dans quelques mois.",
+    "evidence": "« puisqu'on a une élection dans quelques mois. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les policiers sont mécontents et menacent de faire grève la semaine suivante après une réunion difficile avec Laurent Nuñez, ministre de l'Intérieur.",
+    "evidence": "« Ils ont été reçus hier par Laurent Nuñez, le ministre de l'Intérieur. Ça s'est très, très mal passé. Ils menacent de faire grève la semaine prochaine »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il appelle à entendre les difficultés sociales des policiers.",
+    "evidence": "« il faut entendre aussi leur difficulté sociale. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il répond à Nicolas Sarkozy, qui craint une crise financière.",
+    "evidence": "« Nicolas Sarkozy qui dit... craindre un tsunami de crise financière même avant la présidentielle. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il affirme que la France ne va pas être la Grèce, car elle ne risque pas de ne plus pouvoir financer sa dette sur les marchés.",
+    "evidence": "« La France ne va pas être la Grèce. Il ne va pas y avoir une crise de la dette... La France n'est pas dans cette situation. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Moody's n'a pas dégradé la note française.",
+    "evidence": "« Moody's il y a quelques jours ne l'a pas fait. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il ajoute que la situation reste sérieuse.",
+    "evidence": "« Ça ne veut pas dire que la situation n'est pas sérieuse. »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "La phrase résume les thèmes abordés par un membre du gouvernement et leur lien avec la présidentielle sans ajouter de fait extérieur."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 14,
+  "unsupported": 1,
+  "supported_rate": 0.929,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 5399,
+  "output_tokens": 1538,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 8.18,
+  "cost_usd": 0.026178,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rZHoxevF7zvGycu9nT"
+ }
+}

@@ -1,0 +1,91 @@
+{
+ "config": "S1",
+ "repeat": 1,
+ "url": "https://theconversation.com/le-pastoralisme-risque-ou-solution-face-au-changement-climatique-levolution-du-regard-porte-par-les-cop-climat-296191",
+ "title": "Le pastoralisme, risque ou solution face au changement climatique ? L’évolution du regard porté par les COP climat",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "La COP31 se tient en Turquie du 9 au 20 novembre (« prévue »)",
+    "evidence": "« la COP31 sur le climat, qui se tient en Turquie du 9 au 20 novembre »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "The Conversation reproduit un extrait d'un chapitre de l'ouvrage « Penser avec le pastoralisme », publié chez Quae",
+    "evidence": "« nous reproduisons une partie du chapitre » ; ouvrage « publié aux éditions Quae ». Le nom The Conversation n'apparaît pas dans le texte.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'élevage est longtemps resté en marge de l'agenda climatique",
+    "evidence": "« ce secteur est longtemps resté en marge de l'agenda climatique international dans le cadre du Giec »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'élevage n'apparaît dans les discussions du GIEC qu'à partir de 2011",
+    "evidence": "« l'élevage n'a véritablement émergé dans les discussions qu'à partir de 2011 »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Sur 164 pays ayant soumis une NDC au 30 septembre 2022, seuls 54 % mentionnaient explicitement l'élevage",
+    "evidence": "« Au 30 septembre 2022, parmi les 164 pays ayant soumis une NDC, seuls 54 % mentionnaient explicitement l'élevage. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Dans les rapports du GIEC, deux visions s'opposent : techniciste et attentive à la complexité sociale et culturelle",
+    "evidence": "« une approche techniciste... et une approche prenant mieux en charge la complexité. Cette dernière prend en compte les implications sociales et culturelles »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le pastoralisme est présenté tour à tour comme victime, facteur d'impact et solution",
+    "evidence": "« en faisant référence alternativement à cet élevage traditionnel comme victime, facteur d'impact ou solution »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il est facteur d'impact lorsque la gestion des parcours est non durable",
+    "evidence": "« évoquent les risques associés à une gestion non durable des parcours, tels que le surpâturage localisé, la dégradation des sols »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il est solution grâce à sa mobilité et sa capacité d'adaptation dans les zones sèches",
+    "evidence": "« La valorisation des zones sèches qui s'appuie sur la mobilité et la moindre vulnérabilité des activités d'élevage transhumant »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Sa visibilité reste très limitée dans les décisions officielles de la Convention-cadre sur le climat",
+    "evidence": "« sa visibilité reste très limitée dans les groupes de travail et les décisions officielles portant sur l'agriculture »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle combine les centaines de millions de personnes, la faible visibilité et le rôle d'adaptation, tous présents dans l'article, sans ajout externe."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 10,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 6869,
+  "output_tokens": 1150,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 6.901,
+  "cost_usd": 0.025238,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rTGDoa2tkAxF86Xe2P"
+ }
+}

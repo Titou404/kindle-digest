@@ -1,0 +1,106 @@
+{
+ "config": "S7",
+ "repeat": 1,
+ "url": "https://github.com/Tthanh2k6/turbo-browser-mcp",
+ "title": "Show HN: Turbo-Browser-MCP – Batch forms, DOM deltas and submit guards for MCP",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "turbo-browser-mcp est un serveur MCP basé sur Playwright",
+    "evidence": "turbo-browser-mcp is a Playwright-based Model Context Protocol (MCP) server built to cut LLM token waste and multi-turn latency in browser automation.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il est présenté sur Hacker News comme un « Show HN »",
+    "evidence": "Le titre commence par « Show HN: Turbo-Browser-MCP ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il vise à réduire les tokens gaspillés et la latence multi-tours en automatisation de navigateur",
+    "evidence": "built to cut LLM token waste and multi-turn latency in browser automation.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il regroupe 25 à 33 primitives en 10 outils groupés",
+    "evidence": "It consolidates 25-33 fine-grained browser primitives into 10 batched tools",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il offre des instantanés DOM en delta, le remplissage de formulaires en un appel (React, Shadow DOM, iframes), l'envoi de fichiers depuis le disque sans Base64, des sessions d'onglets parallèles et des préréglages de blocage réseau",
+    "evidence": "featuring delta DOM snapshots, single-turn React/Shadow DOM/iframe form prefill, direct disk file uploads (no Base64 in context), parallel tab sessions, network blocking presets",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Par défaut, un garde-fou demande une validation humaine avant tout bouton d'envoi",
+    "evidence": "a default human-in-the-loop Submit guard; final actions resembling Submit... are blocked unless allowSubmit: true is explicitly passed",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les benchmarks ont été exécutés en Chromium headless avec le tokenizer o200k_base",
+    "evidence": "running headless Chromium locally with exact OpenAI o200k_base tokenization (tiktoken 0.14.0)",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un formulaire de 10 champs passe de 11 tours à 1 tour (574 ms contre 82 ms)",
+    "evidence": "11 turns (574 ms, 12,197 dir / 72,614 cum tok) | 1 turn (82 ms, 811 tok)",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un instantané compact réduit l'usage de tokens de 93,9 % par rapport au HTML",
+    "evidence": "1,135 tok compact (28 ms) ... 93.9% vs HTML (68.2% vs ARIA)",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les chiffres proviennent de l'auteur et ne sont pas vérifiés de manière indépendante",
+    "evidence": "L'article dit que les chiffres viennent de benchmarks/benchmark.mjs lancé localement ; l'absence de vérification indépendante n'est pas mentionnée, c'est une remarque du résumé, compatible avec le texte.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le serveur propose quatre modes de connexion (auto, cdp, persistent, launch)",
+    "evidence": "4 connection modes (--mode auto|cdp|persistent|launch)",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les fichiers de sortie sont confinés au répertoire de travail ou à TURBO_BROWSER_SAVE_ROOT",
+    "evidence": "File outputs (savePath, saveStorageStatePath)... are strictly confined to the current working directory or TURBO_BROWSER_SAVE_ROOT.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La version indiquée est 0.4.0",
+    "evidence": "--version / -v | Print server version ( 0.4.0)",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "L'enjeu (coût en tokens, temps, garde-fou de soumission) découle des faits et benchmarks de l'article, avec la réserve que les performances sont celles de l'auteur."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 13,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 11471,
+  "output_tokens": 1438,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 7.874,
+  "cost_usd": 0.037322,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rUDaL2Y2qGHMszGyVq"
+ }
+}

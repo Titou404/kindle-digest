@@ -1,0 +1,81 @@
+{
+ "config": "S1",
+ "repeat": 1,
+ "url": "https://www.franceinfo.fr/economie/david-amiel-annonce-une-revalorisation-du-point-d-indice-pour-les-fonctionnaires-aux-plus-bas-salaires_8283416.html",
+ "title": "David Amiel annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "David Amiel est ministre de l'Action et des Comptes publics.",
+    "evidence": "« le ministre de l'Action et des Comptes publics ajoute que les plus bas salaires parmi les fonctionnaires verront également leur point d'indice revalorisé »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il annonce une revalorisation du point d'indice pour les fonctionnaires aux salaires les plus bas.",
+    "evidence": "Titre : « David Amiel annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le gouvernement a décidé une hausse du smic à 1 502 euros net à partir du 1er décembre.",
+    "evidence": "« le gouvernement a annoncé une hausse du smic à 1502 euros net le 1er décembre »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Selon le ministre, ces revalorisations coûteront « un peu plus d'un milliard d'euros » aux finances publiques.",
+    "evidence": "« Les revalorisations annoncées pour les plus bas salaires coûteront \"un peu plus d'un milliard d'euros\" aux finances publiques, déclare le ministre David Amiel »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'article est publié par franceinfo dans sa rubrique économie.",
+    "evidence": "Franceinfo apparaît dans le texte, mais aucune rubrique « économie » n'est mentionnée (seulement des hashtags #Budget #Finances).",
+    "verdict": "non_soutenue"
+   },
+   {
+    "claim": "L'article est court et ne détaille ni le montant de la hausse du point d'indice, ni le calendrier.",
+    "evidence": "Le texte ne donne effectivement ni montant de la hausse du point d'indice ni calendrier de mise en œuvre.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'article ne précise pas le nombre de fonctionnaires concernés.",
+    "evidence": "Aucun nombre de fonctionnaires concernés n'apparaît dans le texte.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les autres éléments de la page portent sur la dette publique, les violences sexuelles au Royaume-Uni et le recrutement de personnes handicapées, hors du sujet principal.",
+    "evidence": "« Dette publique française... », « Au Royaume-Uni, deux affaires de violences sexuelles... », « 83 % des dirigeants de PME trouvent difficile de recruter... handicap »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Le lien entre pouvoir d'achat des agents les moins payés et budget de l'État découle des faits et du coût de plus d'un milliard cités, sans ajout extérieur."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 8,
+  "unsupported": 1,
+  "supported_rate": 0.875,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 2752,
+  "output_tokens": 988,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 6.289,
+  "cost_usd": 0.015383999999999998,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rTG19f5iG3bocwsCet"
+ }
+}

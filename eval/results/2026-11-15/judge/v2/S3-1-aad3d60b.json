@@ -1,0 +1,96 @@
+{
+ "config": "S3",
+ "repeat": 1,
+ "url": "https://www.bbc.co.uk/news/articles/cwvg2l312ylqo",
+ "title": "US has floated Ukraine ceding Donbas for Nato membership, Zelensky says",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Zelensky affirme que des négociateurs américains ont évoqué un retrait ukrainien des forces restantes du Donbass en échange d'une adhésion à l'Otan.",
+    "evidence": "\"US negotiators have touted the idea of Ukraine withdrawing its remaining forces from the eastern Donbas region in exchange for Nato membership, Volodymyr Zelensky has said.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les États-Unis n'ont pas confirmé ces propos.",
+    "evidence": "\"The US has not confirmed the Ukrainian president's comments.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un responsable américain a dit à la BBC que de nombreuses idées sont discutées mais que tout accord final devra être accepté par les deux parties.",
+    "evidence": "\"many ideas continue to be discussed but any final deal will have to be agreed to by both parties\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les émissaires américains ont rencontré Zelensky à Dublin jeudi, puis Poutine à Moscou.",
+    "evidence": "L'article dit qu'ils sont allés à Dublin jeudi \"after a round of talks with Putin in Moscow\": Poutine a été rencontré avant Zelensky, pas après.",
+    "verdict": "non_soutenue"
+   },
+   {
+    "claim": "Selon Zelensky, c'est la première fois que cette question est soulevée.",
+    "evidence": "\"This was the first time this had been raised,\" Zelensky said",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Zelensky soumettrait à un référendum une proposition précise incluant garanties de sécurité, aucune contrainte sur l'armée et des fonds pour la reconstruction.",
+    "evidence": "\"if he received a specific proposal that contained security guarantees, no constraints on Ukraine's military and funds to rebuild the country, he would put it to a referendum.\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La Russie contrôle la majeure partie du Donbass.",
+    "evidence": "\"currently controls most of the industrial Donbas region\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La Russie maintient ses conditions : limites de l'armée ukrainienne, concessions territoriales et neutralité ; Kyiv les rejette.",
+    "evidence": "\"proposed limits on the size of Ukraine's military, territorial concessions and Kyiv's guaranteed neutrality\"; \"Ukraine has rejected these suggestions\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Kushner a ensuite appelé à la confidentialité, évoquant des propositions « maximalistes ».",
+    "evidence": "\"Jared Kushner appeared keen to dampen down... urging 'confidentiality'\"; \"'maximalist' proposals had been reported from the negotiations\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La Russie occupe environ un cinquième du territoire ukrainien.",
+    "evidence": "\"Russia currently occupies roughly a fifth of Ukrainian territory\"",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La Russie refuse tout cessez-le-feu avant un accord de paix global.",
+    "evidence": "\"it will not agree to a ceasefire until a final peace deal is in place\"",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle relie l'idée évoquée aux conditions de paix et au refus russe de cessez-le-feu sans cession de territoires, deux éléments de l'article, sans rien ajouter."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 11,
+  "unsupported": 1,
+  "supported_rate": 0.909,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 4061,
+  "output_tokens": 1249,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 6.9,
+  "cost_usd": 0.020612,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rYcHvh2faCxxYS9k39"
+ }
+}

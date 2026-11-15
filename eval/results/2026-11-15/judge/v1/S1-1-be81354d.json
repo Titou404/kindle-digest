@@ -1,0 +1,109 @@
+{
+ "config": "S1",
+ "repeat": 1,
+ "url": "https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature",
+ "title": "Advancing science and engineering with Antigravity's /teamwork",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v1"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Vahab Mirrokni est vice-président de Google Research et présente les résultats.",
+    "verdict": "soutenue",
+    "evidence": "Vahab Mirrokni, Google Fellow and VP, Google Research"
+   },
+   {
+    "claim": "/teamwork est un système multi-agents d'Antigravity combinant des modèles Gemini 4 et des collaborations avec des experts humains.",
+    "verdict": "soutenue",
+    "evidence": "Antigravity's /teamwork multiagent systems, which enhance human-AI collaborations... All of this work is done in collaboration with human experts"
+   },
+   {
+    "claim": "Ces équipes ont résolu plusieurs problèmes ouverts depuis des années en mathématiques, chimie, logiciels système et ingénierie ML.",
+    "verdict": "soutenue",
+    "evidence": "tackled open problems in math, science, and complex systems engineering that had remained open for years"
+   },
+   {
+    "claim": "La conjecture de Courtade–Kumar de 2013 a été prouvée en toute généralité.",
+    "verdict": "soutenue",
+    "evidence": "to prove information theory's 2013 Courtade–Kumar conjecture in full generality"
+   },
+   {
+    "claim": "La preuve a été formalisée en Lean 4 avec environ 50 millions de lignes.",
+    "verdict": "non_soutenue",
+    "evidence": "L'article dit exactement 50 millions de lignes, pas « environ », mais l'écart est mineur ; en revanche le chiffre est bien celui de l'article, donc soutenu en substance."
+   },
+   {
+    "claim": "Un résultat concerne la conjecture de Tarjan de 1985 sur les arbres splay.",
+    "verdict": "soutenue",
+    "evidence": "significant progress on Tarjan's 1985 Deque Conjecture (whether self-adjusting splay trees handle insertions and deletions at both ends...)"
+   },
+   {
+    "claim": "La validation croisée leave-one-out approximative reste précise pour certaines pénalités parcimonieuses non lisses.",
+    "verdict": "soutenue",
+    "evidence": "approximate leave-one-out cross-validation... remains accurate for non-smooth sparse penalties like elastic net."
+   },
+   {
+    "claim": "Le système a produit une formalisation de bout en bout des conjectures de Weil d'environ 1,8 million de lignes de Lean.",
+    "verdict": "soutenue",
+    "evidence": "end-to-end, machine-checked formalization of the Weil conjectures... spans about 1.8 million lines of Lean"
+   },
+   {
+    "claim": "Le système a formalisé la conjecture de Birkhoff et la régularité C¹ des fonctions infinity-harmonic.",
+    "verdict": "soutenue",
+    "evidence": "first formalization of the Birkhoff conjecture... resolving the C¹ regularity of infinity-harmonic functions in three and higher dimensions"
+   },
+   {
+    "claim": "En chimie, 30 agents atteignent 95 % de correspondance exacte au premier rang pour déterminer des structures moléculaires à partir de données RMN.",
+    "verdict": "soutenue",
+    "evidence": "organizing 30 specialized agents into a self-correcting loop... we achieved 95% top-1 exact match and 100% top-3 accuracy on complex benchmark molecules"
+   },
+   {
+    "claim": "Un moteur de Go 9x9 a gagné environ 2 600 Elo en moins de huit jours.",
+    "verdict": "soutenue",
+    "evidence": "In under eight days, the engine gained roughly 2,600 Elo, reaching 1,885 Elo"
+   },
+   {
+    "claim": "libgav1 a été réécrit en Rust et est plus rapide que la version C++ de 20 à 30 %.",
+    "verdict": "soutenue",
+    "evidence": "the Rust port became 20-30% faster than the original C++ code and hand-optimized assembly code on both x86_64 and ARM."
+   },
+   {
+    "claim": "Les outils sont mis à disposition des chercheurs externes, dont 10 000 académiques avec six mois d'accès gratuit au niveau d'usage le plus élevé.",
+    "verdict": "soutenue",
+    "evidence": "giving 10,000 academic researchers six months of free access to our highest usage tier."
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle découle des résultats vérifiés par Lean 4 et tests indépendants et de la mise à disposition des outils, mais « désormais » et « décennies » sont une interprétation du résumé."
+  },
+  "omissions": [
+   "Le résumé n'indique pas que les résultats passent par des vérificateurs (falsificateurs) intégrés à la conception de /teamwork, ni que les humains cadrent les problèmes.",
+   "Les résultats sur les noyaux TPU (DuoDiscover, 4,09x) et la réécriture du microkernel Zircon en Rust ne sont pas mentionnés."
+  ]
+ },
+ "scores": {
+  "claims": 13,
+  "unsupported": 1,
+  "supported_rate": 0.923,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 2
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v1",
+  "input_tokens": 9428,
+  "output_tokens": 1619,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 10.712,
+  "cost_usd": 0.035045999999999994,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4qdoVuGPUkGfuA2sb58"
+ }
+}

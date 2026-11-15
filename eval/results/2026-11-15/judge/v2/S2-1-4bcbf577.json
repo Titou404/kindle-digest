@@ -1,0 +1,101 @@
+{
+ "config": "S2",
+ "repeat": 1,
+ "url": "https://www.franceinfo.fr/politique/agression-d-un-responsable-universitaire-tout-ca-s-inscrit-dans-un-contexte-de-violence-croissante-estime-le-ministre-de-l-enseignement-superieur-et-de-la-recherche-philippe-baptiste_8283326.html",
+ "title": "Agression d’un responsable universitaire : \"Tout ça s'inscrit dans un contexte de violence croissante\", estime le ministre de l'Enseignement supérieur et de la Recherche Philippe Baptiste",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Philippe Baptiste, ministre de l'Enseignement supérieur et de la Recherche, était l'invité du 7.40 de franceinfo dimanche 15 novembre.",
+    "evidence": "« Philippe Baptiste, ministre de l'Enseignement supérieur et de la Recherche, était l'invité du 7.40 de ce dimanche 15 novembre. » (franceinfo apparaît dans le texte.)",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le vice-président de l'université de Versailles Saint-Quentin-en-Yvelines a été agressé à l'arme blanche vendredi soir dans son bureau.",
+    "evidence": "« L'agression a eu lieu vendredi soir en début de soirée à son bureau. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La victime, qui sortait de l'hôpital, est choquée et traumatisée (selon le ministre).",
+    "evidence": "« Il était en train de sortir de l'hôpital. [...] Il est évidemment choqué et traumatisé par ce qui s'est passé. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'agresseur n'a pas encore été retrouvé.",
+    "evidence": "« À ce stade, l'agresseur n'a pas été retrouvé »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Une enquête est en cours.",
+    "evidence": "« Une enquête est en cours et il faut attendre les résultats. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le ministre refuse d'établir un lien direct entre l'agression et le mouvement social étudiant.",
+    "evidence": "« Encore une fois, je ne fais pas le lien direct avec l'agression »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il estime que l'agression s'inscrit dans un contexte de violence croissante autour des établissements.",
+    "evidence": "« tout ça s'inscrit évidemment dans un contexte [...] de violence croissante aux abords des établissements. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Des présidents d'universités ont été menacés de mort, dont la présidente de l'université de Lorraine, dont les coordonnées ont été diffusées sur les réseaux sociaux.",
+    "evidence": "« plusieurs présidents d'universités en France qui ont été menacés de mort. La présidente de l'université de Lorraine, ses coordonnées personnelles ont été divulguées sur les réseaux sociaux. » Le ministre ne dit pas que la menace de mort la visait elle, c'est la journaliste qui le suggère.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il exclut un semestre blanc ou une validation automatique, jugés illégaux.",
+    "evidence": "« Il n'est pas question d'avoir un semestre blanc ou d'un 10 sur 20 améliorable [...] D'abord c'est illégal »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il admet une adaptation des modalités de contrôle.",
+    "evidence": "« Il faut adapter les modalités de ce qu'on appelle de contrôle pédagogique, c'est-à-dire adapter les examens »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il cite 4 milliards d'euros de prêts, 1 milliard pour les universités et 20 000 places supplémentaires comme mesures déjà proposées.",
+    "evidence": "« 4 milliards d'euros de prêts du côté de l'Éducation nationale, 1 milliard d'euros d'argent frais pour les universités [...] 20 000 places en plus »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Selon lui, le chiffre de 20 à 25 % d'universités perturbées est un indicateur global et non une part d'étudiants touchés.",
+    "evidence": "« C'est un chiffre qui est plutôt une enveloppe globale du mouvement. Ça ne veut pas dire qu'il y a 25 % des étudiants qui sont touchés »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "La phrase relie la montée des violences, la sécurité et la reprise des cours, qui découlent des propos du ministre sans ajouter de fait extérieur, mais l'article ne formule pas lui-même cet enjeu."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 12,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 5701,
+  "output_tokens": 1488,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 8.176,
+  "cost_usd": 0.026282,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rUEGFAH444FJZ9tWes"
+ }
+}

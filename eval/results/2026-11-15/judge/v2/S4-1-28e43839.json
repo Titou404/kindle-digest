@@ -1,0 +1,108 @@
+{
+ "config": "S4",
+ "repeat": 1,
+ "url": "https://theconversation.com/le-pastoralisme-risque-ou-solution-face-au-changement-climatique-levolution-du-regard-porte-par-les-cop-climat-296191",
+ "title": "Le pastoralisme, risque ou solution face au changement climatique ? L’évolution du regard porté par les COP climat",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "L'article provient de The Conversation",
+    "evidence": "Le texte ne nomme à aucun moment The Conversation comme source.",
+    "verdict": "non_soutenue"
+   },
+   {
+    "claim": "L'article reproduit une partie d'un chapitre de l'ouvrage « Penser avec le pastoralisme » (éditions Quae)",
+    "evidence": "« nous reproduisons une partie du chapitre consacré à la place du pastoralisme » ; l'ouvrage est publié aux éditions Quae.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'ouvrage est coordonné par Véronique Ancey, Serena Ferrari et Claire Aubron",
+    "evidence": "« (coordination Véronique Ancey, Serena Ferrari et Claire Aubron) »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le chapitre examine la place de l'élevage pastoral dans les travaux du Giec et les négociations climatiques",
+    "evidence": "« la place du pastoralisme pour les experts du Groupe d'experts intergouvernemental sur l'évolution du climat (Giec), les COP climat et la diplomatie mondiale »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il est publié à l'occasion de la COP31, en Turquie du 9 au 20 novembre",
+    "evidence": "« À l'occasion de la COP31 sur le climat, qui se tient en Turquie du 9 au 20 novembre »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Plusieurs centaines de millions de personnes vivent du pastoralisme",
+    "evidence": "« Plusieurs centaines de millions de personnes dans le monde vivent du pastoralisme. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'élevage n'a intégré l'agenda climatique international que tardivement, à partir de 2011 pour les discussions",
+    "evidence": "« n'y a été intégré que tardivement » ; « l'élevage n'a véritablement émergé dans les discussions qu'à partir de 2011 »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Sur 164 pays ayant soumis une NDC au 30 septembre 2022, seuls 54 % mentionnaient explicitement l'élevage",
+    "evidence": "« Au 30 septembre 2022, parmi les 164 pays ayant soumis une NDC, seuls 54 % mentionnaient explicitement l'élevage. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'analyse des rapports du Giec de 2001 à 2022 montre deux visions opposées : techniciste et socioécosystémique",
+    "evidence": "« Une deuxième opposition se dessine entre une approche techniciste [...] et une approche prenant mieux en charge la complexité » ; « techniciste et socioécosystémique »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'approche techniciste mise sur la technologie, l'autre prend en compte les dimensions sociales et culturelles",
+    "evidence": "« fondée sur l'idée que la technologie peut résoudre les problèmes de l'élevage » ; l'autre « prend en compte les implications sociales et culturelles »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les systèmes pastoraux sont peu mentionnés et décrits comme très vulnérables dans le rapport sur les terres",
+    "evidence": "« les systèmes pastoraux et agropastoraux ne sont mentionnés que de manière marginale et sont plutôt décrits comme très vulnérables »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le rapport sur les terres appelle à des politiques inclusives",
+    "evidence": "« ce rapport évoque la nécessité de politiques inclusives qui concilient les objectifs climatiques avec les moyens de subsistance »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le texte est tronqué avant la fin de son analyse des négociations",
+    "evidence": "L'article va jusqu'à la LCIPP et la mention des co-signataires, sans signe de troncature ; l'analyse des négociations est complète.",
+    "verdict": "non_soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle s'appuie sur la marginalité de l'élevage et le nombre de pratiquants, présents dans l'article, mais la conclusion que le pastoralisme « pourrait éclairer les politiques » est une déduction, même si l'article le présente comme source d'inspiration."
+  },
+  "omissions": [
+   "Le texte montre que les documents de la CCNUCC présentent le pastoralisme sous trois angles (victime, facteur d'impact, solution), le dernier étant le plus structurant dans les cadres récents ; le résumé n'en dit rien."
+  ]
+ },
+ "scores": {
+  "claims": 13,
+  "unsupported": 2,
+  "supported_rate": 0.846,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 1
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 6914,
+  "output_tokens": 1619,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 8.913,
+  "cost_usd": 0.030018,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4raDYzvx1eE8E4KRsE6"
+ }
+}

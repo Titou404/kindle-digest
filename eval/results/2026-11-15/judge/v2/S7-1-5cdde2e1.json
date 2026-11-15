@@ -1,0 +1,101 @@
+{
+ "config": "S7",
+ "repeat": 1,
+ "url": "https://www.franceinfo.fr/replay-radio/c-est-mon-boulot/83-des-dirigeants-de-pme-trouvent-difficile-de-recruter-et-d-employer-une-personne-en-situation-de-handicap_8242261.html",
+ "title": "83 % des dirigeants de PME trouvent difficile de recruter et d'employer une personne en situation de handicap",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "L'enquête vient de Bpifrance, banque publique d'investissement, à l'occasion de la semaine européenne pour l'emploi des personnes handicapées.",
+    "evidence": "« À cette occasion, la banque publique d'investissement Bpifrance a interrogé des dirigeants de petites et moyennes entreprises »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "83 % des dirigeants de PME trouvent difficile de recruter et d'employer une personne handicapée.",
+    "evidence": "Le titre : « 83 % des dirigeants de PME trouvent difficile de recruter et d'employer une personne en situation de handicap »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "L'enquête a interrogé 1.200 patrons de PME.",
+    "evidence": "« Bpifrance a interrogé 1.200 patrons de petites et moyennes entreprises. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le frein le plus cité est l'impact sur l'organisation du travail, cité par 57 %, pour rythme, horaires, performance, dynamique d'équipe.",
+    "evidence": "« Le frein le plus cité est l'impact sur l'organisation du travail. 57 % craignent avant tout des répercussions sur le rythme de travail, les horaires de travail, la performance »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le coût de la mise en accessibilité des locaux arrive à égalité en deuxième position.",
+    "evidence": "« Le deuxième frein, qui arrive à égalité, est la crainte d'avoir à dépenser pour rendre les locaux accessibles. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "51 % citent le manque d'aides publiques adaptées, que Bpifrance attribue probablement à une méconnaissance.",
+    "evidence": "« 51 % des dirigeants citent le manque d'aides publiques adaptées. ",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Marie Beauchet, responsable des études à Bpifrance, dit que les dirigeants associent handicap et chaise roulante, alors que ces personnes sont minoritaires.",
+    "evidence": "« Cela montre que les dirigeants continuent d'associer handicap et chaise roulante », analyse Marie Beauchet, la responsable des études à Bpifrance",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La première incitation à l'embauche reste l'obligation réglementaire.",
+    "evidence": "« La première incitation à embaucher reste l'obligation réglementaire, selon Bpifrance. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les entreprises de plus de 20 salariés doivent employer au moins 6 % de personnes handicapées.",
+    "evidence": "« La loi oblige en effet les entreprises de plus de 20 salariés à embaucher au moins 6 % de personnes en situation de handicap. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La pénalité pour une PME est de 5.000 euros, portée à 18.000 euros au bout de 3 ans.",
+    "evidence": "« Pour une PME, la pénalité s'élève à 5.000 euros et 18.000 euros au bout de 3 ans. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "4 PME sur 10 ne respectent pas du tout l'obligation.",
+    "evidence": "« Or 4 PME sur 10 ne respectent pas du tout cette obligation. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les candidats qui mentionnent leur handicap sont peu ou jamais rappelés, ce qui les incite à le taire.",
+    "evidence": "« elles sont peu ou jamais rappelés. Donc elles le mentionnent rarement. »",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle résume les freins liés aux représentations, à la méconnaissance des aides et au non-respect de l'obligation, tous présents dans l'article, sans ajout externe."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 12,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 4039,
+  "output_tokens": 1386,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 7.82,
+  "cost_usd": 0.021938,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rXxgz5YbovCsMu3BkZ"
+ }
+}

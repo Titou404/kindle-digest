@@ -1,0 +1,114 @@
+{
+ "config": "S4",
+ "repeat": 1,
+ "url": "https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature",
+ "title": "Advancing science and engineering with Antigravity's /teamwork",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Google Research présente des résultats obtenus avec /teamwork, un système multi-agents d'Antigravity",
+    "evidence": "« We share recent results from Antigravity’s /teamwork multiagent systems, which enhance human-AI collaborations to solve open problems »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "/teamwork combine des modèles Gemini 4 (Argon, Carbon, Hydrogen) et des chercheurs humains",
+    "evidence": "« Using Gemini 4 Argon, Gemini 4 Carbon, Gemini 4 Hydrogen and multi-agent workflows such as Antigravity’s /teamwork »; travail fait avec des experts humains.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il s'agit de résoudre des problèmes ouverts en mathématiques, sciences et ingénierie logicielle",
+    "evidence": "« solve open problems across mathematics, chemistry, systems software, and ML engineering »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le texte est signé Vahab Mirrokni",
+    "evidence": "« Vahab Mirrokni, Google Fellow and VP, Google Research »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les travaux, menés avec des experts et des partenaires académiques, sont en cours de mise à disposition externe",
+    "evidence": "« All of this work is done in collaboration with human experts, and we are making these tools available externally. » ; partenaires académiques mentionnés.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le système associe exploration parallèle et vérificateurs automatiques (Lean 4, tests logiciels, simulateurs, recherche web)",
+    "evidence": "« pairing parallel exploration with dedicated falsifiers (e.g., the Lean 4 proof checker, unmodified software test suites, execution simulators, web search... »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il limite la dispersion du contexte en donnant à chaque agent seulement les fichiers et outils nécessaires",
+    "evidence": "« each specialized agent receives only the exact files and tools it needs for a specific step »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Une équipe de Google, CUHK, USC et CMU a prouvé en toute généralité la conjecture de Courtade–Kumar",
+    "evidence": "« Researchers from Google, CUHK, USC, and CMU used /teamwork's Long Proof pattern ... to prove information theory's 2013 Courtade–Kumar conjecture in full generality. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La conjecture date de 2013 et relève de la théorie de l'information",
+    "evidence": "« information theory's 2013 Courtade–Kumar conjecture »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Elle affirme qu'aucune compression en un bit ne conserve plus d'information qu'une fonction « dictateur »",
+    "evidence": "« no compression of the input to a single bit preserves more information than a \"dictator function\" »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La preuve a été formalisée en Lean 4, soit 50 millions de lignes de code",
+    "evidence": "« The team formalized the entire proof in Lean 4, producing 50 million lines of code. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Des bornes d'échantillonnage presque optimales en analyse de données adaptative ferment un écart ouvert depuis 2014",
+    "evidence": "« independently proved and Lean-verified near-optimal sample bounds ... closing a gap open since 2014. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le texte évoque aussi des avancées en informatique quantique et en algorithmes sur matrices et graphes",
+    "evidence": "Paragraphes sur une construction quantique de 2014 et sur les matrices et graphes (multiplication booléenne, sketches, sparsification).",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La suite de l'article n'est pas disponible",
+    "evidence": "L'article est fourni en entier, avec de nombreux autres résultats (chimie, Weil, Zircon...). Cette affirmation sur l'indisponibilité est fausse.",
+    "verdict": "non_soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle généralise à partir des résultats formellement vérifiés de l'article ; la conséquence sur la manière de mener la recherche et le développement est une inférence, non une affirmation du texte."
+  },
+  "omissions": [
+   "Les résultats de formalisation à grande échelle (Weil, Hilbert, Navier–Stokes, Bochner–Riesz) via /teamwork-LEAP ne sont pas mentionnés.",
+   "Les gains en ingénierie logicielle (réécriture en Rust de Zircon et libgav1, noyaux TPU, FarArray) sont absents alors que le résumé annonce l'ingénierie logicielle."
+  ]
+ },
+ "scores": {
+  "claims": 14,
+  "unsupported": 1,
+  "supported_rate": 0.929,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 2
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 9518,
+  "output_tokens": 1686,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 10.536,
+  "cost_usd": 0.035896,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rZbg1Hhsyz2WCdBQBh"
+ }
+}

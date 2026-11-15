@@ -1,0 +1,111 @@
+{
+ "config": "S3",
+ "repeat": 1,
+ "url": "https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature",
+ "title": "Advancing science and engineering with Antigravity's /teamwork",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Le 13 novembre 2026, Vahab Mirrokni, de Google Research, présente les résultats de /teamwork, système multi-agents d'Antigravity.",
+    "evidence": "« November 13, 2026 Vahab Mirrokni, Google Fellow and VP, Google Research » ; « We share recent results from Antigravity's /teamwork multiagent systems ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "/teamwork associe des experts humains et des modèles Gemini 4 (Argon, Carbon, Hydrogen).",
+    "evidence": "« All of this work is done in collaboration with human experts » ; « Using Gemini 4 Argon, Gemini 4 Carbon, Gemini 4 Hydrogen and multi-agent workflows such as Antigravity's /teamwork ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les problèmes ouverts visés relèvent des mathématiques, de la chimie, des logiciels système et de l'ingénierie ML.",
+    "evidence": "« solve open problems across mathematics, chemistry, systems software, and ML engineering ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Le système combine exploration parallèle et vérificateurs automatiques comme Lean 4 ou les suites de tests existantes.",
+    "evidence": "« pairing parallel exploration with dedicated falsifiers (e.g., the Lean 4 proof checker, unmodified software test suites ... ) to automatically verify ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La conjecture de Courtade–Kumar (2013) a été prouvée dans toute sa généralité.",
+    "evidence": "« to prove information theory's 2013 Courtade–Kumar conjecture in full generality ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "La preuve a été formalisée en Lean 4 sur 50 millions de lignes de code.",
+    "evidence": "« The team formalized the entire proof in Lean 4, producing 50 million lines of code. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "D'autres résultats portent sur le produit de matrices booléennes, les algorithmes de flux, la multiplication d'entiers et la conjecture de Tarjan sur les arbres splay.",
+    "evidence": "Les paragraphes décrivent la multiplication de matrices booléennes, l'algorithme de flux de données, la multiplication d'entiers et la « Tarjan's 1985 Deque Conjecture » sur les splay trees.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "LEAP a produit en autonomie une formalisation de 1,8 million de lignes de la conjecture de Weil.",
+    "evidence": "« /teamwork-LEAP fully autonomously produced an end-to-end, machine-checked formalization of the Weil conjectures ... about 1.8 million lines of Lean ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "LEAP a aussi formalisé la conjecture de Birkhoff et la conjecture de Bochner–Riesz en 3D.",
+    "evidence": "« it also generated the first formalization of the Birkhoff conjecture » ; « it formalized for the first time the 3D Bochner–Riesz conjecture ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "En chimie, 30 agents atteignent 95 % de réussite au premier essai pour déterminer la structure moléculaire à partir de données RMN.",
+    "evidence": "« By organizing 30 specialized agents ... we achieved 95% top-1 exact match and 100% top-3 accuracy on complex benchmark molecules ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un port de Zircon en Rust a été réalisé.",
+    "evidence": "« a two-week Argon campaign rewrote the remaining C++ code, adding about 800,000 lines of safe Rust ».",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Un décodeur AV1 a été réécrit en Rust et est plus rapide que la version C++.",
+    "evidence": "« the Rust port became 20-30% faster than the original C++ and hand-optimized assembly code on both x86_64 and ARM. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les outils sont accessibles aux chercheurs et développeurs externes.",
+    "evidence": "« External scientists and developers can use Gemini 4 models with /teamwork and /boost in Antigravity and Deep Review today. »",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "10 000 chercheurs universitaires recevront six mois d'accès gratuit au niveau d'utilisation le plus élevé.",
+    "evidence": "« opened applications giving 10,000 academic researchers six months of free access to our highest usage tier ».",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "La phrase découle des résultats vérifiés par Lean 4 ou tests, des problèmes ouverts depuis des années et de la disponibilité externe, sans ajouter de fait nouveau."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 14,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 9598,
+  "output_tokens": 1718,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 10.248,
+  "cost_usd": 0.036376,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rV4oWi3hiaiKiG4tAV"
+ }
+}

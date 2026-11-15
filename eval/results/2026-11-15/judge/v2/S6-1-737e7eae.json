@@ -1,0 +1,106 @@
+{
+ "config": "S6",
+ "repeat": 1,
+ "url": "https://www.franceinfo.fr/economie/crise/crise-de-la-dette/dette-publique-francaise-la-france-ne-va-pas-etre-la-grece-affirme-clement-beaune_8283317.html",
+ "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "prompt": "v2"
+ },
+ "judgment": {
+  "claims": [
+   {
+    "claim": "Clément Beaune était invité de Franceinfo le samedi 14 novembre.",
+    "evidence": "Clément Beaune, haut-commissaire à la Stratégie et au Plan était l'invité du 7.40 de Franceinfo ce samedi 14 novembre.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Beaune est haut-commissaire à la Stratégie et au Plan.",
+    "evidence": "Clément Beaune, haut-commissaire à la Stratégie et au Plan était l'invité du 7.40 de Franceinfo",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il s'agit d'un cinquième samedi consécutif de mobilisation sociale.",
+    "evidence": "à Paris avec un cinquième samedi consécutif de mobilisation sociale.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Jusqu'à 60 000 personnes sont attendues à Paris.",
+    "evidence": "On attend encore jusqu'à 60 000 personnes dans les rues de Paris, par exemple, selon les chiffres.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Beaune juge la mobilisation en recul.",
+    "evidence": "il y a quand même une diminution des mobilisations sociales.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il cite les réponses du gouvernement sur le SMIC, le pouvoir d'achat et les transports.",
+    "evidence": "sur le SMIC, sur un certain nombre de mesures de pouvoir d'achat, sur les forfaits de transports publics",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il s'inquiète d'une campagne présidentielle qui n'offre pas de perspective sociale.",
+    "evidence": "il faut aussi que la campagne présidentielle offre des perspectives sociales... C'est ça qui m'inquiète plus que telle ou telle mobilisation",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Les policiers ont été reçus par Laurent Nuñez.",
+    "evidence": "Ils ont été reçus hier par Laurent Nuñez, le ministre de l'Intérieur.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Beaune appelle à entendre les difficultés sociales des policiers.",
+    "evidence": "il faut entendre aussi leur difficulté sociale.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Nicolas Sarkozy exprime la crainte d'une crise financière.",
+    "evidence": "Nicolas Sarkozy qui dit, chez nos confrères du Figaro, craindre un tsunami de crise financière même avant la présidentielle.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Beaune répond que la France ne sera pas la Grèce.",
+    "evidence": "La France ne va pas être la Grèce.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Moody's n'a pas dégradé la note de la France.",
+    "evidence": "Moody's il y a quelques jours ne l'a pas fait.",
+    "verdict": "soutenue"
+   },
+   {
+    "claim": "Il juge la situation sérieuse.",
+    "evidence": "Ça ne veut pas dire que la situation n'est pas sérieuse.",
+    "verdict": "soutenue"
+   }
+  ],
+  "why_it_matters": {
+   "verdict": "deduction_raisonnable",
+   "explanation": "Elle relie des éléments de l'article (dette, colère sociale, présidentielle proche) sans ajouter de fait, mais l'idée d'un gouvernement qui cherche à rassurer est une interprétation."
+  },
+  "omissions": []
+ },
+ "scores": {
+  "claims": 13,
+  "unsupported": 0,
+  "supported_rate": 1.0,
+  "why_it_matters": "deduction_raisonnable",
+  "omissions": 0
+ },
+ "llm_call": {
+  "task": "judge",
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v2",
+  "input_tokens": 5201,
+  "output_tokens": 1210,
+  "thinking_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0,
+  "latency_s": 6.749,
+  "cost_usd": 0.022502,
+  "stop_reason": "end_turn",
+  "request_id": "req_011Ch4rVsRvyTyi3yAdjPngP"
+ }
+}
