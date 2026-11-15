@@ -13,6 +13,9 @@ out/
 
 # Jeux d'articles figés : contiennent le texte d'articles de presse (droits d'auteur)
 eval/fixtures/
+# Fichiers d'étiquetage : contiennent les chapôs (extraits de presse) ; les étiquettes
+# elles-mêmes sont versionnées dans eval/results/, réduites au lien et au verdict
+eval/labels/
 
 # macOS
 .DS_Store
