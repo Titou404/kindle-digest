@@ -47,7 +47,8 @@ def fake_summary(article: Article) -> dict:
     }
 
 
-def summarize(state: SummarizeInput, llm: LLM) -> dict:
+def summarize(state: SummarizeInput, llm: LLM, prompt_version: str = PROMPT_VERSION) -> dict:
+    # prompt_version: production uses PROMPT_VERSION; the evaluation bench compares versions.
     start = time.perf_counter()
     article = state["article"]
     calls, errors = [], []
@@ -58,8 +59,8 @@ def summarize(state: SummarizeInput, llm: LLM) -> dict:
         try:
             data, call = llm.complete_json(
                 task="summarize",
-                prompt_version=PROMPT_VERSION,
-                system=(PROMPTS_DIR / f"summarize_{PROMPT_VERSION}.md").read_text(),
+                prompt_version=prompt_version,
+                system=(PROMPTS_DIR / f"summarize_{prompt_version}.md").read_text(),
                 user=build_user_message(article),
                 schema=SCHEMA,
                 max_tokens=MAX_TOKENS,
