@@ -1,0 +1,1101 @@
+{
+ "day": "2026-11-15",
+ "fixture": {
+  "candidates": 89,
+  "articles": 12,
+  "articles_by_section": {
+   "data": 3,
+   "monde": 3,
+   "eco": 3,
+   "france": 3
+  },
+  "frozen_at": "2026-11-15T13:19:01+00:00",
+  "short_article": {
+   "title": "David Amiel annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires",
+   "chars": 1269,
+   "words": 191
+  }
+ },
+ "cost": {
+  "haiku_runs": 0.1868,
+  "sonnet_runs": 0.5737,
+  "judge_v1": 0.0889,
+  "judge_v2": 2.1103,
+  "total": 2.9597
+ },
+ "retained": {
+  "rank": "R2",
+  "summarize": "S7",
+  "cost_ct": 1.2
+ },
+ "summaries": [
+  {
+   "id": "S1",
+   "config": {
+    "id": "S1",
+    "task": "summarize",
+    "question": "Référence : le réglage de production.",
+    "model": "claude-haiku-5-5",
+    "effort": "medium",
+    "repeats": 3,
+    "prompt": "v1",
+    "max_text": 20000,
+    "mode": "batched"
+   },
+   "repeats": 3,
+   "cost_ct": 0.87,
+   "latency_s": 3.3657,
+   "thinking": 0,
+   "input_tokens": 52451,
+   "words": {
+    "mean": 184,
+    "min": 140,
+    "max": 240
+   },
+   "short_article_words": [
+    143,
+    154,
+    140
+   ],
+   "checks": {
+    "texts": 72,
+    "numbers": 279,
+    "unsupported_numbers": 0,
+    "texts_with_unsupported_number": 0,
+    "quotes": 13,
+    "unsupported_quotes": 0,
+    "translated_quotes": 6,
+    "false_friends": 0
+   },
+   "judge": {
+    "summaries": 12,
+    "claims": 143,
+    "unsupported": 6,
+    "meta": 2,
+    "content": 4,
+    "omissions": 0,
+    "why": {
+     "tiree_du_texte": 1,
+     "deduction_raisonnable": 11,
+     "fait_exterieur": 0
+    },
+    "cost_usd": 0.3095
+   }
+  },
+  {
+   "id": "S2",
+   "config": {
+    "id": "S2",
+    "task": "summarize",
+    "question": "E3 : autant de qualité avec moins d'effort, pour moins cher ?",
+    "model": "claude-haiku-5-5",
+    "effort": "low",
+    "repeats": 3,
+    "prompt": "v1",
+    "max_text": 20000,
+    "mode": "batched"
+   },
+   "repeats": 3,
+   "cost_ct": 0.87,
+   "latency_s": 3.302,
+   "thinking": 0,
+   "input_tokens": 52451,
+   "words": {
+    "mean": 184,
+    "min": 120,
+    "max": 245
+   },
+   "short_article_words": [
+    151,
+    156,
+    120
+   ],
+   "checks": {
+    "texts": 72,
+    "numbers": 285,
+    "unsupported_numbers": 0,
+    "texts_with_unsupported_number": 0,
+    "quotes": 15,
+    "unsupported_quotes": 0,
+    "translated_quotes": 9,
+    "false_friends": 0
+   },
+   "judge": {
+    "summaries": 12,
+    "claims": 143,
+    "unsupported": 7,
+    "meta": 4,
+    "content": 3,
+    "omissions": 0,
+    "why": {
+     "tiree_du_texte": 0,
+     "deduction_raisonnable": 12,
+     "fait_exterieur": 0
+    },
+    "cost_usd": 0.3127
+   }
+  },
+  {
+   "id": "S3",
+   "config": {
+    "id": "S3",
+    "task": "summarize",
+    "question": "E3 : plus de qualité avec plus d'effort ?",
+    "model": "claude-haiku-5-5",
+    "effort": "high",
+    "repeats": 3,
+    "prompt": "v1",
+    "max_text": 20000,
+    "mode": "batched"
+   },
+   "repeats": 3,
+   "cost_ct": 0.93,
+   "latency_s": 3.607,
+   "thinking": 1245.3333,
+   "input_tokens": 52451,
+   "words": {
+    "mean": 181,
+    "min": 128,
+    "max": 243
+   },
+   "short_article_words": [
+    128,
+    164,
+    140
+   ],
+   "checks": {
+    "texts": 72,
+    "numbers": 270,
+    "unsupported_numbers": 0,
+    "texts_with_unsupported_number": 0,
+    "quotes": 17,
+    "unsupported_quotes": 0,
+    "translated_quotes": 8,
+    "false_friends": 0
+   },
+   "judge": {
+    "summaries": 12,
+    "claims": 145,
+    "unsupported": 7,
+    "meta": 3,
+    "content": 4,
+    "omissions": 0,
+    "why": {
+     "tiree_du_texte": 1,
+     "deduction_raisonnable": 11,
+     "fait_exterieur": 0
+    },
+    "cost_usd": 0.3072
+   }
+  },
+  {
+   "id": "S4",
+   "config": {
+    "id": "S4",
+    "task": "summarize",
+    "question": "E2 : couper le texte à 6 000 caractères (ancien réglage) dégrade-t-il les résumés ?",
+    "model": "claude-haiku-5-5",
+    "effort": "medium",
+    "repeats": 3,
+    "prompt": "v1",
+    "max_text": 6000,
+    "mode": "batched"
+   },
+   "repeats": 3,
+   "cost_ct": 0.66,
+   "latency_s": 3.295,
+   "thinking": 0,
+   "input_tokens": 31872,
+   "words": {
+    "mean": 182,
+    "min": 114,
+    "max": 226
+   },
+   "short_article_words": [
+    141,
+    129,
+    114
+   ],
+   "checks": {
+    "texts": 72,
+    "numbers": 262,
+    "unsupported_numbers": 0,
+    "texts_with_unsupported_number": 0,
+    "quotes": 15,
+    "unsupported_quotes": 0,
+    "translated_quotes": 9,
+    "false_friends": 0
+   },
+   "judge": {
+    "summaries": 12,
+    "claims": 147,
+    "unsupported": 11,
+    "meta": 5,
+    "content": 6,
+    "omissions": 5,
+    "why": {
+     "tiree_du_texte": 0,
+     "deduction_raisonnable": 10,
+     "fait_exterieur": 2
+    },
+    "cost_usd": 0.3188
+   }
+  },
+  {
+   "id": "S5",
+   "config": {
+    "id": "S5",
+    "task": "summarize",
+    "question": "E1 : Sonnet, à effort égal, résume-t-il assez mieux pour 20 fois le prix ?",
+    "model": "claude-sonnet-5-5",
+    "effort": "medium",
+    "repeats": 2,
+    "prompt": "v1",
+    "max_text": 20000,
+    "mode": "batched"
+   },
+   "repeats": 2,
+   "cost_ct": 15.44,
+   "latency_s": 3.946,
+   "thinking": 0,
+   "input_tokens": 52451,
+   "words": {
+    "mean": 122,
+    "min": 93,
+    "max": 138
+   },
+   "short_article_words": [
+    98,
+    93
+   ],
+   "checks": {
+    "texts": 48,
+    "numbers": 135,
+    "unsupported_numbers": 0,
+    "texts_with_unsupported_number": 0,
+    "quotes": 9,
+    "unsupported_quotes": 0,
+    "translated_quotes": 2,
+    "false_friends": 0
+   },
+   "judge": {
+    "summaries": 12,
+    "claims": 115,
+    "unsupported": 0,
+    "meta": 0,
+    "content": 0,
+    "omissions": 0,
+    "why": {
+     "tiree_du_texte": 0,
+     "deduction_raisonnable": 10,
+     "fait_exterieur": 2
+    },
+    "cost_usd": 0.2735
+   }
+  },
+  {
+   "id": "S6",
+   "config": {
+    "id": "S6",
+    "task": "summarize",
+    "question": "E1 : Sonnet à son meilleur (high, son effort par défaut).",
+    "model": "claude-sonnet-5-5",
+    "effort": "high",
+    "repeats": 1,
+    "prompt": "v1",
+    "max_text": 20000,
+    "mode": "batched"
+   },
+   "repeats": 1,
+   "cost_ct": 15.51,
+   "latency_s": 3.772,
+   "thinking": 0,
+   "input_tokens": 52451,
+   "words": {
+    "mean": 123,
+    "min": 103,
+    "max": 133
+   },
+   "short_article_words": [
+    103
+   ],
+   "checks": {
+    "texts": 24,
+    "numbers": 74,
+    "unsupported_numbers": 0,
+    "texts_with_unsupported_number": 0,
+    "quotes": 6,
+    "unsupported_quotes": 0,
+    "translated_quotes": 3,
+    "false_friends": 0
+   },
+   "judge": {
+    "summaries": 12,
+    "claims": 130,
+    "unsupported": 2,
+    "meta": 0,
+    "content": 2,
+    "omissions": 0,
+    "why": {
+     "tiree_du_texte": 0,
+     "deduction_raisonnable": 12,
+     "fait_exterieur": 0
+    },
+    "cost_usd": 0.2809
+   }
+  },
+  {
+   "id": "S7",
+   "config": {
+    "id": "S7",
+    "task": "summarize",
+    "question": "Prompt v2 (consignes contre l'hallucination) : moins d'affirmations non soutenues ?",
+    "model": "claude-haiku-5-5",
+    "effort": "medium",
+    "repeats": 3,
+    "prompt": "v2",
+    "max_text": 20000,
+    "mode": "batched"
+   },
+   "repeats": 3,
+   "cost_ct": 0.93,
+   "latency_s": 3.4267,
+   "thinking": 0,
+   "input_tokens": 57071,
+   "words": {
+    "mean": 189,
+    "min": 56,
+    "max": 238
+   },
+   "short_article_words": [
+    56,
+    75,
+    56
+   ],
+   "checks": {
+    "texts": 72,
+    "numbers": 283,
+    "unsupported_numbers": 0,
+    "texts_with_unsupported_number": 0,
+    "quotes": 20,
+    "unsupported_quotes": 0,
+    "translated_quotes": 10,
+    "false_friends": 0
+   },
+   "judge": {
+    "summaries": 12,
+    "claims": 140,
+    "unsupported": 2,
+    "meta": 0,
+    "content": 2,
+    "omissions": 0,
+    "why": {
+     "tiree_du_texte": 0,
+     "deduction_raisonnable": 12,
+     "fait_exterieur": 0
+    },
+    "cost_usd": 0.3078
+   }
+  }
+ ],
+ "flags": [
+  {
+   "config": "S1",
+   "title": "David Amiel annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires",
+   "kind": "claim",
+   "category": "meta",
+   "text": "L'article est publié par franceinfo dans sa rubrique économie.",
+   "why": "Franceinfo apparaît dans le texte, mais aucune rubrique « économie » n'est mentionnée (seulement des hashtags #Budget #Finances)."
+  },
+  {
+   "config": "S1",
+   "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+   "kind": "claim",
+   "category": "content",
+   "text": "Selon lui, ces réponses ne suffisent pas.",
+   "why": "« Visiblement, ce n'est pas du tout suffisant » est dit par l'intervieweur, pas par Beaune ; Beaune dit seulement que cela ne veut pas dire qu'il n'y a pas de colère."
+  },
+  {
+   "config": "S1",
+   "title": "US has floated Ukraine ceding Donbas for Nato membership, Zelensky says",
+   "kind": "claim",
+   "category": "content",
+   "text": "Kyiv souhaite de longue date rejoindre l'OTAN, mais Washington et d'autres membres s'y opposent.",
+   "why": "Kyiv has long sought membership of the military alliance, but this has previously been opposed by the US and others"
+  },
+  {
+   "config": "S1",
+   "title": "Show HN: DeepSeek V3 in ~200 lines of pure Jax",
+   "kind": "claim",
+   "category": "content",
+   "text": "Les romans sont principalement de Dashiell Hammett.",
+   "why": "Hammett est répété 3 fois, mais l'article dit : \"plus about 200 detective and crime novels from Project Gutenberg\". Les livres de Hammett ne sont qu'une minorité."
+  },
+  {
+   "config": "S1",
+   "title": "COP31 : la Bourse ne récompense plus la découverte de réserves d’hydrocarbures en cas d’exposition aux risques réglementaires environnementaux",
+   "kind": "claim",
+   "category": "meta",
+   "text": "L'étude est publiée dans The Conversation.",
+   "why": "L'article ne mentionne nulle part The Conversation ; seul « Fourni par l'auteur » et « notre étude » apparaissent."
+  },
+  {
+   "config": "S1",
+   "title": "COP31 : la Bourse ne récompense plus la découverte de réserves d’hydrocarbures en cas d’exposition aux risques réglementaires environnementaux",
+   "kind": "claim",
+   "category": "content",
+   "text": "Le résumé présente ces investissements de 2026 comme acquis (« restent élevés en 2026 »).",
+   "why": "L'article parle de prévisions (« devraient s'établir »), pas de montants constatés ; le résumé en fait un état de fait."
+  },
+  {
+   "config": "S2",
+   "title": "Iran targets Bahrain airbase as strikes resume in Gulf - Middle East crisis live",
+   "kind": "claim",
+   "category": "content",
+   "text": "C'est la première reprise de frappes depuis septembre.",
+   "why": "« Iran has targeted an airbase in Bahrain in the latest resumption of strikes since September » ; mais un attaque de deux drones a eu lieu le vendredi 13 novembre, donc ce n'est pas la première reprise."
+  },
+  {
+   "config": "S2",
+   "title": "Le pastoralisme, risque ou solution face au changement climatique ? L’évolution du regard porté par les COP climat",
+   "kind": "claim",
+   "category": "meta",
+   "text": "The Conversation reproduit une partie d'un chapitre de l'ouvrage « Penser avec le pastoralisme », publié aux éditions Quae.",
+   "why": "« nous reproduisons une partie du chapitre » ; l'ouvrage est publié aux éditions Quae. Le nom « The Conversation » n'apparaît pas dans le texte."
+  },
+  {
+   "config": "S2",
+   "title": "David Amiel annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires",
+   "kind": "claim",
+   "category": "meta",
+   "text": "L'article a été publié sur franceinfo dans la rubrique économie.",
+   "why": "L'article mentionne franceinfo et des hashtags (#Budget #Finances), mais aucune rubrique « économie » n'est indiquée."
+  },
+  {
+   "config": "S2",
+   "title": "83 % des dirigeants de PME trouvent difficile de recruter et d'employer une personne en situation de handicap",
+   "kind": "claim",
+   "category": "content",
+   "text": "Bpifrance souligne que les candidats qui mentionnent leur handicap sont peu ou jamais rappelés, ce qui les incite à le taire.",
+   "why": "« elles sont peu ou jamais rappelés. Donc elles le mentionnent rarement. » Ce constat n'est pas attribué à Bpifrance dans l'article."
+  },
+  {
+   "config": "S2",
+   "title": "US has floated Ukraine ceding Donbas for Nato membership, Zelensky says",
+   "kind": "claim",
+   "category": "meta",
+   "text": "Le texte est tronqué à la fin.",
+   "why": "L'article ne mentionne aucune troncature ; il se termine normalement, et cette remarque ne vient pas de l'article."
+  },
+  {
+   "config": "S2",
+   "title": "Advancing science and engineering with Antigravity's /teamwork",
+   "kind": "claim",
+   "category": "content",
+   "text": "Des noyaux TPU sont plus rapides que le code C++ d'origine.",
+   "why": "Les noyaux TPU sont comparés à des implémentations de référence (accélérations de 8x à 15x, 4,09x), pas au code C++ ; seul le décodeur Rust est comparé au C++."
+  },
+  {
+   "config": "S2",
+   "title": "COP31 : la Bourse ne récompense plus la découverte de réserves d’hydrocarbures en cas d’exposition aux risques réglementaires environnementaux",
+   "kind": "claim",
+   "category": "meta",
+   "text": "L'étude a été publiée dans The Conversation.",
+   "why": "Le texte ne nomme pas The Conversation (mentions : « notre étude », « Fourni par l'auteur ») ; la publication n'est pas indiquée."
+  },
+  {
+   "config": "S3",
+   "title": "Iran targets Bahrain airbase as strikes resume in Gulf - Middle East crisis live",
+   "kind": "claim",
+   "category": "content",
+   "text": "C'est la première attaque depuis début septembre.",
+   "why": "L'article dit « resumption of strikes since September », mais aussi que l'attaque de vendredi était la première en deux mois ; ce n'est donc pas la première depuis septembre."
+  },
+  {
+   "config": "S3",
+   "title": "Le pastoralisme, risque ou solution face au changement climatique ? L’évolution du regard porté par les COP climat",
+   "kind": "claim",
+   "category": "meta",
+   "text": "The Conversation reproduit une partie d'un chapitre de l'ouvrage « Penser avec le pastoralisme », publié chez Quae.",
+   "why": "« nous reproduisons une partie du chapitre » ; l'ouvrage est publié aux éditions Quae. Le nom The Conversation n'apparaît pas dans l'article."
+  },
+  {
+   "config": "S3",
+   "title": "David Amiel annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires",
+   "kind": "claim",
+   "category": "meta",
+   "text": "L'article a été publié par franceinfo dans sa rubrique économie.",
+   "why": "Le texte mentionne franceinfo et des hashtags (#Budget #Finances #smic), mais aucune rubrique « économie » n'est citée."
+  },
+  {
+   "config": "S3",
+   "title": "83 % des dirigeants de PME trouvent difficile de recruter et d'employer une personne en situation de handicap",
+   "kind": "claim",
+   "category": "content",
+   "text": "Bpifrance souligne que les candidats qui mentionnent leur handicap sont peu ou jamais rappelés, d'où une mention rare.",
+   "why": "L'article affirme ce constat, mais ne l'attribue pas à Bpifrance, seulement au journaliste."
+  },
+  {
+   "config": "S3",
+   "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+   "kind": "claim",
+   "category": "content",
+   "text": "Les mobilisations rassemblaient encore jusqu'à 60 000 personnes à Paris selon les chiffres cités.",
+   "why": "« On attend encore jusqu'à 60 000 personnes dans les rues de Paris, par exemple, selon les chiffres. » C'est une attente pour ce jour, dite par l'intervieweur."
+  },
+  {
+   "config": "S3",
+   "title": "US has floated Ukraine ceding Donbas for Nato membership, Zelensky says",
+   "kind": "claim",
+   "category": "content",
+   "text": "Les émissaires américains ont rencontré Zelensky à Dublin jeudi, puis Poutine à Moscou.",
+   "why": "L'article dit qu'ils sont allés à Dublin jeudi \"after a round of talks with Putin in Moscow\": Poutine a été rencontré avant Zelensky, pas après."
+  },
+  {
+   "config": "S3",
+   "title": "COP31 : la Bourse ne récompense plus la découverte de réserves d’hydrocarbures en cas d’exposition aux risques réglementaires environnementaux",
+   "kind": "claim",
+   "category": "meta",
+   "text": "L'étude est publiée dans The Conversation.",
+   "why": "L'article ne nomme aucun média ; il mentionne seulement « notre étude » et les auteurs, sans citer The Conversation."
+  },
+  {
+   "config": "S4",
+   "title": "Trump, Putin and Xi plan historic joint meeting in China next week, White House says",
+   "kind": "why",
+   "category": "external",
+   "text": "Phrase « pourquoi c'est important »",
+   "why": "L'article ne dit pas que la rencontre pourrait relancer la coopération sur le contrôle des armes ; il précise même qu'aucun accord n'est attendu et que des obstacles pourraient durer des années, donc cette projection n'est pas appuyée par le texte."
+  },
+  {
+   "config": "S4",
+   "title": "Iran targets Bahrain airbase as strikes resume in Gulf - Middle East crisis live",
+   "kind": "why",
+   "category": "external",
+   "text": "Phrase « pourquoi c'est important »",
+   "why": "L'article ne dit pas que Bab el-Mandeb est bloqué : les Houthis y ont plus de contrôle, et le pétrole est dit proche de son niveau d'avant-guerre, donc cette phrase ajoute un fait non étayé."
+  },
+  {
+   "config": "S4",
+   "title": "Le pastoralisme, risque ou solution face au changement climatique ? L’évolution du regard porté par les COP climat",
+   "kind": "claim",
+   "category": "meta",
+   "text": "L'article provient de The Conversation",
+   "why": "Le texte ne nomme à aucun moment The Conversation comme source."
+  },
+  {
+   "config": "S4",
+   "title": "Le pastoralisme, risque ou solution face au changement climatique ? L’évolution du regard porté par les COP climat",
+   "kind": "claim",
+   "category": "meta",
+   "text": "Le texte est tronqué avant la fin de son analyse des négociations",
+   "why": "L'article va jusqu'à la LCIPP et la mention des co-signataires, sans signe de troncature ; l'analyse des négociations est complète."
+  },
+  {
+   "config": "S4",
+   "title": "Le pastoralisme, risque ou solution face au changement climatique ? L’évolution du regard porté par les COP climat",
+   "kind": "omission",
+   "category": "omission",
+   "text": "Point essentiel oublié",
+   "why": "Le texte montre que les documents de la CCNUCC présentent le pastoralisme sous trois angles (victime, facteur d'impact, solution), le dernier étant le plus structurant dans les cadres récents ; le résumé n'en dit rien."
+  },
+  {
+   "config": "S4",
+   "title": "David Amiel annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires",
+   "kind": "claim",
+   "category": "meta",
+   "text": "L'article a été publié par franceinfo dans la rubrique économie",
+   "why": "Le texte mentionne franceinfo et des hashtags (#Budget #Finances), mais aucune rubrique « économie » n'est indiquée."
+  },
+  {
+   "config": "S4",
+   "title": "83 % des dirigeants de PME trouvent difficile de recruter et d'employer une personne en situation de handicap",
+   "kind": "claim",
+   "category": "content",
+   "text": "Bpifrance note que les candidats qui signalent leur handicap sont peu ou jamais rappelés, ce qui les incite à le taire.",
+   "why": "L'article le dit (\"peu ou jamais rappelés. Donc elles le mentionnent rarement\") mais ne l'attribue pas à Bpifrance ; c'est le journaliste qui l'affirme."
+  },
+  {
+   "config": "S4",
+   "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+   "kind": "claim",
+   "category": "content",
+   "text": "Selon Beaune, ces réponses ne suffisent pas.",
+   "why": "C'est l'intervieweur qui dit « Visiblement, ce n'est pas du tout suffisant » ; Beaune ne l'affirme pas, il note seulement que la mobilisation diminue."
+  },
+  {
+   "config": "S4",
+   "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+   "kind": "claim",
+   "category": "content",
+   "text": "Jusqu'à 70 000 policiers étaient mobilisés, selon le texte.",
+   "why": "L'intervieweur dit : « jusqu'à 70 000 forces de l'ordre sur tout le territoire », ce sont des forces de l'ordre et non des policiers mobilisés par la colère."
+  },
+  {
+   "config": "S4",
+   "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+   "kind": "claim",
+   "category": "meta",
+   "text": "Le texte est tronqué avant la fin de l'entretien, notamment sur la dette publique.",
+   "why": "L'article contient la partie sur la dette (« La France ne va pas être la Grèce », Moody's) ; il n'est pas tronqué sur ce sujet."
+  },
+  {
+   "config": "S4",
+   "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+   "kind": "omission",
+   "category": "omission",
+   "text": "Point essentiel oublié",
+   "why": "Le titre et le propos central sur la dette : Beaune affirme que « la France ne va pas être la Grèce » et écarte une crise de la dette."
+  },
+  {
+   "config": "S4",
+   "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+   "kind": "omission",
+   "category": "omission",
+   "text": "Point essentiel oublié",
+   "why": "La réponse à Nicolas Sarkozy, qui craint un tsunami de crise financière, et l'argument que Moody's n'a pas dégradé la note de la France."
+  },
+  {
+   "config": "S4",
+   "title": "US has floated Ukraine ceding Donbas for Nato membership, Zelensky says",
+   "kind": "claim",
+   "category": "content",
+   "text": "Kushner est présenté comme « conseiller américain ».",
+   "why": "L'article le qualifie d'envoyé américain (US envoy), pas de conseiller."
+  },
+  {
+   "config": "S4",
+   "title": "Show HN: DeepSeek V3 in ~200 lines of pure Jax",
+   "kind": "claim",
+   "category": "content",
+   "text": "Les données sont des romans policiers du domaine public, principalement de Dashiell Hammett",
+   "why": "Seuls quatre ensembles de textes de Hammett sont cités, plus environ 200 romans de Project Gutenberg ; Hammett n'est pas majoritaire (« Hammett repeated 3× »)."
+  },
+  {
+   "config": "S4",
+   "title": "Advancing science and engineering with Antigravity's /teamwork",
+   "kind": "claim",
+   "category": "meta",
+   "text": "La suite de l'article n'est pas disponible",
+   "why": "L'article est fourni en entier, avec de nombreux autres résultats (chimie, Weil, Zircon...). Cette affirmation sur l'indisponibilité est fausse."
+  },
+  {
+   "config": "S4",
+   "title": "Advancing science and engineering with Antigravity's /teamwork",
+   "kind": "omission",
+   "category": "omission",
+   "text": "Point essentiel oublié",
+   "why": "Les résultats de formalisation à grande échelle (Weil, Hilbert, Navier–Stokes, Bochner–Riesz) via /teamwork-LEAP ne sont pas mentionnés."
+  },
+  {
+   "config": "S4",
+   "title": "Advancing science and engineering with Antigravity's /teamwork",
+   "kind": "omission",
+   "category": "omission",
+   "text": "Point essentiel oublié",
+   "why": "Les gains en ingénierie logicielle (réécriture en Rust de Zircon et libgav1, noyaux TPU, FarArray) sont absents alors que le résumé annonce l'ingénierie logicielle."
+  },
+  {
+   "config": "S4",
+   "title": "COP31 : la Bourse ne récompense plus la découverte de réserves d’hydrocarbures en cas d’exposition aux risques réglementaires environnementaux",
+   "kind": "claim",
+   "category": "content",
+   "text": "L'étude est publiée dans le cadre de la COP31, qui se tient en Turquie jusqu'au 20 novembre.",
+   "why": "L'article situe la COP31 « en Turquie jusqu'au 20 novembre » mais ne dit pas que l'étude est publiée dans le cadre de la COP; la COP31 n'est citée que comme contexte (titre « COP31 : ... »)."
+  },
+  {
+   "config": "S5",
+   "title": "David Amiel annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires",
+   "kind": "why",
+   "category": "external",
+   "text": "Phrase « pourquoi c'est important »",
+   "why": "L'article ne dit pas que la mesure vise à éviter un rattrapage par le smic ; ce motif est ajouté, seul le coût vient du texte."
+  },
+  {
+   "config": "S5",
+   "title": "US has floated Ukraine ceding Donbas for Nato membership, Zelensky says",
+   "kind": "why",
+   "category": "external",
+   "text": "Phrase « pourquoi c'est important »",
+   "why": "L'article ne dit pas que Moscou a « fermement rejeté » cette ouverture précise ni que les négociations sont « bloquées » ; ce sont des ajouts d'interprétation, la position russe étant décrite comme inchangée, sans réponse à cette idée."
+  },
+  {
+   "config": "S6",
+   "title": "Iran targets Bahrain airbase as strikes resume in Gulf - Middle East crisis live",
+   "kind": "claim",
+   "category": "content",
+   "text": "À Gaza, Israël a tué un commandant du Hamas à Rafah.",
+   "why": "Hamas a confirmé la mort du commandant de la « Rafah Brigade » dans une frappe sur un camp de réfugiés de Gaza ; l'article ne dit pas que la frappe a eu lieu à Rafah."
+  },
+  {
+   "config": "S6",
+   "title": "Agression d’un responsable universitaire : \"Tout ça s'inscrit dans un contexte de violence croissante\", estime le ministre de l'Enseignement supérieur et de la Recherche Philippe Baptiste",
+   "kind": "claim",
+   "category": "content",
+   "text": "La présidente de l'université de Lorraine fait partie des menacés de mort.",
+   "why": "Le ministre dit que ses coordonnées ont été divulguées ; la menace de mort vient d'une question du journaliste (« elle aurait refusé... »), non confirmée explicitement par lui."
+  },
+  {
+   "config": "S7",
+   "title": "Trump, Putin and Xi plan historic joint meeting in China next week, White House says",
+   "kind": "claim",
+   "category": "content",
+   "text": "Selon la « médiatrice » de la Maison Blanche, la visite comprendra aussi un sommet de l'ASEAN aux Philippines mardi.",
+   "why": "Wales est la porte-parole (spokeswoman), pas « médiatrice » ; le reste (sommet de l'Asean aux Philippines mardi) est dit dans l'article."
+  },
+  {
+   "config": "S7",
+   "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+   "kind": "claim",
+   "category": "content",
+   "text": "Beaune dit que cela ne suffit pas.",
+   "why": "Le « Visiblement, ce n'est pas du tout suffisant » est dit par l'intervieweur, pas par Beaune ; il dit seulement que cela ne veut pas dire qu'il n'y a pas de colère ou de sujets."
+  }
+ ],
+ "judge_v1_contradiction": {
+  "claim": "La preuve a été formalisée en Lean 4 avec environ 50 millions de lignes.",
+  "evidence": "L'article dit exactement 50 millions de lignes, pas « environ », mais l'écart est mineur ; en revanche le chiffre est bien celui de l'article, donc soutenu en substance."
+ },
+ "rankings": [
+  {
+   "id": "R1",
+   "config": {
+    "id": "R1",
+    "task": "rank",
+    "question": "Référence : le réglage de production (un seul appel pour tous les candidats).",
+    "model": "claude-haiku-5-5",
+    "effort": "medium",
+    "repeats": 3,
+    "prompt": "v1",
+    "max_text": 20000,
+    "mode": "batched"
+   },
+   "runs": [
+    {
+     "name": "R1-1",
+     "cost_ct": 0.489,
+     "seconds": 26.63,
+     "thinking": 4237,
+     "precision": 0.5,
+     "auc": 0.623,
+     "common_with_sonnet": [
+      10,
+      9
+     ]
+    },
+    {
+     "name": "R1-2",
+     "cost_ct": 0.277,
+     "seconds": 10.34,
+     "thinking": 0,
+     "precision": 0.583,
+     "auc": 0.652,
+     "common_with_sonnet": [
+      6,
+      6
+     ]
+    },
+    {
+     "name": "R1-3",
+     "cost_ct": 0.51,
+     "seconds": 67.88,
+     "thinking": 4573,
+     "precision": 0.5,
+     "auc": 0.657,
+     "common_with_sonnet": [
+      11,
+      10
+     ]
+    }
+   ],
+   "common_between_repeats": [
+    7,
+    10,
+    6
+   ]
+  },
+  {
+   "id": "R2",
+   "config": {
+    "id": "R2",
+    "task": "rank",
+    "question": "E3 : autant de qualité de tri avec moins d'effort ?",
+    "model": "claude-haiku-5-5",
+    "effort": "low",
+    "repeats": 3,
+    "prompt": "v1",
+    "max_text": 20000,
+    "mode": "batched"
+   },
+   "runs": [
+    {
+     "name": "R2-1",
+     "cost_ct": 0.272,
+     "seconds": 9.83,
+     "thinking": 0,
+     "precision": 0.583,
+     "auc": 0.644,
+     "common_with_sonnet": [
+      4,
+      4
+     ]
+    },
+    {
+     "name": "R2-2",
+     "cost_ct": 0.272,
+     "seconds": 10.01,
+     "thinking": 0,
+     "precision": 0.5,
+     "auc": 0.645,
+     "common_with_sonnet": [
+      4,
+      4
+     ]
+    },
+    {
+     "name": "R2-3",
+     "cost_ct": 0.265,
+     "seconds": 9.59,
+     "thinking": 0,
+     "precision": 0.667,
+     "auc": 0.628,
+     "common_with_sonnet": [
+      7,
+      7
+     ]
+    }
+   ],
+   "common_between_repeats": [
+    11,
+    8,
+    7
+   ]
+  },
+  {
+   "id": "R3",
+   "config": {
+    "id": "R3",
+    "task": "rank",
+    "question": "E3 : un meilleur tri avec plus d'effort ?",
+    "model": "claude-haiku-5-5",
+    "effort": "high",
+    "repeats": 3,
+    "prompt": "v1",
+    "max_text": 20000,
+    "mode": "batched"
+   },
+   "runs": [
+    {
+     "name": "R3-1",
+     "cost_ct": 0.71,
+     "seconds": 41.44,
+     "thinking": 8666,
+     "precision": 0.417,
+     "auc": 0.618,
+     "common_with_sonnet": [
+      8,
+      7
+     ]
+    },
+    {
+     "name": "R3-2",
+     "cost_ct": 0.574,
+     "seconds": 34.66,
+     "thinking": 5942,
+     "precision": 0.75,
+     "auc": 0.629,
+     "common_with_sonnet": [
+      8,
+      9
+     ]
+    },
+    {
+     "name": "R3-3",
+     "cost_ct": 0.562,
+     "seconds": 31.63,
+     "thinking": 5636,
+     "precision": 0.667,
+     "auc": 0.659,
+     "common_with_sonnet": [
+      8,
+      9
+     ]
+    }
+   ],
+   "common_between_repeats": [
+    7,
+    8,
+    11
+   ]
+  },
+  {
+   "id": "R4",
+   "config": {
+    "id": "R4",
+    "task": "rank",
+    "question": "E1 : Sonnet trie-t-il mieux ?",
+    "model": "claude-sonnet-5-5",
+    "effort": "medium",
+    "repeats": 2,
+    "prompt": "v1",
+    "max_text": 20000,
+    "mode": "batched"
+   },
+   "runs": [
+    {
+     "name": "R4-1",
+     "cost_ct": 5.467,
+     "seconds": 16.46,
+     "thinking": 0,
+     "precision": 0.5,
+     "auc": 0.627,
+     "common_with_sonnet": [
+      12,
+      11
+     ]
+    },
+    {
+     "name": "R4-2",
+     "cost_ct": 5.519,
+     "seconds": 16.82,
+     "thinking": 0,
+     "precision": 0.583,
+     "auc": 0.641,
+     "common_with_sonnet": [
+      11,
+      12
+     ]
+    }
+   ],
+   "common_between_repeats": [
+    11
+   ]
+  },
+  {
+   "id": "R5",
+   "config": {
+    "id": "R5",
+    "task": "rank",
+    "question": "E4 : un appel par article plutôt qu'un seul appel groupé ?",
+    "model": "claude-haiku-5-5",
+    "effort": "medium",
+    "repeats": 1,
+    "prompt": "v1",
+    "max_text": 20000,
+    "mode": "per_article"
+   },
+   "runs": [
+    {
+     "name": "R5-1",
+     "cost_ct": 1.924,
+     "seconds": 15.42,
+     "thinking": 3968,
+     "precision": 0.5,
+     "auc": 0.593,
+     "common_with_sonnet": [
+      7,
+      8
+     ]
+    }
+   ],
+   "common_between_repeats": []
+  }
+ ],
+ "labels": {
+  "total": 89,
+  "kept": 41,
+  "chance_precision": 0.461
+ },
+ "rank_by_section": [
+  {
+   "section": "data",
+   "kept": 7,
+   "dropped": 10,
+   "auc": 0.557
+  },
+  {
+   "section": "monde",
+   "kept": 16,
+   "dropped": 24,
+   "auc": 0.786
+  },
+  {
+   "section": "eco",
+   "kept": 11,
+   "dropped": 9,
+   "auc": 0.545
+  },
+  {
+   "section": "france",
+   "kept": 7,
+   "dropped": 5,
+   "auc": 0.343
+  }
+ ],
+ "disagreements": {
+  "kept_scored_low": [
+   {
+    "title": "My favourite modern NES games",
+    "source": "hackernews",
+    "score": 0.9
+   },
+   {
+    "title": "Why did some Apollo missions carry a grenade launcher?",
+    "source": "hackernews",
+    "score": 1.5
+   },
+   {
+    "title": "Beauty advent calendars can cost hundreds but are they value for money?",
+    "source": "bbc/business",
+    "score": 1.7
+   },
+   {
+    "title": "How did Woz write the Apple 1 BASIC before building the computer?",
+    "source": "hackernews",
+    "score": 2
+   },
+   {
+    "title": "New Orleans port files $1m lawsuit over 'miracle on the Mississippi' tanker collision",
+    "source": "bbc/world",
+    "score": 2.4
+   },
+   {
+    "title": "Judge temporarily blocks Trump from closing Washington DC golf course for renovation",
+    "source": "bbc/world",
+    "score": 2.4
+   }
+  ],
+  "dropped_scored_high": [
+   {
+    "title": "Est-il encore possible de stabiliser la dette publique française ?",
+    "source": "theconversation/fr",
+    "score": 7.2
+   },
+   {
+    "title": "Iran targets Bahrain airbase as strikes resume in Gulf - Middle East crisis live",
+    "source": "guardian/world",
+    "score": 7.1
+   },
+   {
+    "title": "David Amiel annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires",
+    "source": "franceinfo/economie",
+    "score": 6.9
+   },
+   {
+    "title": "Surendettement : 10,2% de dossiers supplémentaires déposés à la Banque de France depuis le début de l'année 2026",
+    "source": "franceinfo/economie",
+    "score": 6.4
+   },
+   {
+    "title": "Anthony Albanese welcomes Trump-Xi-Putin summit – even as European leaders express reservations",
+    "source": "guardian/world",
+    "score": 6.3
+   },
+   {
+    "title": "COP31 : la Bourse ne récompense plus la découverte de réserves d’hydrocarbures en cas d’exposition aux risques réglementaires environnementaux",
+    "source": "theconversation/fr",
+    "score": 5.8
+   }
+  ]
+ }
+}
