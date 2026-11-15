@@ -16,11 +16,30 @@ from itertools import combinations
 from bench import FIXTURES_DIR, RESULTS_DIR, load_fixture
 from rank_quality import auc, load_labels
 
+from digest.nodes.fetch_text import MAX_TEXT
+from digest.nodes.select import QUOTAS
+from digest.pricing import PRICES
+
 RUN_FILE = re.compile(r"([SR]\d+)-(\d+)\.json")
 # Comments on the source rather than on the news ("published by franceinfo", "the text is
 # cut"): the summarizer saw the source name in the <article> tag, the judge did not.
 META = re.compile(r"The Conversation|franceinfo|tronqu|suite de l'article", re.IGNORECASE)
 SECTIONS = ["data", "monde", "eco", "france"]
+# The first pass of check_facts.py, before it learnt scales, rounding, titles and versions.
+# That version of the script is gone, so this record is kept by hand (see CLAUDE.md, 2026-11-15).
+CHECKS_FIRST_PASS = {
+    "false_alarms": 23,
+    "examples": ["« 10.7k » devenu « 10 700 »", "des arrondis (93,4 % en 93 %)",
+                 "un nombre du titre", "un numéro de version"],
+}
+
+
+def auc_margin95(value: float, n_kept: int, n_dropped: int) -> float:
+    """Half-width of the 95 % confidence interval of an AUC (Hanley and McNeil, 1982)."""
+    q1, q2 = value / (2 - value), 2 * value**2 / (1 + value)
+    variance = (value * (1 - value) + (n_kept - 1) * (q1 - value**2)
+                + (n_dropped - 1) * (q2 - value**2)) / (n_kept * n_dropped)
+    return round(1.96 * variance**0.5, 3)
 
 
 def mean(xs):
@@ -161,6 +180,8 @@ def main() -> None:
     }
     cost["total"] = round(sum(cost.values()), 4)
 
+    rank_runs = [{"auc": u["auc"], "batched": r["config"]["mode"] == "batched"}
+                 for r in rankings for u in r["runs"]]
     by_id = {s["id"]: s for s in summaries} | {r["id"]: r for r in rankings}
     retained = {
         "rank": "R2", "summarize": "S7",
@@ -178,7 +199,13 @@ def main() -> None:
         "summaries": summaries, "flags": flags, "judge_v1_contradiction": v1_contradiction,
         "rankings": rankings,
         "labels": {"total": len(labels), "kept": sum(labels.values()),
-                   "chance_precision": rank_quality["chance_precision"]},
+                   "chance_precision": rank_quality["chance_precision"],
+                   "auc_margin95": auc_margin95(
+                       statistics.mean(r["auc"] for r in rank_runs if r["batched"]),
+                       sum(labels.values()), len(labels) - sum(labels.values()))},
+        "settings": {"max_text": MAX_TEXT, "journal_size": sum(QUOTAS.values()),
+                     "prices": {m: PRICES[m] for m in ("claude-haiku-5-5", "claude-sonnet-5-5")}},
+        "checks_first_pass": CHECKS_FIRST_PASS,
         "rank_by_section": by_section,
         "disagreements": {"kept_scored_low": disagreement(kept_low),
                           "dropped_scored_high": disagreement(dropped_high)},

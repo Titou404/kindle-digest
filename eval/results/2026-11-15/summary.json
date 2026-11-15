@@ -1004,7 +1004,31 @@
  "labels": {
   "total": 89,
   "kept": 41,
-  "chance_precision": 0.461
+  "chance_precision": 0.461,
+  "auc_margin95": 0.116
+ },
+ "settings": {
+  "max_text": 20000,
+  "journal_size": 12,
+  "prices": {
+   "claude-haiku-5-5": {
+    "input": 0.1,
+    "output": 0.5
+   },
+   "claude-sonnet-5-5": {
+    "input": 2.0,
+    "output": 10.0
+   }
+  }
+ },
+ "checks_first_pass": {
+  "false_alarms": 23,
+  "examples": [
+   "« 10.7k » devenu « 10 700 »",
+   "des arrondis (93,4 % en 93 %)",
+   "un nombre du titre",
+   "un numéro de version"
+  ]
  },
  "rank_by_section": [
   {
