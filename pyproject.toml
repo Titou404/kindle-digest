@@ -28,3 +28,6 @@ dev = [
     "pytest>=9.2.0",
     "ruff>=0.17.5",
 ]
+
+[tool.pytest.ini_options]
+pythonpath = ["eval"]  # the bench (eval/) is a folder of scripts, not a package

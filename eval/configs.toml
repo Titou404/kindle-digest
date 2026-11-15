@@ -1,0 +1,131 @@
+# Configurations of the evaluation bench, replayed on a frozen day (eval/fixtures/).
+#
+# Each config changes ONE setting compared to its reference (S1 for summaries, R1 for
+# ranking), so that any difference can be attributed to that setting. Testing every
+# combination (3 models x 3 efforts x 2 lengths x 2 prompts = 36 configs) would cost far
+# more and answer questions nobody asked.
+#
+# repeats: the model does not answer the same way twice (e.g. rank once skipped thinking
+# entirely). Repeating a config measures this noise: a difference between two configs
+# smaller than the difference between two runs of the same config means nothing.
+# Cheap Haiku configs are repeated 3 times; Sonnet ones, 20x more expensive, less.
+#
+# Not tested, settled without paying:
+# - Opus 5.5 (40x Haiku's price): would never be chosen for a 1-cent daily journal.
+# - Prompt caching (E5): the summarize prompt is below the 512-token minimum, and rank runs
+#   once a day while the cache lives 5 minutes. Only worth testing if R5 wins.
+
+# ---------- Summaries: 12 frozen articles ----------
+
+[[configs]]
+id = "S1"
+task = "summarize"
+question = "Référence : le réglage de production."
+model = "claude-haiku-5-5"
+effort = "medium"
+prompt = "v1"
+max_text = 20000
+repeats = 3
+
+[[configs]]
+id = "S2"
+task = "summarize"
+question = "E3 : autant de qualité avec moins d'effort, pour moins cher ?"
+model = "claude-haiku-5-5"
+effort = "low"
+prompt = "v1"
+max_text = 20000
+repeats = 3
+
+[[configs]]
+id = "S3"
+task = "summarize"
+question = "E3 : plus de qualité avec plus d'effort ?"
+model = "claude-haiku-5-5"
+effort = "high"
+prompt = "v1"
+max_text = 20000
+repeats = 3
+
+[[configs]]
+id = "S4"
+task = "summarize"
+question = "E2 : couper le texte à 6 000 caractères (ancien réglage) dégrade-t-il les résumés ?"
+model = "claude-haiku-5-5"
+effort = "medium"
+prompt = "v1"
+max_text = 6000
+repeats = 3
+
+[[configs]]
+id = "S5"
+task = "summarize"
+question = "E1 : Sonnet, à effort égal, résume-t-il assez mieux pour 20 fois le prix ?"
+model = "claude-sonnet-5-5"
+effort = "medium"
+prompt = "v1"
+max_text = 20000
+repeats = 2
+
+[[configs]]
+id = "S6"
+task = "summarize"
+question = "E1 : Sonnet à son meilleur (high, son effort par défaut)."
+model = "claude-sonnet-5-5"
+effort = "high"
+prompt = "v1"
+max_text = 20000
+repeats = 1
+
+[[configs]]
+id = "S7"
+task = "summarize"
+question = "Prompt v2 (consignes contre l'hallucination) : moins d'affirmations non soutenues ?"
+model = "claude-haiku-5-5"
+effort = "medium"
+prompt = "v2"
+max_text = 20000
+repeats = 3
+
+# ---------- Ranking: every frozen candidate ----------
+
+[[configs]]
+id = "R1"
+task = "rank"
+question = "Référence : le réglage de production (un seul appel pour tous les candidats)."
+model = "claude-haiku-5-5"
+effort = "medium"
+repeats = 3
+
+[[configs]]
+id = "R2"
+task = "rank"
+question = "E3 : autant de qualité de tri avec moins d'effort ?"
+model = "claude-haiku-5-5"
+effort = "low"
+repeats = 3
+
+[[configs]]
+id = "R3"
+task = "rank"
+question = "E3 : un meilleur tri avec plus d'effort ?"
+model = "claude-haiku-5-5"
+effort = "high"
+repeats = 3
+
+[[configs]]
+id = "R4"
+task = "rank"
+question = "E1 : Sonnet trie-t-il mieux ?"
+model = "claude-sonnet-5-5"
+effort = "medium"
+repeats = 2
+
+[[configs]]
+id = "R5"
+task = "rank"
+question = "E4 : un appel par article plutôt qu'un seul appel groupé ?"
+model = "claude-haiku-5-5"
+effort = "medium"
+mode = "per_article"
+repeats = 1
