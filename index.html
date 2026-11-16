@@ -384,7 +384,7 @@ table{border-collapse:collapse; width:100%; font-size:.84rem}
     </div>
     <div class="wrap">
       <div class="hero-top">
-        <p class="eyebrow">Un workflow LangGraph, en Python, tous les matins vers 5&nbsp;h&nbsp;30</p>
+        <p class="eyebrow">Un workflow LangGraph, en Python, tous les soirs vers 20&nbsp;h, pour le lendemain matin</p>
         <div class="roundel" role="img" aria-label="Chiffres réels, relus à chaque ouverture">
           <svg viewBox="0 0 140 140" aria-hidden="true">
             <defs><path id="ring" d="M70 70 m-54 0 a54 54 0 1 1 108 0 a54 54 0 1 1 -108 0"/></defs>
@@ -395,7 +395,7 @@ table{border-collapse:collapse; width:100%; font-size:.84rem}
           </svg>
         </div>
       </div>
-      <h1>Chaque matin, un pipeline <em>collecte</em> des articles, garde <em>les meilleurs</em>, les <em>résume</em> et envoie un journal sur <em>ma Kindle.</em></h1>
+      <h1>Chaque soir, un pipeline <em>collecte</em> des articles, garde <em>les meilleurs</em>, les <em>résume</em> et envoie le journal du matin sur <em>ma Kindle.</em></h1>
       <div class="hero-bottom">
         <div>
           <p class="rundate" id="rundate"></p>
@@ -436,7 +436,7 @@ table{border-collapse:collapse; width:100%; font-size:.84rem}
         <p>Chaque run écrit un fichier JSON&nbsp;: compteurs, durée de chaque nœud, chaque appel au modèle, erreurs, et chaque candidat avec sa note. Toute cette page est calculée à partir de ce fichier.</p>
         <pre id="json" tabindex="0"></pre>
       </div>
-      <p class="colophon">Kindle Digest · chiffres lus dans les rapports de <code>runs/</code> à chaque ouverture de la page ; seuls les runs du cron, planifiés chaque matin, sont affichés. <a href="config.html">Pourquoi cette config : le banc d'évaluation →</a></p>
+      <p class="colophon">Kindle Digest · chiffres lus dans les rapports de <code>runs/</code> à chaque ouverture de la page ; seuls les runs du cron sont affichés. Il part chaque soir vers 20&nbsp;h : même avec plusieurs heures de retard, le journal du matin est là au réveil. <a href="config.html">Pourquoi cette config : le banc d'évaluation →</a></p>
     </div>
   </section>
 </main>
@@ -607,10 +607,14 @@ const code = s => `<code>${esc(s)}</code>`;
 const WEEKDAYS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
 const MONTHS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
 const MONTHS_SHORT = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
-const dayOf = run => new Date(run.date + 'T12:00:00');
+// The journal is made the evening before: "edition" is the morning it is for. Reports written
+// before 2026-11-16 have no edition: those journals were made the same morning.
+const editionOf = run => run.edition || run.date;
+const madeTheEveningBefore = run => editionOf(run) !== run.date;
+const dayOf = run => new Date(editionOf(run) + 'T12:00:00');
 const longDate = run => { const d = dayOf(run); return `${WEEKDAYS[d.getDay()]} ${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`; };
 const shortDate = run => { const d = dayOf(run); return `${WEEKDAYS[d.getDay()].slice(0, 3)}. ${d.getDate()} ${MONTHS_SHORT[d.getMonth()]}`; };
-const clock = run => run.finished_at.slice(11, 16).replace(':', ' h ');
+const clock = run => run.finished_at.slice(11, 16).replace(':', ' h ').replace(/^0/, '');
 const reportPath = run => `runs/${run.date}_${run.finished_at.slice(11, 13)}${run.finished_at.slice(14, 16)}.json`;
 // Config fields: one value for every task in the reports before 2026-11-15, one per task after.
 const cfg = (run, key, task) => { const v = run.config[key]; return v && typeof v === 'object' ? v[task] : v; };
@@ -882,7 +886,7 @@ const VIEWS = {
         ['Posts bruts', num('epub.m4', e.raw_posts), 'raw_posts'],
         ['Chapitres', num('epub.m5', articleChapters)],
         ['Taille du fichier', `${num('epub.m6', e.size_bytes)} octets`, 'size_bytes'],
-        ['Fichier', `out/digest-${run.date}.epub`, 'epub_path', true],
+        ['Fichier', `out/digest-${editionOf(run)}.epub`, 'epub_path', true],
         ['Durée', `${num('epub.m7', d.node('render_epub').duration_s * 1000)} ms`, 'duration_s'],
       ]),
     };
@@ -1066,7 +1070,7 @@ function sparkline(values, selected, format, bad) {
 
 function renderHero(run, d) {
   const failed = !!d.deliverError, incidents = run.errors.length;
-  $('#rundate').textContent = `Run du ${longDate(run)}, terminé à ${clock(run)}`;
+  $('#rundate').textContent = `Journal du ${longDate(run)}, préparé ${madeTheEveningBefore(run) ? 'la veille' : 'le jour même'} à ${clock(run)}`;
   $('#figs').innerHTML = `
     <div class="fig wide"><dt>Articles collectés, puis retenus</dt><dd>${num('hero.collected', run.counts.collected)}<span class="arrow">→</span>${num('hero.selected', run.counts.selected)}</dd></div>
     <div class="fig"><dt>Coût</dt><dd>${num('hero.cost', run.totals.cost_usd, 'ct')}<small>ct</small></dd></div>
@@ -1081,7 +1085,7 @@ function renderHero(run, d) {
   $('#spv-time').innerHTML = num('spark.seconds', run.totals.seconds) + ' s';
   $('#days').innerHTML = RUNS.map((r, i) => {
     const day = dayOf(r), flag = bad[i] ? 'bad' : r.errors.length ? 'warn' : '';
-    return `<button type="button" data-run="${i}" aria-pressed="${i === state.run}" aria-label="Run du ${longDate(r)}${r.errors.length ? ', ' + r.errors.length + ' incident(s)' : ''}">
+    return `<button type="button" data-run="${i}" aria-pressed="${i === state.run}" aria-label="Journal du ${longDate(r)}${r.errors.length ? ', ' + r.errors.length + ' incident(s)' : ''}">
       <span class="wd">${WEEKDAYS[day.getDay()].slice(0, 3)}</span><span class="dn">${day.getDate()}</span><i class="flag ${flag}"></i></button>`;
   }).join('');
   const first = dayOf(RUNS[0]), last = dayOf(RUNS[RUNS.length - 1]);
@@ -1097,7 +1101,7 @@ function renderJson(run) {
   const line = (key, value) => `  "${key}": ${JSON.stringify(value, null, 1).replace(/\n\s*/g, ' ')},`;
   $('#json').textContent = [
     `// ${reportPath(run)}`, '{',
-    line('date', run.date), line('finished_at', run.finished_at), line('git_sha', run.git_sha), line('mode', run.mode), line('trigger', run.trigger),
+    line('date', run.date), ...(run.edition ? [line('edition', run.edition)] : []), line('finished_at', run.finished_at), line('git_sha', run.git_sha), line('mode', run.mode), line('trigger', run.trigger),
     line('config', run.config), line('counts', run.counts), line('totals', run.totals),
     `  "nodes": [ … ${run.nodes.length} × {"node", "duration_s", "counts"} ],`,
     `  "llm_calls": [ … ${run.llm_calls.length} × {"task", "model", "prompt_version", "input_tokens", "output_tokens", "thinking_tokens", "latency_s", "cost_usd", …} ],`,
@@ -1229,7 +1233,7 @@ async function init() {
   try {
     RUNS = await loadRuns();
     if (RUNS.length) { state.run = RUNS.length - 1; render(); }
-    else showEmpty('Aucun run du cron pour l\'instant : le premier arrivera demain matin vers 5 h 30.');
+    else showEmpty('Aucun run du cron pour l\'instant : le premier partira ce soir vers 20 h.');
   } catch (error) {
     showEmpty(`Rapports introuvables (${error.message}). Cette page lit runs/index.json : elle doit être servie avec le dossier runs/.`);
   }

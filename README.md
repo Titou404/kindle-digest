@@ -12,7 +12,7 @@ D'où l'idée d'un journal numérique qui arrive tout seul sur ma Kindle, dont l
 
 ## Ce que fait le projet
 
-Chaque jour, sans intervention de ma part :
+Chaque soir, sans intervention de ma part, pour le journal du lendemain matin :
 
 1. le pipeline collecte environ 250 articles auprès de 9 sources (Hacker News, Reddit, BBC, The Guardian, franceinfo, The Conversation) ;
 2. il écarte les articles de plus de 24 h et les doublons : il en reste une centaine ;
@@ -38,7 +38,7 @@ Résultat : sur les 8 étapes du pipeline, 2 seulement appellent un LLM, pour 13
 Ce que ce choix apporte, concrètement :
 
 - **un coût prévisible** : le nombre d'appels est borné par le code, pas par le modèle ;
-- **un comportement testable** : 71 tests tournent hors réseau en moins de 2 secondes, avec un faux LLM, donc sans rien payer ;
+- **un comportement testable** : 75 tests tournent hors réseau en moins de 2 secondes, avec un faux LLM, donc sans rien payer ;
 - **des pannes contenues** : une source qui tombe ou un appel LLM qui échoue ne fait pas tomber le journal, chaque étape a son repli ;
 - **des erreurs qu'on peut expliquer** : quand un article est mal choisi ou mal résumé, on sait quelle étape regarder.
 
@@ -113,11 +113,11 @@ Seul le dernier cas rend le run rouge : un journal qui n'arrive pas est une vrai
 
 ## La mesure en production
 
-Le journal est fabriqué par GitHub Actions ([`.github/workflows/daily.yml`](.github/workflows/daily.yml)), qui lance le pipeline selon une planification. Chaque run laisse trois traces.
+Le journal est fabriqué par GitHub Actions ([`.github/workflows/daily.yml`](.github/workflows/daily.yml)), qui lance le pipeline chaque soir vers 20 h : le journal porte la date du lendemain matin, celui où je le lis. Chaque run laisse trois traces.
 
 **Un rapport JSON par run**, dans [`runs/`](runs/), que le workflow commite lui-même. Il contient :
 
-- la config utilisée (modèle, effort et version de prompt de chaque tâche) et qui a déclenché le run ;
+- la config utilisée (modèle, effort et version de prompt de chaque tâche), qui a déclenché le run, et le matin auquel le journal est destiné ;
 - l'entonnoir : articles collectés, gardés après nettoyage, retenus, résumés ;
 - pour chaque étape, sa durée et ses compteurs ;
 - pour chaque appel LLM : tokens d'entrée et de sortie, tokens de réflexion, durée, coût en dollars, raison de fin ;
@@ -307,7 +307,7 @@ uv run python eval/run_bench.py --only S1,R1
 
 Ce qui ne marche pas encore bien, par ordre d'importance :
 
-- **La planification n'est pas fiable.** Le run prévu à 5 h 30 est parti à 13 h 10 le 15/11 et à 14 h 03 le 16/11. Suite : planifier le journal la veille au soir, pour qu'un retard de plusieurs heures ne se voie plus au réveil, et ajouter une alerte quand le rapport du jour manque.
+- **La planification de GitHub n'est pas fiable.** Le run prévu à 5 h 30 est parti à 13 h 10 le 15/11 et à 14 h 03 le 16/11. Depuis le 16/11, le journal est donc fabriqué la veille vers 20 h : un retard de plusieurs heures ne se voit plus au réveil. Le retard n'est pas supprimé, seulement rendu sans conséquence. Suite : une alerte quand le rapport du jour manque.
 - **La rubrique Reddit est presque toujours vide.** Reddit bride les clients anonymes, depuis GitHub comme depuis mon ordinateur : un seul des cinq derniers runs a obtenu des posts. Suite : passer par son API officielle.
 - **Le tri ne reflète pas assez mes goûts.** C'est la conclusion du banc : le journal retient une actualité plus sérieuse que ce que je veux lire. Suite : réécrire le profil, et le mesurer sur une nouvelle journée étiquetée.
 - **Le juge n'est pas calibré** sur mes propres vérifications, et le banc ne porte que sur une journée.
