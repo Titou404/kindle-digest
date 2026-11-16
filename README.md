@@ -2,6 +2,8 @@
 
 Un journal du matin, fabriqué chaque jour par un pipeline et envoyé sur ma liseuse.
 
+**En ligne** : [le pipeline étape par étape, avec les mesures de chaque run](https://titou404.github.io/kindle-digest/) · [le banc d'évaluation qui a fixé la config](https://titou404.github.io/kindle-digest/config.html)
+
 ## Pourquoi ce projet
 
 Le matin, j'aime lire. Mais lire l'actualité sur son téléphone, c'est se faire happer tout de suite : des notifications, un fil sans fin, et un écran plein de lumière bleue dès le réveil. Je voulais lire l'actualité sans être exposé à trop d'actualité : un nombre fini d'articles, choisis pour moi, sur un écran reposant.
@@ -124,7 +126,7 @@ Le journal est fabriqué par GitHub Actions ([`.github/workflows/daily.yml`](.gi
 
 Le coût est calculé à partir des tokens et de la table de prix de [`src/digest/pricing.py`](src/digest/pricing.py).
 
-**Un index**, [`runs/index.json`](runs/index.json), réécrit à chaque run. Une page web statique ne sait pas lister un dossier : elle lit cet index, puis les rapports qu'il nomme. C'est ce qui alimente la page de suivi.
+**Un index**, [`runs/index.json`](runs/index.json), réécrit à chaque run. Une page web statique ne sait pas lister un dossier : elle lit cet index, puis les rapports qu'il nomme. C'est ce qui alimente la [page de suivi](https://titou404.github.io/kindle-digest/).
 
 **Une page « Bilan du jour »** à la fin du journal lui-même : compteurs, coût et incidents du run, lisibles sur la Kindle.
 
