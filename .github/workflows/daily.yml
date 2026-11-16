@@ -2,9 +2,11 @@ name: Daily digest
 
 on:
   schedule:
-    # Cron is in UTC: 4:30 UTC = 5:30 in Paris in winter (6:30 in summer).
-    # Scheduled runs can start late when GitHub is busy: early on purpose.
-    - cron: "30 4 * * *"
+    # The journal of tomorrow morning is made the evening before: scheduled runs started
+    # 7 h 40 and 8 h 33 late on 2026-11-15 and 16, and even that late it is there on waking.
+    # Cron is in UTC: 19:17 UTC = 20:17 in Paris in winter (21:17 in summer). Not on the hour:
+    # GitHub says the start of every hour is the busiest time for scheduled runs.
+    - cron: "17 19 * * *"
   workflow_dispatch: # "Run workflow" button: for tests and demos
     inputs:
       send:
