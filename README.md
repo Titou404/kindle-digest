@@ -20,7 +20,7 @@ Chaque jour, sans intervention de ma part :
 4. il les résume en français, avec une phrase « pourquoi c'est important » ;
 5. il assemble un livre EPUB et l'envoie par e-mail sur la Kindle.
 
-Un journal coûte environ 1 centime de dollar et se fabrique en une minute (0,95 à 1,22 centime et 34 à 76 secondes sur les 6 premiers runs réels, cf. [`runs/`](runs/)).
+Un journal coûte environ 1 centime de dollar et se fabrique en une minute (0,95 à 1,22 centime et 34 à 76 secondes sur les 7 premiers runs réels, cf. [`runs/`](runs/)).
 
 ## L'idée défendue : scripter tout ce qui peut l'être
 
@@ -140,15 +140,18 @@ Le coût est calculé à partir des tokens et de la table de prix de [`src/diges
 | 14/11, 22 h 15 | moi, sur GitHub | 244 → 99 → 11 | 1,14 ct | 68 s | Reddit, 1 article illisible |
 | 15/11, 12 h 20 | moi, sur GitHub | 243 → 89 → 11 | 1,16 ct | 68 s | Reddit, 1 article illisible |
 | 15/11, 13 h 11 | la planification | 243 → 90 → 11 | 1,22 ct | 76 s | Reddit, 1 article illisible |
+| 16/11, 14 h 04 | la planification | 258 → 124 → 11 | 1,00 ct | 59 s | aucune erreur, 1 article sans texte |
 
-Coûts en centimes de dollar. À partir du run de 22 h 15, la durée comprend 30 secondes d'attente volontaire entre les deux requêtes vers Reddit, qui limite les clients anonymes. Ces six runs ont tourné avec la première config (effort `medium` partout, prompt de résumé v1) ; la config actuelle a été choisie ensuite, avec le banc.
+Coûts en centimes de dollar. À partir du run de 22 h 15, la durée comprend 30 secondes d'attente volontaire entre les deux requêtes vers Reddit, qui limite les clients anonymes.
+
+Les six premiers runs ont tourné avec la première config (effort `medium` partout, prompt de résumé v1). Celui du 16/11 est le premier avec la config choisie par le banc : le tri n'y réfléchit plus, et prend 14 secondes pour 0,37 centime, contre 28 secondes et 0,49 centime la veille, alors qu'il avait plus d'articles à noter (124 contre 90).
 
 ### Ce que ces mesures ont montré
 
 - **Le tri coûte plus cher qu'il n'en a l'air.** Dans le run planifié du 15/11, un seul appel sur douze représente 40 % du coût, et près de la moitié de ce montant paie des tokens de réflexion. Les onze résumés, eux, n'ont pas réfléchi du tout. D'où la question posée au banc : cette réflexion améliore-t-elle le tri ?
-- **Reddit ne répond presque jamais.** Flux vide ou erreur 429 à chaque run depuis le 14/11 au soir : la rubrique est vide, mais le journal part quand même.
+- **Reddit ne répond presque jamais.** Flux vide ou erreur 429 à chaque run du 14/11 au soir au 15/11 : la rubrique était vide, mais le journal partait quand même. Le 16/11, pour la première fois, les deux flux ont répondu et le journal contient deux posts.
 - **Un défaut que les tests n'avaient pas vu.** Le 15/11, le premier article du journal n'affichait que son titre. Le rapport a permis de remonter la chaîne : un lien Hacker News sans chapô, une page qui boucle sur ses redirections, donc pas de texte, donc pas de résumé, donc un chapô de repli… vide. Chaque repli était testé seul ; seule la combinaison réelle a révélé le problème. Le journal dit maintenant clairement que seul le titre est disponible.
-- **La planification de GitHub n'est pas ponctuelle.** Le premier run planifié est parti avec 7 h 40 de retard. Et un run qui n'a pas lieu ne déclenche aucune alerte : GitHub ne prévient que d'un échec.
+- **La planification de GitHub n'est pas ponctuelle.** Les deux premiers runs planifiés sont partis avec 7 h 40, puis 8 h 33 de retard. Et un run qui n'a pas lieu ne déclenche aucune alerte : GitHub ne prévient que d'un échec.
 
 ## Le banc d'évaluation : choisir la config sur des chiffres
 
@@ -219,7 +222,7 @@ Moyenne des répétitions de chaque config, face à mes 89 étiquettes.
 | Prompt des résumés | v2 | Moins d'affirmations non soutenues, plus de remplissage |
 | Texte des articles | Complet, 20 000 caractères au plus | Le couper à 6 000 fait oublier l'essentiel |
 
-Coût estimé d'un journal avec cette config : 1,2 centime.
+Coût estimé d'un journal avec cette config : 1,2 centime. Le premier run réel, le 16/11, a coûté 1,00 centime.
 
 ### Les limites de ce banc
 
@@ -304,11 +307,11 @@ uv run python eval/run_bench.py --only S1,R1
 
 Ce qui ne marche pas encore bien, par ordre d'importance :
 
-- **La planification n'est pas fiable.** Le run prévu à 5 h 30 est parti à 13 h 10 le 15/11, et le 16/11 il n'était toujours pas parti cinq heures après l'heure prévue. Suite : planifier le journal la veille au soir, pour qu'un retard de plusieurs heures ne se voie plus au réveil, et ajouter une alerte quand le rapport du jour manque.
-- **La rubrique Reddit est vide.** Reddit bride les clients anonymes, depuis GitHub comme depuis mon ordinateur. Suite : passer par son API officielle.
+- **La planification n'est pas fiable.** Le run prévu à 5 h 30 est parti à 13 h 10 le 15/11 et à 14 h 03 le 16/11. Suite : planifier le journal la veille au soir, pour qu'un retard de plusieurs heures ne se voie plus au réveil, et ajouter une alerte quand le rapport du jour manque.
+- **La rubrique Reddit est presque toujours vide.** Reddit bride les clients anonymes, depuis GitHub comme depuis mon ordinateur : un seul des cinq derniers runs a obtenu des posts. Suite : passer par son API officielle.
 - **Le tri ne reflète pas assez mes goûts.** C'est la conclusion du banc : le journal retient une actualité plus sérieuse que ce que je veux lire. Suite : réécrire le profil, et le mesurer sur une nouvelle journée étiquetée.
 - **Le juge n'est pas calibré** sur mes propres vérifications, et le banc ne porte que sur une journée.
-- **La config retenue n'a pas encore d'historique.** Les six runs du tableau ont tourné avec l'ancienne.
+- **La config retenue n'a qu'un run d'historique.** Les six premiers runs du tableau ont tourné avec l'ancienne.
 - **Un article illisible garde sa place.** Il s'affiche avec son seul titre. Suite : le remplacer par le suivant de sa rubrique.
 - **Des mesures manquent** : le coût par tâche, les nouvelles tentatives faites par la librairie en cas d'erreur (elles sont comprises dans la durée mais invisibles), et un recoupement du coût calculé avec la facture réelle.
 - **L'arrivée sur la Kindle ne se vérifie pas automatiquement** : Amazon n'offre pas d'API pour cela. Le rapport sait que l'e-mail est parti, pas que le journal est arrivé.
