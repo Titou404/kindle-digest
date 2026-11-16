@@ -1,0 +1,1263 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Kindle Digest : le pipeline qui fabrique mon journal du matin, étape par étape, avec les mesures de chaque run.">
+<title>Kindle Digest</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+/* Layout: one black page from top to bottom. Sticky vertical graph on the left (a compact progress bar
+   on phones), one scene per step on the right. Articles are small paper cards that get fewer at every
+   step. Detail panels stay plain: dark paper, tables, monospace. */
+:root{
+  color-scheme:dark;
+  --ink:#f4f1e8; --ink-soft:rgba(244,241,232,.74); --hair:rgba(244,241,232,.26);
+  --paper:#1b1a17; --paper-2:#28261f; --on-paper:#f4f1e8; --on-paper-soft:#aaa598; --paper-hair:rgba(244,241,232,.16);
+  --alert:#ff8275; --ok:#74d8a4; --warn:#ffc15a; --halo:rgba(27,26,23,.45);
+  --eink:#d6d4cb; --eink-ink:#1b1a17; --device:#0b0b0a;
+  /* One black background for every step (decided on 2026-11-15): the per-step colours are gone,
+     so the background no longer glides from one colour to another while scrolling. */
+  --c-hero:#0e0e0d;
+  --c-collect:#0e0e0d;
+  --c-clean:#0e0e0d;
+  --c-rank:#0e0e0d;
+  --c-select:#0e0e0d;
+  --c-fetch_text:#0e0e0d;
+  --c-summarize:#0e0e0d;
+  --c-render_epub:#0e0e0d;
+  --c-deliver:#0e0e0d;
+  --c-report:#0e0e0d;
+  --c-final:#0e0e0d;
+  --display:"Bricolage Grotesque","Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  --serif:"Instrument Serif","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  --bar:56px; --gut-l:max(16px, env(safe-area-inset-left, 0px)); --gut-r:max(16px, env(safe-area-inset-right, 0px));
+  --bg-now:var(--c-hero);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; background:var(--c-hero); color:var(--ink); font:400 1rem/1.5 var(--display); -webkit-font-smoothing:antialiased}
+main{overflow-x:clip}
+button{font:inherit; color:inherit; background:none; border:0; padding:0; cursor:pointer}
+:focus-visible{outline:3px solid var(--ink); outline-offset:3px; border-radius:6px}
+code,.mono{font-family:var(--mono)}
+.n{font-variant-numeric:tabular-nums}
+.soft{color:var(--ink-soft)}
+.wrap{max-width:1320px; margin-inline:auto; padding-left:var(--gut-l); padding-right:var(--gut-r)}
+
+/* ---------- fixed bar ---------- */
+.topbar{position:fixed; z-index:30; top:env(safe-area-inset-top, 0px); left:0; right:0; height:var(--bar);
+  display:flex; align-items:center; gap:8px; padding-left:var(--gut-l); padding-right:var(--gut-r); pointer-events:none}
+.topbar > *{pointer-events:auto}
+.pill{display:inline-flex; align-items:center; height:36px; border-radius:999px; background:var(--paper); color:var(--on-paper);
+  box-shadow:0 0 0 1.5px var(--on-paper)}
+.brand{padding:0 14px; font-weight:800; letter-spacing:-.02em; text-decoration:none; white-space:nowrap}
+.brand i{font:italic 400 1.15em var(--serif); letter-spacing:0; margin-left:.2em}
+.runsw{gap:2px; padding:0 4px}
+.runsw button{width:28px; height:28px; border-radius:50%; font-size:.95rem; font-weight:700; line-height:1}
+.runsw button:hover{background:var(--paper-2)}
+.runsw button:disabled{opacity:.3; cursor:default}
+.runsw span{font:600 .78rem var(--mono); min-width:9.5ch; text-align:center; white-space:nowrap}
+.theme{width:36px; justify-content:center; font-size:1rem}
+.theme:hover{background:var(--paper-2)}
+.cfg{padding:0 13px; font:600 .78rem var(--mono); text-decoration:none; white-space:nowrap}
+.cfg:hover{background:var(--paper-2)}
+.colophon a{color:inherit}
+
+.mprog{position:fixed; z-index:29; top:calc(env(safe-area-inset-top, 0px) + var(--bar)); left:var(--gut-l); right:var(--gut-r);
+  height:30px; padding:0 6px 0 10px; gap:10px; display:none; opacity:0; visibility:hidden; transition:opacity .25s, visibility .25s}
+.mprog .segs{flex:1; display:flex; gap:3px; height:100%}
+.mprog .segs button{flex:1; position:relative}
+.mprog .segs button::after{content:""; position:absolute; left:0; right:0; top:50%; height:6px; margin-top:-3px; border-radius:3px; background:var(--paper-hair)}
+.mprog .segs button.done::after, .mprog .segs button.active::after{background:var(--on-paper)}
+.mprog .lab{font:600 .7rem var(--mono); white-space:nowrap; min-width:13ch; text-align:right}
+.in-pipeline .mprog{opacity:1; visibility:visible}
+
+.topbar .sticker{margin-right:auto; transform:rotate(-3deg); font:700 .68rem var(--mono); text-transform:uppercase; letter-spacing:.06em;
+  padding:6px 11px; border-radius:6px; background:var(--on-paper); color:var(--paper); pointer-events:none; white-space:nowrap}
+
+/* ---------- hero ---------- */
+.band{position:relative}
+.hero{min-height:100svh; padding-block:calc(var(--bar) + 12px) 40px; display:flex; align-items:center; isolation:isolate; overflow:clip}
+.hero .wrap{width:100%; display:flex; flex-direction:column; gap:clamp(18px, 3vh, 36px)}
+.hero-top{display:flex; align-items:center; justify-content:space-between; gap:16px}
+.eyebrow{margin:0; font:600 .78rem var(--mono); text-transform:uppercase; letter-spacing:.08em}
+.roundel{flex:none; width:clamp(84px, 11vw, 132px); aspect-ratio:1; transform:rotate(8deg)}
+.roundel svg{width:100%; height:100%; display:block; animation:spin 28s linear infinite}
+.roundel text{font:700 12.5px var(--mono); letter-spacing:.14em; fill:var(--ink)}
+.roundel .core{fill:var(--ink)} .roundel .core-t{font:800 15px var(--display); fill:var(--bg-now); letter-spacing:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+h1{margin:0; max-width:19ch; font:800 clamp(2.15rem, 5.6vw, 5.1rem)/.96 var(--display); letter-spacing:-.045em; text-wrap:balance}
+h1 em{font:italic 400 1.04em/1 var(--serif); letter-spacing:-.02em}
+.hero-bottom{display:grid; grid-template-columns:minmax(0, 1.25fr) minmax(0, 1fr); gap:clamp(20px, 3vw, 48px); align-items:end}
+.rundate{margin:0 0 12px; font:italic 400 1.25rem/1.2 var(--serif)}
+.figs{margin:0; display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:0 22px}
+.fig{border-top:2px solid var(--ink); padding:10px 0 14px; min-width:0}
+.fig dt{font:600 .7rem var(--mono); text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft)}
+.fig dd{margin:2px 0 0; font:800 clamp(1.9rem, 3.6vw, 3.3rem)/1 var(--display); letter-spacing:-.04em; white-space:nowrap}
+.fig dd small{font:italic 400 .5em var(--serif); letter-spacing:0; margin-left:.2em}
+.fig dd .arrow{font-weight:400; margin:0 .12em; opacity:.6}
+.fig .note{display:block; font:600 .7rem var(--mono); letter-spacing:0; white-space:normal; margin-top:6px}
+.fig.bad dd{text-decoration:underline; text-decoration-thickness:.09em; text-underline-offset:.12em}
+.cta{margin-top:18px; height:52px; padding:0 26px; border-radius:999px; background:var(--ink); color:var(--bg-now); font-weight:700; font-size:1.05rem}
+.cta:hover{transform:translateY(-2px)} .cta{transition:transform .2s}
+
+.week{background:var(--paper); color:var(--on-paper); border-radius:28px; padding:18px 18px 14px; min-width:0}
+.week-head{display:flex; align-items:baseline; justify-content:space-between; gap:8px; font:600 .72rem var(--mono); text-transform:uppercase; letter-spacing:.06em; color:var(--on-paper-soft)}
+.sparks{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:8px 0 6px}
+.sparks figure{margin:0; min-width:0}
+.sparks figcaption{font-weight:700; font-size:.86rem; display:flex; justify-content:space-between; align-items:baseline; gap:8px}
+.sparks figcaption b{font:700 .86rem var(--mono); white-space:nowrap}
+.sparks svg{display:block; width:100%; height:auto; overflow:visible}
+.sparks .area{fill:var(--paper-2)} .sparks .line{fill:none; stroke:var(--on-paper); stroke-width:1.6; stroke-linejoin:round}
+.sparks .pt{fill:var(--paper); stroke:var(--on-paper); stroke-width:1.4; cursor:pointer}
+.sparks .pt.sel{fill:var(--on-paper)} .sparks .pt.bad{stroke:var(--alert)} .sparks .pt.bad.sel{fill:var(--alert)}
+.sparks text{font:700 11px var(--mono); fill:var(--on-paper)}
+.sparks .axis{font-weight:500; font-size:9px; fill:var(--on-paper-soft)}
+.days{display:flex; gap:4px}
+.days button{flex:1; min-width:0; padding:7px 0 6px; border-radius:14px; display:flex; flex-direction:column; align-items:center; gap:1px; position:relative}
+.days button:hover{background:var(--paper-2)}
+.days button[aria-pressed="true"]{background:var(--on-paper); color:var(--paper)}
+.days .wd{font:600 .62rem var(--mono); text-transform:uppercase}
+.days .dn{font-weight:800; font-size:1.05rem; line-height:1}
+.days .flag{width:6px; height:6px; border-radius:50%; background:transparent; margin-top:2px}
+.days .flag.warn{background:var(--warn)} .days .flag.bad{background:var(--alert)}
+.week-foot{margin:8px 0 0; font-size:.74rem; color:var(--on-paper-soft)}
+.week-foot i{display:inline-block; width:7px; height:7px; border-radius:50%; margin:0 4px 0 8px} .week-foot i:first-child{margin-left:0}
+
+.sheets{position:absolute; inset:0; z-index:-1; pointer-events:none}
+.sheet{position:absolute; width:clamp(70px, 8vw, 118px); aspect-ratio:4/5; border-radius:8px; background:var(--paper);
+  box-shadow:0 0 0 1.5px var(--ink); animation:float 7s ease-in-out infinite; transform:rotate(var(--r))}
+.sheet::before{content:""; position:absolute; inset:16% 14% auto; height:9%; border-radius:2px; background:var(--on-paper)}
+.sheet::after{content:""; position:absolute; inset:36% 14% 16%; background:repeating-linear-gradient(var(--paper-hair) 0 3px, transparent 3px 11px)}
+@keyframes float{50%{transform:translateY(-14px) rotate(calc(var(--r) + 2deg))}}
+
+/* ---------- pipeline: rail + scenes ---------- */
+.pipeline{display:grid; grid-template-columns:clamp(250px, 24vw, 330px) minmax(0, 1fr); max-width:1320px; margin-inline:auto;
+  padding-left:var(--gut-l); padding-right:var(--gut-r); column-gap:clamp(16px, 3vw, 56px)}
+.rail{position:sticky; top:calc(env(safe-area-inset-top, 0px) + var(--bar)); height:calc(100vh - var(--bar) - env(safe-area-inset-top, 0px));
+  align-self:start; display:flex; flex-direction:column; justify-content:center; padding-block:6px 18px}
+.rail-cap{margin:0 0 6px; font:600 .68rem var(--mono); text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft)}
+#graph{display:block; width:100%; height:auto; max-height:calc(100% - 26px)}
+#graph text{font:600 11px var(--mono); fill:var(--ink); user-select:none}
+#graph .tiny{font-size:8.5px; font-weight:500; fill:var(--ink-soft)}
+#graph .edges path{fill:none; stroke:var(--ink); stroke-width:1.1; opacity:.6}
+#graph .edges .cond{stroke-dasharray:3 4}
+#graph .edges .cond.on{opacity:1; stroke-width:2.2}
+#graph .term rect{fill:none; stroke:var(--ink); stroke-width:1; opacity:.6} #graph .term text{font-size:8.5px; letter-spacing:.08em}
+.gn{cursor:pointer}
+.gn:focus{outline:none}
+.gn .p{fill:transparent; stroke:var(--ink); stroke-width:1.4; transition:fill .25s}
+.gn.dashed .p{stroke-dasharray:4 4}
+.gn:hover .p, .gn:focus-visible .p{fill:var(--halo)}
+.gn.active .p{fill:var(--ink)} #graph .gn.active .l{fill:var(--bg-now)}
+.halo{fill:transparent; cursor:pointer; transition:fill .25s}
+.halo:hover{fill:var(--halo)} .halo.active{fill:var(--halo); stroke:var(--ink); stroke-width:1.4}
+.gn.fan:focus-visible .l{text-decoration:underline}
+#graph .gn.fan.active .l{fill:var(--ink); font-weight:800; text-decoration:underline}
+.d.ok{fill:var(--ink)} .d.empty{fill:var(--paper); stroke:var(--ink); stroke-width:1.3; stroke-dasharray:2 2}
+.d.err circle{fill:var(--paper); stroke:var(--alert); stroke-width:2} .d.err path{stroke:var(--alert); stroke-width:1.6; fill:none}
+.tag rect{fill:var(--ink)} #graph .tag text{fill:var(--bg-now); font-size:8.5px; font-weight:700}
+.tag.o rect{fill:var(--paper); stroke:var(--ink); stroke-width:1} #graph .tag.o text{fill:var(--on-paper)}
+.flow{fill:var(--paper); stroke:var(--ink); stroke-width:.8}
+
+.scene{padding-block:clamp(72px, 13vh, 150px); min-height:94vh; display:flex; flex-direction:column; justify-content:center; gap:26px;
+  isolation:isolate; overflow:clip; scroll-margin-top:0}
+.ghost{position:absolute; z-index:-1; right:-.04em; top:calc(8vh + var(--py, 0px)); font:800 clamp(11rem, 30vw, 27rem)/.8 var(--display);
+  letter-spacing:-.06em; color:transparent; -webkit-text-stroke:1.5px var(--hair); pointer-events:none; user-select:none}
+.scene-head{display:flex; flex-direction:column; gap:14px}
+.meta{display:flex; flex-wrap:wrap; align-items:center; gap:10px 12px; margin:0}
+.meta .count{font:600 .78rem var(--mono); letter-spacing:.06em}
+.nodetag{display:inline-block; transform:rotate(-4deg); font:700 .82rem var(--mono); padding:5px 11px; border-radius:6px; background:var(--paper); color:var(--on-paper); box-shadow:2px 2px 0 var(--ink)}
+.badge{display:inline-flex; align-items:center; gap:7px; height:30px; padding:0 13px; border-radius:999px; font-weight:700; font-size:.82rem; box-shadow:inset 0 0 0 1.5px var(--ink)}
+.badge.llm{background:var(--ink); color:var(--bg-now)}
+.why{font:italic 400 1.05rem/1.2 var(--serif)}
+.scene h2{margin:0; font:800 clamp(3.3rem, 10.5vw, 9.2rem)/.86 var(--display); letter-spacing:-.055em; text-wrap:balance}
+.pitch{margin:0; max-width:31em; font:400 clamp(1.3rem, 2.1vw, 1.85rem)/1.22 var(--serif); text-wrap:pretty}
+.figure{display:flex; flex-wrap:wrap; align-items:flex-end; gap:6px 18px}
+.big{font:800 clamp(4.2rem, 13vw, 10.5rem)/.82 var(--display); letter-spacing:-.06em; white-space:nowrap}
+.big.word{font-size:clamp(3rem, 9vw, 7rem); letter-spacing:-.05em}
+.big small{font:italic 400 .34em var(--serif); letter-spacing:0; margin-left:.12em}
+.biglabel{max-width:21em; padding-bottom:.35em}
+.biglabel b{display:block; font:italic 400 clamp(1.25rem, 2vw, 1.7rem)/1.15 var(--serif)}
+.biglabel > span{display:block; margin-top:4px; font:500 .84rem/1.4 var(--mono)}
+.viz{min-width:0}
+.vizcap{margin:10px 0 0; font:500 .76rem/1.5 var(--mono); color:var(--ink-soft); display:flex; flex-wrap:wrap; gap:4px 14px; align-items:center}
+
+/* reveal on scroll: only when motion is allowed, and never fully hidden */
+.js-motion .rv{opacity:.12; transform:translateY(30px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); transition-delay:calc(var(--i, 0) * 70ms)}
+.js-motion .rv.in{opacity:1; transform:none}
+
+/* small paper cards */
+.pc{display:inline-block; width:9px; height:12px; border-radius:2px; background:var(--paper); flex:none}
+.pc.old{background:transparent; box-shadow:inset 0 0 0 1px var(--ink-soft)}
+.pc.dup{background:repeating-linear-gradient(45deg, var(--ink) 0 2px, var(--paper) 2px 4px)}
+.pc.bad{background:var(--ink)}
+.field{display:flex; flex-wrap:wrap; gap:3px; max-width:760px}
+.chip{display:inline-flex; align-items:center; font:600 .72rem var(--mono); padding:3px 9px; border-radius:999px; background:var(--paper); color:var(--on-paper); white-space:nowrap}
+.chip.err{color:var(--alert); box-shadow:inset 0 0 0 1.5px var(--alert)}
+.chip.warn{color:var(--warn); box-shadow:inset 0 0 0 1.5px var(--warn)}
+.chip.ok{color:var(--ok)}
+
+.lanes{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:7px; max-width:760px}
+.lane{display:grid; grid-template-columns:12.5rem 2.2rem minmax(0, 1fr); align-items:center; gap:10px}
+.lane-name{font:600 .8rem var(--mono); overflow-wrap:anywhere}
+.lane-cards{min-width:0; display:flex; align-items:center}
+.strip{display:block; height:12px; width:calc(var(--n) * 7px); max-width:100%; background:repeating-linear-gradient(90deg, var(--paper) 0 5px, transparent 5px 7px); border-radius:2px}
+.lane-n{font:700 .9rem var(--mono); text-align:right}
+.lane.off .lane-name{text-decoration:line-through; text-decoration-thickness:1.5px}
+
+.histo{display:grid; grid-template-columns:repeat(11, minmax(0, 1fr)); gap:6px; align-items:end; max-width:560px}
+.hcol{display:flex; flex-direction:column; gap:6px}
+.hstack{display:flex; flex-direction:column-reverse; gap:2px}
+.hb{display:block; height:5px; border-radius:1.5px; background:var(--paper)}
+.hb.sel{background:var(--ink)}
+.vizcap .hb{width:18px; display:inline-block}
+.hx{font:600 .74rem var(--mono); text-align:center; border-top:1.5px solid var(--ink); padding-top:3px}
+
+.slots{display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:18px 14px}
+.slotcol h3{margin:0 0 8px; display:flex; justify-content:space-between; align-items:baseline; gap:6px; font:700 .9rem var(--display); border-bottom:2px solid var(--ink); padding-bottom:4px}
+.slotcol h3 span{font:600 .72rem var(--mono)}
+.slotcol ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:7px}
+.ticket{background:var(--paper); color:var(--on-paper); border-radius:14px; padding:9px 11px 8px}
+.ticket:nth-child(odd){transform:rotate(-.8deg)} .ticket:nth-child(even){transform:rotate(.7deg)}
+.ticket b{display:block; font-weight:600; font-size:.8rem; line-height:1.22; overflow-wrap:anywhere}
+.ticket > span{display:flex; justify-content:space-between; gap:6px; margin-top:5px; font:500 .66rem var(--mono); color:var(--on-paper-soft)}
+.ticket > span > span:first-child{min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap} .ticket > span > span:last-child{flex:none}
+.ticket.none{background:transparent; color:var(--ink-soft); border:1.5px dashed var(--ink-soft); font:500 .72rem var(--mono); transform:none}
+
+.pages{display:flex; flex-wrap:wrap; gap:8px; align-items:flex-end}
+.page{width:36px; height:46px; border-radius:5px; background:var(--paper); position:relative; flex:none}
+.page::after{content:""; position:absolute; inset:9px 7px; background:repeating-linear-gradient(var(--paper-hair) 0 2px, transparent 2px 6px)}
+.page.feed{box-shadow:inset 0 5px 0 var(--on-paper)}
+.page.short{height:20px} .page.short::after{inset:6px 7px}
+.page.fail{background:transparent; box-shadow:inset 0 0 0 1.5px var(--ink)} .page.fail::after{inset:0; background:none; content:"×"; display:grid; place-items:center; font:700 1.2rem var(--mono); color:var(--ink)}
+.page.raw{border-radius:5px 16px 5px 5px} .page.raw::after{inset:auto 0 6px; text-align:center; content:"r/"; background:none; font:700 .7rem var(--mono); color:var(--on-paper)}
+.pg{display:inline-block; width:10px; height:13px; border-radius:2px; background:var(--paper); vertical-align:-2px; margin-right:5px}
+.pg.feed{box-shadow:inset 0 3px 0 var(--on-paper)} .pg.short{height:7px} .pg.fail{background:transparent; box-shadow:inset 0 0 0 1.5px var(--ink)} .pg.raw{border-radius:2px 7px 2px 2px}
+.meter{margin-top:16px; max-width:560px}
+.meter-bar{display:flex; height:14px; border-radius:7px; overflow:hidden; box-shadow:0 0 0 1.5px var(--ink)}
+.meter-bar span{background:var(--paper)} .meter-bar .cut{background:repeating-linear-gradient(45deg, var(--ink) 0 3px, var(--paper) 3px 6px)}
+
+.gantt{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:5px; max-width:760px}
+.gantt li{display:grid; grid-template-columns:11rem minmax(0, 1fr); gap:10px; align-items:center}
+.gantt .src{font:600 .76rem var(--mono); overflow-wrap:anywhere}
+.gantt .track{display:flex; align-items:center; gap:8px; min-width:0}
+.gantt .bar{height:16px; border-radius:8px; background:var(--paper); width:calc(var(--w) * 1%); flex:none; max-width:70%}
+.gantt .val{font:500 .72rem var(--mono); white-space:nowrap}
+.gantt .nocall .bar{background:transparent; box-shadow:inset 0 0 0 1.5px var(--ink-soft); width:22%}
+.gantt-axis{display:grid; grid-template-columns:11rem minmax(0, 1fr); gap:10px; max-width:760px; margin-top:6px; font:500 .7rem var(--mono); color:var(--ink-soft)}
+
+.book{max-width:440px; background:var(--paper); color:var(--on-paper); border-radius:6px 22px 22px 6px; padding:22px 24px 20px 30px; position:relative; transform:rotate(-1.2deg); box-shadow:6px 6px 0 var(--ink)}
+.book::before{content:""; position:absolute; left:12px; top:0; bottom:0; border-left:1.5px dashed var(--paper-hair)}
+.book h3{margin:0 0 2px; font:400 1.5rem/1.1 var(--serif)}
+.book p{margin:0 0 12px; font:500 .72rem var(--mono); color:var(--on-paper-soft)}
+.book ol{list-style:none; margin:0; padding:0}
+.book li{display:flex; align-items:baseline; gap:6px; padding:3px 0; font-size:.95rem; font-weight:600}
+.book li::after{content:""; order:1; flex:1; border-bottom:1.5px dotted var(--on-paper-soft); transform:translateY(-3px)}
+.book li span{order:2; font:500 .76rem var(--mono); color:var(--on-paper-soft)}
+
+.kindle{width:min(250px, 70vw); background:var(--device); border-radius:22px; padding:16px 16px 34px; position:relative; transform:rotate(2deg); box-shadow:0 0 0 1.5px var(--ink), 8px 8px 0 var(--ink)}
+.kindle::after{content:"kindle"; position:absolute; left:0; right:0; bottom:10px; text-align:center; font:600 .62rem var(--display); letter-spacing:.12em; color:#8d8a82}
+.screen{background:var(--eink); color:var(--eink-ink); border-radius:4px; aspect-ratio:3/4; padding:16px 14px; display:flex; flex-direction:column; position:relative; overflow:hidden}
+.screen .au{font:600 .6rem var(--mono); text-transform:uppercase; letter-spacing:.1em}
+.screen .ti{margin:auto 0; font:400 1.55rem/1.05 var(--serif)}
+.screen .fo{font:500 .6rem var(--mono); display:flex; justify-content:space-between; border-top:1px solid var(--eink-ink); padding-top:6px}
+.screen.off .ti, .screen.off .au, .screen.off .fo{opacity:.28}
+.stamp{position:absolute; left:50%; top:50%; transform:translate(-50%, -50%) rotate(-14deg); font:800 .95rem var(--mono); text-transform:uppercase; letter-spacing:.06em; padding:7px 12px; border:3px solid; border-radius:8px; white-space:nowrap; color:#b3241b; background:rgba(227,225,216,.82)}
+.stamp.mute{color:var(--eink-ink)}
+.deliver-viz{display:flex; flex-wrap:wrap; gap:28px 40px; align-items:center}
+.deliver-viz p{margin:0; max-width:22em; font:500 .84rem/1.5 var(--mono)}
+
+.split{max-width:640px} .split + .split{margin-top:20px}
+.split h3{margin:0 0 6px; font:700 .95rem var(--display)}
+.split-bar{display:flex; height:22px; border-radius:11px; overflow:hidden; box-shadow:0 0 0 1.5px var(--ink)}
+.s1{background:var(--paper)} .s2{background:var(--ink)} .s3{background:repeating-linear-gradient(45deg, var(--ink) 0 3px, var(--paper) 3px 7px)}
+.split-legend{list-style:none; margin:8px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:4px 20px; font:500 .78rem var(--mono)}
+.split-legend .sw{display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:6px; vertical-align:-1px; box-shadow:0 0 0 1px var(--ink)}
+.detail .split-bar{box-shadow:0 0 0 1.5px var(--on-paper)} .detail .s1{background:var(--paper-2)} .detail .s2{background:var(--on-paper)}
+.detail .s3{background:repeating-linear-gradient(45deg, var(--on-paper) 0 3px, var(--paper-2) 3px 7px)} .detail .split-legend .sw{box-shadow:0 0 0 1px var(--on-paper)}
+.detail .soft{color:var(--on-paper-soft)}
+
+/* ---------- detail panels: plain and readable ---------- */
+.detail > summary{list-style:none; display:inline-flex; align-items:center; gap:12px; height:50px; padding:0 8px 0 24px; border-radius:999px;
+  background:var(--ink); color:var(--bg-now); font-weight:700; cursor:pointer; user-select:none}
+.detail > summary::-webkit-details-marker{display:none}
+.detail > summary .ico{width:34px; height:34px; border-radius:50%; background:var(--bg-now); color:var(--ink); display:grid; place-items:center; font:700 1.2rem/1 var(--mono); transition:transform .3s}
+.detail[open] > summary .ico{transform:rotate(45deg)}
+.detail .closed{display:inline} .detail .opened{display:none} .detail[open] .closed{display:none} .detail[open] .opened{display:inline}
+.detail-body{margin-top:16px; background:var(--paper); color:var(--on-paper); border-radius:28px; padding:clamp(18px, 2.4vw, 30px);
+  display:grid; grid-template-columns:minmax(0, 1fr); gap:24px 36px; font-size:.92rem}
+.detail-body h3{margin:0 0 8px; font:600 .7rem var(--mono); text-transform:uppercase; letter-spacing:.08em; color:var(--on-paper-soft)}
+.detail-body h4{margin:18px 0 6px; font:700 .9rem var(--display)}
+.detail-body section{min-width:0}
+.files{list-style:none; margin:0; padding:0; font:500 .8rem/1.7 var(--mono); overflow-wrap:anywhere}
+.io{display:grid; grid-template-columns:auto minmax(0, 1fr); gap:6px 12px; margin:0; font-size:.86rem}
+.io dt{font:600 .7rem var(--mono); text-transform:uppercase; color:var(--on-paper-soft); padding-top:3px}
+.io dd{margin:0; display:flex; flex-wrap:wrap; gap:5px}
+.io code{background:var(--paper-2); padding:2px 8px; border-radius:6px; font-size:.78rem}
+.rules{margin:0; padding-left:1.1em; display:flex; flex-direction:column; gap:6px; max-width:62ch}
+.rules code, .kv code{font-size:.86em; background:var(--paper-2); padding:1px 5px; border-radius:4px}
+.tw{overflow-x:auto; margin-inline:-4px; padding-inline:4px}
+table{border-collapse:collapse; width:100%; font-size:.84rem}
+.kv th{text-align:left; font-weight:500; padding:5px 12px 5px 0; vertical-align:top}
+.kv th code{margin-left:6px; color:var(--on-paper-soft); background:none; padding:0; font-size:.74rem; overflow-wrap:anywhere}
+.kv td{text-align:right; font-family:var(--mono); font-variant-numeric:tabular-nums; padding:5px 0 5px 12px; overflow-wrap:anywhere; vertical-align:top}
+.kv tr, .dt tr{border-bottom:1px solid var(--paper-hair)}
+.dt{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:.78rem}
+.dt th{font-weight:600; text-align:left; padding:6px 14px 6px 0; white-space:nowrap; color:var(--on-paper-soft); border-bottom:1.5px solid var(--on-paper)}
+.dt td{padding:5px 14px 5px 0; white-space:nowrap}
+.dt .r{text-align:right; padding-right:0; padding-left:14px}
+.dt tfoot td{font-weight:700; border-top:1.5px solid var(--on-paper)}
+.dt .chip{background:var(--paper-2); padding:1px 8px}
+.errlist{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:6px; font:500 .8rem var(--mono)}
+.errlist li{padding:7px 10px; border-radius:10px; box-shadow:inset 0 0 0 1.5px var(--alert); color:var(--alert); overflow-wrap:anywhere}
+.none-ok{font:500 .8rem var(--mono); color:var(--ok)}
+.hyp{margin:10px 0 0; font-size:.78rem; color:var(--on-paper-soft); max-width:62ch}
+
+/* ---------- final ---------- */
+.final{padding-block:clamp(72px, 12vh, 140px) 110px}
+.final h2{margin:0 0 28px; font:800 clamp(2.6rem, 8vw, 7rem)/.9 var(--display); letter-spacing:-.05em; text-wrap:balance}
+.final h2 em{font:italic 400 1.04em var(--serif); letter-spacing:-.02em}
+.rule{display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:16px; margin-bottom:22px}
+.rulecard{border-radius:28px; padding:22px 24px; box-shadow:inset 0 0 0 2px var(--ink)}
+.rulecard.llm{background:var(--ink); color:var(--bg-now)}
+.rulecard p{margin:0 0 4px; font:400 clamp(1.3rem, 2.2vw, 1.9rem)/1.15 var(--serif)}
+.rulecard b{display:block; font:800 clamp(2rem, 4.4vw, 3.6rem)/1 var(--display); letter-spacing:-.04em; margin-bottom:12px}
+.rulecard ul{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:6px}
+.rulecard li button{font:600 .76rem var(--mono); padding:5px 11px; border-radius:999px; box-shadow:inset 0 0 0 1.5px currentColor}
+.rulecard li button:hover{background:var(--halo)}
+.workflow{margin:0 0 44px; max-width:38em; font:400 clamp(1.2rem, 1.9vw, 1.6rem)/1.25 var(--serif)}
+.reportcard{background:var(--paper); color:var(--on-paper); border-radius:28px; padding:clamp(18px, 2.4vw, 30px)}
+.reportcard h3{margin:0 0 4px; font:800 1.5rem/1.1 var(--display); letter-spacing:-.03em}
+.reportcard > p{margin:0 0 14px; color:var(--on-paper-soft); max-width:60ch}
+.reportcard pre{margin:0; overflow-x:auto; font:500 .78rem/1.6 var(--mono); background:var(--paper-2); border-radius:16px; padding:16px}
+.colophon{margin:26px 0 0; font:500 .76rem var(--mono); color:var(--ink-soft)}
+
+/* ---------- responsive ---------- */
+@media (min-width:1180px){ .detail-body{grid-template-columns:minmax(0, .9fr) minmax(0, 1.1fr)} .detail-body .full{grid-column:1 / -1} }
+@media (max-width:1080px){ .hero-bottom{grid-template-columns:minmax(0, 1fr)} .sheets{display:none} }
+@media (max-width:899px){
+  .pipeline{grid-template-columns:minmax(0, 1fr)} .rail{display:none} .mprog{display:flex}
+  .scene{min-height:0; scroll-margin-top:calc(var(--bar) + 34px)}
+}
+@media (max-width:640px){
+  .figs{grid-template-columns:1fr 1fr} .fig.wide{grid-column:1 / -1}
+  .lane{grid-template-columns:minmax(0, 1fr) auto; gap:3px 10px} .lane-cards{grid-column:1 / -1; grid-row:2}
+  .topbar{justify-content:space-between}
+  .topbar .sticker{position:fixed; z-index:28; left:var(--gut-l); bottom:calc(12px + env(safe-area-inset-bottom, 0px)); margin:0; font-size:.58rem; padding:5px 8px}
+  .gantt li, .gantt-axis{grid-template-columns:minmax(0, 1fr); gap:2px} .gantt-axis span:first-child{display:none}
+  .rule{grid-template-columns:minmax(0, 1fr)}
+  .runsw span{min-width:8.5ch}
+  .cfg{display:none}
+  .brand{padding:0 11px; font-size:.92rem}
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important; transition:none !important}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="pill brand" href="#top">Kindle<i>Digest</i></a>
+  <span class="sticker" id="sticker">Rapports réels</span>
+  <div class="pill runsw" role="group" aria-label="Run affiché">
+    <button type="button" id="run-prev" aria-label="Run précédent">←</button>
+    <span id="run-label"></span>
+    <button type="button" id="run-next" aria-label="Run suivant">→</button>
+  </div>
+  <a class="pill cfg" href="config.html">La config →</a>
+</header>
+<nav class="pill mprog" aria-label="Étapes du workflow"><div class="segs" id="segs"></div><span class="lab" id="mlab"></span></nav>
+
+<main>
+  <section class="band hero" data-band="hero" id="top">
+    <div class="sheets" aria-hidden="true">
+      <span class="sheet" style="right:21%; top:9%; --r:9deg"></span>
+      <span class="sheet" style="right:16%; top:38%; --r:-7deg; animation-delay:-2s"></span>
+      <span class="sheet" style="right:4%; top:30%; --r:4deg; animation-delay:-4s"></span>
+      <span class="sheet" style="right:6%; top:54%; --r:-13deg; animation-delay:-5.5s"></span>
+    </div>
+    <div class="wrap">
+      <div class="hero-top">
+        <p class="eyebrow">Un workflow LangGraph, en Python, tous les matins vers 5&nbsp;h&nbsp;30</p>
+        <div class="roundel" role="img" aria-label="Chiffres réels, relus à chaque ouverture">
+          <svg viewBox="0 0 140 140" aria-hidden="true">
+            <defs><path id="ring" d="M70 70 m-54 0 a54 54 0 1 1 108 0 a54 54 0 1 1 -108 0"/></defs>
+            <text><textPath href="#ring" textLength="334">RAPPORTS RÉELS · RELUS À CHAQUE OUVERTURE ·</textPath></text>
+            <circle class="core" cx="70" cy="70" r="34"/>
+            <text class="core-t" x="70" y="67" text-anchor="middle">vrais</text>
+            <text class="core-t" x="70" y="84" text-anchor="middle">chiffres</text>
+          </svg>
+        </div>
+      </div>
+      <h1>Chaque matin, un pipeline <em>collecte</em> des articles, garde <em>les meilleurs</em>, les <em>résume</em> et envoie un journal sur <em>ma Kindle.</em></h1>
+      <div class="hero-bottom">
+        <div>
+          <p class="rundate" id="rundate"></p>
+          <dl class="figs" id="figs"></dl>
+          <button type="button" class="cta" data-step="collect">Suivre les articles ↓</button>
+        </div>
+        <div class="week">
+          <div class="week-head"><span id="week-title">Les derniers runs du cron</span><span id="week-range"></span></div>
+          <div class="sparks">
+            <figure><figcaption>Coût par run<b id="spv-cost"></b></figcaption><svg id="sp-cost" viewBox="0 0 260 92" role="img" aria-label="Coût de chaque run"></svg></figure>
+            <figure><figcaption>Durée par run<b id="spv-time"></b></figcaption><svg id="sp-time" viewBox="0 0 260 92" role="img" aria-label="Durée de chaque run"></svg></figure>
+          </div>
+          <div class="days" id="days" role="group" aria-label="Choisir un run"></div>
+          <p class="week-foot"><i style="background:var(--warn)"></i>incident sans gravité<i style="background:var(--alert)"></i>envoi raté, run rouge</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="pipeline">
+    <aside class="rail" aria-label="Graphe du workflow">
+      <p class="rail-cap">Le graphe · cliquer un nœud</p>
+      <svg id="graph" viewBox="0 0 300 600"></svg>
+    </aside>
+    <div class="scenes" id="scenes"></div>
+  </div>
+
+  <section class="band final" data-band="final" id="fin">
+    <div class="wrap">
+      <h2>Script <em>ou</em> LLM&nbsp;?</h2>
+      <div class="rule">
+        <div class="rulecard"><p>Une réponse exacte et vérifiable&nbsp;?</p><b>Un script.</b><ul id="rule-script"></ul></div>
+        <div class="rulecard llm"><p>Un jugement, ou de la langue&nbsp;?</p><b>Un appel LLM.</b><ul id="rule-llm"></ul></div>
+      </div>
+      <p class="workflow">C'est un workflow, pas un agent&nbsp;: l'ordre des étapes est écrit dans le code. Le modèle n'intervient que deux fois, sans aucun outil, et chaque appel est mesuré.</p>
+      <div class="reportcard">
+        <h3>Le rapport de run</h3>
+        <p>Chaque run écrit un fichier JSON&nbsp;: compteurs, durée de chaque nœud, chaque appel au modèle, erreurs, et chaque candidat avec sa note. Toute cette page est calculée à partir de ce fichier.</p>
+        <pre id="json" tabindex="0"></pre>
+      </div>
+      <p class="colophon">Kindle Digest · chiffres lus dans les rapports de <code>runs/</code> à chaque ouverture de la page ; seuls les runs du cron, planifiés chaque matin, sont affichés. <a href="config.html">Pourquoi cette config : le banc d'évaluation →</a></p>
+    </div>
+  </section>
+</main>
+
+<script>
+// ---------------------------------------------------------------------------------------------
+// DATA. Every number on the page comes from the run reports of runs/, read at every opening:
+// runs/index.json lists them (newest first, with who started each run); the page keeps the cron
+// runs ("schedule"), the MAX_RUNS latest, oldest first. Nothing here is typed by hand.
+// ---------------------------------------------------------------------------------------------
+const MAX_RUNS = 7;
+let RUNS = [];
+
+async function loadRuns() {
+  const get = async path => {
+    const response = await fetch(path, {cache: 'no-store'});
+    if (!response.ok) throw new Error(`${path} : HTTP ${response.status}`);
+    return response.json();
+  };
+  const index = await get('runs/index.json');
+  const cron = index.runs.filter(r => r.trigger === 'schedule').slice(0, MAX_RUNS).reverse();
+  return Promise.all(cron.map(async entry => normalize(await get('runs/' + entry.file), entry)));
+}
+
+// Older reports lack some fields: the index fills them, the views never meet a missing one.
+function normalize(run, entry) {
+  run.finished_at = run.finished_at || entry.finished_at;
+  run.trigger = run.trigger || entry.trigger;
+  run.candidates = run.candidates || [];
+  return run;
+}
+
+// ---------------------------------------------------------------------------------------------
+// Static description of the pipeline (no measure here): mirrors the code, not the reports.
+// ---------------------------------------------------------------------------------------------
+const SOURCES = { // config/sources.toml
+  'hackernews': {section: 'data', raw: false, delay_s: 0},
+  'reddit/datascience': {section: 'data', raw: true, delay_s: 0},
+  'reddit/MachineLearning': {section: 'data', raw: true, delay_s: 30},
+  'bbc/world': {section: 'monde', raw: false, delay_s: 0},
+  'guardian/world': {section: 'monde', raw: false, delay_s: 0},
+  'bbc/business': {section: 'eco', raw: false, delay_s: 0},
+  'franceinfo/economie': {section: 'eco', raw: false, delay_s: 0},
+  'franceinfo/politique': {section: 'france', raw: false, delay_s: 0},
+  'theconversation/fr': {section: 'france', raw: false, delay_s: 0},
+};
+const SECTIONS = {data: 'Data & IA', monde: 'Monde', eco: 'Économie', france: 'France'}; // nodes/render_epub.py
+const QUOTAS = {data: 3, monde: 3, eco: 3, france: 3}; // nodes/select.py
+const PRICES = { // pricing.py, USD per million tokens
+  'claude-haiku-5-5': {input: 0.10, output: 0.50},
+  'claude-sonnet-5-5': {input: 2.00, output: 10.00},
+};
+const CACHE_WRITE = 1.25, CACHE_READ = 0.10;
+const MAX_TEXT = 20000, MIN_TEXT = 500; // nodes/fetch_text.py
+
+const STEPS = [
+  {id: 'collect', node: 'collect ×9', verb: 'Collecter', llm: false, why: 'appeler une API, lire un flux',
+    pitch: 'Neuf sources sont interrogées en même temps, un run du nœud par source. Uniquement des API et des flux RSS. Une source en panne est notée, et le journal part quand même.',
+    files: ['src/digest/nodes/collect.py', 'src/digest/collectors.py', 'src/digest/sources.py', 'config/sources.toml'],
+    reads: ['source'], writes: ['collected', 'errors', 'metrics'],
+    rules: ['<code>START</code> envoie un <code>Send("collect", {source})</code> par source de la configuration : les neuf runs partent en parallèle.',
+      'Erreur réseau ou HTTP : enregistrée dans <code>errors</code> (par exemple « HTTP 429 »), le run continue.',
+      'Flux valide mais vide : erreur « empty feed », pour ne pas le confondre avec une journée calme.',
+      '<code>delay_s</code> : attente avant la requête (30 s pour r/MachineLearning), non comptée dans la durée du nœud.']},
+  {id: 'clean', node: 'clean', verb: 'Nettoyer', llm: false, why: 'mêmes entrées, mêmes sorties',
+    pitch: 'On ne garde que les articles des dernières 24 heures, une seule fois chacun. Les adresses sont normalisées et les chapôs raccourcis.',
+    files: ['src/digest/nodes/clean.py'],
+    reads: ['collected'], writes: ['cleaned', 'metrics'],
+    rules: ['Sans titre ou sans URL : écarté (<code>invalid</code>). Sans date : écarté (<code>undated</code>).',
+      'Plus de 24 heures : écarté (<code>too_old</code>).',
+      'URL normalisée : paramètres <code>utm_</code> et <code>at_</code> retirés, fragment retiré, <code>?id=</code> de Hacker News gardé.',
+      'Doublon : même URL, ou même titre à la casse et à la ponctuation près.',
+      'Chapô sans URL nues, coupé à 300 caractères au dernier mot entier. <code>collected</code> n\'est jamais modifié.',
+      'Deux articles sur le même événement avec des titres différents : c\'est un jugement, laissé à rank et select.']},
+  {id: 'rank', node: 'rank', verb: 'Noter', llm: true, why: 'juger l\'intérêt d\'un article pour un lecteur',
+    pitch: 'Un seul appel au modèle lit tous les titres et chapôs, et donne à chaque article une note de 0 à 10 selon mon profil, plus un sujet court. Effort low : d\'après le banc d\'évaluation, il trie aussi bien que medium, pour moins cher.',
+    files: ['src/digest/nodes/rank.py', 'src/digest/llm.py', 'src/digest/pricing.py', 'prompts/rank_v1.md', 'config/profile.md'],
+    reads: ['cleaned'], writes: ['ranked', 'llm_calls', 'errors', 'metrics'],
+    rules: ['Un appel groupé : les consignes et le profil sont envoyés une fois, pas une fois par article.',
+      'Sortie JSON imposée par un schéma : <code>id</code>, <code>score</code>, <code>topic</code>. Deux articles sur le même événement reçoivent le même <code>topic</code>.',
+      'Note manquante, ou hors de 0 à 10 : comptée, et l\'article reçoit 0. Identifiant donné deux fois : le premier gagne.',
+      'Appel en échec : toutes les notes restent à 0, select se replie sur les plus récents, le journal part quand même.',
+      'Réponse inutilisable mais facturée : l\'appel est quand même compté dans le coût.',
+      'Titres et chapôs sont des données non fiables : échappés, placés entre balises, et le modèle n\'a aucun outil.',
+      'Aucun candidat : aucun appel.',
+      'Effort <code>low</code>, réglé par tâche dans <code>llm.py</code> : même qualité de tri que <code>medium</code> face à mes étiquettes, moins cher et d\'une durée stable.']},
+  {id: 'select', node: 'select', verb: 'Choisir', llm: false, why: 'trier des nombres, appliquer des quotas',
+    pitch: 'Trois articles par rubrique, les mieux notés d\'abord. Le meilleur post de chaque fil Reddit s\'ajoute, sans prendre la place de personne.',
+    files: ['src/digest/nodes/select.py'],
+    reads: ['ranked'], writes: ['selected', 'metrics'],
+    rules: ['Quotas : 3 par rubrique (data, monde, éco, France), soit 12 places. Tri par note, puis par date.',
+      'Une note 0 veut dire « hors profil » : jamais retenue.',
+      'Repli : si toutes les notes sont à 0, rank a échoué, et on prend les plus récents (<code>rank_failed</code>).',
+      'Même <code>topic</code> déjà présent dans le journal : écarté (<code>duplicate_topics</code>).',
+      'Sources brutes (Reddit) : le meilleur post de chaque source, en plus des 12 places.']},
+  {id: 'fetch_text', node: 'fetch_text', verb: 'Lire', llm: false, why: 'télécharger une page, mesurer une longueur',
+    pitch: 'Le texte complet n\'est récupéré que pour les articles retenus : une douzaine de pages au lieu de plusieurs centaines.',
+    files: ['src/digest/nodes/fetch_text.py', 'src/digest/extract.py', 'src/digest/collectors.py'],
+    reads: ['selected'], writes: ['selected', 'errors', 'metrics'],
+    rules: ['Texte déjà présent dans le flux (The Conversation) : pas de téléchargement.',
+      'Téléchargement en échec : erreur <code>fetch_text:&lt;source&gt;</code>, texte vide, les autres articles continuent.',
+      'Moins de 500 caractères : ce n\'est pas un article (vidéo, page payante). Texte écarté, le journal affichera le chapô.',
+      'Plus de 20 000 caractères : coupé au dernier mot entier (garde-fou contre une page aberrante).',
+      'Posts bruts : laissés intacts.',
+      'Arête conditionnelle en sortie : un <code>Send("summarize")</code> par article non brut ; s\'il n\'y en a aucun, direction <code>render_epub</code>.']},
+  {id: 'summarize', node: 'summarize ×n', verb: 'Résumer', llm: true, why: 'résumer et traduire, c\'est de la langue',
+    pitch: 'Un appel au modèle par article, tous en parallèle : une centaine de mots en français, moins si l\'article est court, et une phrase « pourquoi c\'est important » appuyée sur l\'article.',
+    files: ['src/digest/nodes/summarize.py', 'src/digest/llm.py', 'src/digest/pricing.py', 'prompts/summarize_v2.md'],
+    reads: ['article'], writes: ['summarized', 'llm_calls', 'errors', 'metrics'],
+    rules: ['Un appel par article : un échec ne touche que cet article, et l\'étape dure le temps de l\'appel le plus lent.',
+      'Sans texte : aucun appel. Le journal affiche le chapô, marqué « Chapô de la source », ou seulement le titre si la source n\'a pas de chapô (la plupart des liens Hacker News). Rien n\'est inventé.',
+      'Prompt v2 et effort <code>medium</code> : le texte fourni est la seule source ; attribution et degré de certitude gardés, aucune date calculée, aucun fait extérieur.',
+      'Posts Reddit : jamais envoyés ici, ils sont publiés tels qu\'écrits.',
+      'Réponse inutilisable mais facturée : comptée dans le coût, erreur <code>summarize:&lt;source&gt;</code>.',
+      'Le résumé s\'écrit uniquement à partir du texte fourni, placé entre balises et échappé.']},
+  {id: 'render_epub', node: 'render_epub', verb: 'Mettre en page', llm: false, why: 'une mise en page déterministe',
+    pitch: 'Les résumés deviennent un livre : un chapitre par rubrique, les posts Reddit tels qu\'écrits, et une dernière page de bilan.',
+    files: ['src/digest/nodes/render_epub.py'],
+    reads: ['summarized', 'selected', 'collected', 'cleaned', 'llm_calls', 'errors'], writes: ['epub_path', 'metrics'],
+    rules: ['Chapitres : Data & IA, Reddit, Monde, Économie, France, puis « Bilan du jour ». Une rubrique vide n\'a pas de chapitre.',
+      'Article sans résumé : le chapô de la source, signalé comme tel ; sans chapô non plus, le titre seul, avec une mention qui le dit.',
+      '« Bilan du jour » : compteurs, coût et incidents, lisibles directement sur la Kindle.',
+      'Tout le texte est échappé ; la date en français est écrite à la main, sans dépendre de la machine.']},
+  {id: 'deliver', node: 'deliver', verb: 'Envoyer', llm: false, why: 'du transport pur',
+    pitch: 'Le journal part par e-mail vers l\'adresse de la Kindle. Seulement si l\'envoi est demandé, pour ne rien envoyer par accident.',
+    files: ['src/digest/nodes/deliver.py'],
+    reads: ['epub_path'], writes: ['errors', 'metrics'],
+    rules: ['Condition : <code>SEND=1</code>. Sans elle, aucun e-mail (mode par défaut en développement).',
+      'SMTP Gmail, port 587, STARTTLS avec vérification du certificat.',
+      'Échec : seul le type ou le code de l\'erreur est enregistré, jamais un identifiant.',
+      'Un envoi raté donne le code de sortie 1 : le run devient rouge et une alerte part. Une source en panne, elle, ne rend pas le run rouge.']},
+  {id: 'report', node: 'rapport', verb: 'Mesurer', llm: false, why: 'de l\'arithmétique sur ce qui a été enregistré', outside: true,
+    pitch: 'Après le graphe, un fichier JSON garde tout : compteurs, durées, tokens, coût, erreurs, et chaque candidat avec sa note.',
+    files: ['src/digest/report.py', 'src/digest/pricing.py', 'src/digest/__init__.py', 'src/digest/state.py'],
+    reads: ['collected', 'cleaned', 'ranked', 'selected', 'summarized', 'metrics', 'llm_calls', 'errors'], writes: ['runs/AAAA-MM-JJ_HHMM.json', 'runs/index.json'],
+    rules: ['Écrit par <code>main()</code> après le graphe : c\'est le seul endroit qui connaît la durée totale.',
+      'Coût de chaque appel : tokens × prix de <code>pricing.py</code> (lecture de cache × 0,1 ; écriture × 1,25).',
+      'Vrais runs : <code>runs/</code>, versionné. Runs <code>--fake</code> : <code>out/</code>, ignoré par git.',
+      'Chaque candidat est gardé avec sa note, son sujet et s\'il a été retenu : c\'est la matière pour évaluer le tri.',
+      'Chaque rapport note qui a lancé le run (<code>trigger</code> : <code>schedule</code> pour le cron, <code>workflow_dispatch</code> à la main) ; <code>runs/index.json</code> liste les rapports. Cette page relit l\'index à chaque ouverture et ne montre que les runs du cron.']},
+];
+
+// ---------------------------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------------------------
+const $ = (sel, root = document) => root.querySelector(sel);
+const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+const root = document.documentElement;
+const motionOK = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
+const nf = (v, digits = 0) => v.toLocaleString('fr-FR', {minimumFractionDigits: digits, maximumFractionDigits: digits});
+const FMT = {
+  int: v => nf(Math.round(v)),
+  ct: v => nf(v * 100, 2),   // USD → cents
+  ct3: v => nf(v * 100, 3),
+  s1: v => nf(v, 1),
+  s3: v => nf(v, 3),
+  ko: v => nf(v / 1000, 1),
+};
+// A number that tweens from its previous value when the run changes (same key = same counter).
+const num = (key, value, fmt = 'int') =>
+  `<span class="n" data-k="${esc(key)}" data-v="${value}" data-f="${fmt}">${FMT[fmt](value)}</span>`;
+const pct = (part, total) => total ? Math.round(100 * part / total) : 0;
+const plural = (n, one, many) => n > 1 ? many : one;
+const code = s => `<code>${esc(s)}</code>`;
+
+const WEEKDAYS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+const MONTHS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+const MONTHS_SHORT = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
+const dayOf = run => new Date(run.date + 'T12:00:00');
+const longDate = run => { const d = dayOf(run); return `${WEEKDAYS[d.getDay()]} ${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`; };
+const shortDate = run => { const d = dayOf(run); return `${WEEKDAYS[d.getDay()].slice(0, 3)}. ${d.getDate()} ${MONTHS_SHORT[d.getMonth()]}`; };
+const clock = run => run.finished_at.slice(11, 16).replace(':', ' h ');
+const reportPath = run => `runs/${run.date}_${run.finished_at.slice(11, 13)}${run.finished_at.slice(14, 16)}.json`;
+// Config fields: one value for every task in the reports before 2026-11-15, one per task after.
+const cfg = (run, key, task) => { const v = run.config[key]; return v && typeof v === 'object' ? v[task] : v; };
+const lengthTarget = version => version === 'v1' ? 'pour environ 120 mots visés' : 'pour une centaine visée, moins si l\'article est court';
+const errorLabel = e => e === 'empty feed' ? 'flux vide' : e === 'HTTP 429' ? 'HTTP 429 · trop de requêtes' : e;
+
+const kv = rows => `<table class="kv"><tbody>${rows.map(([label, value, key, wrap]) =>
+  `<tr><th>${label}${key ? code(key) : ''}</th><td${wrap ? ' class="wrapok"' : ''}>${value}</td></tr>`).join('')}</tbody></table>`;
+const col = (title, right = false) => ({title, right});
+const table = (cols, rows, foot) => {
+  const cell = (tag, c, i) => `<${tag}${cols[i].right ? ' class="r"' : ''}>${c}</${tag}>`;
+  return `<div class="tw"><table class="dt"><thead><tr>${cols.map((c, i) => cell('th', c.title, i)).join('')}</tr></thead>` +
+    `<tbody>${rows.map(r => `<tr>${r.map((c, i) => cell('td', c, i)).join('')}</tr>`).join('')}</tbody>` +
+    (foot ? `<tfoot><tr>${foot.map((c, i) => cell('td', c, i)).join('')}</tr></tfoot>` : '') + `</table></div>`;
+};
+const errorList = errors => errors.length
+  ? `<ul class="errlist">${errors.map(e => `<li>${esc(e.source)} : ${esc(e.error)}</li>`).join('')}</ul>`
+  : `<p class="none-ok">Aucune erreur enregistrée.</p>`;
+
+// Cost of a set of calls, split by kind of token (same formula as pricing.py).
+function costParts(calls) {
+  const parts = {input: 0, answer: 0, thinking: 0};
+  for (const c of calls) {
+    const price = PRICES[c.model];
+    if (!price) continue;
+    parts.input += (c.input_tokens + c.cache_creation_input_tokens * CACHE_WRITE + c.cache_read_input_tokens * CACHE_READ) * price.input / 1e6;
+    parts.thinking += c.thinking_tokens * price.output / 1e6;
+    parts.answer += (c.output_tokens - c.thinking_tokens) * price.output / 1e6;
+  }
+  return parts;
+}
+const split = (title, parts) => {
+  const total = parts.reduce((sum, p) => sum + p.value, 0) || 1;
+  return `<div class="split"><h3>${title}</h3><div class="split-bar">${parts.map(p =>
+    `<span class="${p.cls}" style="flex:${Math.max(p.value / total, 0.002)}"></span>`).join('')}</div>` +
+    `<ul class="split-legend">${parts.map(p => `<li><i class="sw ${p.cls}"></i>${p.label} <b>${num(p.key, p.value, 'ct')} ct</b> <span class="soft">${pct(p.value, total)} %</span></li>`).join('')}</ul></div>`;
+};
+
+// ---------------------------------------------------------------------------------------------
+// Everything the page shows is derived here from one report.
+// ---------------------------------------------------------------------------------------------
+function derive(run) {
+  const node = name => run.nodes.find(n => n.node === name) || {node: name, duration_s: 0, counts: {}};
+  const isRaw = c => !!(SOURCES[c.source] && SOURCES[c.source].raw);
+  const sources = run.nodes.filter(n => n.node.startsWith('collect:')).map(n => {
+    const name = n.node.slice('collect:'.length);
+    const error = run.errors.find(e => e.source === name);
+    return {name, articles: n.counts.articles, duration: n.duration_s, error: error ? error.error : null, cfg: SOURCES[name] || {}};
+  });
+  const rankCall = run.llm_calls.find(c => c.task === 'rank') || null;
+  const sumCalls = run.llm_calls.filter(c => c.task === 'summarize');
+  // Assumption: summarize nodes and summarize calls are listed in the same order; a node without
+  // text made no call. To check against real reports before trusting the per-article join.
+  let next = 0;
+  const summaries = run.nodes.filter(n => n.node.startsWith('summarize:')).map(n => ({
+    source: n.node.slice('summarize:'.length), duration: n.duration_s,
+    chars: n.counts.input_chars, words: n.counts.summary_words,
+    call: n.counts.input_chars > 0 ? sumCalls[next++] || null : null,
+  }));
+  const selected = run.candidates.filter(c => c.selected);
+  const picks = selected.filter(c => !isRaw(c));
+  const rawPicks = selected.filter(isRaw);
+  const bySection = Object.fromEntries(Object.keys(SECTIONS).map(s =>
+    [s, picks.filter(c => c.section === s).sort((a, b) => b.score - a.score)]));
+  const chapters = [];
+  for (const [key, name] of Object.entries(SECTIONS)) {
+    if (bySection[key].length) chapters.push({name, n: bySection[key].length, unit: 'article'});
+    if (key === 'data' && rawPicks.length) chapters.push({name: 'Reddit', n: rawPicks.length, unit: 'post'});
+  }
+  chapters.push({name: 'Bilan du jour', n: 0});
+  const deliverError = run.errors.find(e => e.source === 'deliver') || null;
+  return {
+    node, isRaw, sources, rankCall, sumCalls, summaries, selected, picks, rawPicks, bySection, chapters, deliverError,
+    clean: node('clean').counts, rank: node('rank').counts, select: node('select').counts,
+    fetch: node('fetch_text').counts, epub: node('render_epub').counts, deliver: node('deliver').counts,
+    fetchErrors: run.errors.filter(e => e.source.startsWith('fetch_text:')),
+    summarizeErrors: run.errors.filter(e => e.source.startsWith('summarize:')),
+    rankErrors: run.errors.filter(e => e.source === 'rank'),
+    collectWall: Math.max(0, ...sources.map(s => (s.cfg.delay_s || 0) + s.duration)),
+  };
+}
+
+// ---------------------------------------------------------------------------------------------
+// One view per step: big figure, small visual, full measures.
+// ---------------------------------------------------------------------------------------------
+const VIEWS = {
+  collect(run, d) {
+    const up = d.sources.filter(s => !s.error).length;
+    const slowest = Math.max(0, ...d.sources.map(s => s.duration));
+    return {
+      big: num('collect.big', run.counts.collected), label: 'articles collectés',
+      sub: `${num('collect.up', up)} ${plural(up, 'source a', 'sources ont')} répondu sur ${d.sources.length}, la plus lente en ${num('collect.slow', slowest, 's1')} s`,
+      viz: `<ul class="lanes">${d.sources.map(s => `<li class="lane${s.error ? ' off' : ''}">
+        <span class="lane-name">${esc(s.name)}</span>
+        <span class="lane-n">${num('collect.n.' + s.name, s.articles)}</span>
+        <span class="lane-cards">${s.error
+          ? `<span class="chip ${s.error === 'empty feed' ? 'warn' : 'err'}">${esc(errorLabel(s.error))}</span>`
+          : `<span class="strip" style="--n:${s.articles}"></span>`}</span></li>`).join('')}</ul>
+        <p class="vizcap"><span><i class="pc"></i> une carte = un article</span></p>`,
+      measures: table(
+        [col('Source'), col('Rubrique'), col('Statut'), col('Articles', true), col('Durée', true), col('Attente', true)],
+        d.sources.map(s => [esc(s.name) + (s.cfg.raw ? ' <span class="chip">brut</span>' : ''), esc(s.cfg.section || ''),
+          s.error ? `<span class="chip err">${esc(s.error)}</span>` : '<span class="chip ok">ok</span>',
+          num('collect.t.' + s.name, s.articles), `${num('collect.d.' + s.name, s.duration, 's3')} s`, s.cfg.delay_s ? `${s.cfg.delay_s} s` : '·']),
+        ['Total', '', `${up} / ${d.sources.length} ok`, num('collect.total', run.counts.collected), '', '']) +
+        kv([['Durée de l\'étape, attente comprise (les runs sont parallèles)', `${num('collect.wall', d.collectWall, 's1')} s`]]),
+    };
+  },
+
+  clean(run, d) {
+    const c = d.clean, removed = c.articles_in - c.articles_out, other = c.undated + c.invalid;
+    const cards = [['', c.articles_out], ['old', c.too_old], ['dup', c.duplicates], ['bad', other]];
+    return {
+      big: num('clean.big', c.articles_out), label: 'articles frais et uniques',
+      sub: `${num('clean.removed', removed)} retirés sur ${num('clean.in', c.articles_in)}, soit ${num('clean.pct', pct(removed, c.articles_in))} %`,
+      viz: `<div class="field">${cards.map(([cls, n]) => `<i class="pc ${cls}"></i>`.repeat(n)).join('')}</div>
+        <p class="vizcap"><span><i class="pc"></i> gardés ${num('clean.l1', c.articles_out)}</span><span><i class="pc old"></i> trop anciens ${num('clean.l2', c.too_old)}</span>
+        <span><i class="pc dup"></i> doublons ${num('clean.l3', c.duplicates)}</span><span><i class="pc bad"></i> sans date ou invalides ${num('clean.l4', other)}</span></p>`,
+      measures: kv([
+        ['Articles reçus', num('clean.m1', c.articles_in), 'articles_in'],
+        ['Plus de 24 heures', num('clean.m2', c.too_old), 'too_old'],
+        ['Doublons (URL ou titre)', num('clean.m3', c.duplicates), 'duplicates'],
+        ['Sans date', num('clean.m4', c.undated), 'undated'],
+        ['Sans titre ou sans URL', num('clean.m5', c.invalid), 'invalid'],
+        ['Articles gardés', num('clean.m6', c.articles_out), 'articles_out'],
+        ['Durée', `${num('clean.m7', d.node('clean').duration_s * 1000)} ms`, 'duration_s'],
+      ]),
+    };
+  },
+
+  rank(run, d) {
+    const c = d.rankCall, r = d.rank;
+    const byScore = Array.from({length: 11}, () => []);
+    for (const cand of run.candidates) byScore[clamp(cand.score || 0, 0, 10)].push(cand);
+    const histo = `<div class="histo" role="img" aria-label="Répartition des notes de 0 à 10">${byScore.map((list, score) =>
+      `<div class="hcol"><div class="hstack">${[...list].sort((a, b) => b.selected - a.selected).map(x => `<i class="hb${x.selected ? ' sel' : ''}"></i>`).join('')}</div><span class="hx">${score}</span></div>`).join('')}</div>
+      <p class="vizcap"><span>notes de 0 à 10 · une carte = un article</span><span><i class="hb sel"></i> retenu ensuite</span><span>0 = hors profil</span></p>`;
+    if (!c) return {big: num('rank.big', 0), label: 'article noté', sub: 'aucun appel au modèle sur ce run', viz: histo,
+      measures: kv([['Candidats', num('rank.m1', r.articles_in || 0), 'articles_in']]) + errorList(d.rankErrors)};
+    const parts = costParts([c]);
+    return {
+      big: num('rank.big', r.scored), label: 'articles notés en un seul appel',
+      sub: `${num('rank.lat', c.latency_s, 's1')} s · ${num('rank.cost', c.cost_usd, 'ct')} ct · ${num('rank.think', pct(c.thinking_tokens, c.output_tokens))} % de la sortie est du thinking`,
+      viz: histo,
+      measures: kv([
+        ['Candidats envoyés', num('rank.m1', r.articles_in), 'articles_in'],
+        ['Notés', num('rank.m2', r.scored), 'scored'],
+        ['Notes manquantes, comptées 0', num('rank.m3', r.missing), 'missing'],
+        ['Notes invalides', num('rank.m4', r.invalid), 'invalid'],
+        ['Modèle', esc(c.model), 'model'],
+        ['Effort', esc(cfg(run, 'effort', 'rank') || '·'), 'effort'],
+        ['Prompt', `rank_${esc(c.prompt_version)}.md`, 'prompt_version'],
+        ['Tokens d\'entrée', num('rank.m5', c.input_tokens), 'input_tokens'],
+        ['Tokens de sortie', num('rank.m6', c.output_tokens), 'output_tokens'],
+        ['dont thinking', num('rank.m7', c.thinking_tokens), 'thinking_tokens'],
+        ['Cache : lus / écrits', `${nf(c.cache_read_input_tokens)} / ${nf(c.cache_creation_input_tokens)}`],
+        ['Latence', `${num('rank.m8', c.latency_s, 's3')} s`, 'latency_s'],
+        ['Coût', `${num('rank.m9', c.cost_usd, 'ct3')} ct`, 'cost_usd'],
+        ['Fin de réponse', esc(c.stop_reason), 'stop_reason'],
+        ['Identifiant de requête', esc(c.request_id || '·'), 'request_id', true],
+      ]) + split('Où part le coût de cet appel', [
+        {label: 'entrée', value: parts.input, cls: 's1', key: 'rank.p1'},
+        {label: 'réponse', value: parts.answer, cls: 's2', key: 'rank.p2'},
+        {label: 'thinking', value: parts.thinking, cls: 's3', key: 'rank.p3'},
+      ]) + (d.rankErrors.length ? errorList(d.rankErrors) : ''),
+    };
+  },
+
+  select(run, d) {
+    const s = d.select, quota = d.picks.length;
+    const ticket = c => `<li class="ticket"><b>${esc(c.title)}</b><span><span>${esc(c.source)}</span><span>${c.score}/10</span></span></li>`;
+    const columns = Object.entries(SECTIONS).map(([key, name]) => {
+      const list = d.bySection[key], empty = Math.max(0, QUOTAS[key] - list.length);
+      return `<div class="slotcol"><h3>${name}<span>${list.length}/${QUOTAS[key]}</span></h3><ul>${list.map(ticket).join('')}${'<li class="ticket none">place non pourvue</li>'.repeat(empty)}</ul></div>`;
+    });
+    const rawSources = Object.keys(SOURCES).filter(n => SOURCES[n].raw).length;
+    columns.push(`<div class="slotcol"><h3>Reddit, en plus<span>${d.rawPicks.length}/${rawSources}</span></h3><ul>${d.rawPicks.map(ticket).join('')}${
+      '<li class="ticket none">aucun post reçu</li>'.repeat(Math.max(0, rawSources - d.rawPicks.length))}</ul></div>`);
+    const losers = run.candidates.filter(c => !c.selected && !d.isRaw(c)).sort((a, b) => b.score - a.score).slice(0, 6);
+    return {
+      big: num('select.big', run.counts.selected), label: 'articles retenus',
+      sub: `${num('select.q', quota)} sur quotas + ${num('select.r', d.rawPicks.length)} ${plural(d.rawPicks.length, 'post Reddit', 'posts Reddit')} en plus, parmi ${num('select.c', run.counts.after_clean)} candidats`,
+      viz: `<div class="slots">${columns.join('')}</div>`,
+      measures: kv([
+        ['Candidats avec une note au-dessus de 0, hors Reddit', num('select.m1', s.candidates), 'candidates'],
+        ['Retenus sur quotas', num('select.m2', s.selected), 'selected'],
+        ['Posts bruts ajoutés', num('select.m3', s.raw), 'raw'],
+        ['Écartés : sujet déjà présent', num('select.m4', s.duplicate_topics), 'duplicate_topics'],
+        ['Repli « rank a échoué »', s.rank_failed ? 'oui' : 'non', 'rank_failed'],
+        ...Object.entries(SECTIONS).map(([key, name]) => [`Rubrique ${name}`, `${d.bySection[key].length} / ${QUOTAS[key]}`]),
+        ['Durée', `${num('select.m5', d.node('select').duration_s * 1000)} ms`, 'duration_s'],
+      ]) + `<h4>Les mieux notés parmi les non retenus</h4>` + table(
+        [col('Titre'), col('Source'), col('Sujet'), col('Note', true)],
+        losers.map(c => [esc(c.title), esc(c.source), esc(c.topic), `${c.score}/10`])),
+    };
+  },
+
+  fetch_text(run, d) {
+    const f = d.fetch, tried = f.from_feed + f.downloaded + f.failed, got = f.from_feed + f.downloaded - f.too_short;
+    const fallback = f.failed + f.too_short;
+    const pages = [['', Math.max(0, f.downloaded - f.too_short)], ['feed', f.from_feed], ['short', f.too_short], ['fail', f.failed], ['raw', f.raw]];
+    return {
+      big: `${num('fetch.big', got)}<small>/ ${num('fetch.tried', tried)}</small>`, label: 'textes complets obtenus',
+      sub: fallback ? `${num('fetch.fb', fallback)} ${plural(fallback, 'repli', 'replis')} sur le chapô · ${num('fetch.kept', f.chars_kept)} caractères gardés`
+        : `aucun repli · ${num('fetch.kept', f.chars_kept)} caractères gardés`,
+      viz: `<div class="pages">${pages.map(([cls, n]) => `<i class="page ${cls}"></i>`.repeat(n)).join('')}</div>
+        <p class="vizcap"><span><i class="pg"></i>téléchargés ${num('fetch.l1', f.downloaded)}</span><span><i class="pg feed"></i>déjà dans le flux ${num('fetch.l2', f.from_feed)}</span>
+        <span><i class="pg short"></i>trop courts ${num('fetch.l3', f.too_short)}</span><span><i class="pg fail"></i>échecs ${num('fetch.l4', f.failed)}</span><span><i class="pg raw"></i>posts bruts ${num('fetch.l5', f.raw)}</span></p>
+        <div class="meter"><div class="meter-bar"><span style="flex:${f.chars_kept || 1}"></span><span class="cut" style="flex:${f.chars_cut}"></span></div>
+        <p class="vizcap"><span>${num('fetch.k2', f.chars_kept)} caractères gardés</span><span>${num('fetch.cut', f.chars_cut)} coupés (limite : ${nf(MAX_TEXT)} par article)</span></p></div>`,
+      measures: kv([
+        ['Texte déjà dans le flux', num('fetch.m1', f.from_feed), 'from_feed'],
+        ['Pages téléchargées', num('fetch.m2', f.downloaded), 'downloaded'],
+        ['Téléchargements en échec', num('fetch.m3', f.failed), 'failed'],
+        [`Textes de moins de ${MIN_TEXT} caractères, écartés`, num('fetch.m4', f.too_short), 'too_short'],
+        [`Textes de plus de ${nf(MAX_TEXT)} caractères, tronqués`, num('fetch.m5', f.truncated), 'truncated'],
+        ['Posts bruts, laissés intacts', num('fetch.m6', f.raw), 'raw'],
+        ['Caractères gardés', num('fetch.m7', f.chars_kept), 'chars_kept'],
+        ['Caractères coupés', num('fetch.m8', f.chars_cut), 'chars_cut'],
+        ['Durée (téléchargements l\'un après l\'autre)', `${num('fetch.m9', d.node('fetch_text').duration_s, 's1')} s`, 'duration_s'],
+      ]) + `<h4>Erreurs de l'étape</h4>` + errorList(d.fetchErrors),
+    };
+  },
+
+  summarize(run, d) {
+    const calls = d.sumCalls, rows = d.summaries;
+    const total = k => calls.reduce((sum, c) => sum + c[k], 0);
+    const slowest = Math.max(0, ...rows.map(r => r.duration));
+    const scale = Math.max(1, Math.ceil(Math.max(0, ...calls.map(c => c.latency_s))));
+    const written = rows.filter(r => r.words > 0);
+    const meanWords = written.length ? written.reduce((sum, r) => sum + r.words, 0) / written.length : 0;
+    const skipped = rows.length - calls.length;
+    return {
+      big: num('sum.big', calls.length), label: `${plural(calls.length, 'résumé écrit', 'résumés écrits')}, en parallèle`,
+      sub: `étape bouclée en ${num('sum.slow', slowest, 's1')} s, le temps de l'appel le plus lent · ${num('sum.cost', total('cost_usd'), 'ct')} ct` +
+        (skipped ? ` · ${skipped} ${plural(skipped, 'article sans texte', 'articles sans texte')}, sans appel` : ''),
+      viz: `<ul class="gantt">${rows.map((r, i) => r.call
+        ? `<li><span class="src">${esc(r.source)}</span><span class="track"><span class="bar" style="--w:${(70 * r.call.latency_s / scale).toFixed(1)}"></span><span class="val">${num('sum.g.' + i, r.call.latency_s, 's1')} s · ${r.words} mots</span></span></li>`
+        : `<li class="nocall"><span class="src">${esc(r.source)}</span><span class="track"><span class="bar"></span><span class="val">aucun appel · chapô ou titre seul</span></span></li>`).join('')}</ul>
+        <div class="gantt-axis"><span></span><span>tous les appels partent en même temps · barre = latence de l'appel</span></div>`,
+      measures: table(
+        [col('Source'), col('Car. lus', true), col('Tok. entrée', true), col('Tok. sortie', true), col('Thinking', true), col('Latence', true), col('Coût (ct)', true), col('Mots', true), col('Fin')],
+        rows.map(r => r.call
+          ? [esc(r.source), nf(r.chars), nf(r.call.input_tokens), nf(r.call.output_tokens), nf(r.call.thinking_tokens), `${FMT.s1(r.call.latency_s)} s`, FMT.ct3(r.call.cost_usd), r.words, esc(r.call.stop_reason)]
+          : [esc(r.source), '0', '·', '·', '·', '·', '·', '0', 'aucun appel']),
+        [`${calls.length} ${plural(calls.length, 'appel', 'appels')}`, nf(rows.reduce((sum, r) => sum + r.chars, 0)), num('sum.t1', total('input_tokens')), num('sum.t2', total('output_tokens')),
+          num('sum.t3', total('thinking_tokens')), `max ${num('sum.t4', slowest, 's1')} s`, num('sum.t5', total('cost_usd'), 'ct3'), `moy. ${num('sum.t6', meanWords)}`, '']) +
+        kv([
+          [`Longueur moyenne des résumés, ${lengthTarget(run.config.prompts.summarize)}`, `${num('sum.m1', meanWords)} mots`, 'summary_words'],
+          ['Prompt', `summarize_${esc(run.config.prompts.summarize)}.md`, 'prompt_version'],
+          ['Modèle', esc(cfg(run, 'model', 'summarize')), 'model'],
+          ['Effort', esc(cfg(run, 'effort', 'summarize') || '·'), 'effort'],
+        ]) + `<p class="hyp">Chaque résumé est rapproché de son appel dans l'ordre du rapport : chaque run de summarize enregistre sa mesure et son appel ensemble.</p>` +
+        (d.summarizeErrors.length ? `<h4>Erreurs de l'étape</h4>` + errorList(d.summarizeErrors) : ''),
+    };
+  },
+
+  render_epub(run, d) {
+    const e = d.epub, articleChapters = d.chapters.length;
+    return {
+      big: `${num('epub.big', e.size_bytes, 'ko')}<small>Ko</small>`, label: 'le journal du jour, en EPUB',
+      sub: `${num('epub.ch', articleChapters)} chapitres · ${num('epub.a', e.articles)} articles · ${num('epub.r', e.raw_posts)} ${plural(e.raw_posts, 'post brut', 'posts bruts')}`,
+      viz: `<div class="book"><h3>Journal du ${longDate(run)}</h3><p>Kindle Digest · sommaire</p><ol>${d.chapters.map(c =>
+        `<li>${c.name}<span>${c.n ? `${c.n} ${plural(c.n, c.unit, c.unit + 's')}` : 'compteurs, coût, incidents'}</span></li>`).join('')}</ol></div>`,
+      measures: kv([
+        ['Articles mis en page', num('epub.m1', e.articles), 'articles'],
+        ['dont résumés par le modèle', num('epub.m2', run.counts.summarized)],
+        ['dont sans résumé (chapô ou titre seul)', num('epub.m3', e.articles - run.counts.summarized)],
+        ['Posts bruts', num('epub.m4', e.raw_posts), 'raw_posts'],
+        ['Chapitres', num('epub.m5', articleChapters)],
+        ['Taille du fichier', `${num('epub.m6', e.size_bytes)} octets`, 'size_bytes'],
+        ['Fichier', `out/digest-${run.date}.epub`, 'epub_path', true],
+        ['Durée', `${num('epub.m7', d.node('render_epub').duration_s * 1000)} ms`, 'duration_s'],
+      ]),
+    };
+  },
+
+  deliver(run, d) {
+    const v = d.deliver, err = d.deliverError;
+    const state = !v.enabled ? 'off' : v.sent ? 'sent' : 'failed';
+    const word = {off: 'Pas d\'envoi', sent: 'Envoyé', failed: 'Échec'}[state];
+    const seconds = d.node('deliver').duration_s;
+    return {
+      big: word, wordy: true,
+      label: {off: 'SEND n\'est pas à 1', sent: 'le journal est parti vers la Kindle', failed: 'le journal n\'est pas parti'}[state],
+      sub: state === 'failed' ? `${esc(err ? err.error : 'erreur')} · code de sortie 1, run rouge` : `${num('deliver.s', seconds, 's1')} s de SMTP · code de sortie 0`,
+      viz: `<div class="deliver-viz"><div class="kindle"><div class="screen${state === 'sent' ? '' : ' off'}">
+          <span class="au">Kindle Digest</span><span class="ti">Journal du ${longDate(run)}</span>
+          <span class="fo"><span>${d.picks.length} articles</span><span>${d.chapters.length} chapitres</span></span>
+          ${state === 'failed' ? `<span class="stamp">non livré</span>` : state === 'off' ? `<span class="stamp mute">pas d'envoi</span>` : ''}
+        </div></div>
+        <p>${state === 'failed' ? 'Un envoi raté est la seule erreur qui rend le run rouge : le journal existe, mais personne ne le lira.'
+          : 'L\'arrivée réelle sur la Kindle n\'est pas mesurable : Amazon n\'offre aucune API. On mesure l\'acceptation par le serveur SMTP.'}</p></div>`,
+      measures: kv([
+        ['Envoi demandé (SEND=1)', v.enabled ? 'oui' : 'non', 'enabled'],
+        ['E-mail accepté par le serveur', v.sent ? 'oui' : 'non', 'sent'],
+        ['Durée', `${num('deliver.m1', seconds, 's3')} s`, 'duration_s'],
+        ['Code de sortie du run', err ? '1 (rouge)' : '0'],
+      ]) + (err ? `<h4>Erreur enregistrée</h4>` + errorList([err]) : ''),
+    };
+  },
+
+  report(run, d) {
+    const t = run.totals, parts = costParts(run.llm_calls);
+    const rankCost = d.rankCall ? d.rankCall.cost_usd : 0, sumCost = d.sumCalls.reduce((sum, c) => sum + c.cost_usd, 0);
+    const price = PRICES[cfg(run, 'model', 'summarize')];
+    return {
+      big: `${num('report.big', t.cost_usd, 'ct')}<small>ct</small>`, label: 'de dollar pour ce journal',
+      sub: `${num('report.calls', t.llm_calls)} appels · ${num('report.s', t.seconds, 's1')} s · ${num('report.err', run.errors.length)} ${plural(run.errors.length, 'incident', 'incidents')} · ${reportPath(run)}`,
+      viz: split('Par tâche', [
+        {label: 'rank', value: rankCost, cls: 's1', key: 'report.v1'},
+        {label: 'summarize', value: sumCost, cls: 's2', key: 'report.v2'},
+      ]) + split('Par type de token', [
+        {label: 'entrée', value: parts.input, cls: 's1', key: 'report.v3'},
+        {label: 'réponse', value: parts.answer, cls: 's2', key: 'report.v4'},
+        {label: 'thinking', value: parts.thinking, cls: 's3', key: 'report.v5'},
+      ]),
+      measures: kv([
+        ['Durée totale du run', `${num('report.m1', t.seconds, 's1')} s`, 'seconds'],
+        ['Appels au modèle', num('report.m2', t.llm_calls), 'llm_calls'],
+        ['Tokens d\'entrée', num('report.m3', t.input_tokens), 'input_tokens'],
+        ['Tokens de sortie', num('report.m4', t.output_tokens), 'output_tokens'],
+        ['dont thinking', num('report.m5', t.thinking_tokens), 'thinking_tokens'],
+        ['Tokens lus en cache', num('report.m6', t.cache_read_input_tokens), 'cache_read_input_tokens'],
+        ['Coût total', `${nf(t.cost_usd, 6)} $, soit ${num('report.m7', t.cost_usd, 'ct')} ct`, 'cost_usd'],
+        ['Modèle · effort', ['rank', 'summarize'].map(t => `${t} : ${esc(cfg(run, 'model', t))} · ${esc(cfg(run, 'effort', t) || '·')}`).join('<br>'), 'config'],
+        ['Prix du modèle, par million de tokens', price ? `${nf(price.input, 2)} $ en entrée · ${nf(price.output, 2)} $ en sortie` : 'inconnu'],
+        ['Prompts', `rank_${esc(run.config.prompts.rank)} · summarize_${esc(run.config.prompts.summarize)}`, 'prompts'],
+        ['Déclenché par', esc(run.trigger || '·'), 'trigger'],
+        ['Mode', esc(run.mode), 'mode'],
+        ['Version du code', esc(run.git_sha || '·'), 'git_sha'],
+        ['Fin du run', esc(run.finished_at), 'finished_at', true],
+      ]) + `<h4>Tous les incidents du run</h4>` + errorList(run.errors),
+    };
+  },
+};
+
+// ---------------------------------------------------------------------------------------------
+// Static shell: scenes, progress bar, rule lists (built once)
+// ---------------------------------------------------------------------------------------------
+function buildShell() {
+  $('#scenes').innerHTML = STEPS.map((s, i) => `
+    <section class="band scene" data-band="${s.id}" id="step-${s.id}">
+      <div class="ghost" aria-hidden="true">${String(i + 1).padStart(2, '0')}</div>
+      <div class="scene-head">
+        <p class="meta rv"><span class="count">${String(i + 1).padStart(2, '0')} / ${String(STEPS.length).padStart(2, '0')}</span>
+          <span class="nodetag">${s.node}</span>
+          <span class="badge${s.llm ? ' llm' : ''}">${s.llm ? '✳ LLM' : 'Script'}</span>
+          <span class="why">${s.llm ? 'jugement et langue' : 'réponse exacte et vérifiable'} : ${s.why}</span></p>
+        <h2 class="rv">${s.verb}</h2>
+        <p class="pitch rv" style="--i:1">${s.pitch}</p>
+      </div>
+      <div class="figure rv" style="--i:2"><span class="big" data-slot="big"></span><span class="biglabel"><b data-slot="label"></b><span data-slot="sub"></span></span></div>
+      <div class="viz rv" style="--i:3" data-slot="viz"></div>
+      <details class="detail rv" style="--i:4">
+        <summary><span class="closed">Voir le détail de l'étape</span><span class="opened">Fermer le détail</span><span class="ico" aria-hidden="true">+</span></summary>
+        <div class="detail-body">
+          <section>
+            <h3>Fichiers</h3><ul class="files">${s.files.map(f => `<li>${f}</li>`).join('')}</ul>
+            <h3 style="margin-top:18px">${s.outside ? 'Lit dans l\'état, écrit sur le disque' : 'Champs de l\'état'}</h3>
+            <dl class="io"><dt>lit</dt><dd>${s.reads.map(code).join('')}</dd><dt>écrit</dt><dd>${s.writes.map(code).join('')}</dd></dl>
+          </section>
+          <section><h3>Conditions et replis</h3><ul class="rules">${s.rules.map(r => `<li>${r}</li>`).join('')}</ul></section>
+          <section class="full"><h3>Mesures du run</h3><div data-slot="measures"></div></section>
+        </div>
+      </details>
+    </section>`).join('');
+  $('#segs').innerHTML = STEPS.map(s => `<button type="button" data-step="${s.id}" aria-label="Aller à l'étape ${s.id}"></button>`).join('');
+  const chip = s => `<li><button type="button" data-step="${s.id}">${s.id === 'report' ? 'rapport' : s.id}</button></li>`;
+  $('#rule-script').innerHTML = STEPS.filter(s => !s.llm).map(chip).join('');
+  $('#rule-llm').innerHTML = STEPS.filter(s => s.llm).map(chip).join('');
+}
+
+// ---------------------------------------------------------------------------------------------
+// Graph: the real shape of the workflow (fan-out per source, fan-out per article, condition)
+// ---------------------------------------------------------------------------------------------
+function graphSVG(run, d) {
+  const cx = 150;
+  const Y = {start: 16, collect: 78, clean: 134, rank: 186, select: 238, fetch_text: 290, summarize: 354, render_epub: 410, deliver: 462, end: 508, report: 556};
+  const spread = (n, from, to) => n <= 1 ? [(from + to) / 2] : Array.from({length: n}, (_, i) => from + i * (to - from) / (n - 1));
+  const curve = (x0, y0, x1, y1) => `M${x0} ${y0} C${x0} ${(y0 + y1) / 2} ${x1} ${(y0 + y1) / 2} ${x1} ${y1}`;
+  const through = (x, y0, ym, y1) => `M${cx} ${y0} C${cx} ${(y0 + ym) / 2} ${x} ${(y0 + ym) / 2} ${x} ${ym} C${x} ${(ym + y1) / 2} ${cx} ${(ym + y1) / 2} ${cx} ${y1}`;
+  const pill = (id, label, opts = {}) => `<g class="gn${opts.dashed ? ' dashed' : ''}" data-step="${id}" tabindex="0" role="button" aria-label="Aller à l'étape ${label}">
+    <rect class="p" x="${cx - 78}" y="${Y[id] - 16}" width="156" height="32" rx="16"/><text class="l" x="${cx}" y="${Y[id] + 4}" text-anchor="middle">${label}</text>${opts.extra || ''}</g>`;
+  const tag = (x, y, w, text, rot, outline) => `<g class="tag${outline ? ' o' : ''}" transform="translate(${x} ${y}) rotate(${rot})"><rect x="${-w / 2}" y="-8" width="${w}" height="16" rx="8"/><text x="0" y="3" text-anchor="middle">${text}</text></g>`;
+  const terminal = (y, text) => `<g class="term"><rect x="${cx - 26}" y="${y - 9}" width="52" height="18" rx="9"/><text x="${cx}" y="${y + 3}" text-anchor="middle">${text}</text></g>`;
+  const dot = (x, y, r, kind, title) => kind === 'err'
+    ? `<g class="d err"><title>${esc(title)}</title><circle cx="${x}" cy="${y}" r="${r + .5}"/><path d="M${x - 2.4} ${y - 2.4}l4.8 4.8m0 -4.8l-4.8 4.8"/></g>`
+    : `<circle class="d ${kind}" cx="${x}" cy="${y}" r="${r}"><title>${esc(title)}</title></circle>`;
+
+  const cxs = spread(d.sources.length, 100, 262);
+  const n = d.summaries.length;
+  const sxs = spread(n, 100, n > 1 ? Math.min(256, 100 + (n - 1) * 20) : 100);
+  let edges = '', flows = '';
+  cxs.forEach(x => { edges += `<path d="${curve(cx, Y.start + 9, x, Y.collect - 7)}"/><path d="${curve(x, Y.collect + 7, cx, Y.clean - 16)}"/>`; });
+  const chain = ['clean', 'rank', 'select', 'fetch_text'];
+  for (let i = 0; i < chain.length - 1; i++) edges += `<path d="M${cx} ${Y[chain[i]] + 16}V${Y[chain[i + 1]] - 16}"/>`;
+  sxs.forEach(x => { edges += `<path d="${curve(cx, Y.fetch_text + 16, x, Y.summarize - 6)}"/><path d="${curve(x, Y.summarize + 6, cx, Y.render_epub - 16)}"/>`; });
+  edges += `<path class="cond${n ? '' : ' on'}" d="M${cx + 78} ${Y.fetch_text} C296 ${Y.fetch_text + 6} 296 ${Y.render_epub - 6} ${cx + 78} ${Y.render_epub}"/>`;
+  edges += `<path d="M${cx} ${Y.render_epub + 16}V${Y.deliver - 16}"/><path d="M${cx} ${Y.deliver + 16}V${Y.end - 9}"/><path class="cond" d="M${cx} ${Y.end + 9}V${Y.report - 16}"/>`;
+
+  if (motionOK) { // paper cards travelling down, fewer after each step
+    const flow = (path, dur, begin) => `<rect class="flow" x="-3.5" y="-4.5" width="7" height="9" rx="1.5" opacity="0">
+      <animateMotion dur="${dur}s" begin="${begin}s" repeatCount="indefinite" path="${path}"/>
+      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.85;1" dur="${dur}s" begin="${begin}s" repeatCount="indefinite"/></rect>`;
+    const live = cxs.filter((x, i) => !d.sources[i].error);
+    live.filter((x, i) => i % 2 === 0).slice(0, 5).forEach((x, i) => { flows += flow(through(x, Y.start + 9, Y.collect, Y.clean - 16), 3.2, i * 0.65); });
+    const straight = (a, b, count, off = 16) => { for (let i = 0; i < count; i++) flows += flow(`M${cx} ${Y[a] + 16}L${cx} ${Y[b] - off}`, 1.5, i * 1.5 / count + 0.2); };
+    straight('clean', 'rank', 3); straight('rank', 'select', 3); straight('select', 'fetch_text', 2);
+    sxs.filter((x, i) => i % 5 === 1).slice(0, 2).forEach((x, i) => { flows += flow(through(x, Y.fetch_text + 16, Y.summarize, Y.render_epub - 16), 3, i * 1.5); });
+    straight('render_epub', 'deliver', 1); straight('deliver', 'end', 1, 9);
+  }
+
+  const fanLabel = (id, y, name, count, extra = '') => `<g class="gn fan" data-step="${id}" tabindex="0" role="button" aria-label="Aller à l'étape ${name}">
+    <text class="l" x="20" y="${y - 2}">${name}</text><text class="tiny" x="20" y="${y + 10}">${count}</text>${extra}</g>`;
+  const collectDots = d.sources.map((s, i) => dot(cxs[i], Y.collect, 6, s.error ? (s.error === 'empty feed' ? 'empty' : 'err') : 'ok',
+    `${s.name} : ${s.error ? errorLabel(s.error) : s.articles + ' articles'}`)).join('');
+  const summarizeDots = d.summaries.map((s, i) => dot(sxs[i], Y.summarize, 5, s.call ? 'ok' : 'empty',
+    `${s.source} : ${s.call ? FMT.s1(s.call.latency_s) + ' s' : 'aucun appel (pas de texte)'}`)).join('');
+
+  return `
+    <rect class="halo" data-step="collect" x="8" y="${Y.collect - 24}" width="274" height="48" rx="20"/>
+    <rect class="halo" data-step="summarize" x="8" y="${Y.summarize - 24}" width="262" height="60" rx="20"/>
+    <g class="edges">${edges}</g>${flows}
+    ${terminal(Y.start, 'START')}
+    ${fanLabel('collect', Y.collect, 'collect', `×${d.sources.length} sources`)}${collectDots}
+    ${pill('clean', 'clean')}
+    ${pill('rank', 'rank', {extra: tag(cx + 66, Y.rank - 15, 30, 'LLM', 8)})}
+    ${pill('select', 'select')}
+    ${pill('fetch_text', 'fetch_text')}
+    ${fanLabel('summarize', Y.summarize, 'summarize', `×${n} ${plural(n, 'article', 'articles')}`, tag(35, Y.summarize + 24, 30, 'LLM', -6))}${summarizeDots}
+    <text class="tiny" transform="translate(291 ${(Y.fetch_text + Y.render_epub) / 2}) rotate(90)" text-anchor="middle">si rien à résumer</text>
+    ${pill('render_epub', 'render_epub')}
+    ${pill('deliver', 'deliver', {extra: tag(cx + 62, Y.deliver + 17, 64, 'si SEND=1', -5, true)})}
+    ${terminal(Y.end, 'END')}
+    ${pill('report', 'rapport', {dashed: true})}
+    <text class="tiny" x="${cx}" y="${Y.report + 29}" text-anchor="middle">écrit par main(), après le graphe</text>`;
+}
+
+// ---------------------------------------------------------------------------------------------
+// Hero: key figures, 7-day curves, run selector
+// ---------------------------------------------------------------------------------------------
+function sparkline(values, selected, format, bad) {
+  const W = 260, H = 92, left = 8, right = 8, top = 18, bottom = 24, base = H - bottom + 8;
+  const min = Math.min(...values), max = Math.max(...values), span = (max - min) || 1;
+  const x = i => left + i * (W - left - right) / Math.max(1, values.length - 1);
+  const y = v => top + (1 - (v - min) / span) * (H - top - bottom);
+  const line = values.map((v, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)} ${y(v).toFixed(1)}`).join('');
+  return `<path class="area" d="${line}L${x(values.length - 1)} ${base}L${x(0)} ${base}Z"/><path class="line" d="${line}"/>` +
+    values.map((v, i) => `<circle class="pt${i === selected ? ' sel' : ''}${bad[i] ? ' bad' : ''}" data-run="${i}" cx="${x(i).toFixed(1)}" cy="${y(v).toFixed(1)}" r="${i === selected ? 5 : 3.2}"><title>${format(v)}</title></circle>`).join('') +
+    `<text class="axis" x="${left}" y="9">max ${format(max)}</text><text class="axis" x="${left}" y="${H - 2}">min ${format(min)}</text>`;
+}
+
+function renderHero(run, d) {
+  const failed = !!d.deliverError, incidents = run.errors.length;
+  $('#rundate').textContent = `Run du ${longDate(run)}, terminé à ${clock(run)}`;
+  $('#figs').innerHTML = `
+    <div class="fig wide"><dt>Articles collectés, puis retenus</dt><dd>${num('hero.collected', run.counts.collected)}<span class="arrow">→</span>${num('hero.selected', run.counts.selected)}</dd></div>
+    <div class="fig"><dt>Coût</dt><dd>${num('hero.cost', run.totals.cost_usd, 'ct')}<small>ct</small></dd></div>
+    <div class="fig"><dt>Durée</dt><dd>${num('hero.seconds', run.totals.seconds)}<small>s</small></dd></div>
+    <div class="fig"><dt>Appels au modèle</dt><dd>${num('hero.calls', run.totals.llm_calls)}</dd></div>
+    <div class="fig${failed ? ' bad' : ''}"><dt>Incidents</dt><dd>${num('hero.incidents', incidents)}</dd></div>
+    <div class="fig"><dt>Envoi</dt><dd style="font-size:clamp(1.4rem, 2.4vw, 2.1rem); padding-top:.3em">${failed ? 'raté' : d.deliver.sent ? 'livré' : 'coupé'}</dd></div>`;
+  const bad = RUNS.map(r => r.errors.some(e => e.source === 'deliver'));
+  $('#sp-cost').innerHTML = sparkline(RUNS.map(r => r.totals.cost_usd * 100), state.run, v => nf(v, 2) + ' ct', bad);
+  $('#sp-time').innerHTML = sparkline(RUNS.map(r => r.totals.seconds), state.run, v => nf(v, 0) + ' s', bad);
+  $('#spv-cost').innerHTML = num('spark.cost', run.totals.cost_usd, 'ct') + ' ct';
+  $('#spv-time').innerHTML = num('spark.seconds', run.totals.seconds) + ' s';
+  $('#days').innerHTML = RUNS.map((r, i) => {
+    const day = dayOf(r), flag = bad[i] ? 'bad' : r.errors.length ? 'warn' : '';
+    return `<button type="button" data-run="${i}" aria-pressed="${i === state.run}" aria-label="Run du ${longDate(r)}${r.errors.length ? ', ' + r.errors.length + ' incident(s)' : ''}">
+      <span class="wd">${WEEKDAYS[day.getDay()].slice(0, 3)}</span><span class="dn">${day.getDate()}</span><i class="flag ${flag}"></i></button>`;
+  }).join('');
+  const first = dayOf(RUNS[0]), last = dayOf(RUNS[RUNS.length - 1]);
+  $('#week-range').textContent = RUNS.length > 1 ? `${first.getDate()} → ${last.getDate()} ${MONTHS_SHORT[last.getMonth()]}` : `${last.getDate()} ${MONTHS_SHORT[last.getMonth()]}`;
+  $('#week-title').textContent = RUNS.length > 1 ? `Les ${RUNS.length} derniers runs du cron` : 'Le premier run du cron';
+  $('#sticker').textContent = `Rapports réels · ${RUNS.length} ${plural(RUNS.length, 'run', 'runs')} du cron`;
+  $('#run-label').textContent = shortDate(run);
+  $('#run-prev').disabled = state.run === 0;
+  $('#run-next').disabled = state.run === RUNS.length - 1;
+}
+
+function renderJson(run) {
+  const line = (key, value) => `  "${key}": ${JSON.stringify(value, null, 1).replace(/\n\s*/g, ' ')},`;
+  $('#json').textContent = [
+    `// ${reportPath(run)}`, '{',
+    line('date', run.date), line('finished_at', run.finished_at), line('git_sha', run.git_sha), line('mode', run.mode), line('trigger', run.trigger),
+    line('config', run.config), line('counts', run.counts), line('totals', run.totals),
+    `  "nodes": [ … ${run.nodes.length} × {"node", "duration_s", "counts"} ],`,
+    `  "llm_calls": [ … ${run.llm_calls.length} × {"task", "model", "prompt_version", "input_tokens", "output_tokens", "thinking_tokens", "latency_s", "cost_usd", …} ],`,
+    `  "errors": ${JSON.stringify(run.errors)},`,
+    `  "candidates": [ … ${run.candidates.length} × {"source", "section", "title", "score", "topic", "selected"} ]`,
+    '}'].join('\n');
+}
+
+// ---------------------------------------------------------------------------------------------
+// Rendering, counters, scroll
+// ---------------------------------------------------------------------------------------------
+const state = {run: 0, active: undefined};
+const previous = new Map();
+
+function animateNumbers() {
+  for (const el of $$('.n[data-k]')) {
+    const key = el.dataset.k, to = +el.dataset.v, format = FMT[el.dataset.f];
+    const from = previous.has(key) ? previous.get(key) : to;
+    previous.set(key, to);
+    if (!motionOK || from === to) continue;
+    const start = performance.now(), duration = 650;
+    const tick = now => {
+      const p = Math.min(1, (now - start) / duration), eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = format(p < 1 ? from + (to - from) * eased : to);
+      if (p < 1 && el.isConnected) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+}
+
+function render() {
+  const run = RUNS[state.run], d = derive(run);
+  renderHero(run, d);
+  $('#graph').innerHTML = graphSVG(run, d);
+  for (const step of STEPS) {
+    const view = VIEWS[step.id](run, d), scene = $('#step-' + step.id);
+    const slot = name => $(`[data-slot="${name}"]`, scene);
+    slot('big').innerHTML = view.big;
+    slot('big').classList.toggle('word', !!view.wordy);
+    slot('label').innerHTML = view.label;
+    slot('sub').innerHTML = view.sub;
+    slot('viz').innerHTML = view.viz;
+    slot('measures').innerHTML = view.measures;
+  }
+  renderJson(run);
+  animateNumbers();
+  const current = state.active; state.active = undefined; setActive(current);
+  measure(); onScroll();
+}
+
+function setRun(index) {
+  index = clamp(index, 0, RUNS.length - 1);
+  if (index === state.run) return;
+  state.run = index;
+  render();
+}
+
+function setActive(id) {
+  if (id === state.active) return;
+  state.active = id;
+  const position = STEPS.findIndex(s => s.id === id);
+  for (const el of $$('[data-step]')) {
+    const i = STEPS.findIndex(s => s.id === el.dataset.step);
+    el.classList.toggle('active', el.dataset.step === id);
+    if (el.parentElement.id === 'segs') el.classList.toggle('done', position > -1 && i < position);
+  }
+  root.classList.toggle('in-pipeline', position > -1);
+  $('#mlab').textContent = position > -1 ? `${position + 1}/${STEPS.length} ${id === 'report' ? 'rapport' : id}` : '';
+}
+
+function goStep(id) {
+  const target = $('#step-' + id);
+  if (target) target.scrollIntoView({behavior: motionOK ? 'smooth' : 'auto', block: 'start'});
+}
+
+// Background: each band has its colour; the page glides from one to the next around the boundary.
+let bands = [], tops = [], colors = [];
+const hexToRgb = hex => { const h = hex.trim().replace('#', ''); return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16)); };
+function readColors() {
+  const styles = getComputedStyle(root);
+  colors = bands.map(b => hexToRgb(styles.getPropertyValue('--c-' + b.dataset.band)));
+}
+function measure() {
+  bands = $$('.band');
+  tops = bands.map(b => b.getBoundingClientRect().top + scrollY);
+  if (colors.length !== bands.length) readColors();
+}
+function onScroll() {
+  if (!bands.length) return;
+  const vh = innerHeight, middle = scrollY + vh * 0.5;
+  let i = 0;
+  while (i < bands.length - 1 && tops[i + 1] <= middle) i++;
+  let t = 0;
+  if (motionOK && i < bands.length - 1) {
+    const zone = vh * 0.45;
+    t = clamp((middle - (tops[i + 1] - zone)) / zone, 0, 1);
+    t = t * t * (3 - 2 * t);
+  }
+  const a = colors[i], b = colors[Math.min(i + 1, bands.length - 1)];
+  const now = `rgb(${a.map((v, k) => Math.round(v + (b[k] - v) * t)).join(',')})`;
+  document.body.style.backgroundColor = now;
+  root.style.setProperty('--bg-now', now);
+  const id = bands[i].dataset.band;
+  setActive(STEPS.some(s => s.id === id) ? id : null);
+  if (motionOK) for (const k of [i - 1, i, i + 1]) {
+    const ghost = bands[k] && $('.ghost', bands[k]);
+    if (ghost) ghost.style.setProperty('--py', `${((scrollY - tops[k]) * 0.18).toFixed(1)}px`);
+  }
+}
+
+// Nothing to show (no cron run yet, or reports not found): the page says it instead of breaking.
+function showEmpty(message) {
+  $('#rundate').textContent = message;
+  $('#sticker').textContent = 'Aucun run du cron';
+  $('#run-label').textContent = '·';
+  $('#run-prev').disabled = $('#run-next').disabled = true;
+  measure(); onScroll();
+}
+
+async function init() {
+  buildShell();
+  if (motionOK) {
+    root.classList.add('js-motion');
+    const observer = new IntersectionObserver(entries => {
+      for (const e of entries) if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); }
+    }, {rootMargin: '0px 0px -8% 0px'});
+    $$('.rv').forEach(el => observer.observe(el));
+  }
+  try {
+    RUNS = await loadRuns();
+    if (RUNS.length) { state.run = RUNS.length - 1; render(); }
+    else showEmpty('Aucun run du cron pour l\'instant : le premier arrivera demain matin vers 5 h 30.');
+  } catch (error) {
+    showEmpty(`Rapports introuvables (${error.message}). Cette page lit runs/index.json : elle doit être servie avec le dossier runs/.`);
+  }
+
+  let ticking = false;
+  addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => { ticking = false; onScroll(); });
+  }, {passive: true});
+  const relayout = () => { measure(); onScroll(); };
+  addEventListener('resize', relayout);
+  new ResizeObserver(relayout).observe($('main'));
+
+  document.addEventListener('click', e => {
+    const step = e.target.closest('[data-step]');
+    if (step) return goStep(step.dataset.step);
+    const pick = e.target.closest('[data-run]');
+    if (pick) setRun(+pick.dataset.run);
+  });
+  document.addEventListener('keydown', e => {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.matches && e.target.matches('.gn')) { e.preventDefault(); goStep(e.target.dataset.step); }
+  });
+  $('#run-prev').addEventListener('click', () => setRun(state.run - 1));
+  $('#run-next').addEventListener('click', () => setRun(state.run + 1));
+
+}
+init();
+</script>
+</body>
+</html>

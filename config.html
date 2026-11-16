@@ -1,0 +1,1631 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Kindle Digest : le banc d'évaluation qui a servi à choisir le modèle, l'effort et le prompt.">
+<title>Banc d'essai Kindle Digest</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+/* Layout: same visual world as the workflow page, one black page from top to bottom: the verdict first,
+   then one section per question (method, summaries, fidelity, ranking), dark paper cards for the measures. */
+:root{
+  color-scheme:dark;
+  --ink:#f4f1e8; --ink-soft:rgba(244,241,232,.74); --hair:rgba(244,241,232,.26);
+  --paper:#1b1a17; --paper-2:#28261f; --on-paper:#f4f1e8; --on-paper-soft:#aaa598; --paper-hair:rgba(244,241,232,.16);
+  --alert:#ff8275; --ok:#74d8a4; --warn:#ffc15a;
+  /* One black background for every band (decided on 2026-11-15): no colour per section. */
+  --c-hero:#0e0e0d;   --c-method:#0e0e0d;   --c-summarize:#0e0e0d;
+  --c-fidelity:#0e0e0d;   --c-rank:#0e0e0d;   --c-final:#0e0e0d;
+  --display:"Bricolage Grotesque","Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  --serif:"Instrument Serif","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  --gut-l:max(16px, env(safe-area-inset-left, 0px)); --gut-r:max(16px, env(safe-area-inset-right, 0px));
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; background:var(--c-hero); color:var(--ink); font:400 1rem/1.5 var(--display); -webkit-font-smoothing:antialiased}
+body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top, 0px); z-index:10; background:var(--c-hero)}
+button{font:inherit; color:inherit; background:none; border:0; padding:0; cursor:pointer}
+:focus-visible{outline:3px solid var(--ink); outline-offset:3px; border-radius:6px}
+code{font-family:var(--mono); font-size:.88em}
+.n{font-variant-numeric:tabular-nums}
+.wrap{max-width:1180px; margin-inline:auto; padding-left:var(--gut-l); padding-right:var(--gut-r)}
+main{overflow-x:clip}
+
+/* top bar */
+.topbar{position:sticky; top:env(safe-area-inset-top, 0px); z-index:20; padding-block:10px}
+.topbar .wrap{display:flex; align-items:center; gap:8px}
+.pill{display:inline-flex; align-items:center; height:36px; border-radius:999px; background:var(--paper); color:var(--on-paper); box-shadow:0 0 0 1.5px var(--on-paper); text-decoration:none}
+.brand{padding:0 14px; font-weight:800; letter-spacing:-.02em; white-space:nowrap}
+.brand i{font:italic 400 1.15em var(--serif); letter-spacing:0; margin-left:.2em}
+.back{padding:0 13px; font:600 .78rem var(--mono); margin-right:auto}
+.back:hover,.theme:hover{background:var(--paper-2)}
+.theme{width:36px; justify-content:center}
+
+/* bands */
+.band{padding-block:clamp(56px, 9vh, 110px)}
+.band .wrap{display:flex; flex-direction:column; gap:28px}
+.b-method{background:var(--c-method)} .b-sum{background:var(--c-summarize)} .b-fid{background:var(--c-fidelity)}
+.b-rank{background:var(--c-rank)} .b-final{background:var(--c-final)}
+.eyebrow{margin:0; font:600 .78rem var(--mono); text-transform:uppercase; letter-spacing:.08em}
+h1{margin:0; max-width:17ch; font:800 clamp(2.3rem, 6vw, 5rem)/.95 var(--display); letter-spacing:-.045em; text-wrap:balance}
+h1 em,h2 em{font:italic 400 1.04em/1 var(--serif); letter-spacing:-.02em}
+h2{margin:0; font:800 clamp(2.6rem, 8vw, 6.4rem)/.9 var(--display); letter-spacing:-.05em; text-wrap:balance}
+h3{margin:0 0 10px; font:700 1.15rem/1.2 var(--display); letter-spacing:-.01em; text-wrap:balance}
+.pitch{margin:0; max-width:34em; font:400 clamp(1.25rem, 2vw, 1.7rem)/1.25 var(--serif); text-wrap:pretty}
+.lead{margin:0; max-width:40em; font-size:1.08rem}
+.tag{display:inline-block; transform:rotate(-3deg); font:700 .8rem var(--mono); padding:5px 11px; border-radius:6px; background:var(--paper); color:var(--on-paper); box-shadow:2px 2px 0 var(--ink); align-self:flex-start}
+
+/* hero */
+.hero{padding-block:clamp(40px, 7vh, 90px) clamp(56px, 9vh, 110px)}
+.hero-grid{display:grid; grid-template-columns:minmax(0, 1.1fr) minmax(0, 1fr); gap:clamp(24px, 4vw, 56px); align-items:start}
+.ticket{background:var(--paper); color:var(--on-paper); border-radius:8px 26px 26px 8px; padding:22px 24px 18px; box-shadow:6px 6px 0 var(--ink); transform:rotate(-1deg)}
+.ticket h3{font:400 1.6rem/1.1 var(--serif); margin-bottom:12px}
+.ticket dl{margin:0; display:grid; grid-template-columns:auto minmax(0, 1fr); gap:10px 16px}
+.ticket dt{font:600 .7rem var(--mono); text-transform:uppercase; letter-spacing:.06em; color:var(--on-paper-soft); padding-top:4px}
+.ticket dd{margin:0; font-weight:600}
+.ticket dd small{display:block; font:500 .78rem var(--mono); color:var(--on-paper-soft); margin-top:2px}
+.ticket .total{border-top:1.5px dashed var(--paper-hair); padding-top:10px}
+.ticket dd.total{font:800 1.8rem/1 var(--display); letter-spacing:-.03em}
+.finds{display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:0 22px}
+.find{border-top:2px solid var(--ink); padding-top:10px; min-width:0}
+.find b{display:block; font:800 clamp(2rem, 4vw, 3.2rem)/1 var(--display); letter-spacing:-.04em; white-space:nowrap}
+.find b.word{font:italic 400 clamp(2rem, 4vw, 3.2rem)/1 var(--serif); letter-spacing:-.02em}
+.find span{display:block; margin-top:8px; font-size:.92rem; line-height:1.35}
+
+/* paper cards */
+.cards{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap:16px}
+.card{background:var(--paper); color:var(--on-paper); border-radius:24px; padding:clamp(18px, 2.4vw, 26px); min-width:0}
+.card p{margin:0 0 10px; max-width:62ch}
+.card p:last-child{margin-bottom:0}
+.card .soft,.soft{color:var(--on-paper-soft)}
+.card ul{margin:0; padding-left:1.1em; display:flex; flex-direction:column; gap:7px; max-width:62ch}
+.card.wide{grid-column:1 / -1}
+.cap{margin:10px 0 0; font:500 .76rem/1.5 var(--mono); color:var(--on-paper-soft)}
+.big{font:800 clamp(2.6rem, 6vw, 4.4rem)/.9 var(--display); letter-spacing:-.05em; margin:4px 0 10px}
+.big small{font:italic 400 .4em var(--serif); letter-spacing:0; margin-left:.15em}
+
+/* tables */
+.tw{overflow-x:auto; margin-inline:-4px; padding-inline:4px}
+table{border-collapse:collapse; width:100%; font:500 .8rem/1.35 var(--mono); font-variant-numeric:tabular-nums}
+th{font-weight:600; text-align:left; padding:7px 12px 7px 0; color:var(--on-paper-soft); border-bottom:1.5px solid var(--on-paper); white-space:nowrap; vertical-align:bottom}
+td{padding:7px 12px 7px 0; border-bottom:1px solid var(--paper-hair); white-space:nowrap}
+td.r,th.r{text-align:right}
+td.txt{white-space:normal; min-width:16ch}
+tr.keep td{font-weight:700}
+tr.keep td:first-child::after{content:" ✓"}
+
+/* charts */
+.chart svg{display:block; width:100%; height:auto; overflow:visible}
+.chart text{font:600 11px var(--mono); fill:var(--on-paper)}
+.chart .axis{font-weight:500; font-size:10px; fill:var(--on-paper-soft)}
+.chart .grid{stroke:var(--paper-hair); stroke-width:1}
+.chart .base{stroke:var(--on-paper); stroke-width:1.2}
+.chart .chance{stroke:var(--alert); stroke-width:1.2; stroke-dasharray:4 4}
+.chart .dot{fill:var(--paper); stroke:var(--on-paper); stroke-width:1.6}
+.chart .dot.keep{fill:var(--on-paper)}
+.chart .bar{fill:var(--on-paper)}
+.chart .bar.soft{fill:var(--paper-hair)}
+.chart .bar.ok{fill:var(--ok)}
+.chart .bar.mid{fill:var(--on-paper-soft)}
+.legend{display:flex; flex-wrap:wrap; gap:4px 18px; margin:8px 0 0; font:500 .78rem var(--mono)}
+.legend i{display:inline-block; width:11px; height:11px; border-radius:3px; margin-right:6px; vertical-align:-1px}
+.chart .tick{stroke:var(--on-paper); stroke-width:2.4}
+
+.slots{display:flex; flex-direction:column; gap:8px}
+.slotrow{display:grid; grid-template-columns:9.5rem minmax(0, 1fr) 3.4rem; gap:10px; align-items:center; font:500 .78rem var(--mono)}
+.sq{display:flex; gap:3px}
+.sq i{width:14px; height:14px; border-radius:3px; box-shadow:inset 0 0 0 1.5px var(--on-paper)}
+.sq i.on{background:var(--on-paper)}
+
+.compare{display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:16px}
+.compare ol{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:8px}
+.compare li{display:grid; grid-template-columns:2.6rem minmax(0, 1fr); gap:10px; align-items:baseline; font-size:.9rem; line-height:1.3}
+.compare li b{font:700 .9rem var(--mono); text-align:right}
+.compare li span small{display:block; font:500 .72rem var(--mono); color:var(--on-paper-soft)}
+
+.quote{border-left:3px solid var(--on-paper); padding:2px 0 2px 14px; margin:8px 0 12px}
+.quote p{margin:0 0 6px}
+.quote .who{font:600 .72rem var(--mono); text-transform:uppercase; letter-spacing:.06em; color:var(--on-paper-soft)}
+
+/* judge flags */
+details.more > summary{list-style:none; display:inline-flex; align-items:center; gap:10px; height:46px; padding:0 20px; border-radius:999px; background:var(--ink); color:var(--c-fidelity); font-weight:700; cursor:pointer}
+details.more > summary::-webkit-details-marker{display:none}
+details.more[open] > summary{margin-bottom:14px}
+.chips{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px}
+.chip{font:600 .74rem var(--mono); padding:5px 11px; border-radius:999px; box-shadow:inset 0 0 0 1.5px var(--on-paper)}
+.chip[aria-pressed="true"]{background:var(--on-paper); color:var(--paper)}
+.flags{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px}
+.flags li{border-top:1px solid var(--paper-hair); padding-top:10px; display:flex; flex-direction:column; gap:4px}
+.flags .meta{display:flex; flex-wrap:wrap; gap:6px; align-items:center; font:600 .7rem var(--mono)}
+.flags .meta span{padding:2px 8px; border-radius:999px; background:var(--paper-2)}
+.flags .meta .k-content,.flags .meta .k-external,.flags .meta .k-omission{color:var(--alert); box-shadow:inset 0 0 0 1px var(--alert); background:none}
+.flags .what{font-weight:600}
+.flags .judge{font-size:.88rem; color:var(--on-paper-soft)}
+
+/* final */
+.choices{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px}
+.choice{display:grid; grid-template-columns:minmax(0, 15rem) minmax(0, 1fr); gap:6px 24px; background:var(--paper); color:var(--on-paper); border-radius:20px; padding:18px 22px}
+.choice b{font:700 1.05rem/1.25 var(--display)}
+.choice b small{display:block; font:500 .76rem var(--mono); color:var(--on-paper-soft); margin-top:4px}
+.choice p{margin:0; max-width:64ch}
+.colophon{margin:0; font:500 .78rem/1.6 var(--mono); color:var(--ink-soft); max-width:80ch}
+
+@media (max-width:900px){
+  .hero-grid,.compare{grid-template-columns:minmax(0, 1fr)}
+  .finds{grid-template-columns:repeat(2, minmax(0, 1fr)); gap:18px 22px}
+  .choice{grid-template-columns:minmax(0, 1fr)}
+}
+@media (max-width:520px){
+  .slotrow{grid-template-columns:minmax(0, 1fr) 3rem} .slotrow .sq{grid-column:1 / -1; grid-row:2}
+  .sq i{width:11px; height:11px}
+}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="pill brand" href="#top">Kindle<i>Digest</i></a>
+    <a class="pill back" href="index.html">← Le workflow</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div style="display:flex; flex-direction:column; gap:22px; min-width:0">
+          <p class="eyebrow" id="hero-eyebrow"></p>
+          <h1>Quelle config pour le journal, <em>et pourquoi.</em></h1>
+          <p class="lead" id="hero-lead"></p>
+        </div>
+        <div class="ticket" id="ticket"></div>
+      </div>
+      <div class="finds" id="finds" style="margin-top:clamp(28px, 5vh, 52px)"></div>
+    </div>
+  </section>
+
+  <section class="band b-method" id="methode">
+    <div class="wrap">
+      <span class="tag">la méthode</span>
+      <h2>Mêmes articles, <em>un réglage à la fois.</em></h2>
+      <div class="cards" id="method-cards"></div>
+    </div>
+  </section>
+
+  <section class="band b-sum" id="resumes">
+    <div class="wrap">
+      <span class="tag" id="sum-tag">summarize</span>
+      <h2>Résumer</h2>
+      <p class="pitch" id="sum-pitch"></p>
+      <div class="cards">
+        <div class="card wide chart"><h3>Coût et fidélité des sept configurations</h3><div id="scatter"></div>
+          <p class="cap">Axe horizontal en échelle logarithmique. Fidélité : part des affirmations des résumés que le juge trouve dans l'article (une répétition jugée par config).</p></div>
+        <div class="card wide"><h3>Le détail</h3><div class="tw" id="sum-table"></div>
+          <p class="cap">Coût, latence, thinking et mots : moyennes sur toutes les répétitions. Colonnes du juge : la répétition 1. « Méta » : un commentaire sur la source (« publié par franceinfo », « texte tronqué ») plutôt que sur l'actualité.</p></div>
+        <div class="card wide"><h3>Ce qu'on en retient</h3><ul id="sum-notes"></ul></div>
+      </div>
+      <h3 style="font:800 clamp(1.8rem, 4vw, 2.8rem)/1 var(--display); letter-spacing:-.04em; margin-top:18px">Le prompt <em style="font:italic 400 1.04em var(--serif)">v2</em></h3>
+      <div class="cards">
+        <div class="card"><h3>Ce que la v1 laissait faire</h3><ul id="v2-risks"></ul></div>
+        <div class="card chart"><h3 id="short-title">Un article court, résumé plusieurs fois</h3><div id="short-chart"></div><p class="cap" id="short-cap"></p></div>
+        <div class="card wide"><h3>L'effet mesuré</h3><div class="tw" id="v2-table"></div><p class="cap" id="v2-cap"></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band b-fid" id="fidelite">
+    <div class="wrap">
+      <span class="tag">contrôle par script · juge LLM</span>
+      <h2>Vérifier <em>la fidélité</em></h2>
+      <p class="pitch">On ne suppose pas que le modèle n'invente rien : on le mesure, d'abord par un script gratuit, puis par un second modèle qui joue le juge.</p>
+      <div class="cards">
+        <div class="card" id="checks-card"></div>
+        <div class="card" id="judge-card"></div>
+        <div class="card wide" id="flags-card"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band b-rank" id="tri">
+    <div class="wrap">
+      <span class="tag" id="rank-tag">rank</span>
+      <h2>Trier</h2>
+      <p class="pitch" id="rank-pitch"></p>
+      <div class="cards">
+        <div class="card wide chart"><h3>Qualité du tri face à mes étiquettes</h3><div id="auc-chart"></div><p class="cap" id="auc-cap"></p></div>
+        <div class="card"><h3>Deux runs identiques ne retiennent pas les mêmes articles</h3><div class="slots" id="noise"></div><p class="cap">Articles communs entre deux répétitions d'une même config, sur ceux du journal.</p></div>
+        <div class="card"><h3>Le thinking rapproche Haiku de Sonnet, sans mieux trier pour moi</h3><div class="tw" id="think-table"></div></div>
+        <div class="card chart"><h3>Par rubrique</h3><div id="section-chart"></div><p class="cap" id="section-cap"></p></div>
+        <div class="card"><h3>Le levier, c'est le profil</h3><div id="profile-text"></div></div>
+        <div class="card wide"><h3>Où le modèle et moi ne sommes pas d'accord</h3><div class="compare" id="disagree"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band b-final" id="config">
+    <div class="wrap">
+      <span class="tag">la config retenue</span>
+      <h2>Choix <em>par choix</em></h2>
+      <ol class="choices" id="choices"></ol>
+      <div class="cards">
+        <div class="card"><h3>Les limites de ce banc</h3><ul id="limits"></ul></div>
+        <div class="card"><h3>Ce qu'on n'a pas testé, et pourquoi</h3><ul id="untested"></ul></div>
+      </div>
+      <p class="colophon" id="colophon"></p>
+    </div>
+  </section>
+</main>
+
+<script type="application/json" id="bench-data">{
+ "day": "2026-11-15",
+ "fixture": {
+  "candidates": 89,
+  "articles": 12,
+  "articles_by_section": {
+   "data": 3,
+   "monde": 3,
+   "eco": 3,
+   "france": 3
+  },
+  "frozen_at": "2026-11-15T13:19:01+00:00",
+  "short_article": {
+   "title": "David Amiel annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires",
+   "chars": 1269,
+   "words": 191
+  }
+ },
+ "cost": {
+  "haiku_runs": 0.1868,
+  "sonnet_runs": 0.5737,
+  "judge_v1": 0.0889,
+  "judge_v2": 2.1103,
+  "total": 2.9597
+ },
+ "retained": {
+  "rank": "R2",
+  "summarize": "S7",
+  "cost_ct": 1.2
+ },
+ "summaries": [
+  {
+   "id": "S1",
+   "config": {
+    "id": "S1",
+    "task": "summarize",
+    "question": "Référence : le réglage de production.",
+    "model": "claude-haiku-5-5",
+    "effort": "medium",
+    "repeats": 3,
+    "prompt": "v1",
+    "max_text": 20000,
+    "mode": "batched"
+   },
+   "repeats": 3,
+   "cost_ct": 0.87,
+   "latency_s": 3.3657,
+   "thinking": 0,
+   "input_tokens": 52451,
+   "words": {
+    "mean": 184,
+    "min": 140,
+    "max": 240
+   },
+   "short_article_words": [
+    143,
+    154,
+    140
+   ],
+   "checks": {
+    "texts": 72,
+    "numbers": 279,
+    "unsupported_numbers": 0,
+    "texts_with_unsupported_number": 0,
+    "quotes": 13,
+    "unsupported_quotes": 0,
+    "translated_quotes": 6,
+    "false_friends": 0
+   },
+   "judge": {
+    "summaries": 12,
+    "claims": 143,
+    "unsupported": 6,
+    "meta": 2,
+    "content": 4,
+    "omissions": 0,
+    "why": {
+     "tiree_du_texte": 1,
+     "deduction_raisonnable": 11,
+     "fait_exterieur": 0
+    },
+    "cost_usd": 0.3095
+   }
+  },
+  {
+   "id": "S2",
+   "config": {
+    "id": "S2",
+    "task": "summarize",
+    "question": "E3 : autant de qualité avec moins d'effort, pour moins cher ?",
+    "model": "claude-haiku-5-5",
+    "effort": "low",
+    "repeats": 3,
+    "prompt": "v1",
+    "max_text": 20000,
+    "mode": "batched"
+   },
+   "repeats": 3,
+   "cost_ct": 0.87,
+   "latency_s": 3.302,
+   "thinking": 0,
+   "input_tokens": 52451,
+   "words": {
+    "mean": 184,
+    "min": 120,
+    "max": 245
+   },
+   "short_article_words": [
+    151,
+    156,
+    120
+   ],
+   "checks": {
+    "texts": 72,
+    "numbers": 285,
+    "unsupported_numbers": 0,
+    "texts_with_unsupported_number": 0,
+    "quotes": 15,
+    "unsupported_quotes": 0,
+    "translated_quotes": 9,
+    "false_friends": 0
+   },
+   "judge": {
+    "summaries": 12,
+    "claims": 143,
+    "unsupported": 7,
+    "meta": 4,
+    "content": 3,
+    "omissions": 0,
+    "why": {
+     "tiree_du_texte": 0,
+     "deduction_raisonnable": 12,
+     "fait_exterieur": 0
+    },
+    "cost_usd": 0.3127
+   }
+  },
+  {
+   "id": "S3",
+   "config": {
+    "id": "S3",
+    "task": "summarize",
+    "question": "E3 : plus de qualité avec plus d'effort ?",
+    "model": "claude-haiku-5-5",
+    "effort": "high",
+    "repeats": 3,
+    "prompt": "v1",
+    "max_text": 20000,
+    "mode": "batched"
+   },
+   "repeats": 3,
+   "cost_ct": 0.93,
+   "latency_s": 3.607,
+   "thinking": 1245.3333,
+   "input_tokens": 52451,
+   "words": {
+    "mean": 181,
+    "min": 128,
+    "max": 243
+   },
+   "short_article_words": [
+    128,
+    164,
+    140
+   ],
+   "checks": {
+    "texts": 72,
+    "numbers": 270,
+    "unsupported_numbers": 0,
+    "texts_with_unsupported_number": 0,
+    "quotes": 17,
+    "unsupported_quotes": 0,
+    "translated_quotes": 8,
+    "false_friends": 0
+   },
+   "judge": {
+    "summaries": 12,
+    "claims": 145,
+    "unsupported": 7,
+    "meta": 3,
+    "content": 4,
+    "omissions": 0,
+    "why": {
+     "tiree_du_texte": 1,
+     "deduction_raisonnable": 11,
+     "fait_exterieur": 0
+    },
+    "cost_usd": 0.3072
+   }
+  },
+  {
+   "id": "S4",
+   "config": {
+    "id": "S4",
+    "task": "summarize",
+    "question": "E2 : couper le texte à 6 000 caractères (ancien réglage) dégrade-t-il les résumés ?",
+    "model": "claude-haiku-5-5",
+    "effort": "medium",
+    "repeats": 3,
+    "prompt": "v1",
+    "max_text": 6000,
+    "mode": "batched"
+   },
+   "repeats": 3,
+   "cost_ct": 0.66,
+   "latency_s": 3.295,
+   "thinking": 0,
+   "input_tokens": 31872,
+   "words": {
+    "mean": 182,
+    "min": 114,
+    "max": 226
+   },
+   "short_article_words": [
+    141,
+    129,
+    114
+   ],
+   "checks": {
+    "texts": 72,
+    "numbers": 262,
+    "unsupported_numbers": 0,
+    "texts_with_unsupported_number": 0,
+    "quotes": 15,
+    "unsupported_quotes": 0,
+    "translated_quotes": 9,
+    "false_friends": 0
+   },
+   "judge": {
+    "summaries": 12,
+    "claims": 147,
+    "unsupported": 11,
+    "meta": 5,
+    "content": 6,
+    "omissions": 5,
+    "why": {
+     "tiree_du_texte": 0,
+     "deduction_raisonnable": 10,
+     "fait_exterieur": 2
+    },
+    "cost_usd": 0.3188
+   }
+  },
+  {
+   "id": "S5",
+   "config": {
+    "id": "S5",
+    "task": "summarize",
+    "question": "E1 : Sonnet, à effort égal, résume-t-il assez mieux pour 20 fois le prix ?",
+    "model": "claude-sonnet-5-5",
+    "effort": "medium",
+    "repeats": 2,
+    "prompt": "v1",
+    "max_text": 20000,
+    "mode": "batched"
+   },
+   "repeats": 2,
+   "cost_ct": 15.44,
+   "latency_s": 3.946,
+   "thinking": 0,
+   "input_tokens": 52451,
+   "words": {
+    "mean": 122,
+    "min": 93,
+    "max": 138
+   },
+   "short_article_words": [
+    98,
+    93
+   ],
+   "checks": {
+    "texts": 48,
+    "numbers": 135,
+    "unsupported_numbers": 0,
+    "texts_with_unsupported_number": 0,
+    "quotes": 9,
+    "unsupported_quotes": 0,
+    "translated_quotes": 2,
+    "false_friends": 0
+   },
+   "judge": {
+    "summaries": 12,
+    "claims": 115,
+    "unsupported": 0,
+    "meta": 0,
+    "content": 0,
+    "omissions": 0,
+    "why": {
+     "tiree_du_texte": 0,
+     "deduction_raisonnable": 10,
+     "fait_exterieur": 2
+    },
+    "cost_usd": 0.2735
+   }
+  },
+  {
+   "id": "S6",
+   "config": {
+    "id": "S6",
+    "task": "summarize",
+    "question": "E1 : Sonnet à son meilleur (high, son effort par défaut).",
+    "model": "claude-sonnet-5-5",
+    "effort": "high",
+    "repeats": 1,
+    "prompt": "v1",
+    "max_text": 20000,
+    "mode": "batched"
+   },
+   "repeats": 1,
+   "cost_ct": 15.51,
+   "latency_s": 3.772,
+   "thinking": 0,
+   "input_tokens": 52451,
+   "words": {
+    "mean": 123,
+    "min": 103,
+    "max": 133
+   },
+   "short_article_words": [
+    103
+   ],
+   "checks": {
+    "texts": 24,
+    "numbers": 74,
+    "unsupported_numbers": 0,
+    "texts_with_unsupported_number": 0,
+    "quotes": 6,
+    "unsupported_quotes": 0,
+    "translated_quotes": 3,
+    "false_friends": 0
+   },
+   "judge": {
+    "summaries": 12,
+    "claims": 130,
+    "unsupported": 2,
+    "meta": 0,
+    "content": 2,
+    "omissions": 0,
+    "why": {
+     "tiree_du_texte": 0,
+     "deduction_raisonnable": 12,
+     "fait_exterieur": 0
+    },
+    "cost_usd": 0.2809
+   }
+  },
+  {
+   "id": "S7",
+   "config": {
+    "id": "S7",
+    "task": "summarize",
+    "question": "Prompt v2 (consignes contre l'hallucination) : moins d'affirmations non soutenues ?",
+    "model": "claude-haiku-5-5",
+    "effort": "medium",
+    "repeats": 3,
+    "prompt": "v2",
+    "max_text": 20000,
+    "mode": "batched"
+   },
+   "repeats": 3,
+   "cost_ct": 0.93,
+   "latency_s": 3.4267,
+   "thinking": 0,
+   "input_tokens": 57071,
+   "words": {
+    "mean": 189,
+    "min": 56,
+    "max": 238
+   },
+   "short_article_words": [
+    56,
+    75,
+    56
+   ],
+   "checks": {
+    "texts": 72,
+    "numbers": 283,
+    "unsupported_numbers": 0,
+    "texts_with_unsupported_number": 0,
+    "quotes": 20,
+    "unsupported_quotes": 0,
+    "translated_quotes": 10,
+    "false_friends": 0
+   },
+   "judge": {
+    "summaries": 12,
+    "claims": 140,
+    "unsupported": 2,
+    "meta": 0,
+    "content": 2,
+    "omissions": 0,
+    "why": {
+     "tiree_du_texte": 0,
+     "deduction_raisonnable": 12,
+     "fait_exterieur": 0
+    },
+    "cost_usd": 0.3078
+   }
+  }
+ ],
+ "flags": [
+  {
+   "config": "S1",
+   "title": "David Amiel annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires",
+   "kind": "claim",
+   "category": "meta",
+   "text": "L'article est publié par franceinfo dans sa rubrique économie.",
+   "why": "Franceinfo apparaît dans le texte, mais aucune rubrique « économie » n'est mentionnée (seulement des hashtags #Budget #Finances)."
+  },
+  {
+   "config": "S1",
+   "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+   "kind": "claim",
+   "category": "content",
+   "text": "Selon lui, ces réponses ne suffisent pas.",
+   "why": "« Visiblement, ce n'est pas du tout suffisant » est dit par l'intervieweur, pas par Beaune ; Beaune dit seulement que cela ne veut pas dire qu'il n'y a pas de colère."
+  },
+  {
+   "config": "S1",
+   "title": "US has floated Ukraine ceding Donbas for Nato membership, Zelensky says",
+   "kind": "claim",
+   "category": "content",
+   "text": "Kyiv souhaite de longue date rejoindre l'OTAN, mais Washington et d'autres membres s'y opposent.",
+   "why": "Kyiv has long sought membership of the military alliance, but this has previously been opposed by the US and others"
+  },
+  {
+   "config": "S1",
+   "title": "Show HN: DeepSeek V3 in ~200 lines of pure Jax",
+   "kind": "claim",
+   "category": "content",
+   "text": "Les romans sont principalement de Dashiell Hammett.",
+   "why": "Hammett est répété 3 fois, mais l'article dit : \"plus about 200 detective and crime novels from Project Gutenberg\". Les livres de Hammett ne sont qu'une minorité."
+  },
+  {
+   "config": "S1",
+   "title": "COP31 : la Bourse ne récompense plus la découverte de réserves d’hydrocarbures en cas d’exposition aux risques réglementaires environnementaux",
+   "kind": "claim",
+   "category": "meta",
+   "text": "L'étude est publiée dans The Conversation.",
+   "why": "L'article ne mentionne nulle part The Conversation ; seul « Fourni par l'auteur » et « notre étude » apparaissent."
+  },
+  {
+   "config": "S1",
+   "title": "COP31 : la Bourse ne récompense plus la découverte de réserves d’hydrocarbures en cas d’exposition aux risques réglementaires environnementaux",
+   "kind": "claim",
+   "category": "content",
+   "text": "Le résumé présente ces investissements de 2026 comme acquis (« restent élevés en 2026 »).",
+   "why": "L'article parle de prévisions (« devraient s'établir »), pas de montants constatés ; le résumé en fait un état de fait."
+  },
+  {
+   "config": "S2",
+   "title": "Iran targets Bahrain airbase as strikes resume in Gulf - Middle East crisis live",
+   "kind": "claim",
+   "category": "content",
+   "text": "C'est la première reprise de frappes depuis septembre.",
+   "why": "« Iran has targeted an airbase in Bahrain in the latest resumption of strikes since September » ; mais un attaque de deux drones a eu lieu le vendredi 13 novembre, donc ce n'est pas la première reprise."
+  },
+  {
+   "config": "S2",
+   "title": "Le pastoralisme, risque ou solution face au changement climatique ? L’évolution du regard porté par les COP climat",
+   "kind": "claim",
+   "category": "meta",
+   "text": "The Conversation reproduit une partie d'un chapitre de l'ouvrage « Penser avec le pastoralisme », publié aux éditions Quae.",
+   "why": "« nous reproduisons une partie du chapitre » ; l'ouvrage est publié aux éditions Quae. Le nom « The Conversation » n'apparaît pas dans le texte."
+  },
+  {
+   "config": "S2",
+   "title": "David Amiel annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires",
+   "kind": "claim",
+   "category": "meta",
+   "text": "L'article a été publié sur franceinfo dans la rubrique économie.",
+   "why": "L'article mentionne franceinfo et des hashtags (#Budget #Finances), mais aucune rubrique « économie » n'est indiquée."
+  },
+  {
+   "config": "S2",
+   "title": "83 % des dirigeants de PME trouvent difficile de recruter et d'employer une personne en situation de handicap",
+   "kind": "claim",
+   "category": "content",
+   "text": "Bpifrance souligne que les candidats qui mentionnent leur handicap sont peu ou jamais rappelés, ce qui les incite à le taire.",
+   "why": "« elles sont peu ou jamais rappelés. Donc elles le mentionnent rarement. » Ce constat n'est pas attribué à Bpifrance dans l'article."
+  },
+  {
+   "config": "S2",
+   "title": "US has floated Ukraine ceding Donbas for Nato membership, Zelensky says",
+   "kind": "claim",
+   "category": "meta",
+   "text": "Le texte est tronqué à la fin.",
+   "why": "L'article ne mentionne aucune troncature ; il se termine normalement, et cette remarque ne vient pas de l'article."
+  },
+  {
+   "config": "S2",
+   "title": "Advancing science and engineering with Antigravity's /teamwork",
+   "kind": "claim",
+   "category": "content",
+   "text": "Des noyaux TPU sont plus rapides que le code C++ d'origine.",
+   "why": "Les noyaux TPU sont comparés à des implémentations de référence (accélérations de 8x à 15x, 4,09x), pas au code C++ ; seul le décodeur Rust est comparé au C++."
+  },
+  {
+   "config": "S2",
+   "title": "COP31 : la Bourse ne récompense plus la découverte de réserves d’hydrocarbures en cas d’exposition aux risques réglementaires environnementaux",
+   "kind": "claim",
+   "category": "meta",
+   "text": "L'étude a été publiée dans The Conversation.",
+   "why": "Le texte ne nomme pas The Conversation (mentions : « notre étude », « Fourni par l'auteur ») ; la publication n'est pas indiquée."
+  },
+  {
+   "config": "S3",
+   "title": "Iran targets Bahrain airbase as strikes resume in Gulf - Middle East crisis live",
+   "kind": "claim",
+   "category": "content",
+   "text": "C'est la première attaque depuis début septembre.",
+   "why": "L'article dit « resumption of strikes since September », mais aussi que l'attaque de vendredi était la première en deux mois ; ce n'est donc pas la première depuis septembre."
+  },
+  {
+   "config": "S3",
+   "title": "Le pastoralisme, risque ou solution face au changement climatique ? L’évolution du regard porté par les COP climat",
+   "kind": "claim",
+   "category": "meta",
+   "text": "The Conversation reproduit une partie d'un chapitre de l'ouvrage « Penser avec le pastoralisme », publié chez Quae.",
+   "why": "« nous reproduisons une partie du chapitre » ; l'ouvrage est publié aux éditions Quae. Le nom The Conversation n'apparaît pas dans l'article."
+  },
+  {
+   "config": "S3",
+   "title": "David Amiel annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires",
+   "kind": "claim",
+   "category": "meta",
+   "text": "L'article a été publié par franceinfo dans sa rubrique économie.",
+   "why": "Le texte mentionne franceinfo et des hashtags (#Budget #Finances #smic), mais aucune rubrique « économie » n'est citée."
+  },
+  {
+   "config": "S3",
+   "title": "83 % des dirigeants de PME trouvent difficile de recruter et d'employer une personne en situation de handicap",
+   "kind": "claim",
+   "category": "content",
+   "text": "Bpifrance souligne que les candidats qui mentionnent leur handicap sont peu ou jamais rappelés, d'où une mention rare.",
+   "why": "L'article affirme ce constat, mais ne l'attribue pas à Bpifrance, seulement au journaliste."
+  },
+  {
+   "config": "S3",
+   "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+   "kind": "claim",
+   "category": "content",
+   "text": "Les mobilisations rassemblaient encore jusqu'à 60 000 personnes à Paris selon les chiffres cités.",
+   "why": "« On attend encore jusqu'à 60 000 personnes dans les rues de Paris, par exemple, selon les chiffres. » C'est une attente pour ce jour, dite par l'intervieweur."
+  },
+  {
+   "config": "S3",
+   "title": "US has floated Ukraine ceding Donbas for Nato membership, Zelensky says",
+   "kind": "claim",
+   "category": "content",
+   "text": "Les émissaires américains ont rencontré Zelensky à Dublin jeudi, puis Poutine à Moscou.",
+   "why": "L'article dit qu'ils sont allés à Dublin jeudi \"after a round of talks with Putin in Moscow\": Poutine a été rencontré avant Zelensky, pas après."
+  },
+  {
+   "config": "S3",
+   "title": "COP31 : la Bourse ne récompense plus la découverte de réserves d’hydrocarbures en cas d’exposition aux risques réglementaires environnementaux",
+   "kind": "claim",
+   "category": "meta",
+   "text": "L'étude est publiée dans The Conversation.",
+   "why": "L'article ne nomme aucun média ; il mentionne seulement « notre étude » et les auteurs, sans citer The Conversation."
+  },
+  {
+   "config": "S4",
+   "title": "Trump, Putin and Xi plan historic joint meeting in China next week, White House says",
+   "kind": "why",
+   "category": "external",
+   "text": "Phrase « pourquoi c'est important »",
+   "why": "L'article ne dit pas que la rencontre pourrait relancer la coopération sur le contrôle des armes ; il précise même qu'aucun accord n'est attendu et que des obstacles pourraient durer des années, donc cette projection n'est pas appuyée par le texte."
+  },
+  {
+   "config": "S4",
+   "title": "Iran targets Bahrain airbase as strikes resume in Gulf - Middle East crisis live",
+   "kind": "why",
+   "category": "external",
+   "text": "Phrase « pourquoi c'est important »",
+   "why": "L'article ne dit pas que Bab el-Mandeb est bloqué : les Houthis y ont plus de contrôle, et le pétrole est dit proche de son niveau d'avant-guerre, donc cette phrase ajoute un fait non étayé."
+  },
+  {
+   "config": "S4",
+   "title": "Le pastoralisme, risque ou solution face au changement climatique ? L’évolution du regard porté par les COP climat",
+   "kind": "claim",
+   "category": "meta",
+   "text": "L'article provient de The Conversation",
+   "why": "Le texte ne nomme à aucun moment The Conversation comme source."
+  },
+  {
+   "config": "S4",
+   "title": "Le pastoralisme, risque ou solution face au changement climatique ? L’évolution du regard porté par les COP climat",
+   "kind": "claim",
+   "category": "meta",
+   "text": "Le texte est tronqué avant la fin de son analyse des négociations",
+   "why": "L'article va jusqu'à la LCIPP et la mention des co-signataires, sans signe de troncature ; l'analyse des négociations est complète."
+  },
+  {
+   "config": "S4",
+   "title": "Le pastoralisme, risque ou solution face au changement climatique ? L’évolution du regard porté par les COP climat",
+   "kind": "omission",
+   "category": "omission",
+   "text": "Point essentiel oublié",
+   "why": "Le texte montre que les documents de la CCNUCC présentent le pastoralisme sous trois angles (victime, facteur d'impact, solution), le dernier étant le plus structurant dans les cadres récents ; le résumé n'en dit rien."
+  },
+  {
+   "config": "S4",
+   "title": "David Amiel annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires",
+   "kind": "claim",
+   "category": "meta",
+   "text": "L'article a été publié par franceinfo dans la rubrique économie",
+   "why": "Le texte mentionne franceinfo et des hashtags (#Budget #Finances), mais aucune rubrique « économie » n'est indiquée."
+  },
+  {
+   "config": "S4",
+   "title": "83 % des dirigeants de PME trouvent difficile de recruter et d'employer une personne en situation de handicap",
+   "kind": "claim",
+   "category": "content",
+   "text": "Bpifrance note que les candidats qui signalent leur handicap sont peu ou jamais rappelés, ce qui les incite à le taire.",
+   "why": "L'article le dit (\"peu ou jamais rappelés. Donc elles le mentionnent rarement\") mais ne l'attribue pas à Bpifrance ; c'est le journaliste qui l'affirme."
+  },
+  {
+   "config": "S4",
+   "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+   "kind": "claim",
+   "category": "content",
+   "text": "Selon Beaune, ces réponses ne suffisent pas.",
+   "why": "C'est l'intervieweur qui dit « Visiblement, ce n'est pas du tout suffisant » ; Beaune ne l'affirme pas, il note seulement que la mobilisation diminue."
+  },
+  {
+   "config": "S4",
+   "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+   "kind": "claim",
+   "category": "content",
+   "text": "Jusqu'à 70 000 policiers étaient mobilisés, selon le texte.",
+   "why": "L'intervieweur dit : « jusqu'à 70 000 forces de l'ordre sur tout le territoire », ce sont des forces de l'ordre et non des policiers mobilisés par la colère."
+  },
+  {
+   "config": "S4",
+   "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+   "kind": "claim",
+   "category": "meta",
+   "text": "Le texte est tronqué avant la fin de l'entretien, notamment sur la dette publique.",
+   "why": "L'article contient la partie sur la dette (« La France ne va pas être la Grèce », Moody's) ; il n'est pas tronqué sur ce sujet."
+  },
+  {
+   "config": "S4",
+   "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+   "kind": "omission",
+   "category": "omission",
+   "text": "Point essentiel oublié",
+   "why": "Le titre et le propos central sur la dette : Beaune affirme que « la France ne va pas être la Grèce » et écarte une crise de la dette."
+  },
+  {
+   "config": "S4",
+   "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+   "kind": "omission",
+   "category": "omission",
+   "text": "Point essentiel oublié",
+   "why": "La réponse à Nicolas Sarkozy, qui craint un tsunami de crise financière, et l'argument que Moody's n'a pas dégradé la note de la France."
+  },
+  {
+   "config": "S4",
+   "title": "US has floated Ukraine ceding Donbas for Nato membership, Zelensky says",
+   "kind": "claim",
+   "category": "content",
+   "text": "Kushner est présenté comme « conseiller américain ».",
+   "why": "L'article le qualifie d'envoyé américain (US envoy), pas de conseiller."
+  },
+  {
+   "config": "S4",
+   "title": "Show HN: DeepSeek V3 in ~200 lines of pure Jax",
+   "kind": "claim",
+   "category": "content",
+   "text": "Les données sont des romans policiers du domaine public, principalement de Dashiell Hammett",
+   "why": "Seuls quatre ensembles de textes de Hammett sont cités, plus environ 200 romans de Project Gutenberg ; Hammett n'est pas majoritaire (« Hammett repeated 3× »)."
+  },
+  {
+   "config": "S4",
+   "title": "Advancing science and engineering with Antigravity's /teamwork",
+   "kind": "claim",
+   "category": "meta",
+   "text": "La suite de l'article n'est pas disponible",
+   "why": "L'article est fourni en entier, avec de nombreux autres résultats (chimie, Weil, Zircon...). Cette affirmation sur l'indisponibilité est fausse."
+  },
+  {
+   "config": "S4",
+   "title": "Advancing science and engineering with Antigravity's /teamwork",
+   "kind": "omission",
+   "category": "omission",
+   "text": "Point essentiel oublié",
+   "why": "Les résultats de formalisation à grande échelle (Weil, Hilbert, Navier–Stokes, Bochner–Riesz) via /teamwork-LEAP ne sont pas mentionnés."
+  },
+  {
+   "config": "S4",
+   "title": "Advancing science and engineering with Antigravity's /teamwork",
+   "kind": "omission",
+   "category": "omission",
+   "text": "Point essentiel oublié",
+   "why": "Les gains en ingénierie logicielle (réécriture en Rust de Zircon et libgav1, noyaux TPU, FarArray) sont absents alors que le résumé annonce l'ingénierie logicielle."
+  },
+  {
+   "config": "S4",
+   "title": "COP31 : la Bourse ne récompense plus la découverte de réserves d’hydrocarbures en cas d’exposition aux risques réglementaires environnementaux",
+   "kind": "claim",
+   "category": "content",
+   "text": "L'étude est publiée dans le cadre de la COP31, qui se tient en Turquie jusqu'au 20 novembre.",
+   "why": "L'article situe la COP31 « en Turquie jusqu'au 20 novembre » mais ne dit pas que l'étude est publiée dans le cadre de la COP; la COP31 n'est citée que comme contexte (titre « COP31 : ... »)."
+  },
+  {
+   "config": "S5",
+   "title": "David Amiel annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires",
+   "kind": "why",
+   "category": "external",
+   "text": "Phrase « pourquoi c'est important »",
+   "why": "L'article ne dit pas que la mesure vise à éviter un rattrapage par le smic ; ce motif est ajouté, seul le coût vient du texte."
+  },
+  {
+   "config": "S5",
+   "title": "US has floated Ukraine ceding Donbas for Nato membership, Zelensky says",
+   "kind": "why",
+   "category": "external",
+   "text": "Phrase « pourquoi c'est important »",
+   "why": "L'article ne dit pas que Moscou a « fermement rejeté » cette ouverture précise ni que les négociations sont « bloquées » ; ce sont des ajouts d'interprétation, la position russe étant décrite comme inchangée, sans réponse à cette idée."
+  },
+  {
+   "config": "S6",
+   "title": "Iran targets Bahrain airbase as strikes resume in Gulf - Middle East crisis live",
+   "kind": "claim",
+   "category": "content",
+   "text": "À Gaza, Israël a tué un commandant du Hamas à Rafah.",
+   "why": "Hamas a confirmé la mort du commandant de la « Rafah Brigade » dans une frappe sur un camp de réfugiés de Gaza ; l'article ne dit pas que la frappe a eu lieu à Rafah."
+  },
+  {
+   "config": "S6",
+   "title": "Agression d’un responsable universitaire : \"Tout ça s'inscrit dans un contexte de violence croissante\", estime le ministre de l'Enseignement supérieur et de la Recherche Philippe Baptiste",
+   "kind": "claim",
+   "category": "content",
+   "text": "La présidente de l'université de Lorraine fait partie des menacés de mort.",
+   "why": "Le ministre dit que ses coordonnées ont été divulguées ; la menace de mort vient d'une question du journaliste (« elle aurait refusé... »), non confirmée explicitement par lui."
+  },
+  {
+   "config": "S7",
+   "title": "Trump, Putin and Xi plan historic joint meeting in China next week, White House says",
+   "kind": "claim",
+   "category": "content",
+   "text": "Selon la « médiatrice » de la Maison Blanche, la visite comprendra aussi un sommet de l'ASEAN aux Philippines mardi.",
+   "why": "Wales est la porte-parole (spokeswoman), pas « médiatrice » ; le reste (sommet de l'Asean aux Philippines mardi) est dit dans l'article."
+  },
+  {
+   "config": "S7",
+   "title": "Dette publique française : \"La France ne va pas être la Grèce\", affirme Clément Beaune",
+   "kind": "claim",
+   "category": "content",
+   "text": "Beaune dit que cela ne suffit pas.",
+   "why": "Le « Visiblement, ce n'est pas du tout suffisant » est dit par l'intervieweur, pas par Beaune ; il dit seulement que cela ne veut pas dire qu'il n'y a pas de colère ou de sujets."
+  }
+ ],
+ "judge_v1_contradiction": {
+  "claim": "La preuve a été formalisée en Lean 4 avec environ 50 millions de lignes.",
+  "evidence": "L'article dit exactement 50 millions de lignes, pas « environ », mais l'écart est mineur ; en revanche le chiffre est bien celui de l'article, donc soutenu en substance."
+ },
+ "rankings": [
+  {
+   "id": "R1",
+   "config": {
+    "id": "R1",
+    "task": "rank",
+    "question": "Référence : le réglage de production (un seul appel pour tous les candidats).",
+    "model": "claude-haiku-5-5",
+    "effort": "medium",
+    "repeats": 3,
+    "prompt": "v1",
+    "max_text": 20000,
+    "mode": "batched"
+   },
+   "runs": [
+    {
+     "name": "R1-1",
+     "cost_ct": 0.489,
+     "seconds": 26.63,
+     "thinking": 4237,
+     "precision": 0.5,
+     "auc": 0.623,
+     "common_with_sonnet": [
+      10,
+      9
+     ]
+    },
+    {
+     "name": "R1-2",
+     "cost_ct": 0.277,
+     "seconds": 10.34,
+     "thinking": 0,
+     "precision": 0.583,
+     "auc": 0.652,
+     "common_with_sonnet": [
+      6,
+      6
+     ]
+    },
+    {
+     "name": "R1-3",
+     "cost_ct": 0.51,
+     "seconds": 67.88,
+     "thinking": 4573,
+     "precision": 0.5,
+     "auc": 0.657,
+     "common_with_sonnet": [
+      11,
+      10
+     ]
+    }
+   ],
+   "common_between_repeats": [
+    7,
+    10,
+    6
+   ]
+  },
+  {
+   "id": "R2",
+   "config": {
+    "id": "R2",
+    "task": "rank",
+    "question": "E3 : autant de qualité de tri avec moins d'effort ?",
+    "model": "claude-haiku-5-5",
+    "effort": "low",
+    "repeats": 3,
+    "prompt": "v1",
+    "max_text": 20000,
+    "mode": "batched"
+   },
+   "runs": [
+    {
+     "name": "R2-1",
+     "cost_ct": 0.272,
+     "seconds": 9.83,
+     "thinking": 0,
+     "precision": 0.583,
+     "auc": 0.644,
+     "common_with_sonnet": [
+      4,
+      4
+     ]
+    },
+    {
+     "name": "R2-2",
+     "cost_ct": 0.272,
+     "seconds": 10.01,
+     "thinking": 0,
+     "precision": 0.5,
+     "auc": 0.645,
+     "common_with_sonnet": [
+      4,
+      4
+     ]
+    },
+    {
+     "name": "R2-3",
+     "cost_ct": 0.265,
+     "seconds": 9.59,
+     "thinking": 0,
+     "precision": 0.667,
+     "auc": 0.628,
+     "common_with_sonnet": [
+      7,
+      7
+     ]
+    }
+   ],
+   "common_between_repeats": [
+    11,
+    8,
+    7
+   ]
+  },
+  {
+   "id": "R3",
+   "config": {
+    "id": "R3",
+    "task": "rank",
+    "question": "E3 : un meilleur tri avec plus d'effort ?",
+    "model": "claude-haiku-5-5",
+    "effort": "high",
+    "repeats": 3,
+    "prompt": "v1",
+    "max_text": 20000,
+    "mode": "batched"
+   },
+   "runs": [
+    {
+     "name": "R3-1",
+     "cost_ct": 0.71,
+     "seconds": 41.44,
+     "thinking": 8666,
+     "precision": 0.417,
+     "auc": 0.618,
+     "common_with_sonnet": [
+      8,
+      7
+     ]
+    },
+    {
+     "name": "R3-2",
+     "cost_ct": 0.574,
+     "seconds": 34.66,
+     "thinking": 5942,
+     "precision": 0.75,
+     "auc": 0.629,
+     "common_with_sonnet": [
+      8,
+      9
+     ]
+    },
+    {
+     "name": "R3-3",
+     "cost_ct": 0.562,
+     "seconds": 31.63,
+     "thinking": 5636,
+     "precision": 0.667,
+     "auc": 0.659,
+     "common_with_sonnet": [
+      8,
+      9
+     ]
+    }
+   ],
+   "common_between_repeats": [
+    7,
+    8,
+    11
+   ]
+  },
+  {
+   "id": "R4",
+   "config": {
+    "id": "R4",
+    "task": "rank",
+    "question": "E1 : Sonnet trie-t-il mieux ?",
+    "model": "claude-sonnet-5-5",
+    "effort": "medium",
+    "repeats": 2,
+    "prompt": "v1",
+    "max_text": 20000,
+    "mode": "batched"
+   },
+   "runs": [
+    {
+     "name": "R4-1",
+     "cost_ct": 5.467,
+     "seconds": 16.46,
+     "thinking": 0,
+     "precision": 0.5,
+     "auc": 0.627,
+     "common_with_sonnet": [
+      12,
+      11
+     ]
+    },
+    {
+     "name": "R4-2",
+     "cost_ct": 5.519,
+     "seconds": 16.82,
+     "thinking": 0,
+     "precision": 0.583,
+     "auc": 0.641,
+     "common_with_sonnet": [
+      11,
+      12
+     ]
+    }
+   ],
+   "common_between_repeats": [
+    11
+   ]
+  },
+  {
+   "id": "R5",
+   "config": {
+    "id": "R5",
+    "task": "rank",
+    "question": "E4 : un appel par article plutôt qu'un seul appel groupé ?",
+    "model": "claude-haiku-5-5",
+    "effort": "medium",
+    "repeats": 1,
+    "prompt": "v1",
+    "max_text": 20000,
+    "mode": "per_article"
+   },
+   "runs": [
+    {
+     "name": "R5-1",
+     "cost_ct": 1.924,
+     "seconds": 15.42,
+     "thinking": 3968,
+     "precision": 0.5,
+     "auc": 0.593,
+     "common_with_sonnet": [
+      7,
+      8
+     ]
+    }
+   ],
+   "common_between_repeats": []
+  }
+ ],
+ "labels": {
+  "total": 89,
+  "kept": 41,
+  "chance_precision": 0.461,
+  "auc_margin95": 0.116
+ },
+ "settings": {
+  "max_text": 20000,
+  "journal_size": 12,
+  "prices": {
+   "claude-haiku-5-5": {
+    "input": 0.1,
+    "output": 0.5
+   },
+   "claude-sonnet-5-5": {
+    "input": 2.0,
+    "output": 10.0
+   }
+  }
+ },
+ "checks_first_pass": {
+  "false_alarms": 23,
+  "examples": [
+   "« 10.7k » devenu « 10 700 »",
+   "des arrondis (93,4 % en 93 %)",
+   "un nombre du titre",
+   "un numéro de version"
+  ]
+ },
+ "rank_by_section": [
+  {
+   "section": "data",
+   "kept": 7,
+   "dropped": 10,
+   "auc": 0.557
+  },
+  {
+   "section": "monde",
+   "kept": 16,
+   "dropped": 24,
+   "auc": 0.786
+  },
+  {
+   "section": "eco",
+   "kept": 11,
+   "dropped": 9,
+   "auc": 0.545
+  },
+  {
+   "section": "france",
+   "kept": 7,
+   "dropped": 5,
+   "auc": 0.343
+  }
+ ],
+ "disagreements": {
+  "kept_scored_low": [
+   {
+    "title": "My favourite modern NES games",
+    "source": "hackernews",
+    "score": 0.9
+   },
+   {
+    "title": "Why did some Apollo missions carry a grenade launcher?",
+    "source": "hackernews",
+    "score": 1.5
+   },
+   {
+    "title": "Beauty advent calendars can cost hundreds but are they value for money?",
+    "source": "bbc/business",
+    "score": 1.7
+   },
+   {
+    "title": "How did Woz write the Apple 1 BASIC before building the computer?",
+    "source": "hackernews",
+    "score": 2
+   },
+   {
+    "title": "New Orleans port files $1m lawsuit over 'miracle on the Mississippi' tanker collision",
+    "source": "bbc/world",
+    "score": 2.4
+   },
+   {
+    "title": "Judge temporarily blocks Trump from closing Washington DC golf course for renovation",
+    "source": "bbc/world",
+    "score": 2.4
+   }
+  ],
+  "dropped_scored_high": [
+   {
+    "title": "Est-il encore possible de stabiliser la dette publique française ?",
+    "source": "theconversation/fr",
+    "score": 7.2
+   },
+   {
+    "title": "Iran targets Bahrain airbase as strikes resume in Gulf - Middle East crisis live",
+    "source": "guardian/world",
+    "score": 7.1
+   },
+   {
+    "title": "David Amiel annonce une revalorisation du point d'indice pour les fonctionnaires aux plus bas salaires",
+    "source": "franceinfo/economie",
+    "score": 6.9
+   },
+   {
+    "title": "Surendettement : 10,2% de dossiers supplémentaires déposés à la Banque de France depuis le début de l'année 2026",
+    "source": "franceinfo/economie",
+    "score": 6.4
+   },
+   {
+    "title": "Anthony Albanese welcomes Trump-Xi-Putin summit – even as European leaders express reservations",
+    "source": "guardian/world",
+    "score": 6.3
+   },
+   {
+    "title": "COP31 : la Bourse ne récompense plus la découverte de réserves d’hydrocarbures en cas d’exposition aux risques réglementaires environnementaux",
+    "source": "theconversation/fr",
+    "score": 5.8
+   }
+  ]
+ }
+}</script>
+<script>
+// Every number below comes from bench-data (eval/results/<day>/summary.json): none is typed here.
+const D = JSON.parse(document.getElementById("bench-data").textContent);
+const S = Object.fromEntries(D.summaries.map(s => [s.id, s]));
+const R = Object.fromEntries(D.rankings.map(r => [r.id, r]));
+const $ = id => document.getElementById(id);
+const num = (v, d = 0) => v.toLocaleString("fr-FR", {minimumFractionDigits: d, maximumFractionDigits: d});
+const pct = (v, d = 0) => num(v * 100, d) + " %";
+const ct = (v, d = 2) => num(v, d) + " ct";
+const usd = v => num(v, 2) + " $";
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
+const mean = xs => xs.reduce((a, b) => a + b, 0) / xs.length;
+const N = D.fixture.articles;                 // articles summarized by each run
+const J = D.settings.journal_size;            // articles in the journal (select's quotas)
+const CUT = num(S.S4.config.max_text);        // the cut text of experiment E2
+const FULL = num(D.settings.max_text);        // the production limit of fetch_text
+const uniq = xs => new Set(xs).size;
+const allCfg = [...D.summaries.map(s => s.config), ...D.rankings.map(r => r.config)];
+const LABEL = {S1: "Haiku · référence", S2: "Haiku · effort low", S3: "Haiku · effort high", S4: `Haiku · coupé à ${CUT}`,
+  S5: "Sonnet · medium", S6: "Sonnet · high", S7: "Haiku · prompt v2",
+  R1: "Haiku · medium", R2: "Haiku · low", R3: "Haiku · high", R4: "Sonnet · medium", R5: "Haiku · par article"};
+const KEEP = new Set([D.retained.summarize, D.retained.rank]);
+const SECTION = {data: "Data & IA", monde: "Monde", eco: "Économie", france: "France"};
+const svgNS = "http://www.w3.org/2000/svg";
+
+// ---------- derived figures ----------
+const v1 = ["S1", "S2", "S3"].map(id => S[id].judge);
+const v1Flags = mean(v1.map(j => j.unsupported));
+const v1Meta = mean(v1.map(j => j.meta)), v1Content = mean(v1.map(j => j.content));
+const sonnetRatio = S.S5.cost_ct / S.S7.cost_ct;
+const batchedRuns = D.rankings.filter(r => r.config.mode === "batched").flatMap(r => r.runs);
+const aucAll = mean(batchedRuns.map(r => r.auc));
+const rankCost = id => mean(R[id].runs.map(r => r.cost_ct));
+const checksTotal = k => D.summaries.reduce((a, s) => a + s.checks[k], 0);
+const allFlags = D.flags;
+const claimsOf = ids => ids.reduce((a, id) => a + S[id].judge.claims, 0);
+const unsupportedOf = ids => ids.reduce((a, id) => a + S[id].judge.unsupported, 0);
+const dateFr = new Date(D.day + "T12:00:00").toLocaleDateString("fr-FR", {day: "numeric", month: "long", year: "numeric"});
+
+// ---------- hero ----------
+$("sum-tag").textContent = `summarize · ${N} articles`;
+$("rank-tag").textContent = `rank · ${D.fixture.candidates} candidats`;
+$("hero-eyebrow").textContent = `Banc d'évaluation · journée figée du ${dateFr}`;
+$("hero-lead").textContent = `Les mêmes ${D.fixture.candidates} candidats et les mêmes ${D.fixture.articles} articles, rejoués avec `
+  + `${D.summaries.length + D.rankings.length} configurations : ${uniq(allCfg.map(c => c.model))} modèles, ${uniq(allCfg.map(c => c.effort))} niveaux d'effort, `
+  + `${uniq(D.summaries.map(s => s.config.max_text))} longueurs de texte, ${uniq(D.summaries.map(s => s.config.prompt))} prompts. Chaque différence vient du réglage, pas de l'actualité du jour. Coût total du banc : ${usd(D.cost.total)}.`;
+$("ticket").innerHTML = `<h3>La config retenue</h3><dl>
+  <dt>Tri</dt><dd>Haiku 5.5, effort low<small>un seul appel pour tous les candidats</small></dd>
+  <dt>Résumés</dt><dd>Haiku 5.5, effort medium, prompt v2<small>texte complet, jusqu'à ${FULL} caractères</small></dd>
+  <dt class="total">Par journal</dt><dd class="total n">${ct(D.retained.cost_ct, 1)}</dd></dl>`;
+$("finds").innerHTML = [
+  [`${num(v1Flags, 1)} → ${S.S7.judge.unsupported}`, `affirmations non soutenues pour ${N} résumés, du prompt v1 au prompt v2 (Haiku)`],
+  [`×${num(sonnetRatio, 0)}`, `le prix de Sonnet pour résumer, sans gain net de fidélité face à Haiku et au prompt v2`],
+  [pct(aucAll), `de bon classement pour toutes les configs de tri, Sonnet compris : le levier est le profil`],
+  [`le titre`, `ce que la coupe à ${CUT} caractères a fait oublier dans un article sur la dette publique`, true],
+].map(([b, t, word]) => `<div class="find"><b class="${word ? "word" : "n"}">${esc(b)}</b><span>${esc(t)}</span></div>`).join("");
+
+// ---------- method ----------
+const costBar = (() => {
+  const parts = [["Runs Haiku", D.cost.haiku_runs], ["Runs Sonnet", D.cost.sonnet_runs], ["Juge", D.cost.judge_v1 + D.cost.judge_v2]];
+  const W = 560, H = 30, total = D.cost.total, cls = ["soft", "mid", ""], sw = ["var(--paper-hair)", "var(--on-paper-soft)", "var(--on-paper)"];
+  let x = 0, out = "";
+  parts.forEach(([name, v], i) => {
+    const w = v / total * W;
+    out += `<rect x="${x}" y="2" width="${Math.max(w - 2, 1)}" height="26" rx="4" class="bar ${cls[i]}"/>`;
+    x += w;
+  });
+  const legend = parts.map(([name, v], i) => `<span><i style="background:${sw[i]}"></i>${esc(name)} · ${usd(v)}</span>`).join("")
+    + `<span><b>Total · ${usd(total)}</b></span>`;
+  return `<div class="chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Répartition du coût du banc">${out}</svg></div><p class="legend">${legend}</p>`;
+})();
+$("method-cards").innerHTML = `
+  <div class="card"><h3>Une journée figée</h3><p>Le ${dateFr}, ${D.fixture.candidates} candidats nettoyés et le texte complet de ${D.fixture.articles} articles (${D.fixture.articles_by_section.data} par rubrique) ont été gelés dans un fichier. Toutes les configs voient exactement les mêmes articles, et le banc ne dépend plus des sites ni de Reddit.</p></div>
+  <div class="card"><h3>Un réglage à la fois</h3><p>Une configuration de référence, celle de la production (S1 pour les résumés, R1 pour le tri), puis des variantes qui ne changent qu'une chose. Tester toutes les combinaisons aurait coûté 36 configs (3 modèles × 3 efforts × 2 longueurs × 2 prompts) pour des questions que personne ne pose.</p></div>
+  <div class="card"><h3>Des répétitions</h3><p>Le modèle ne répond pas deux fois pareil. Chaque config Haiku a tourné ${S.S1.repeats} fois, Sonnet ${S.S6.repeats} ou ${S.S5.repeats} fois : une différence plus petite que l'écart entre deux runs identiques ne veut rien dire.</p></div>
+  <div class="card"><h3>Qui mesure quoi</h3><p>Coût, latence, longueurs et chiffres : des scripts, puisque la réponse est exacte. La fidélité d'une affirmation : un juge LLM, puisque c'est un jugement de langue. L'intérêt d'un article : moi, avec ${D.labels.total} étiquettes garder / jeter.</p></div>
+  <div class="card wide"><h3>Ce que le banc a coûté</h3>${costBar}<p class="cap">Le juge a coûté ${num((D.cost.judge_v1 + D.cost.judge_v2) / (D.cost.haiku_runs + D.cost.sonnet_runs), 1)} fois plus que toutes les configs réunies : il relit l'article complet pour chaque résumé.</p></div>`;
+
+// ---------- summaries ----------
+$("sum-pitch").textContent = `Sonnet résume ${num(sonnetRatio, 0)} fois plus cher que Haiku. Le prompt v2 rapproche Haiku de la fidélité de Sonnet, pour le prix de Haiku.`;
+(() => {
+  const W = 640, H = 300, L = 46, Rr = 20, T = 16, B = 40;
+  const xs = c => L + (Math.log10(c) - Math.log10(0.5)) / (Math.log10(25) - Math.log10(0.5)) * (W - L - Rr);
+  const yMin = 0.9, ys = r => T + (1 - (r - yMin) / (1 - yMin)) * (H - T - B);
+  let g = "";
+  [0.9, 0.92, 0.94, 0.96, 0.98, 1].forEach(r => { g += `<line class="grid" x1="${L}" x2="${W - Rr}" y1="${ys(r)}" y2="${ys(r)}"/><text class="axis" x="${L - 6}" y="${ys(r) + 3}" text-anchor="end">${pct(r)}</text>`; });
+  [0.5, 1, 2, 5, 10, 20].forEach(c => { g += `<line class="grid" x1="${xs(c)}" x2="${xs(c)}" y1="${T}" y2="${H - B}"/><text class="axis" x="${xs(c)}" y="${H - B + 16}" text-anchor="middle">${num(c, c < 1 ? 1 : 0)} ct</text>`; });
+  g += `<text class="axis" x="${W - Rr}" y="${H - 4}" text-anchor="end">coût pour ${N} résumés</text>`;
+  const offsets = {S1: [8, -9], S2: [10, 14], S3: [14, 28], S4: [8, 4], S5: [-10, 4], S6: [-10, 4], S7: [8, -9]};
+  D.summaries.forEach(s => {
+    const rate = 1 - s.judge.unsupported / s.judge.claims, x = xs(s.cost_ct), y = ys(rate);
+    const [dx, dy] = offsets[s.id] || [8, -8];
+    g += `<circle class="dot${KEEP.has(s.id) ? " keep" : ""}" cx="${x}" cy="${y}" r="${KEEP.has(s.id) ? 7 : 5.5}"/>`;
+    g += `<text x="${x + dx}" y="${y + dy}" text-anchor="${dx < 0 ? "end" : "start"}">${s.id} ${esc(LABEL[s.id])}</text>`;
+  });
+  $("scatter").innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Coût et fidélité des configurations de résumé">${g}</svg>`;
+})();
+$("sum-table").innerHTML = `<table><thead><tr><th>Config</th><th>Réglage</th><th class="r">Coût / ${N}</th><th class="r">Latence</th><th class="r">Thinking</th><th class="r">Mots (moy.)</th><th class="r">Non soutenues</th><th class="r">dont méta</th><th class="r">Omissions</th><th class="r">« Pourquoi » extérieur</th></tr></thead><tbody>${
+  D.summaries.map(s => `<tr class="${KEEP.has(s.id) ? "keep" : ""}"><td>${s.id}</td><td>${esc(LABEL[s.id])}</td><td class="r">${ct(s.cost_ct)}</td><td class="r">${num(s.latency_s, 1)} s</td><td class="r">${num(s.thinking)}</td><td class="r">${s.words.mean}</td><td class="r">${s.judge.unsupported} / ${s.judge.claims}</td><td class="r">${s.judge.meta}</td><td class="r">${s.judge.omissions}</td><td class="r">${s.judge.why.fait_exterieur} / ${s.judge.summaries}</td></tr>`).join("")
+}</tbody></table>`;
+$("sum-notes").innerHTML = [
+  `<b>Effort low ou medium, c'est pareil.</b> À medium, le modèle ne réfléchit déjà pas avant de résumer (${num(S.S1.thinking)} token de thinking) : low n'a rien à économiser.`,
+  `<b>Effort high n'apporte rien.</b> Environ ${num(S.S3.thinking / N)} tokens de réflexion par résumé, +${pct(S.S3.cost_ct / S.S1.cost_ct - 1)} de coût, pas moins d'erreurs.`,
+  `<b>Sonnet suit mieux la consigne de longueur</b> (${S.S5.words.mean} mots en moyenne contre ${S.S1.words.mean} pour Haiku, pour environ 120 demandés par le prompt) et ne réfléchit jamais, même en high. Il lit le même nombre de tokens que Haiku : l'écart de prix tient au seul tarif. Mais ${S.S5.judge.why.fait_exterieur} de ses ${S.S5.judge.summaries} phrases « pourquoi c'est important » ajoutent un fait absent de l'article.`,
+  `<b>Couper le texte à ${CUT} caractères</b> économise ${pct(1 - S.S4.cost_ct / S.S1.cost_ct)}, mais c'est la seule config avec des omissions (${S.S4.judge.omissions}), dont le propos central de l'article sur la dette, « la France ne va pas être la Grèce », qui en est le titre : il se trouvait après la coupure.`,
+].map(t => `<li>${t}</li>`).join("");
+
+$("v2-risks").innerHTML = [
+  `<b>La phrase « pourquoi c'est important »</b> poussait à compléter avec des connaissances générales, qui peuvent être périmées.`,
+  `<b>Un minimum de 80 mots</b> obligeait à remplir quand l'article est court.`,
+  `<b>La traduction des nombres</b> : en anglais, « billion » veut dire milliard.`,
+  `<b>L'attribution</b> : ce qu'une personne affirme ou prévoit devenait un fait.`,
+  `<b>Les dates</b> : le modèle ne reçoit pas la date de publication, il ne doit en calculer aucune.`,
+].map(t => `<li>${t}</li>`).join("") + `<li>La v2 garde la phrase « pourquoi c'est important », mais appuyée sur l'article : déduire est permis, ajouter un fait ne l'est pas.</li>`;
+(() => {
+  const art = D.fixture.short_article, rows = [["Article", [art.words]], ["Prompt v1", S.S1.short_article_words], ["Prompt v2", S.S7.short_article_words]];
+  const W = 360, rowH = 46, L = 82, Rr = 30, max = Math.max(art.words, ...S.S1.short_article_words) * 1.05;
+  const xs = v => (v / max) * (W - L - Rr);
+  let g = "";
+  rows.forEach(([name, vals], i) => {
+    const y = 10 + i * rowH;
+    g += `<text x="0" y="${y + 18}">${name}</text>`;
+    vals.forEach((v, j) => {
+      const h = Math.min(30 / vals.length, 12), yy = y + 4 + j * (h + 2) + (vals.length === 1 ? 4 : 0);
+      g += `<rect x="${L}" y="${yy}" width="${xs(v)}" height="${vals.length === 1 ? 14 : h}" rx="2" class="bar${i === 0 ? " soft" : i === 2 ? " ok" : ""}"/>`;
+      g += `<text class="axis" x="${L + xs(v) + 5}" y="${yy + (vals.length === 1 ? 11 : h - 1)}">${v}</text>`;
+    });
+  });
+  $("short-chart").innerHTML = `<svg viewBox="0 0 ${W} ${10 + rows.length * rowH}" role="img" aria-label="Longueur des résumés d'un article court">${g}</svg>`;
+  $("short-cap").textContent = `Nombre de mots. L'article (« ${art.title.slice(0, 60)}… ») fait ${art.words} mots : la v1 le résumait en presque autant, la v2 en ${num(mean(S.S1.short_article_words) / mean(S.S7.short_article_words), 1)} fois moins.`;
+  $("short-title").textContent = `Un article court, ${S.S1.repeats} fois de suite`;
+})();
+(() => {
+  const ids = ["S1", "S2", "S3"];
+  const meta = ids.reduce((a, id) => a + S[id].judge.meta, 0), content = ids.reduce((a, id) => a + S[id].judge.content, 0);
+  $("v2-table").innerHTML = `<table><thead><tr><th>Haiku, effort medium</th><th class="r">Affirmations</th><th class="r">Non soutenues</th><th class="r">dont méta</th><th class="r">dont contenu</th><th class="r">« Pourquoi » extérieur</th><th class="r">Coût / 12</th></tr></thead><tbody>
+    <tr><td>Prompt v1 (S1 à S3 cumulés)</td><td class="r">${claimsOf(ids)}</td><td class="r">${unsupportedOf(ids)} (${pct(unsupportedOf(ids) / claimsOf(ids), 1)})</td><td class="r">${meta}</td><td class="r">${content}</td><td class="r">${ids.reduce((a, id) => a + S[id].judge.why.fait_exterieur, 0)}</td><td class="r">${ct(S.S1.cost_ct)}</td></tr>
+    <tr class="keep"><td>Prompt v2 (S7)</td><td class="r">${S.S7.judge.claims}</td><td class="r">${S.S7.judge.unsupported} (${pct(S.S7.judge.unsupported / S.S7.judge.claims, 1)})</td><td class="r">${S.S7.judge.meta}</td><td class="r">${S.S7.judge.content}</td><td class="r">${S.S7.judge.why.fait_exterieur}</td><td class="r">${ct(S.S7.cost_ct)}</td></tr></tbody></table>`;
+  $("v2-cap").textContent = `La v2 supprime les commentaires sur la source et réduit un peu les erreurs de contenu (${num(v1Content, 1)} puis ${S.S7.judge.content} pour ${N} résumés), pour +${pct(S.S7.cost_ct / S.S1.cost_ct - 1)} de coût. Une tendance nette sur de petits nombres, pas une preuve.`;
+})();
+
+// ---------- fidelity ----------
+$("checks-card").innerHTML = `<h3>Le contrôle par script</h3>
+  <p class="big n">0 <small>sur ${num(checksTotal("numbers"))} nombres</small></p>
+  <p>Chaque nombre et chaque citation des ${D.summaries.reduce((a, s) => a + s.checks.texts, 0) / 2} résumés doit figurer dans le texte que le modèle a reçu. Aucun nombre introuvable, aucune citation française introuvable (${checksTotal("quotes") - checksTotal("translated_quotes")} vérifiées ; ${checksTotal("translated_quotes")} citations d'articles anglais, traduites, ne se vérifient pas mot pour mot).</p>
+  <p>Le premier passage donnait ${D.checks_first_pass.false_alarms} alertes, toutes fausses après vérification dans les articles : ${D.checks_first_pass.examples.join(", ")}. Le script a été corrigé pour ces cas, avec un test qui garde une vraie troncature en alerte.</p>
+  <p class="soft">Conclusion : personne n'invente de chiffres, et ce contrôle ne départage pas les configs. Il faut un juge pour les erreurs sans chiffre.</p>`;
+const c = D.judge_v1_contradiction;
+$("judge-card").innerHTML = `<h3>Le juge LLM</h3>
+  <p>Sonnet 5.5 reçoit l'article complet et un résumé, sans savoir quelle config l'a écrit. Il découpe le résumé en affirmations simples et, pour chacune, cite la phrase de l'article qui la prouve, ou dit ce qui ne va pas. Il juge la fidélité au texte, pas la vérité du monde : une information vraie mais absente de l'article compte comme une invention, car le lecteur ne peut pas les distinguer.</p>
+  ${c ? `<p>Sa première version s'est contredite :</p><div class="quote"><p class="who">affirmation jugée non soutenue</p><p>${esc(c.claim)}</p><p class="who">sa propre justification</p><p>${esc(c.evidence)}</p></div>
+  <p>Le verdict venait avant la preuve dans sa réponse. En v2, il écrit d'abord la preuve, puis tranche : le défaut a disparu.</p>` : ""}
+  <p class="soft">Ce juge n'est pas encore calibré sur mes propres vérifications : ses verdicts sont une première lecture.</p>`;
+(() => {
+  const ids = ["Tout", ...D.summaries.map(s => s.id)];
+  const CAT = {meta: "méta : la source", content: "erreur de contenu", external: "« pourquoi » : fait extérieur", omission: "omission"};
+  $("flags-card").innerHTML = `<h3>Ce que le juge a relevé</h3>
+    <p>Trois familles d'alertes. Des <b>commentaires sur la source</b> (« publié par franceinfo dans la rubrique économie », « le texte est tronqué ») : du remplissage, que le juge compte comme non soutenu parce qu'il ne voit pas le nom de la source, contrairement au résumeur. Des <b>erreurs d'attribution</b> : une phrase de l'intervieweur prêtée à l'invité, un constat prêté à Bpifrance, une prévision présentée comme acquise. Des <b>erreurs de fait</b> : un ordre de rencontres inversé, une source de données présentée comme majoritaire alors qu'elle est minoritaire, un titre de fonction mal traduit.</p>
+    <details class="more"><summary>Voir les ${allFlags.length} alertes</summary>
+      <div class="chips" role="group" aria-label="Filtrer par config">${ids.map((id, i) => `<button type="button" class="chip" data-f="${id}" aria-pressed="${i === 0}">${id}</button>`).join("")}</div>
+      <ul class="flags" id="flags"></ul></details>`;
+  const render = f => {
+    $("flags").innerHTML = allFlags.filter(x => f === "Tout" || x.config === f).map(x => `<li>
+      <div class="meta"><span>${x.config}</span><span class="k-${x.category}">${CAT[x.category]}</span><span>${esc(x.title.slice(0, 70))}</span></div>
+      <div class="what">${esc(x.text)}</div><div class="judge">${esc(x.why)}</div></li>`).join("");
+  };
+  render("Tout");
+  document.querySelectorAll(".chip").forEach(b => b.addEventListener("click", () => {
+    document.querySelectorAll(".chip").forEach(o => o.setAttribute("aria-pressed", String(o === b)));
+    render(b.dataset.f);
+  }));
+})();
+
+// ---------- ranking ----------
+$("rank-pitch").textContent = `Face à mes ${D.labels.total} étiquettes, toutes les configurations se valent. Sonnet, ${num(rankCost("R4") / rankCost("R1"), 0)} fois plus cher, ne trie pas mieux ; l'effort low trie aussi bien pour ${pct(1 - rankCost("R2") / rankCost("R1"))} de moins.`;
+(() => {
+  const W = 640, rowH = 40, L = 165, Rr = 70, T = 10, x0 = 0.5, x1 = 0.8;
+  const xs = v => L + (v - x0) / (x1 - x0) * (W - L - Rr);
+  const H = T + D.rankings.length * rowH + 30;
+  let g = "";
+  [0.5, 0.6, 0.7, 0.8].forEach(v => { g += `<line class="${v === 0.5 ? "chance" : "grid"}" x1="${xs(v)}" x2="${xs(v)}" y1="${T}" y2="${H - 26}"/><text class="axis" x="${xs(v)}" y="${H - 10}" text-anchor="middle">${pct(v)}</text>`; });
+  g += `<text class="axis" x="${xs(0.5) + 4}" y="${T + 8}">hasard</text>`;
+  D.rankings.forEach((r, i) => {
+    const y = T + i * rowH + rowH / 2, m = mean(r.runs.map(u => u.auc));
+    g += `<text x="0" y="${y + 4}">${r.id} ${esc(LABEL[r.id])}</text>`;
+    g += `<line class="grid" x1="${L}" x2="${W - Rr}" y1="${y}" y2="${y}"/>`;
+    r.runs.forEach(u => { g += `<circle class="dot" cx="${xs(u.auc)}" cy="${y}" r="5"/>`; });
+    g += `<line class="tick" x1="${xs(m)}" x2="${xs(m)}" y1="${y - 10}" y2="${y + 10}"/>`;
+    g += `<text class="axis" x="${W}" y="${y + 4}" text-anchor="end">${ct(rankCost(r.id))}</text>`;
+  });
+  $("auc-chart").innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="AUC de chaque configuration de tri">${g}</svg>`;
+  $("auc-cap").textContent = `AUC : si l'on tire un article que je garde et un que je jette, la probabilité que la config ait mieux noté le premier. 50 % = hasard, 100 % = parfait. Un rond par répétition, un trait pour la moyenne, le coût d'un tri à droite. Avec ${D.labels.total} étiquettes, la marge d'erreur est d'environ ±${num(D.labels.auc_margin95 * 100)} points : les écarts entre configs sont du bruit. Précision sur les ${J} retenus : de ${pct(Math.min(...batchedRuns.map(u => u.precision)))} à ${pct(Math.max(...batchedRuns.map(u => u.precision)))} selon les runs, contre ${pct(D.labels.chance_precision)} au hasard.`;
+})();
+$("noise").innerHTML = ["R1", "R2", "R3", "R4"].flatMap(id => R[id].common_between_repeats.map(k =>
+  `<div class="slotrow"><span>${id} ${esc(LABEL[id])}</span><span class="sq">${Array.from({length: J}, (_, i) => `<i class="${i < k ? "on" : ""}"></i>`).join("")}</span><span class="n">${k}/${J}</span></div>`)).join("");
+$("think-table").innerHTML = `<table><thead><tr><th>Run</th><th class="r">Thinking</th><th class="r">Communs avec Sonnet</th><th class="r">AUC</th></tr></thead><tbody>${
+  ["R1", "R2", "R3"].flatMap(id => R[id].runs).map(u => `<tr><td>${u.name}</td><td class="r">${num(u.thinking)}</td><td class="r">${u.common_with_sonnet.join(" et ")} /${J}</td><td class="r">${pct(u.auc)}</td></tr>`).join("")
+}</tbody></table><p class="cap">À réglage égal, Haiku pense de ${num(Math.min(...R.R1.runs.map(u => u.thinking)))} à ${num(Math.max(...R.R1.runs.map(u => u.thinking)))} tokens. Quand il pense, il retient presque les mêmes articles que Sonnet ; quand il ne pense pas, il s'en éloigne. Mais son AUC ne bouge pas : ressembler à Sonnet n'est pas mieux trier pour moi.</p>`;
+(() => {
+  const W = 360, rowH = 34, L = 92, Rr = 44;
+  const xs = v => v * (W - L - Rr);
+  let g = "";
+  D.rank_by_section.forEach((s, i) => {
+    const y = 6 + i * rowH;
+    g += `<text x="0" y="${y + 15}">${SECTION[s.section]}</text>`;
+    g += `<rect x="${L}" y="${y + 4}" width="${xs(1)}" height="14" rx="3" class="bar soft"/>`;
+    g += `<rect x="${L}" y="${y + 4}" width="${xs(s.auc)}" height="14" rx="3" class="bar"/>`;
+    g += `<text class="axis" x="${L + xs(1) + 6}" y="${y + 15}">${pct(s.auc)}</text>`;
+  });
+  g += `<line class="chance" x1="${L + xs(0.5)}" x2="${L + xs(0.5)}" y1="2" y2="${6 + D.rank_by_section.length * rowH}"/>`;
+  const fr = D.rank_by_section.find(x => x.section === "france");
+  $("section-cap").textContent = `Note moyenne de chaque article sur les ${batchedRuns.length} runs à un seul appel. France : ${fr.kept + fr.dropped} articles seulement.`;
+  $("section-chart").innerHTML = `<svg viewBox="0 0 ${W} ${12 + D.rank_by_section.length * rowH}" role="img" aria-label="AUC du tri par rubrique">${g}</svg>`;
+})();
+$("profile-text").innerHTML = `<p>Tous les modèles se trompent de la même façon, parce qu'ils appliquent tous le même profil de lecteur. Ce profil décrit un lecteur d'actualité sérieuse ; mes étiquettes montrent que je préfère les curiosités.</p>
+  <p>Changer de modèle ne corrigera donc rien. La suite logique est de réécrire le profil, puis de le mesurer sur les étiquettes d'un autre jour : le régler sur ces ${D.labels.total} articles puis le mesurer sur les mêmes serait du surapprentissage.</p>`;
+$("disagree").innerHTML = [["Je garde, le modèle note bas", D.disagreements.kept_scored_low], ["Je jette, le modèle note haut", D.disagreements.dropped_scored_high]]
+  .map(([h, rows]) => `<div><h3 style="font-size:1rem">${h}</h3><ol>${rows.map(r => `<li><b>${num(r.score, 1)}</b><span>${esc(r.title)}<small>${esc(r.source)}</small></span></li>`).join("")}</ol></div>`).join("")
+  + `<p class="cap" style="grid-column:1 / -1">Note sur 10, moyenne des ${batchedRuns.length} runs à un seul appel.</p>`;
+
+// ---------- final ----------
+$("choices").innerHTML = [
+  ["Résumer avec Haiku, pas Sonnet", `${ct(S.S7.cost_ct)} contre ${ct(S.S5.cost_ct)} pour ${N} résumés`, `Avec le prompt v2, Haiku fait presque aussi peu d'erreurs que Sonnet (${S.S7.judge.unsupported} contre ${S.S5.judge.unsupported} à ${S.S6.judge.unsupported} pour ${N} résumés), pour ${num(sonnetRatio, 0)} fois moins cher. Sonnet suit mieux la consigne de longueur, mais ses phrases « pourquoi c'est important » ont ajouté ${S.S5.judge.why.fait_exterieur} faits extérieurs.`],
+  ["Le prompt v2", `+${pct(S.S7.cost_ct / S.S1.cost_ct - 1)} de coût`, `Plus aucun commentaire sur la source, moins d'erreurs de contenu, plus de remplissage sur les articles courts, et aucun fait extérieur dans la phrase « pourquoi c'est important », que je tiens à garder.`],
+  [`Le texte complet, pas coupé à ${CUT} caractères`, `${ct(S.S1.cost_ct - S.S4.cost_ct)} de plus par journal`, `La coupe fait oublier des points essentiels, jusqu'au propos qui donne son titre à un article, et ajoute des erreurs. L'économie ne vaut pas ce risque.`],
+  ["Effort medium pour résumer", `même coût que low`, `Low et medium reviennent au même : le modèle ne réfléchit pas avant de résumer. On garde medium, le réglage par défaut du modèle. High coûte plus sans rien apporter.`],
+  ["Trier avec Haiku en effort low", `${ct(rankCost("R2"))} contre ${ct(rankCost("R1"))} par tri`, `Même qualité mesurée que medium, ${pct(1 - rankCost("R2") / rankCost("R1"))} moins cher, et une durée stable : low ne réfléchit jamais, alors que medium varie de quelques secondes à plus d'une minute selon qu'il pense ou non.`],
+  ["Un seul appel pour tout le tri", `${ct(rankCost("R5"))} pour un appel par article`, `Juger chaque article seul coûte ${num(rankCost("R5") / rankCost("R1"), 0)} fois plus, trie plutôt moins bien (AUC ${pct(R.R5.runs[0].auc)}) et empêche de repérer deux articles sur le même événement.`],
+].map(([t, s, p]) => `<li class="choice"><b>${esc(t)}<small>${esc(s)}</small></b><p>${esc(p)}</p></li>`).join("");
+$("limits").innerHTML = [
+  `Une seule journée : ${D.fixture.articles} résumés par config et ${D.labels.total} étiquettes. Seules les grosses différences comptent.`,
+  `Une seule répétition jugée par config : quelques erreurs d'écart peuvent venir du hasard.`,
+  `Le juge et les modèles jugés sont tous des modèles de la même famille : un biais commun n'est pas exclu, et le juge n'est pas encore calibré sur mes vérifications.`,
+  `Le prompt v2 change plusieurs règles à la fois : on sait qu'il fait mieux, pas quelle règle aide.`,
+].map(t => `<li>${esc(t)}</li>`).join("");
+$("untested").innerHTML = [
+  `<b>Opus 5.5</b> : 40 fois le prix de Haiku, il ne serait jamais choisi pour un journal à environ un centime.`,
+  `<b>Le cache de prompt</b> : le prompt de résumé est sous le minimum de 512 tokens, et le tri ne tourne qu'une fois par jour alors que le cache dure 5 minutes.`,
+].map(t => `<li>${t}</li>`).join("");
+$("colophon").textContent = `Toutes les valeurs de cette page sont calculées à partir de eval/results/${D.day}/summary.json, produit par eval/aggregate.py à partir des résultats bruts du banc. Les textes interprètent les résultats du ${dateFr} : à relire si le banc est relancé.`;
+
+</script>
+</body>
+</html>
