@@ -163,8 +163,11 @@ h1 em{font:italic 400 1.04em/1 var(--serif); letter-spacing:-.02em}
 .tag.o rect{fill:var(--paper); stroke:var(--ink); stroke-width:1} #graph .tag.o text{fill:var(--on-paper)}
 .flow{fill:var(--paper); stroke:var(--ink); stroke-width:.8}
 
+/* The scene clips its giant ghost number. The clip is 12px wider than the column on each side
+   (the page gutter is at least 16px): tilted cards, outlines and drop shadows of elements that
+   touch the column edge would otherwise be cut. */
 .scene{padding-block:clamp(72px, 13vh, 150px); min-height:94vh; display:flex; flex-direction:column; justify-content:center; gap:26px;
-  isolation:isolate; overflow:clip; scroll-margin-top:0}
+  isolation:isolate; clip-path:inset(0 -12px); scroll-margin-top:0}
 .ghost{position:absolute; z-index:-1; right:-.04em; top:calc(8vh + var(--py, 0px)); font:800 clamp(11rem, 30vw, 27rem)/.8 var(--display);
   letter-spacing:-.06em; color:transparent; -webkit-text-stroke:1.5px var(--hair); pointer-events:none; user-select:none}
 .scene-head{display:flex; flex-direction:column; gap:14px}
