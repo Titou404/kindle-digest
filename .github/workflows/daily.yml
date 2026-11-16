@@ -14,6 +14,7 @@ on:
 
 permissions:
   contents: write # to commit the run report into runs/
+  pages: write # to ask GitHub Pages to rebuild the site after that commit
 
 jobs:
   digest:
@@ -53,6 +54,17 @@ jobs:
             git pull --rebase  # in case main moved during the run
             git push
           fi
+
+      # GitHub Pages is not rebuilt by a push made with the workflow's own token (GitHub rule),
+      # so the monitoring page would not show today's report: ask for the build explicitly.
+      # A refused request only leaves the site one run late: a warning, not a failed run.
+      - name: Rebuild the site
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api --method POST "repos/${{ github.repository }}/pages/builds" --jq .status \
+            || echo "::warning::GitHub Pages build not requested: the site will show this run after the next push."
 
       # Keep the journal and its measures, even when a step failed.
       - uses: actions/upload-artifact@v7
