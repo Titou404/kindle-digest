@@ -295,6 +295,7 @@ uv run python eval/run_bench.py --only S1,R1
 | `runs/` | Un rapport par vrai run, et leur index |
 | `eval/` | Le banc d'évaluation et ses résultats |
 | `tests/` | Les tests, hors réseau |
+| `index.html`, `config.html`, `site/` | Les deux pages web du projet (suivi des runs, banc d'évaluation) et le gabarit de la seconde |
 | `.github/workflows/` | La planification quotidienne |
 
 ## Limites et suite
