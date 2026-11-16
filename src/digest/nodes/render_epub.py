@@ -5,11 +5,12 @@ Deterministic layout: a script, no LLM.
 
 import html
 import time
-from datetime import datetime
+from datetime import date, datetime
 from zoneinfo import ZoneInfo
 
 from ebooklib import epub
 
+from digest.edition import edition_date
 from digest.paths import ROOT
 from digest.state import Article, DigestState, NodeMetrics
 
@@ -21,7 +22,7 @@ MONTHS = ["janvier", "fÃ©vrier", "mars", "avril", "mai", "juin", "juillet", "aoÃ
 CSS = "h1 { font-size: 1.4em; } h2 { font-size: 1.15em; margin-top: 1.6em; } .meta { color: #555; }"
 
 
-def french_date(day: datetime) -> str:
+def french_date(day: date) -> str:
     # Written by hand: strftime would depend on the machine's locale.
     return f"{DAYS[day.weekday()]} {day.day} {MONTHS[day.month - 1]} {day.year}"
 
@@ -89,10 +90,10 @@ def report_html(state: DigestState) -> str:
     return "\n".join(lines)
 
 
-def build_book(state: DigestState, today: datetime) -> epub.EpubBook:
+def build_book(state: DigestState, edition: date) -> epub.EpubBook:
     book = epub.EpubBook()
-    book.set_identifier(f"kindle-digest-{today:%Y-%m-%d}")
-    book.set_title(f"Journal du {french_date(today)}")
+    book.set_identifier(f"kindle-digest-{edition:%Y-%m-%d}")
+    book.set_title(f"Journal du {french_date(edition)}")
     book.set_language("fr")
     book.add_author("Kindle Digest")
     style = epub.EpubItem(uid="style", file_name="style.css", media_type="text/css", content=CSS)
@@ -130,10 +131,11 @@ def build_book(state: DigestState, today: datetime) -> epub.EpubBook:
 
 def render_epub(state: DigestState) -> dict:
     start = time.perf_counter()
-    today = datetime.now(ZoneInfo("Europe/Paris"))
+    # The journal carries the date of the morning it is read, not of the evening it is made.
+    edition = edition_date(datetime.now(ZoneInfo("Europe/Paris")))
     OUT_DIR.mkdir(exist_ok=True)
-    path = OUT_DIR / f"digest-{today:%Y-%m-%d}.epub"
-    epub.write_epub(path, build_book(state, today))
+    path = OUT_DIR / f"digest-{edition:%Y-%m-%d}.epub"
+    epub.write_epub(path, build_book(state, edition))
 
     metrics = NodeMetrics(
         "render_epub",

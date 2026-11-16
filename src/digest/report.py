@@ -12,6 +12,7 @@ from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from digest.edition import edition_date
 from digest.nodes.rank import PROMPT_VERSION as RANK_PROMPT
 from digest.nodes.summarize import PROMPT_VERSION as SUMMARIZE_PROMPT
 from digest.paths import ROOT
@@ -73,6 +74,8 @@ def write_run_report(
     selected_urls = {a.url for a in state.get("selected", [])}
     report = {
         "date": f"{today:%Y-%m-%d}",
+        # The morning this journal is made for: the day after an evening run (see edition.py).
+        "edition": f"{edition_date(today):%Y-%m-%d}",
         "finished_at": today.isoformat(timespec="seconds"),
         "git_sha": git_sha(),
         "mode": "fake" if fake else "real",

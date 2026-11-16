@@ -35,6 +35,16 @@ def test_the_report_records_the_effort_of_each_task(tmp_path, monkeypatch):
     assert config["prompts"]["summarize"] == "v2"
 
 
+def test_the_report_gives_the_morning_the_journal_is_made_for(tmp_path, monkeypatch):
+    monkeypatch.setattr(report, "RUNS_DIR", tmp_path)
+
+    path = write_run_report({}, 40.0, LLMS, now=datetime(2026, 11, 16, 20, 17, tzinfo=PARIS))
+
+    written = json.loads(path.read_text())
+    assert (written["date"], written["edition"]) == ("2026-11-16", "2026-11-17")
+    assert path.name == "2026-11-16_2017.json"  # the file keeps the time of the run
+
+
 def test_the_report_says_who_started_the_run_and_the_index_follows(tmp_path, monkeypatch):
     monkeypatch.setattr(report, "RUNS_DIR", tmp_path)
     monkeypatch.setenv("GITHUB_EVENT_NAME", "schedule")
