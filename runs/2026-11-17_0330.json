@@ -1,0 +1,1572 @@
+{
+  "date": "2026-11-17",
+  "edition": "2026-11-17",
+  "finished_at": "2026-11-17T03:30:00+01:00",
+  "git_sha": "886de3c",
+  "mode": "real",
+  "trigger": "schedule",
+  "config": {
+    "model": {
+      "rank": "claude-haiku-5-5",
+      "summarize": "claude-haiku-5-5"
+    },
+    "effort": {
+      "rank": "low",
+      "summarize": "medium"
+    },
+    "prompts": {
+      "rank": "v1",
+      "summarize": "v2"
+    }
+  },
+  "counts": {
+    "collected": 247,
+    "after_clean": 138,
+    "selected": 13,
+    "summarized": 12,
+    "raw": 1
+  },
+  "totals": {
+    "seconds": 58.7,
+    "llm_calls": 13,
+    "input_tokens": 59860,
+    "output_tokens": 11291,
+    "thinking_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cost_usd": 0.011631
+  },
+  "nodes": [
+    {
+      "node": "collect:hackernews",
+      "duration_s": 0.394,
+      "counts": {
+        "articles": 30
+      }
+    },
+    {
+      "node": "collect:reddit/datascience",
+      "duration_s": 0.863,
+      "counts": {
+        "articles": 6
+      }
+    },
+    {
+      "node": "collect:reddit/MachineLearning",
+      "duration_s": 0.207,
+      "counts": {
+        "articles": 0
+      }
+    },
+    {
+      "node": "collect:bbc/world",
+      "duration_s": 0.411,
+      "counts": {
+        "articles": 21
+      }
+    },
+    {
+      "node": "collect:guardian/world",
+      "duration_s": 0.332,
+      "counts": {
+        "articles": 45
+      }
+    },
+    {
+      "node": "collect:bbc/business",
+      "duration_s": 0.411,
+      "counts": {
+        "articles": 56
+      }
+    },
+    {
+      "node": "collect:franceinfo/economie",
+      "duration_s": 0.932,
+      "counts": {
+        "articles": 20
+      }
+    },
+    {
+      "node": "collect:franceinfo/politique",
+      "duration_s": 0.764,
+      "counts": {
+        "articles": 19
+      }
+    },
+    {
+      "node": "collect:theconversation/fr",
+      "duration_s": 0.551,
+      "counts": {
+        "articles": 50
+      }
+    },
+    {
+      "node": "clean",
+      "duration_s": 0.003,
+      "counts": {
+        "articles_in": 247,
+        "invalid": 0,
+        "undated": 0,
+        "too_old": 101,
+        "duplicates": 8,
+        "articles_out": 138
+      }
+    },
+    {
+      "node": "rank",
+      "duration_s": 14.668,
+      "counts": {
+        "articles_in": 138,
+        "scored": 138,
+        "missing": 0,
+        "invalid": 0
+      }
+    },
+    {
+      "node": "select",
+      "duration_s": 0.0,
+      "counts": {
+        "candidates": 130,
+        "selected": 12,
+        "raw": 1,
+        "duplicate_topics": 2,
+        "rank_failed": 0
+      }
+    },
+    {
+      "node": "fetch_text",
+      "duration_s": 4.945,
+      "counts": {
+        "from_feed": 1,
+        "downloaded": 11,
+        "failed": 0,
+        "too_short": 0,
+        "truncated": 0,
+        "raw": 1,
+        "chars_kept": 75965,
+        "chars_cut": 0
+      }
+    },
+    {
+      "node": "summarize:hackernews",
+      "duration_s": 3.076,
+      "counts": {
+        "input_chars": 1293,
+        "summary_words": 123
+      }
+    },
+    {
+      "node": "summarize:hackernews",
+      "duration_s": 3.709,
+      "counts": {
+        "input_chars": 9834,
+        "summary_words": 203
+      }
+    },
+    {
+      "node": "summarize:hackernews",
+      "duration_s": 3.458,
+      "counts": {
+        "input_chars": 13312,
+        "summary_words": 185
+      }
+    },
+    {
+      "node": "summarize:bbc/world",
+      "duration_s": 3.875,
+      "counts": {
+        "input_chars": 3765,
+        "summary_words": 201
+      }
+    },
+    {
+      "node": "summarize:guardian/world",
+      "duration_s": 4.083,
+      "counts": {
+        "input_chars": 3102,
+        "summary_words": 222
+      }
+    },
+    {
+      "node": "summarize:guardian/world",
+      "duration_s": 3.926,
+      "counts": {
+        "input_chars": 17113,
+        "summary_words": 227
+      }
+    },
+    {
+      "node": "summarize:bbc/business",
+      "duration_s": 4.575,
+      "counts": {
+        "input_chars": 6425,
+        "summary_words": 280
+      }
+    },
+    {
+      "node": "summarize:franceinfo/economie",
+      "duration_s": 3.215,
+      "counts": {
+        "input_chars": 3096,
+        "summary_words": 201
+      }
+    },
+    {
+      "node": "summarize:franceinfo/economie",
+      "duration_s": 3.367,
+      "counts": {
+        "input_chars": 4143,
+        "summary_words": 216
+      }
+    },
+    {
+      "node": "summarize:franceinfo/politique",
+      "duration_s": 3.056,
+      "counts": {
+        "input_chars": 2969,
+        "summary_words": 185
+      }
+    },
+    {
+      "node": "summarize:theconversation/fr",
+      "duration_s": 3.502,
+      "counts": {
+        "input_chars": 8322,
+        "summary_words": 206
+      }
+    },
+    {
+      "node": "summarize:franceinfo/politique",
+      "duration_s": 2.359,
+      "counts": {
+        "input_chars": 2591,
+        "summary_words": 151
+      }
+    },
+    {
+      "node": "render_epub",
+      "duration_s": 0.006,
+      "counts": {
+        "articles": 12,
+        "raw_posts": 1,
+        "size_bytes": 31794
+      }
+    },
+    {
+      "node": "deliver",
+      "duration_s": 1.888,
+      "counts": {
+        "enabled": 1,
+        "sent": 1
+      }
+    }
+  ],
+  "llm_calls": [
+    {
+      "task": "rank",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v1",
+      "input_tokens": 19642,
+      "output_tokens": 3997,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 14.667,
+      "cost_usd": 0.0039626999999999996,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch7iJYomZ4s15RuCNiTsM",
+      "effort": "low"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 1602,
+      "output_tokens": 386,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 3.075,
+      "cost_usd": 0.0003532,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch7iKzYMgSevLfh7958D3",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 4583,
+      "output_tokens": 645,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 3.705,
+      "cost_usd": 0.0007808,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch7iKzYcZJvLCJFUmqiN7",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 5940,
+      "output_tokens": 530,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 3.455,
+      "cost_usd": 0.000859,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch7iKzaLQmuVvYHkhZ6QH",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 2353,
+      "output_tokens": 607,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 3.875,
+      "cost_usd": 0.0005388000000000001,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch7iKzYrttMiHdF8Ejujz",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 2150,
+      "output_tokens": 708,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 4.079,
+      "cost_usd": 0.0005690000000000001,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch7iKzbasJieJcvtK4Vq4",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 6797,
+      "output_tokens": 662,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 3.926,
+      "cost_usd": 0.0010107000000000002,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch7iKzYcMuM9nUo32KpZ2",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 3028,
+      "output_tokens": 819,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 4.571,
+      "cost_usd": 0.0007123,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch7iKzZbLhsWFb4zgTGPm",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 2342,
+      "output_tokens": 633,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 3.215,
+      "cost_usd": 0.0005507,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch7iKzcZrTqBtP93r95wy",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 2767,
+      "output_tokens": 621,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 3.367,
+      "cost_usd": 0.0005872,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch7iLDWTsLgypn4Njpkcv",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 2354,
+      "output_tokens": 592,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 3.055,
+      "cost_usd": 0.0005314,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch7iLE7vTTYhcK9U1CR3y",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 4225,
+      "output_tokens": 652,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 3.502,
+      "cost_usd": 0.0007485,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch7iLF8hREMy6EWBSFkYf",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 2077,
+      "output_tokens": 439,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 2.358,
+      "cost_usd": 0.0004272,
+      "stop_reason": "end_turn",
+      "request_id": "req_011Ch7iLGDBZ3KYGkHom7N5R",
+      "effort": "medium"
+    }
+  ],
+  "errors": [
+    {
+      "source": "reddit/MachineLearning",
+      "error": "HTTP 429"
+    }
+  ],
+  "candidates": [
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Carnegie Mellon is putting computer science courses on YouTube for free",
+      "score": 6,
+      "topic": "cours informatique CMU gratuits",
+      "selected": true
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Technical issue at JPMorgan Chase triggers online banking delays for US banks",
+      "score": 5,
+      "topic": "panne JPMorgan banques en ligne",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "BugMeNot has closed",
+      "score": 1,
+      "topic": "fermeture BugMeNot",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Jiff 1.0: A datetime library for Rust",
+      "score": 4,
+      "topic": "bibliothèque datetime Rust",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Frame – 31.5\" color ePaper display",
+      "score": 1,
+      "topic": "écran ePaper 31,5 pouces",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "The Secret ThinkPad Powerbutton Code to Bring Dead Laptops Back to Life (2007)",
+      "score": 1,
+      "topic": "astuce ThinkPad bouton alimentation",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Windows 11 Is Collecting Data on Which Coding Agents and Developer Tools You Use",
+      "score": 4,
+      "topic": "Windows 11 collecte données développeurs",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Microsoft blames monster email outage on software defect introduced in July fix",
+      "score": 4,
+      "topic": "panne email Microsoft Outlook",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Grazing sheep in fields with solar arrays",
+      "score": 1,
+      "topic": "moutons panneaux solaires",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Rust changed me as a developer",
+      "score": 3,
+      "topic": "Rust et développement logiciel",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "United Airlines experiencing a widespread system outage, airline says",
+      "score": 5,
+      "topic": "panne United Airlines",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Squircles",
+      "score": 1,
+      "topic": "squircles design",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "OpenCode Browse",
+      "score": 3,
+      "topic": "OpenCode Browse outil",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Optimizely Compromised, Served Malware on Zoom, GitLab",
+      "score": 4,
+      "topic": "compromission Optimizely malware",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Chemistry is Actually Geometry",
+      "score": 1,
+      "topic": "chimie et géométrie",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Aristotle Expands into Rust",
+      "score": 3,
+      "topic": "Aristotle compilateur Rust",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "My Quest to push native Three.js quality match AAA Game Engines",
+      "score": 3,
+      "topic": "Three.js moteur 3D",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "How to Break into Security, Ptacek Edition (2012)",
+      "score": 2,
+      "topic": "carrière sécurité informatique",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "How to Intercept HTTP/3 Traffic: QUIC and Qpack",
+      "score": 3,
+      "topic": "interception trafic HTTP/3",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Do Repeat Yourself",
+      "score": 2,
+      "topic": "principe DRY programmation",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Show HN: Sutra-OS – A self-hosted ontology platform",
+      "score": 4,
+      "topic": "plateforme ontologie open source",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Launch HN: Axonnic (YC F26) – Sleeves that track fingers and estimate force",
+      "score": 5,
+      "topic": "manchon capteurs doigts robots",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Running coding agents without handing them my credentials",
+      "score": 5,
+      "topic": "agents de code sans identifiants",
+      "selected": true
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Claude Mythos slashed software work to onboard AMD GPUs to around three days",
+      "score": 5,
+      "topic": "Claude et GPU AMD",
+      "selected": true
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Show HN: 1.499x speedup and 28.5% dynamic energy drop on A40 via BF16 tiling",
+      "score": 3,
+      "topic": "optimisation GPU énergie",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Show HN: Win98 PE Interpreter in WebAssembly – StarCraft and Diablo on Phones",
+      "score": 2,
+      "topic": "émulation Windows WebAssembly",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "The Weather at Home",
+      "score": 1,
+      "topic": "météo maison",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Large Angle Period of the Pendulum",
+      "score": 1,
+      "topic": "pendule grand angle",
+      "selected": false
+    },
+    {
+      "source": "reddit/datascience",
+      "section": "data",
+      "title": "Has anyone transitioned out of tech or data science in the last year or two?",
+      "score": 4,
+      "topic": "reconversion hors data science",
+      "selected": false
+    },
+    {
+      "source": "reddit/datascience",
+      "section": "data",
+      "title": "Why survivor comparisons can be biased in a randomized trial even when survival rates match",
+      "score": 3,
+      "topic": "biais survivants essai randomisé",
+      "selected": false
+    },
+    {
+      "source": "reddit/datascience",
+      "section": "data",
+      "title": "My 80% intervals for a 24h price range only cover 65%, even though pinball loss looks fine. What am I missing?",
+      "score": 5,
+      "topic": "intervalles de prédiction Bitcoin",
+      "selected": true
+    },
+    {
+      "source": "reddit/datascience",
+      "section": "data",
+      "title": "Applying CUPED to Clustered Experiments",
+      "score": 4,
+      "topic": "CUPED expérimentations clusters",
+      "selected": false
+    },
+    {
+      "source": "reddit/datascience",
+      "section": "data",
+      "title": "Weekly Entering & Transitioning - Thread 16 Nov, 2026 - 23 Nov, 2026",
+      "score": 2,
+      "topic": "fil hebdo entrée data science",
+      "selected": false
+    },
+    {
+      "source": "reddit/datascience",
+      "section": "data",
+      "title": "Asking for feedback for my personal spatial analysis projects",
+      "score": 3,
+      "topic": "projet analyse spatiale",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Five EU countries announce migrant deportation centre in Rwanda",
+      "score": 6,
+      "topic": "centres de retour migrants Rwanda",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Houthi rebel advance in Yemen may further destabilise global economy",
+      "score": 6,
+      "topic": "avancée houthis Yémen",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Nvidia dismisses 'Bring Jensen Back' campaign as Trump backs effort to reinstate ex CEO",
+      "score": 4,
+      "topic": "Nvidia Jensen Huang campagne",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Landmark Crimea bridge hit as Russia reports biggest Ukrainian drone attack of war",
+      "score": 7,
+      "topic": "guerre Ukraine attaque drones Crimée",
+      "selected": true
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "When will we see Robert Pattinson as Bond in cinemas?",
+      "score": 1,
+      "topic": "Robert Pattinson James Bond",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Forensic expert says his analysis of autopsy photos suggests Epstein was killed",
+      "score": 3,
+      "topic": "affaire Epstein autopsie",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Lindsay Clancy to face retrial next year for deaths of her three children",
+      "score": 2,
+      "topic": "procès Lindsay Clancy",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Two mass shootings in South Africa leave 17 dead",
+      "score": 4,
+      "topic": "fusillades Afrique du Sud",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Gérard Depardieu drops appeal against sexual assault conviction",
+      "score": 1,
+      "topic": "Depardieu appel abandonné",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Raye, Rosalía and Dolly Parton recognised in Grammy nominations",
+      "score": 0,
+      "topic": "Grammy Awards nominations",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Ashes of exiled Nobel Laureate Miguel Ángel Asturias returned to Guatemala",
+      "score": 2,
+      "topic": "cendres Miguel Ángel Asturias",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Estonia to close Russia border crossings after attempted drone factory arson attack",
+      "score": 6,
+      "topic": "Estonie sabotage Russie frontière",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Street cricket with a legend then metro ride as William and Kate begin India visit",
+      "score": 1,
+      "topic": "visite royale Inde",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "New York teen reunites with cat missing after building collapse",
+      "score": 1,
+      "topic": "chat retrouvé New York",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Robert Pattinson: How the Twilight star became 007",
+      "score": 1,
+      "topic": "Robert Pattinson James Bond",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Faisal Islam: What's in the Brexit reset food deal and are there trade-offs?",
+      "score": 4,
+      "topic": "accord Brexit alimentaire UE",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Five EU states announce plans for immigration ‘return hubs’ in Rwanda",
+      "score": 6,
+      "topic": "centres de retour migrants Rwanda",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "US basketball player arrested with 75lb of marijuana at Nigerian airport, say authorities",
+      "score": 2,
+      "topic": "trafic cannabis Nigeria",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Relocation of Cape Town baboons to sanctuary ignites heated protests",
+      "score": 2,
+      "topic": "babouins Cape Town",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Delaware hit by rare November tornado",
+      "score": 1,
+      "topic": "tornade Delaware",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Rio Tinto agrees to pay US$250m to begin repairing ‘devastation’ left by Panguna mine",
+      "score": 4,
+      "topic": "Rio Tinto Panguna dépollution",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Eurovision organisers criticise Malaysian removal of LGBT+ footage in first Asian contest",
+      "score": 1,
+      "topic": "Eurovision Asie censure",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Trump to embark on Asia trip in apparent foreign policy push before end of term",
+      "score": 5,
+      "topic": "voyage Trump Asie politique étrangère",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Canada could work with Chinese automakers if US trade talks fail, says Carney",
+      "score": 5,
+      "topic": "Canada constructeurs chinois négociations",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "David Jones’ total debt is over $400m including millions owed to staff, administrators confirm",
+      "score": 4,
+      "topic": "faillite David Jones",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Truck driver fired for ‘unsafe’ use of smartglasses in first reported sacking over device in Australia",
+      "score": 3,
+      "topic": "lunettes connectées licenciement",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Labor policy backflip will allow more backpackers to work in regional Australia",
+      "score": 2,
+      "topic": "visa vacanciers Australie",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Proposed NSW laws to allow coalmine to increase production pose ‘serious corruption risk’",
+      "score": 2,
+      "topic": "mine de charbon Nouvelle-Galles",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Police searching for three stolen Melbourne Cup trophies worth $1m each",
+      "score": 1,
+      "topic": "trophées Melbourne Cup volés",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Ukraine hits Kerch bridge between Russia and occupied Crimea",
+      "score": 7,
+      "topic": "attaque pont de Kertch",
+      "selected": true
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "‘It’s like the 16th-century version of doomscrolling’: the Book of Miracles may fetch £1m at auction",
+      "score": 1,
+      "topic": "livre enluminé aux enchères",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Andy Burnham to say Brexit ‘has not worked’ and he will sign new deal with EU",
+      "score": 4,
+      "topic": "Brexit nouvel accord UE",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Monday briefing: The many stages of the UK-EU relationship – and what’s next",
+      "score": 4,
+      "topic": "relation Royaume-Uni UE",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Third US aircraft carrier brings thousands more troops to Middle East",
+      "score": 6,
+      "topic": "porte-avions américain Moyen-Orient Iran",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Saudi Arabia strategy challenged by anti-Houthi forces in Yemen",
+      "score": 5,
+      "topic": "Arabie saoudite stratégie Yémen",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Revealed: Israel uploaded millions of photos to Amazon’s facial recognition platform to track Palestinians",
+      "score": 4,
+      "topic": "Israël Amazon reconnaissance faciale",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "‘I saw a picture of a two-year-old girl buried in mud. I knew we had to do something’ – This is climate breakdown",
+      "score": 2,
+      "topic": "inondations Pakistan climat",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Alan Milburn urges Burnham to spend billions on ‘new deal’ for young people",
+      "score": 4,
+      "topic": "emploi des jeunes Milburn",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Refused UK asylum seekers to lose five-day grace period and face immediate removal",
+      "score": 3,
+      "topic": "demandeurs d'asile Royaume-Uni",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Ministers to end Palantir’s contract with NHS in England in 2029",
+      "score": 4,
+      "topic": "contrat Palantir NHS",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Leave.EU and Vote Leave veterans launch rival campaigns to defend Brexit",
+      "score": 2,
+      "topic": "campagnes Brexit",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "How Milburn won over Labour on tackling rising youth unemployment",
+      "score": 4,
+      "topic": "Milburn chômage des jeunes",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Trump defends commerce secretary Lutnick for allegedly slow-walking Nvidia chip export restrictions – live",
+      "score": 6,
+      "topic": "Lutnick puces Nvidia exportations",
+      "selected": true
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Fiona the hippo under veterinary care after eating hat at Cincinnati zoo",
+      "score": 0,
+      "topic": "hippopotame Fiona zoo",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "United Airlines says ‘widespread’ system outage resolved",
+      "score": 5,
+      "topic": "panne United Airlines",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Band of baby sea turtles swims into ocean after historic California nesting",
+      "score": 1,
+      "topic": "tortues marines Californie",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Cause of death released for partner of Gypsy Rose Blanchard",
+      "score": 1,
+      "topic": "mort partenaire Gypsy Rose",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "'Complete system reset' needed to get 440,000 young people into work, says major review",
+      "score": 6,
+      "topic": "Milburn rapport jeunes emploi",
+      "selected": true
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "California sues OpenAI over Hugging Face attack",
+      "score": 5,
+      "topic": "Californie poursuit OpenAI",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "Aged 16-24 and looking for work? Use our look-up to find out which areas have the most jobs",
+      "score": 4,
+      "topic": "emploi des 16-24 ans",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "We couldn't afford a house alone, so we bought one with strangers",
+      "score": 4,
+      "topic": "achat immobilier à plusieurs",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "Create more jobs for under-25s by cutting National Insurance, key report urges",
+      "score": 6,
+      "topic": "cotisations patronales jeunes emploi",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "Customers report service outages at major US banks",
+      "score": 5,
+      "topic": "pannes banques américaines Chase",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "Gas starts flowing from Jackdaw after government green light",
+      "score": 3,
+      "topic": "gaz Jackdaw mer du Nord",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "Intel sued by investors after PC sales slump hits share price",
+      "score": 5,
+      "topic": "Intel procès investisseurs",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "Avoid this Black Friday scam - how to check it's a real deal",
+      "score": 2,
+      "topic": "arnaques Black Friday",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "Thrift shop asks shoppers to nominate a charity",
+      "score": 1,
+      "topic": "friperie choix associations",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "'Break-in and rising costs could kill my business'",
+      "score": 2,
+      "topic": "petite entreprise cambriolage",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "'Parents are offering to pay kids' wages': Salon owner",
+      "score": 6,
+      "topic": "cotisations patronales jeunes emploi",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "L'Assemblée adopte un texte soutenu par le gouvernement pour faciliter le déblocage de l'épargne salariale",
+      "score": 6,
+      "topic": "épargne salariale déblocage loi",
+      "selected": true
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Les agents des services publics \"ont vraiment besoin d'être reconnus et revalorisés\", souligne la CFDT Education avant la mobilisation du 17 novembre",
+      "score": 5,
+      "topic": "fonction publique mobilisation salaires",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "\"C'est pire que d'habitude\", \"Ça va être un bazar\"… La fermeture de l'A13 pour neuf mois provoque déjà des bouchons en Île-de-France et inquiète les communes",
+      "score": 5,
+      "topic": "fermeture A13 travaux",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Retraites : existe-t-il des trimestres validés sans travailler ?",
+      "score": 5,
+      "topic": "trimestres retraites validés",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "À Lyon, la justice autorise le cortège de la mobilisation du 17 novembre à manifester jusqu'à la place Bellecour",
+      "score": 4,
+      "topic": "manifestation Lyon 17 novembre",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Logement : faut-il assouplir l'interdiction de louer les passoires thermiques ?",
+      "score": 6,
+      "topic": "passoires thermiques location",
+      "selected": true
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Spécialités culinaires, concours de \"glouglous\"... Le dindon a sa fête dédiée en Dordogne, près d'Angoulême",
+      "score": 1,
+      "topic": "foire aux dindons",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "\"Des promesses qui ne pourront pas être tenues\", déplore le président UDI du Loiret qui décline l'invitation à Matignon concernant le budget 2027",
+      "score": 5,
+      "topic": "budget 2027 départements",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "À Honfleur, la mairie demande aux propriétaires des immeubles à risque du centre historique de faire expertiser leur bien",
+      "score": 3,
+      "topic": "immeubles à risque Honfleur",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "VIDEO. \"Si l'acquéreur ne trouve pas de financement, c'est lui qui a le vrai prix\" : à Rennes, des vendeurs doivent réduire leurs exigences face aux difficultés d'accès au crédit immobilier",
+      "score": 5,
+      "topic": "marché immobilier crédit projet loi",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Transports, cortèges… Quelles perturbations pour la mobilisation du 17 novembre ?",
+      "score": 5,
+      "topic": "mobilisation fonction publique 17 novembre",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "\"Nous pouvons sortir de la dette\" plaide François Villeroy de Galhau",
+      "score": 5,
+      "topic": "dette publique France",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Le projet de loi sur le logement examiné à l'Assemblée \"va uniquement dans le sens des bailleurs\", dénonce la Fondation pour le logement des défavorisés",
+      "score": 5,
+      "topic": "projet loi logement passoires",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "REPORTAGE. Liberté pédagogique, part variable de la rémunération… Les conditions de travail des professeurs en Estonie peuvent-elles être un modèle ?",
+      "score": 5,
+      "topic": "enseignants Estonie modèle",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "\"La France décroche\", alerte l'ancien gouverneur de la Banque de France qui appelle à \"répondre\" à \"cette crise de la dette\"",
+      "score": 6,
+      "topic": "dette publique France",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Passoires thermiques : vers un retour à la location sous conditions",
+      "score": 6,
+      "topic": "passoires thermiques location",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Les informés du matin du lundi 16 novembre 2026",
+      "score": 2,
+      "topic": "émission matinale informés",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Début de travaux sur l’A13 : \"quand on parle de sécurité, on ne transige pas\"",
+      "score": 5,
+      "topic": "fermeture A13 travaux",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "\"Le pouvoir d'achat, c'est d'abord la dépense de logement\" rappelle la directrice générale du promoteur Nexity",
+      "score": 5,
+      "topic": "pouvoir d'achat logement",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Salaires, croissance, jeunesse... Le \"8h30 franceinfo\" de François Villeroy de Galhau",
+      "score": 5,
+      "topic": "croissance salaires Villeroy",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "Marine Le Pen réitère auprès de l'ambassadeur ukrainien que la France ne pourrait \"plus aider financièrement\" Kiev si elle est élue",
+      "score": 5,
+      "topic": "Le Pen aide Ukraine",
+      "selected": true
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "\"J'ai fait de mon mieux\" : Emmanuel Macron dresse un bilan de son passage à l'Élysée sous forme de mea culpa pour les dix ans de sa candidature à la présidentielle",
+      "score": 4,
+      "topic": "bilan Macron mandat",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "\"J'ai fait de mon mieux\" : à six mois de la fin de son mandat, Emmanuel Macron reconnaît \"des erreurs\" au cours de ses dix ans au pouvoir",
+      "score": 4,
+      "topic": "bilan Macron mandat",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "Emmanuel Macron reconnaît des \"erreurs\" durant ses quinquennats : \"Il ne s'est pas trompé, c'est sa politique qui était une erreur\", réagit Alexis Corbière",
+      "score": 3,
+      "topic": "réaction Macron bilan",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "Un quart des Français adhèrent encore à des préjugés antisémites, alerte une étude",
+      "score": 4,
+      "topic": "antisémitisme sondage",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "APPEL A TEMOIGNAGES. Présidentielle 2027 : posez vos questions à Gabriel Attal, invité de \"L'Heure de vérité\"",
+      "score": 3,
+      "topic": "Attal présidentielle 2027",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "\"Le rassemblement commence par la primaire\" de la droite et du centre pour la présidentielle, plaident un millier d'élus locaux dans une tribune",
+      "score": 3,
+      "topic": "primaire droite centre",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "ÉDITO. Sur l'Ukraine, Marine Le Pen a-t-elle une \"position antipatriotique\" ?",
+      "score": 5,
+      "topic": "Le Pen aide Ukraine",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "\"L'aide à l'Ukraine, c'est absolument vital\", assure Yves Doutriaux, conseiller d’État honoraire et ancien représentant de la France à l’OSCE",
+      "score": 4,
+      "topic": "aide Ukraine",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "VIDEO. Marine Le Pen, qui va présenter mardi son projet de réforme des retraites, a \"une solution pour financer une part de capitalisation pour tous les Français\", assure Jean-Philippe Tanguy",
+      "score": 4,
+      "topic": "Le Pen réforme retraites",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "PODCAST. Les proviseurs épuisés, Jean-Luc Melenchon interdit en Israël et rumeur de black-out : ça dit quoi ce 13 novembre ?",
+      "score": 3,
+      "topic": "actualité politique et Mélenchon",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "EDITO. À cinq mois du premier tour de la présidentielle, le dossier ukrainien s’invite dans la campagne",
+      "score": 5,
+      "topic": "Le Pen aide Ukraine",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "La situation autour du budget 2027 \"devient intenable\", préviennent des présidents de départements avant leur rendez-vous avec le Premier ministre",
+      "score": 5,
+      "topic": "budget 2027 départements",
+      "selected": true
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "Panne d’Outlook : ce que le « vendredi sans e-mails » révèle de notre dépendance à la messagerie",
+      "score": 4,
+      "topic": "panne Outlook dépendance email",
+      "selected": false
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "Recherche : les grands éditeurs commerciaux demeurent hégémoniques dans l’écosystème scientifique, mais leur rôle évolue",
+      "score": 4,
+      "topic": "éditeurs scientifiques",
+      "selected": false
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "Quel avenir pour les magazines de mode à l’ère numérique ?",
+      "score": 2,
+      "topic": "magazines de mode",
+      "selected": false
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "CBD en France : les risques de la multiplication des cannabinoïdes de synthèse",
+      "score": 3,
+      "topic": "CBD cannabinoïdes de synthèse",
+      "selected": false
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "Associer les « Français issus de l’immigration » à de la violence : quand la culture du soupçon s’impose dans le débat public",
+      "score": 2,
+      "topic": "immigration et débat public",
+      "selected": false
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "Des siècles avant TikTok, ce best-seller de 1579 offrait aux lecteurs leur dose quotidienne de « brain rot »",
+      "score": 1,
+      "topic": "best-seller 1579",
+      "selected": false
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "El Niño s’intensifie. Le signe avant-coureur d’une crise bancaire silencieuse ?",
+      "score": 5,
+      "topic": "El Niño risque bancaire",
+      "selected": true
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "Le droit international s’est-il tu face aux canons ?",
+      "score": 3,
+      "topic": "droit international conflits",
+      "selected": false
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "Robots tueurs autonomes, où en sommes-nous vraiment ?",
+      "score": 4,
+      "topic": "robots tueurs autonomes",
+      "selected": false
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "Comment les éditeurs de jeux vidéo habitués à Steam ont réagi à l’arrivée d’Epic Games Store",
+      "score": 2,
+      "topic": "jeux vidéo Epic Games Store",
+      "selected": false
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "« Grand Theft Auto VI » : Pourquoi GTA V est son meilleur allié, et son pire ennemi ?",
+      "score": 1,
+      "topic": "GTA VI",
+      "selected": false
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "Que deviennent les familles des dirigeants autoritaires après leur départ ? Six études de cas en Afrique",
+      "score": 2,
+      "topic": "familles dirigeants autoritaires Afrique",
+      "selected": false
+    }
+  ]
+}
