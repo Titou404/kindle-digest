@@ -420,7 +420,7 @@ table{border-collapse:collapse; width:100%; font-size:.84rem}
 
   <div class="pipeline">
     <aside class="rail" aria-label="Graphe du workflow">
-      <p class="rail-cap">Le graphe · cliquer un nœud</p>
+      <p class="rail-cap">Le graphe · cliquer sur un nœud</p>
       <svg id="graph" viewBox="0 0 300 600"></svg>
     </aside>
     <div class="scenes" id="scenes"></div>
@@ -556,7 +556,7 @@ const STEPS = [
       'Réponse inutilisable mais facturée : comptée dans le coût, erreur <code>summarize:&lt;source&gt;</code>.',
       'Le résumé s\'écrit uniquement à partir du texte fourni, placé entre balises et échappé.']},
   {id: 'render_epub', node: 'render_epub', verb: 'Mettre en page', llm: false, why: 'une mise en page déterministe',
-    pitch: 'Les résumés deviennent un livre : un chapitre par rubrique, les posts Reddit tels qu\'écrits, et une dernière page de bilan.',
+    pitch: 'Les résumés deviennent un journal : un chapitre par rubrique, les posts Reddit tels qu\'écrits, et une dernière page de bilan.',
     files: ['src/digest/nodes/render_epub.py'],
     reads: ['summarized', 'selected', 'collected', 'cleaned', 'llm_calls', 'errors'], writes: ['epub_path', 'metrics'],
     rules: ['Chapitres : Data & IA, Reddit, Monde, Économie, France, puis « Bilan du jour ». Une rubrique vide n\'a pas de chapitre.',
@@ -603,6 +603,8 @@ const FMT = {
 // A number that tweens from its previous value when the run changes (same key = same counter).
 const num = (key, value, fmt = 'int') =>
   `<span class="n" data-k="${esc(key)}" data-v="${value}" data-f="${fmt}">${FMT[fmt](value)}</span>`;
+// Durations are stored in seconds with 3 decimals: 0 means "under a millisecond", not "no time".
+const ms = (key, seconds) => seconds > 0 ? `${num(key, seconds * 1000)} ms` : '&lt; 1 ms';
 const pct = (part, total) => total ? Math.round(100 * part / total) : 0;
 const plural = (n, one, many) => n > 1 ? many : one;
 const code = s => `<code>${esc(s)}</code>`;
@@ -743,7 +745,7 @@ const VIEWS = {
         ['Sans date', num('clean.m4', c.undated), 'undated'],
         ['Sans titre ou sans URL', num('clean.m5', c.invalid), 'invalid'],
         ['Articles gardés', num('clean.m6', c.articles_out), 'articles_out'],
-        ['Durée', `${num('clean.m7', d.node('clean').duration_s * 1000)} ms`, 'duration_s'],
+        ['Durée', ms('clean.m7', d.node('clean').duration_s), 'duration_s'],
       ]),
     };
   },
@@ -808,7 +810,7 @@ const VIEWS = {
         ['Écartés : sujet déjà présent', num('select.m4', s.duplicate_topics), 'duplicate_topics'],
         ['Repli « rank a échoué »', s.rank_failed ? 'oui' : 'non', 'rank_failed'],
         ...Object.entries(SECTIONS).map(([key, name]) => [`Rubrique ${name}`, `${d.bySection[key].length} / ${QUOTAS[key]}`]),
-        ['Durée', `${num('select.m5', d.node('select').duration_s * 1000)} ms`, 'duration_s'],
+        ['Durée', ms('select.m5', d.node('select').duration_s), 'duration_s'],
       ]) + `<h4>Les mieux notés parmi les non retenus</h4>` + table(
         [col('Titre'), col('Source'), col('Sujet'), col('Note', true)],
         losers.map(c => [esc(c.title), esc(c.source), esc(c.topic), `${c.score}/10`])),
@@ -890,7 +892,7 @@ const VIEWS = {
         ['Chapitres', num('epub.m5', articleChapters)],
         ['Taille du fichier', `${num('epub.m6', e.size_bytes)} octets`, 'size_bytes'],
         ['Fichier', `out/digest-${editionOf(run)}.epub`, 'epub_path', true],
-        ['Durée', `${num('epub.m7', d.node('render_epub').duration_s * 1000)} ms`, 'duration_s'],
+        ['Durée', ms('epub.m7', d.node('render_epub').duration_s), 'duration_s'],
       ]),
     };
   },
