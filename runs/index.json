@@ -1,6 +1,11 @@
 {
   "runs": [
     {
+      "file": "2026-11-20_0217.json",
+      "finished_at": "2026-11-20T02:17:34+01:00",
+      "trigger": "schedule"
+    },
+    {
       "file": "2026-11-19_0214.json",
       "finished_at": "2026-11-19T02:14:39+01:00",
       "trigger": "schedule"
