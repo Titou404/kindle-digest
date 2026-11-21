@@ -1,0 +1,1568 @@
+{
+  "date": "2026-11-21",
+  "edition": "2026-11-21",
+  "finished_at": "2026-11-21T01:49:00+01:00",
+  "git_sha": "1f0cdb1",
+  "mode": "real",
+  "trigger": "schedule",
+  "config": {
+    "model": {
+      "rank": "claude-haiku-5-5",
+      "summarize": "claude-haiku-5-5"
+    },
+    "effort": {
+      "rank": "low",
+      "summarize": "medium"
+    },
+    "prompts": {
+      "rank": "v1",
+      "summarize": "v2"
+    }
+  },
+  "counts": {
+    "collected": 248,
+    "after_clean": 137,
+    "selected": 12,
+    "summarized": 12,
+    "raw": 0
+  },
+  "totals": {
+    "seconds": 58.72,
+    "llm_calls": 13,
+    "input_tokens": 57703,
+    "output_tokens": 11373,
+    "thinking_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cost_usd": 0.011457
+  },
+  "nodes": [
+    {
+      "node": "collect:hackernews",
+      "duration_s": 0.305,
+      "counts": {
+        "articles": 30
+      }
+    },
+    {
+      "node": "collect:reddit/datascience",
+      "duration_s": 0.175,
+      "counts": {
+        "articles": 0
+      }
+    },
+    {
+      "node": "collect:reddit/MachineLearning",
+      "duration_s": 0.099,
+      "counts": {
+        "articles": 0
+      }
+    },
+    {
+      "node": "collect:bbc/world",
+      "duration_s": 0.651,
+      "counts": {
+        "articles": 25
+      }
+    },
+    {
+      "node": "collect:guardian/world",
+      "duration_s": 0.258,
+      "counts": {
+        "articles": 45
+      }
+    },
+    {
+      "node": "collect:bbc/business",
+      "duration_s": 0.66,
+      "counts": {
+        "articles": 58
+      }
+    },
+    {
+      "node": "collect:franceinfo/economie",
+      "duration_s": 0.62,
+      "counts": {
+        "articles": 20
+      }
+    },
+    {
+      "node": "collect:franceinfo/politique",
+      "duration_s": 0.62,
+      "counts": {
+        "articles": 20
+      }
+    },
+    {
+      "node": "collect:theconversation/fr",
+      "duration_s": 0.438,
+      "counts": {
+        "articles": 50
+      }
+    },
+    {
+      "node": "clean",
+      "duration_s": 0.002,
+      "counts": {
+        "articles_in": 248,
+        "invalid": 0,
+        "undated": 0,
+        "too_old": 104,
+        "duplicates": 7,
+        "articles_out": 137
+      }
+    },
+    {
+      "node": "rank",
+      "duration_s": 15.074,
+      "counts": {
+        "articles_in": 137,
+        "scored": 137,
+        "missing": 0,
+        "invalid": 0
+      }
+    },
+    {
+      "node": "select",
+      "duration_s": 0.0,
+      "counts": {
+        "candidates": 134,
+        "selected": 12,
+        "raw": 0,
+        "duplicate_topics": 2,
+        "rank_failed": 0
+      }
+    },
+    {
+      "node": "fetch_text",
+      "duration_s": 3.965,
+      "counts": {
+        "from_feed": 2,
+        "downloaded": 10,
+        "failed": 0,
+        "too_short": 0,
+        "truncated": 0,
+        "raw": 0,
+        "chars_kept": 71309,
+        "chars_cut": 0
+      }
+    },
+    {
+      "node": "summarize:hackernews",
+      "duration_s": 4.147,
+      "counts": {
+        "input_chars": 3086,
+        "summary_words": 219
+      }
+    },
+    {
+      "node": "summarize:hackernews",
+      "duration_s": 4.848,
+      "counts": {
+        "input_chars": 2849,
+        "summary_words": 274
+      }
+    },
+    {
+      "node": "summarize:hackernews",
+      "duration_s": 4.017,
+      "counts": {
+        "input_chars": 19449,
+        "summary_words": 188
+      }
+    },
+    {
+      "node": "summarize:bbc/world",
+      "duration_s": 4.223,
+      "counts": {
+        "input_chars": 4280,
+        "summary_words": 213
+      }
+    },
+    {
+      "node": "summarize:guardian/world",
+      "duration_s": 3.968,
+      "counts": {
+        "input_chars": 4302,
+        "summary_words": 205
+      }
+    },
+    {
+      "node": "summarize:bbc/world",
+      "duration_s": 3.985,
+      "counts": {
+        "input_chars": 3638,
+        "summary_words": 197
+      }
+    },
+    {
+      "node": "summarize:franceinfo/economie",
+      "duration_s": 3.124,
+      "counts": {
+        "input_chars": 3655,
+        "summary_words": 133
+      }
+    },
+    {
+      "node": "summarize:franceinfo/economie",
+      "duration_s": 3.356,
+      "counts": {
+        "input_chars": 2958,
+        "summary_words": 169
+      }
+    },
+    {
+      "node": "summarize:franceinfo/economie",
+      "duration_s": 3.015,
+      "counts": {
+        "input_chars": 4135,
+        "summary_words": 184
+      }
+    },
+    {
+      "node": "summarize:theconversation/fr",
+      "duration_s": 3.41,
+      "counts": {
+        "input_chars": 9992,
+        "summary_words": 219
+      }
+    },
+    {
+      "node": "summarize:franceinfo/politique",
+      "duration_s": 3.331,
+      "counts": {
+        "input_chars": 3588,
+        "summary_words": 213
+      }
+    },
+    {
+      "node": "summarize:theconversation/fr",
+      "duration_s": 3.143,
+      "counts": {
+        "input_chars": 9377,
+        "summary_words": 174
+      }
+    },
+    {
+      "node": "render_epub",
+      "duration_s": 0.009,
+      "counts": {
+        "articles": 12,
+        "raw_posts": 0,
+        "size_bytes": 29482
+      }
+    },
+    {
+      "node": "deliver",
+      "duration_s": 2.252,
+      "counts": {
+        "enabled": 1,
+        "sent": 1
+      }
+    }
+  ],
+  "llm_calls": [
+    {
+      "task": "rank",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v1",
+      "input_tokens": 19339,
+      "output_tokens": 4140,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 15.073,
+      "cost_usd": 0.0040038999999999995,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChF9qTDUbUTTS5YHoxbeg",
+      "effort": "low"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 2187,
+      "output_tokens": 654,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 4.146,
+      "cost_usd": 0.0005457,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChF9rrSVYSLLtpxEVe3dt",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 2049,
+      "output_tokens": 801,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 4.848,
+      "cost_usd": 0.0006054,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChF9rrTVnKqNSuKJ7gsSe",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 7361,
+      "output_tokens": 619,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 4.014,
+      "cost_usd": 0.0010456,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChF9rrSFGyJbWSFGqp8XM",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 2530,
+      "output_tokens": 645,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 4.222,
+      "cost_usd": 0.0005755000000000001,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChF9rrSVxScAd8cUHuQZJ",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 2463,
+      "output_tokens": 568,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 3.968,
+      "cost_usd": 0.0005303,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChF9rrUyaJbzG41jPVzrw",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 2211,
+      "output_tokens": 618,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 3.983,
+      "cost_usd": 0.0005300999999999999,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChF9rrSjmraRFxp8r2ahV",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 2595,
+      "output_tokens": 476,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 3.123,
+      "cost_usd": 0.0004975,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChF9rrQmTihpaxP5D7MzU",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 2256,
+      "output_tokens": 485,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 3.356,
+      "cost_usd": 0.00046810000000000005,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChF9rrUyb9zdcinx1hG6c",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 2721,
+      "output_tokens": 541,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 3.015,
+      "cost_usd": 0.0005426000000000001,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChF9s5dkaJ57U3ygkdk2z",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 4816,
+      "output_tokens": 626,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 3.409,
+      "cost_usd": 0.0007946000000000001,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChF9s6f1sp6g5iXDZPRY4",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 2505,
+      "output_tokens": 628,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 3.331,
+      "cost_usd": 0.0005645,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChF9s9Gn1qCAriUuheu3i",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 4670,
+      "output_tokens": 572,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 3.143,
+      "cost_usd": 0.000753,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChF9s9JWoswB1otZGDjab",
+      "effort": "medium"
+    }
+  ],
+  "errors": [
+    {
+      "source": "reddit/datascience",
+      "error": "HTTP 404"
+    },
+    {
+      "source": "reddit/MachineLearning",
+      "error": "HTTP 429"
+    }
+  ],
+  "candidates": [
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Levent Alpöge claims proof of the Generalized Riemann Hypothesis [pdf]",
+      "score": 6,
+      "topic": "Preuve GRH annoncée par Alpöge",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Hurried Announcement: Alessandro Masullo GRH",
+      "score": 4,
+      "topic": "Annonce preuve GRH Masullo",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Frostbite: A new CPU architecture discovered, designed and verified by AI",
+      "score": 7,
+      "topic": "CPU conçu par IA",
+      "selected": true
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "If you can't explain something in simple terms, you don't understand it (2017)",
+      "score": 2,
+      "topic": "Expliquer simplement la compréhension",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Inkling 2 Mini",
+      "score": 2,
+      "topic": "Modèle Inkling 2 Mini",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Signal Is Serious About Protecting Your Privacy",
+      "score": 1,
+      "topic": "Vie privée de Signal",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Language Models Can Rewrite Their Own Weights",
+      "score": 6,
+      "topic": "Modèles de langage réécrivant leurs poids",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Unforced Navier-Stokes Singularity and the Generalized Riemann Hypothesis",
+      "score": 3,
+      "topic": "Navier-Stokes et GRH",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "We promoted developers into architects without informing them",
+      "score": 5,
+      "topic": "Développeurs promus architectes",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Finite-time blow-up for the Navier–Stokes equations",
+      "score": 2,
+      "topic": "Explosion Navier-Stokes en temps fini",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Google Workers Tell Their Employer Not to Punish Schools That Don't Want AI",
+      "score": 4,
+      "topic": "Salariés Google et IA à l'école",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Nvidia accounting under SEC investigation, sources say",
+      "score": 7,
+      "topic": "Enquête SEC sur Nvidia",
+      "selected": true
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "The stochastic parrots have apparently proved the Riemann Hypothesis",
+      "score": 5,
+      "topic": "IA et hypothèse de Riemann",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Vibecoding an inference chip",
+      "score": 6,
+      "topic": "Vibecoding d'une puce d'inférence",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Nasdaq erases all 2026 gains",
+      "score": 8,
+      "topic": "Krach du Nasdaq et IA",
+      "selected": true
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "I'm Peter Roberts, immigration attorney who does work for YC and startups. AMA",
+      "score": 3,
+      "topic": "AMA avocat en immigration",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Winedroid – run Android apps without Android (WASM demo)",
+      "score": 2,
+      "topic": "Android via WASM",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "DreamCoder: Coding harness and IDE from the author of Mastering Emacs",
+      "score": 4,
+      "topic": "DreamCoder, outil de codage",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "NINLIVE: The Nine Inch Nails live archive",
+      "score": 0,
+      "topic": "Archive live de Nine Inch Nails",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "And yet, it moves",
+      "score": 1,
+      "topic": "Citation de Galilée",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Show HN: OpenComputer – an open source alternative to Devin",
+      "score": 6,
+      "topic": "Agent de code open source",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Re: Riemann",
+      "score": 2,
+      "topic": "Discussion sur Riemann",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Running two PSP emulators on one Switch 2 and sharing one via GameShare",
+      "score": 1,
+      "topic": "Émulateurs PSP sur Switch 2",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Sir Brian May adds new dimension to Hera asteroid",
+      "score": 2,
+      "topic": "Astéroïde Hera et Brian May",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "AI may have solved the most important problem in mathematics",
+      "score": 6,
+      "topic": "IA et hypothèse de Riemann",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "The Hungry Butler Effect: Concealed Commercial Incentives in LLMs",
+      "score": 6,
+      "topic": "Incitations commerciales cachées dans les LLM",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Tech stock sell-off drags markets down as Anthropic shares slide",
+      "score": 8,
+      "topic": "Krach technologique et Anthropic",
+      "selected": true
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "UK to explore even closer ties with EU after agreeing deal, says Burnham",
+      "score": 6,
+      "topic": "Accord UK-UE",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Russian missile hits Poland as Ukraine's allies hold military exercise, says Tusk",
+      "score": 5,
+      "topic": "Missile russe en Pologne",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "French police officers sentenced for beating of music producer Michel Zecler",
+      "score": 3,
+      "topic": "Policiers condamnés pour violences",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "In a year of AI solving maths problems, Anthropic may have just solved the biggest",
+      "score": 6,
+      "topic": "IA et hypothèse de Riemann",
+      "selected": true
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Gérard Depardieu and French author investigated over sexual allegations",
+      "score": 1,
+      "topic": "Depardieu, enquête pour agressions",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Russia targets Kyiv crossings days after Ukraine hits Crimean Bridge",
+      "score": 5,
+      "topic": "Frappes russes sur Kyiv",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Mamdani announces plan to close New York's Rikers Island jail by 2032",
+      "score": 3,
+      "topic": "Fermeture de Rikers Island",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Denmark accuses Russia of plotting to assassinate US-Ukrainian rapper",
+      "score": 4,
+      "topic": "Complot russe au Danemark",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Trump threatens ban on US firms building AI data centres overseas",
+      "score": 7,
+      "topic": "Trump et data centers à l'étranger",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Indian man sentenced to 19-plus years in plot to assassinate US-based Sikh separatist leader",
+      "score": 2,
+      "topic": "Condamnation complot Sikh",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Nearly 600 women killed in South Africa within three months",
+      "score": 3,
+      "topic": "Violences contre les femmes en Afrique du Sud",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Texas death-row inmate screams as execution takes more than one hour",
+      "score": 2,
+      "topic": "Exécution au Texas",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Catherine Zeta-Jones' daughter says parents warned her about 'nepo baby' label",
+      "score": 0,
+      "topic": "Fille de Zeta-Jones",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "South Korea catches 111 students with new measures against exam cheating",
+      "score": 2,
+      "topic": "Triche aux examens en Corée",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "US declassifies more UFO footage filmed in the Middle East",
+      "score": 2,
+      "topic": "Vidéos OVNI du Pentagone",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "What the new UK-EU deal could mean for future post-Brexit relations",
+      "score": 6,
+      "topic": "Accord UK-UE",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Cost of living protests sweep across Europe",
+      "score": 5,
+      "topic": "Manifestations coût de la vie en Europe",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "What we know about the latest Russian missile strikes on Ukraine",
+      "score": 5,
+      "topic": "Frappes russes sur Kyiv",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "ANC fights to keep control of South Africa's key cities after election setback",
+      "score": 2,
+      "topic": "ANC et pouvoir local en Afrique du Sud",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Dead pets were meant to be cremated - then their bodies appeared on a livestream",
+      "score": 2,
+      "topic": "Animaux morts livestream Philippines",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "A new Nepal, an old neighbour - Balendra Shah's India test",
+      "score": 2,
+      "topic": "Népal et Inde",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "'I tell my son it's just fireworks': Life inside Yemeni city besieged by Houthis",
+      "score": 2,
+      "topic": "Siège de Taiz au Yémen",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Mysterious Mercury is about to get a visitor - after spacecraft's eight-year epic voyage",
+      "score": 2,
+      "topic": "Sonde vers Mercure",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "California’s coastal communities on alert as biggest waves in years hit state",
+      "score": 2,
+      "topic": "Vagues en Californie",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "‘Weak and dizzy’: the secretive ICE force-feeding tactics that ended a Cuban father’s hunger strike",
+      "score": 3,
+      "topic": "Grève de la faim à l'ICE",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Race to be next UN secretary general exposes divisions among world powers",
+      "score": 4,
+      "topic": "Élection secrétaire général ONU",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Trump threatens ‘tremendous penalties’ for US tech firms that build datacenters abroad",
+      "score": 7,
+      "topic": "Trump et data centers à l'étranger",
+      "selected": true
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Nasdaq erases all 2026 gains as AI sell-off dampens Anthropic’s second day of trading",
+      "score": 8,
+      "topic": "Krach du Nasdaq et IA",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "California investigates Nvidia over whether chip exports ended up in China",
+      "score": 6,
+      "topic": "Enquête sur Nvidia en Californie",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Victorian Greens seek urgent injunction over how-to-vote cards mimicking party’s branding but preferencing it last",
+      "score": 2,
+      "topic": "Cartes de vote australiennes",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "NSW passes Mount Pleasant coalmine law as Greens claim change an attempt to head off One Nation",
+      "score": 2,
+      "topic": "Mine de charbon en Nouvelle-Galles",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "As the Coalition stares down One Nation in NSW, a new threat is rising: the teals",
+      "score": 2,
+      "topic": "Politique de Nouvelle-Galles du Sud",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Vape users hospitalised after losing consciousness, prompting public health warning in New South Wales",
+      "score": 3,
+      "topic": "Vapotage et sédatif en Australie",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Baby born with heart abnormalities ‘didn’t have a chance’ after non-medical free birth, NSW inquest hears",
+      "score": 2,
+      "topic": "Enquête accouchements à domicile",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "French police officers found guilty of racist assault on black music producer",
+      "score": 3,
+      "topic": "Policiers condamnés pour violences",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Spain frees wealthy US-sought activist on bail as Irish police raid Dublin home",
+      "score": 2,
+      "topic": "Extradition militant pro-palestinien",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Misty-eyed Burnham gambles on closer ties with EU as he throws down gauntlet to Tories and Reform",
+      "score": 6,
+      "topic": "Accord UK-UE",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Denmark to expel Russian diplomat over alleged Moscow link to attempted killing of rapper",
+      "score": 5,
+      "topic": "Complot russe au Danemark",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "EU wants ‘closest possible relationship’ with UK after agreeing Brexit reset deal – live",
+      "score": 6,
+      "topic": "Accord UK-UE",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Iraq university’s removal of male professors teaching women sparks weeks of protests",
+      "score": 3,
+      "topic": "Ségrégation universitaire en Irak",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Indian man sentenced to 19 years in prison for conspiring to kill Sikh separatist in New York",
+      "score": 2,
+      "topic": "Condamnation complot Sikh",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "US reacts cautiously to Myanmar genocide ruling as EU praises ‘critical’ role of UN’s top court",
+      "score": 3,
+      "topic": "Génocide des Rohingyas",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "JP Morgan boss says he will find ways to offset ‘unfair’ rise in UK tax on banks",
+      "score": 5,
+      "topic": "Taxe bancaire au Royaume-Uni",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Police arrest teacher who missed sentencing after indecent assault conviction",
+      "score": 1,
+      "topic": "Enseignant arrêtée au Royaume-Uni",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Florida mechanic found guilty of murdering British woman who attorney says came to US to die",
+      "score": 1,
+      "topic": "Meurtre d'une Britannique en Floride",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Two men killed after glider crashes into Loch Leven in Scotland",
+      "score": 1,
+      "topic": "Accident de planeur en Écosse",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "No one else in Reform is suitable to lead the party, Nigel Farage says",
+      "score": 3,
+      "topic": "Farage et Reform UK",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Trump turns White House press conference into a 2028 succession audition",
+      "score": 3,
+      "topic": "Trump et succession 2028",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "‘A source of inspiration’: California celebrates the late civil rights icon Dolores Huerta",
+      "score": 2,
+      "topic": "Hommage à Dolores Huerta",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Republican senator blocks Trump cyber nominee over January 6 denial",
+      "score": 3,
+      "topic": "Sénateur bloque nominé cyber",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Judge approves $7.25bn Bayer payout to settle claims that Roundup causes cancer",
+      "score": 5,
+      "topic": "Règlement Bayer Roundup",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Man accused of sparking deadly Los Angeles wildfire found guilty",
+      "score": 2,
+      "topic": "Incendie de Palisades condamné",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "Faisal Islam: This cost-cutting UK-EU deal doesn't mean lower prices will follow",
+      "score": 6,
+      "topic": "Accord UK-UE",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "GTA 6 sales hit $3.8bn in a single day - the biggest entertainment launch in history",
+      "score": 2,
+      "topic": "Ventes de GTA 6",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "Should AI be judging our credit worthiness?",
+      "score": 6,
+      "topic": "IA et scoring de crédit",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "Tinned food and long-life milk boost retail sales after 'Be Ready' campaign launch",
+      "score": 4,
+      "topic": "Ventes au détail au Royaume-Uni",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "Airbnb's divisive new house rules come into force",
+      "score": 2,
+      "topic": "Règles Airbnb",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "Mouldy, infested housing for vulnerable people sold as ethical investments abroad",
+      "score": 3,
+      "topic": "Logements insalubres investis",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "Thousands join cost of living protests across Europe",
+      "score": 5,
+      "topic": "Manifestations coût de la vie en Europe",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "Social poker with £5 stake is booming, says dealer",
+      "score": 2,
+      "topic": "Poker social au Royaume-Uni",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "Survey reveals 'major increase' in cost of living",
+      "score": 4,
+      "topic": "Hausse du coût de la vie",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "Could you spot a fake banknote?",
+      "score": 1,
+      "topic": "Faux billets",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "The secret cyber scramble to protect UK fridge freezers",
+      "score": 3,
+      "topic": "Cybersécurité des réfrigérateurs",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Comment des milliers d'employés du géant de l'IA Anthropic sont devenus millionnaires en 24 heures",
+      "score": 7,
+      "topic": "Entrée en bourse d'Anthropic",
+      "selected": true
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Députés et sénateurs parviennent à un accord sur le projet de budget de \"fin de gestion\" pour 2026, avant une possible adoption définitive mardi",
+      "score": 6,
+      "topic": "Budget de fin de gestion 2026",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Avec les nouvelles règles en vigueur, pourrez-vous être encore à découvert ?",
+      "score": 7,
+      "topic": "Nouvelles règles des découverts",
+      "selected": true
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Le logement est le premier poste de dépense qui \"ampute le pouvoir d'achat\" des Français, souligne Christophe Robert, de la Fondation pour le logement des défavorisés",
+      "score": 6,
+      "topic": "Logement et pouvoir d'achat",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Déstockeurs alimentaires : comment expliquer leur succès ?",
+      "score": 4,
+      "topic": "Déstockeurs alimentaires",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "La fraude représente \"entre 200 et 250 millions d'euros de pertes par an\", indique le PDG de la RATP",
+      "score": 4,
+      "topic": "Fraude à la RATP",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Organisations présentes, dispositif de sécurité... A quoi faut-il s'attendre pour les manifestations du samedi 21 novembre ?",
+      "score": 4,
+      "topic": "Manifestations du 21 novembre",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "On vous explique les nouvelles règles de pluralisme que l'Arcom veut appliquer aux influenceurs comme HugoDécrypte ou Guillaume Pley pour la présidentielle",
+      "score": 2,
+      "topic": "Arcom et influenceurs politiques",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Jean-Pierre Farandou se dit favorable à la suppression de l'abattement fiscal de 10% appliqué aux pensions de retraites",
+      "score": 5,
+      "topic": "Abattement fiscal des retraites",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "\"On attend un peu plus de solidarité\", déclare le président de la Confédération des commerçants après les aides annoncés après le 17 octobre",
+      "score": 4,
+      "topic": "Aides aux commerçants sinistrés",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "La maison de \"Coup de foudre à Notting Hill\" à vendre",
+      "score": 0,
+      "topic": "Maison de Notting Hill",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "\"Quand on part au large, juste une journée, c'est environ 1 500 euros de gazole\" : les pêcheurs de coquilles Saint-Jacques restreints par les prix du carburant",
+      "score": 5,
+      "topic": "Pêcheurs et prix du carburant",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "La réforme du crédit à la consommation est \"une bonne chose\" pour Que Choisir Ensemble, inquiet malgré tout du durcissement des autorisations de découvert",
+      "score": 7,
+      "topic": "Réforme du crédit à la consommation",
+      "selected": true
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Encadrement des loyers: est-ce que ça fonctionne ?",
+      "score": 6,
+      "topic": "Encadrement des loyers",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Crédit conso, paiements fractionnés, découverts bancaires… Les règles se durcissent",
+      "score": 7,
+      "topic": "Règles du crédit conso",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Une intersyndicale lance un nouvel appel à la grève et à la mobilisation le 1er décembre, les salariés du privé invités à défiler avec ceux du public",
+      "score": 5,
+      "topic": "Grève intersyndicale 1er décembre",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Les truffes d'hiver peu nombreuses à cause de la météo, lors du lancement de la saison dans le Vaucluse",
+      "score": 1,
+      "topic": "Truffes du Vaucluse",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "\"C'est la récompense de la saison\" : à l'approche de Noël, les producteurs de sapins s'affairent",
+      "score": 1,
+      "topic": "Sapins de Noël",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Le risque de propagation de la grippe aviaire atteint son maximum, les éleveurs doivent une nouvelle fois confiner leurs animaux",
+      "score": 3,
+      "topic": "Grippe aviaire en France",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Au moins 6 milliards d'euros d'économies supplémentaires sont nécessaires pour boucler le budget 2027, affirme le ministre des Comptes publics",
+      "score": 6,
+      "topic": "Budget 2027 et économies",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "L'auteur du tir de mortier d'artifice contre la députée LFI Farida Amrani a été condamné à 10 mois de bracelet électronique",
+      "score": 2,
+      "topic": "Tir contre députée LFI",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "Présidentielle 2027 : ces maires réticents à l'idée de donner leur parrainage",
+      "score": 3,
+      "topic": "Parrainages présidentielle 2027",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "Préfet soupçonné d'avoir renseigné le RN : \"Tout le monde savait qu'il était proche du Rassemblement national\", confie un conseiller de l'exécutif à propos d'Hugues Moutouh",
+      "score": 3,
+      "topic": "Préfet soupçonné de fuites au RN",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "Préfet soupçonné d'avoir renseigné le RN : \"J'espère que ce n'est pas une pression pour tous ceux qui oseraient discuter avec nous\", réagit l'eurodéputé RN Aleksandar Nikolic",
+      "score": 3,
+      "topic": "Préfet soupçonné de fuites au RN",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "Dominique de Villepin : des coups par sa droite",
+      "score": 2,
+      "topic": "Candidature de Villepin",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "Le Parlement adopte définitivement la présomption d'usage légal des armes par les forces de l'ordre",
+      "score": 4,
+      "topic": "Présomption d'usage des armes",
+      "selected": true
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "\"Je ne savais pas qu'il était encore là\", réagit Marine Tondelier après le départ de Yannick Jadot des Ecologistes",
+      "score": 2,
+      "topic": "Départ de Jadot des Écologistes",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "\"Franc-Jeu\". Avec Marine Le Pen",
+      "score": 2,
+      "topic": "Interview de Marine Le Pen",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "Dominique De Villepin, le pari de l'Elysée : \"On/Off\" épisode 10",
+      "score": 1,
+      "topic": "Podcast On/Off politique",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "L'élu RN qui a reçu un procureur au siège du parti évoque \"une discussion entre professionnels\" qui se connaissent \"depuis près de trente ans\"",
+      "score": 3,
+      "topic": "Perquisition au siège du RN",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "Partie de LFI en 2024, Clémentine Autain appelle à son tour à se rallier à la candidature de Jean-Luc Mélenchon",
+      "score": 2,
+      "topic": "Ralliement à Mélenchon",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "ÉDITO. Les Écologistes sont-ils solubles dans l'élection présidentielle ?",
+      "score": 2,
+      "topic": "Écologistes et présidentielle",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "La procureure générale de Paris doit rendre vendredi un rapport à Gérald Darmanin sur la présence d'un procureur lors d'une perquisition au siège du RN",
+      "score": 3,
+      "topic": "Perquisition au siège du RN",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "Un préfet soupçonné d'avoir renseigné le RN est convoqué au ministère de l'Intérieur",
+      "score": 3,
+      "topic": "Préfet soupçonné de fuites au RN",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "Perquisition, enquête ouverte, préfet mis en cause… Ce que l'on sait des soupçons de fuites d'informations dont aurait bénéficié le Rassemblement national",
+      "score": 3,
+      "topic": "Préfet soupçonné de fuites au RN",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "VIDEO. Gabriel Attal interrogé par Neïla Latrous dans \"L'Heure de vérité\" : comment convaincre les jeunes ?",
+      "score": 2,
+      "topic": "Gabriel Attal et les jeunes",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "VIDEO. Gabriel Attal interrogé par Benjamin Duhamel dans \"L'Heure de vérité\". Une campagne en panne ?",
+      "score": 2,
+      "topic": "Gabriel Attal et campagne",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "VIDEO. Gabriel Attal interrogé par Eugénie Bastié dans \"L'Heure de vérité\". Le candidat des métropoles ?",
+      "score": 2,
+      "topic": "Gabriel Attal et métropoles",
+      "selected": false
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "Des enfants peuvent-ils se souvenir de vies antérieures ? Voici ce que la science a découvert sur la réincarnation",
+      "score": 2,
+      "topic": "Réincarnation et science",
+      "selected": false
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "Combattre la désinformation commence par comprendre comment se construit le savoir",
+      "score": 4,
+      "topic": "Désinformation et Wikipédia",
+      "selected": true
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "Trump, Poutine et Xi : un sommet « historique » sans résultats concrets",
+      "score": 4,
+      "topic": "Sommet Trump Poutine Xi",
+      "selected": false
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "Engagements climatiques des entreprises : pourquoi les marchés financiers ne les récompensent (presque) pas",
+      "score": 5,
+      "topic": "Engagements climatiques des entreprises",
+      "selected": true
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "Place limitée de la science, désinformation climatique… ce que montre l’analyse des conversations en ligne sur la COP31",
+      "score": 4,
+      "topic": "COP31 et réseaux sociaux",
+      "selected": false
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "La colère n’est pas une explication, c’est un phénomène à expliquer",
+      "score": 3,
+      "topic": "Colère des Français",
+      "selected": false
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "Musique en magasin : quelles notes influencent nos comportements d’achat ?",
+      "score": 2,
+      "topic": "Musique en magasin",
+      "selected": false
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "« Un bon petit soldat » : se soumettre ou se démettre, le cas de conscience des DRH",
+      "score": 3,
+      "topic": "Management et DRH",
+      "selected": false
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "Comment les tensions entre la RDC et le Rwanda révèlent les divisions au sein de la Francophonie",
+      "score": 3,
+      "topic": "Tensions RDC Rwanda et Francophonie",
+      "selected": false
+    }
+  ]
+}
