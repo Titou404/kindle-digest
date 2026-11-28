@@ -1,0 +1,1424 @@
+{
+  "date": "2026-11-28",
+  "edition": "2026-11-28",
+  "finished_at": "2026-11-28T03:00:55+01:00",
+  "git_sha": "d8a13d8",
+  "mode": "real",
+  "trigger": "schedule",
+  "config": {
+    "model": {
+      "rank": "claude-haiku-5-5",
+      "summarize": "claude-haiku-5-5"
+    },
+    "effort": {
+      "rank": "low",
+      "summarize": "medium"
+    },
+    "prompts": {
+      "rank": "v1",
+      "summarize": "v2"
+    }
+  },
+  "counts": {
+    "collected": 240,
+    "after_clean": 119,
+    "selected": 12,
+    "summarized": 12,
+    "raw": 0
+  },
+  "totals": {
+    "seconds": 56.69,
+    "llm_calls": 13,
+    "input_tokens": 62664,
+    "output_tokens": 11229,
+    "thinking_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cost_usd": 0.011881
+  },
+  "nodes": [
+    {
+      "node": "collect:hackernews",
+      "duration_s": 0.261,
+      "counts": {
+        "articles": 30
+      }
+    },
+    {
+      "node": "collect:reddit/datascience",
+      "duration_s": 0.082,
+      "counts": {
+        "articles": 0
+      }
+    },
+    {
+      "node": "collect:reddit/MachineLearning",
+      "duration_s": 0.024,
+      "counts": {
+        "articles": 0
+      }
+    },
+    {
+      "node": "collect:bbc/world",
+      "duration_s": 0.066,
+      "counts": {
+        "articles": 22
+      }
+    },
+    {
+      "node": "collect:guardian/world",
+      "duration_s": 0.162,
+      "counts": {
+        "articles": 45
+      }
+    },
+    {
+      "node": "collect:bbc/business",
+      "duration_s": 0.079,
+      "counts": {
+        "articles": 53
+      }
+    },
+    {
+      "node": "collect:franceinfo/economie",
+      "duration_s": 0.223,
+      "counts": {
+        "articles": 20
+      }
+    },
+    {
+      "node": "collect:franceinfo/politique",
+      "duration_s": 0.215,
+      "counts": {
+        "articles": 20
+      }
+    },
+    {
+      "node": "collect:theconversation/fr",
+      "duration_s": 0.446,
+      "counts": {
+        "articles": 50
+      }
+    },
+    {
+      "node": "clean",
+      "duration_s": 0.002,
+      "counts": {
+        "articles_in": 240,
+        "invalid": 0,
+        "undated": 0,
+        "too_old": 119,
+        "duplicates": 2,
+        "articles_out": 119
+      }
+    },
+    {
+      "node": "rank",
+      "duration_s": 13.3,
+      "counts": {
+        "articles_in": 119,
+        "scored": 119,
+        "missing": 0,
+        "invalid": 0
+      }
+    },
+    {
+      "node": "select",
+      "duration_s": 0.0,
+      "counts": {
+        "candidates": 119,
+        "selected": 12,
+        "raw": 0,
+        "duplicate_topics": 0,
+        "rank_failed": 0
+      }
+    },
+    {
+      "node": "fetch_text",
+      "duration_s": 4.728,
+      "counts": {
+        "from_feed": 1,
+        "downloaded": 11,
+        "failed": 0,
+        "too_short": 0,
+        "truncated": 0,
+        "raw": 0,
+        "chars_kept": 85961,
+        "chars_cut": 0
+      }
+    },
+    {
+      "node": "summarize:hackernews",
+      "duration_s": 5.134,
+      "counts": {
+        "input_chars": 8301,
+        "summary_words": 177
+      }
+    },
+    {
+      "node": "summarize:hackernews",
+      "duration_s": 3.674,
+      "counts": {
+        "input_chars": 5670,
+        "summary_words": 216
+      }
+    },
+    {
+      "node": "summarize:hackernews",
+      "duration_s": 5.295,
+      "counts": {
+        "input_chars": 19843,
+        "summary_words": 214
+      }
+    },
+    {
+      "node": "summarize:guardian/world",
+      "duration_s": 4.383,
+      "counts": {
+        "input_chars": 2786,
+        "summary_words": 250
+      }
+    },
+    {
+      "node": "summarize:guardian/world",
+      "duration_s": 4.415,
+      "counts": {
+        "input_chars": 2878,
+        "summary_words": 245
+      }
+    },
+    {
+      "node": "summarize:bbc/world",
+      "duration_s": 4.232,
+      "counts": {
+        "input_chars": 5959,
+        "summary_words": 225
+      }
+    },
+    {
+      "node": "summarize:franceinfo/economie",
+      "duration_s": 3.639,
+      "counts": {
+        "input_chars": 3166,
+        "summary_words": 173
+      }
+    },
+    {
+      "node": "summarize:franceinfo/economie",
+      "duration_s": 3.781,
+      "counts": {
+        "input_chars": 4021,
+        "summary_words": 229
+      }
+    },
+    {
+      "node": "summarize:franceinfo/economie",
+      "duration_s": 3.672,
+      "counts": {
+        "input_chars": 4729,
+        "summary_words": 204
+      }
+    },
+    {
+      "node": "summarize:franceinfo/politique",
+      "duration_s": 2.777,
+      "counts": {
+        "input_chars": 9552,
+        "summary_words": 185
+      }
+    },
+    {
+      "node": "summarize:franceinfo/politique",
+      "duration_s": 3.067,
+      "counts": {
+        "input_chars": 6455,
+        "summary_words": 214
+      }
+    },
+    {
+      "node": "summarize:theconversation/fr",
+      "duration_s": 3.045,
+      "counts": {
+        "input_chars": 12601,
+        "summary_words": 201
+      }
+    },
+    {
+      "node": "render_epub",
+      "duration_s": 0.007,
+      "counts": {
+        "articles": 12,
+        "raw_posts": 0,
+        "size_bytes": 31111
+      }
+    },
+    {
+      "node": "deliver",
+      "duration_s": 1.298,
+      "counts": {
+        "enabled": 1,
+        "sent": 1
+      }
+    }
+  ],
+  "llm_calls": [
+    {
+      "task": "rank",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v1",
+      "input_tokens": 17459,
+      "output_tokens": 3481,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 13.299,
+      "cost_usd": 0.0034864,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChUVz8o4wN8sPQTF8sdQQ",
+      "effort": "low"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 3578,
+      "output_tokens": 591,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 5.133,
+      "cost_usd": 0.0006533000000000001,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChUW1Tgeb8bsNDCQvPRZd",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 2946,
+      "output_tokens": 645,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 3.673,
+      "cost_usd": 0.0006171,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChUW1TfvFQ6ANL9VUDV65",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 9090,
+      "output_tokens": 708,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 5.293,
+      "cost_usd": 0.001263,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChUW1Tg9pwsjTDsr6aioT",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 1944,
+      "output_tokens": 709,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 4.379,
+      "cost_usd": 0.0005489,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChUW1TgQs3PjzKMopPSif",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 1998,
+      "output_tokens": 775,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 4.414,
+      "cost_usd": 0.0005873,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChUW1TksoTe7Z9y25ZLyT",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 3021,
+      "output_tokens": 681,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 4.231,
+      "cost_usd": 0.0006426,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChUW1TfupyMT4onwMCupD",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 2317,
+      "output_tokens": 525,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 3.636,
+      "cost_usd": 0.0004942,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChUW1TeRTafFtDV8djRRY",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 2742,
+      "output_tokens": 655,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 3.78,
+      "cost_usd": 0.0006016999999999999,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChUW1TeutBvHHZyfsRMNb",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 2986,
+      "output_tokens": 657,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 3.671,
+      "cost_usd": 0.0006271,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChUW1jDZ62kYYptN3ZxSm",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 4924,
+      "output_tokens": 531,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 2.776,
+      "cost_usd": 0.0007579,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChUW1jKjtYEomcGEaUd8A",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 3705,
+      "output_tokens": 660,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 3.066,
+      "cost_usd": 0.0007005,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChUW1joGmyiyE7uCwiUzM",
+      "effort": "medium"
+    },
+    {
+      "task": "summarize",
+      "model": "claude-haiku-5-5",
+      "prompt_version": "v2",
+      "input_tokens": 5954,
+      "output_tokens": 611,
+      "thinking_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "latency_s": 3.044,
+      "cost_usd": 0.0009009,
+      "stop_reason": "end_turn",
+      "request_id": "req_011ChUW1mj7G9vXfJXZSDZij",
+      "effort": "medium"
+    }
+  ],
+  "errors": [
+    {
+      "source": "reddit/datascience",
+      "error": "HTTP 404"
+    },
+    {
+      "source": "reddit/MachineLearning",
+      "error": "HTTP 404"
+    }
+  ],
+  "candidates": [
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Credit card skimming scripts using WebRTC found on popular shopping sites",
+      "score": 4,
+      "topic": "Skimming de cartes bancaires",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Michael Nielsen took down his book on neural nets",
+      "score": 2,
+      "topic": "Livre sur les réseaux de neurones",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Show HN: bouncemarket – a live prediction market game for a bouncing ball",
+      "score": 3,
+      "topic": "Jeu de marché de prédiction",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "States sue SpaceX to stop Grok from generating child sex images, revenge porn",
+      "score": 6,
+      "topic": "Grok et contenus sexuels générés",
+      "selected": true
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Convex skills send the user's app idea to a remote server without telling them",
+      "score": 5,
+      "topic": "Skills Convex et vie privée",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "False computer-checked proofs",
+      "score": 3,
+      "topic": "Preuves informatiques erronées",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Citroën Hydraulic System",
+      "score": 1,
+      "topic": "Système hydraulique Citroën",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Show HN: DragDropMath – Learn math by feel",
+      "score": 2,
+      "topic": "Apprendre les maths par glisser-déposer",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Google's DeepCrossAttention achieves comparable model quality up to 3x faster",
+      "score": 6,
+      "topic": "DeepCrossAttention de Google",
+      "selected": true
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "9/UX: a Macintosh-inspired desktop for 9front",
+      "score": 1,
+      "topic": "Bureau 9front",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Rayshader 1.0: Exit the Matrix",
+      "score": 2,
+      "topic": "Rayshader cartographie R",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Scrapheap America",
+      "score": 2,
+      "topic": "Scrapheap America",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "The AT&T Unix PC (3B1) VM",
+      "score": 1,
+      "topic": "Unix PC AT&T",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Source Control from Hell",
+      "score": 2,
+      "topic": "Gestion de versions",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Show HN: Getting 101 tok/s from Inkling 2 Mini in vLLM on one GB10",
+      "score": 6,
+      "topic": "Inférence LLM sur GB10",
+      "selected": true
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Prospero: Bloat-free, native AI coding harness with ImGui",
+      "score": 5,
+      "topic": "Harnais de code IA",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Tabernetes: A Kubernetes cluster whose nodes are browser tabs",
+      "score": 2,
+      "topic": "Kubernetes sur onglets navigateur",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "SessionGraph: Visualize all your coding agent sessions in one interactive graph",
+      "score": 5,
+      "topic": "Visualiser sessions d'agents de code",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Passkey blues",
+      "score": 2,
+      "topic": "Passkeys",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Alaska seized his plane over some beers. He is asking the Supreme Court for help",
+      "score": 1,
+      "topic": "Avion saisi en Alaska",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Painting 1990s anime scenes in Python",
+      "score": 2,
+      "topic": "Peinture anime en Python",
+      "selected": false
+    },
+    {
+      "source": "hackernews",
+      "section": "data",
+      "title": "Woman evicted after landlord's AI assistant told her she could delay rent",
+      "score": 4,
+      "topic": "IA d'un bailleur et expulsion",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Spanish PM and rivals rally supporters in final pitch for votes",
+      "score": 5,
+      "topic": "Élections législatives espagnoles",
+      "selected": true
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Zelensky criticises 'strange' Trump-Putin friendship in BBC interview",
+      "score": 5,
+      "topic": "Zelensky et négociations de paix",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Weary of war but with no sign of backing down, Kyiv faces another punishing winter",
+      "score": 4,
+      "topic": "Hiver en Ukraine",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "'We couldn't give up that easily': Marching bands scramble to cover costs after Thanksgiving parade rearranged",
+      "score": 1,
+      "topic": "Fanfares du défilé de Thanksgiving",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Brazil pushes back on Macron calling its meat 'doped'",
+      "score": 4,
+      "topic": "Brésil et viande de Macron",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "'Poison seller' Kenneth Law apologises in court to the families of his victims",
+      "score": 1,
+      "topic": "Empoisonneur Kenneth Law",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Capsized tanker carrying 7,000 tonnes of diesel to be towed away from Ibiza",
+      "score": 3,
+      "topic": "Pétrolier échoué à Ibiza",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Millions of wives in South Asia unprotected from marital rape - study",
+      "score": 3,
+      "topic": "Viol conjugal en Asie du Sud",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Canada's top court largely upholds Quebec ban on religious symbols for public servants",
+      "score": 5,
+      "topic": "Laïcité au Québec",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Italy's former police chief rejected mafia inquiry allegations before death",
+      "score": 3,
+      "topic": "Ancien chef de police italien",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Rare turtles found inside baggage at Amsterdam airport",
+      "score": 1,
+      "topic": "Tortues dans bagages",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Kenyan doomsday cult leader convicted over further 123 deaths",
+      "score": 2,
+      "topic": "Procès du gourou kényan",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Severe Thanksgiving storms leave roads flooded and trees fallen",
+      "score": 3,
+      "topic": "Tempêtes de Thanksgiving",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "'It's impossible': Spain's young people on housing ahead of Sunday's election",
+      "score": 5,
+      "topic": "Logement des jeunes en Espagne",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Behind China's spectacular rise, voices who defied it say they are being drowned out",
+      "score": 4,
+      "topic": "Soft power chinois",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "A clinic is reassessing people with ADHD and autism diagnoses - but critics fear it could deepen stigma",
+      "score": 4,
+      "topic": "Diagnostics TDAH et autisme",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "The Indian 'Tamasha queen' whose fans paid for a show that never happened",
+      "score": 1,
+      "topic": "Film sur une artiste indienne",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Nigeria's 'ultimate hard man' who become an online meme",
+      "score": 1,
+      "topic": "Acteur nigérian mème",
+      "selected": false
+    },
+    {
+      "source": "bbc/world",
+      "section": "monde",
+      "title": "Inside Saudi Arabia, Houthi attacks test kingdom's image of security",
+      "score": 5,
+      "topic": "Attaques houthis en Arabie",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Mad about mara: the DIY dance movement helping young Nigerians escape the daily grind",
+      "score": 2,
+      "topic": "Danse mara au Nigeria",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "‘Abusive and insulting to Canadians’: campaign to oust US ambassador presented to parliament",
+      "score": 3,
+      "topic": "Ambassadeur américain au Canada",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Canada’s top court upholds Quebec law barring public sector workers from wearing religious symbols",
+      "score": 5,
+      "topic": "Laïcité au Québec",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "New Zealand election: final results show ruling coalition needs minor party to govern",
+      "score": 3,
+      "topic": "Élections néo-zélandaises",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Victorian election 2026 live: voters head to the polls as Coalition seeks to topple Labor – latest news",
+      "score": 2,
+      "topic": "Élections régionales Victoria",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Jess Wilson’s plan for Melbourne sewage plants risks water and wetlands without bringing debt down, experts say",
+      "score": 2,
+      "topic": "Stations d'épuration de Melbourne",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Labor faces prospect of electoral wipeout in Victoria as voters turn to Liberals and One Nation",
+      "score": 2,
+      "topic": "Élections régionales Victoria",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "NSW Labor is ‘trampling over party principles’ with preselections by captain’s call, members say",
+      "score": 2,
+      "topic": "Investitures travailliste NSW",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "‘Crisis in empathy’: prison guard was watching TV while Aboriginal man was dying in custody, NSW coroner finds",
+      "score": 2,
+      "topic": "Mort en détention australienne",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Police suspect criminals robbed fans at Manchester gig disrupted by ‘unknown substance’",
+      "score": 2,
+      "topic": "Vols lors d'un concert",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Google told to halt Belgium datacentre construction over lack of planning permit",
+      "score": 5,
+      "topic": "Datacenter Google en Belgique",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Jared Kushner’s 70-minute interview reveals naive bias in handling of Putin’s aggression",
+      "score": 4,
+      "topic": "Kushner et négociations Russie",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Spanish prime minister Pedro Sánchez confident of election victory despite polls – as it happened",
+      "score": 5,
+      "topic": "Élections législatives espagnoles",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Norse Atlantic Airways files for bankruptcy and cancels all future flights",
+      "score": 6,
+      "topic": "Faillite d'Norse Atlantic",
+      "selected": true
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Momentous decision looms after judges call for Netanyahu charges to be dropped",
+      "score": 3,
+      "topic": "Procès de Netanyahu",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Schools in England must set aside time for pupils to read for pleasure",
+      "score": 3,
+      "topic": "Lecture à l'école en Angleterre",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Charity set up by Captain Tom Moore’s family applies to be struck off",
+      "score": 1,
+      "topic": "Fondation Captain Tom Moore",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Princess of Wales documentary Heal charts ‘pilgrimage’ after cancer treatment",
+      "score": 1,
+      "topic": "Documentaire princesse de Galles",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Elderly ‘Scrooge’ severs neighbour’s Christmas lights in mobility-scooter raid",
+      "score": 1,
+      "topic": "Voisin et guirlandes",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Graham Thorpe’s widow takes legal action against NHS trust after inquest",
+      "score": 3,
+      "topic": "Suicide et soins NHS",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Purse found of woman, 24, swept from California beach three weeks ago",
+      "score": 1,
+      "topic": "Sac retrouvé plage Californie",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "OpenAI countersues Apple for allegedly stealing trade secrets",
+      "score": 5,
+      "topic": "OpenAI contre Apple",
+      "selected": true
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Thousands still without power after storms that snarled Thanksgiving travel",
+      "score": 3,
+      "topic": "Tempêtes aux États-Unis",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Sales for Biden memoir fall far short of books by Obama and Clinton",
+      "score": 2,
+      "topic": "Mémoires de Joe Biden",
+      "selected": false
+    },
+    {
+      "source": "guardian/world",
+      "section": "monde",
+      "title": "Newly released documents suggest CIA did more post-9/11 waterboarding than previously acknowledged",
+      "score": 3,
+      "topic": "Waterboarding de la CIA",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "My self-care ritual is a meal at a fancy restaurant - on my own",
+      "score": 2,
+      "topic": "Dîner en solo au restaurant",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "Will new energy fixes cost more in January?",
+      "score": 5,
+      "topic": "Hausse des factures d'énergie",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "'We're scared to turn our heating on'",
+      "score": 4,
+      "topic": "Chauffage et factures d'énergie",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "How much is your rent in Birmingham?",
+      "score": 2,
+      "topic": "Loyers à Birmingham",
+      "selected": false
+    },
+    {
+      "source": "bbc/business",
+      "section": "eco",
+      "title": "The food bank helping pet owners with rising bills",
+      "score": 2,
+      "topic": "Banque alimentaire animaux",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "L'activité de l'abattoir de Haute-Saône suspendue par le préfet après avoir été visé par une enquête",
+      "score": 3,
+      "topic": "Abattoir suspendu en Haute-Saône",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Avec la cryothérapie et les bains de glace, le froid devient tendance et fait du bien",
+      "score": 2,
+      "topic": "Tendance du froid",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Loyers exorbitants, crise des salaires... La face cachée de la croissance espagnole",
+      "score": 5,
+      "topic": "Face cachée de l'économie espagnole",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "L'agence de notation Standard & Poor's menace de dégrader prochainement la note de la France",
+      "score": 8,
+      "topic": "Dégradation de la note française",
+      "selected": true
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Robots, caméras... Alerte sur la sécurité de nos objets connectés",
+      "score": 4,
+      "topic": "Sécurité des objets connectés",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Mutuelle, auto, habitation... Une nouvelle flambée des tarifs des assurances en 2027",
+      "score": 6,
+      "topic": "Hausse des tarifs d'assurance",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "La commission de sécurité valide la réouverture du BHV Marais à Paris après trois semaines de fermeture",
+      "score": 4,
+      "topic": "Réouverture du BHV Marais",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Des photos générées par IA pour soutirer de l'argent",
+      "score": 3,
+      "topic": "Escroquerie par photos IA",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "\"Chaque année, c'est plus tendu\" : nouveau bras de fer sur les prix entre supermarchés et industriels",
+      "score": 8,
+      "topic": "Récession française et prix alimentaires",
+      "selected": true
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "La mairie de Paris va augmenter de deux euros le prix du stationnement dans ses rues pour les \"non-résidents\" en avril 2027",
+      "score": 5,
+      "topic": "Hausse stationnement à Paris",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "\"Un mois comme novembre, avec le Black Friday, c'est comme deux mois normaux\", déclare le PDG de Fnac Darty",
+      "score": 5,
+      "topic": "Consommation et Black Friday",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Un calcul \"technique\" qui illustre un \"décrochage\" économique : que signifie l'annonce de l'entrée en récession de la France ?",
+      "score": 8,
+      "topic": "Entrée en récession de la France",
+      "selected": true
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "La compagnie aérienne norvégienne Norse Atlantic dépose le bilan, affectée par la flambée des prix du kérosène",
+      "score": 6,
+      "topic": "Faillite de Norse Atlantic",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "À Cherbourg, le plein-emploi entraîne de fortes tensions sur le marché immobilier",
+      "score": 4,
+      "topic": "Tensions immobilières à Cherbourg",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "\"Il y a des petites choses à des petits prix\" : le déstockage ne connaît pas la crise",
+      "score": 4,
+      "topic": "Essor des magasins de déstockage",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Les Français font de moins en moins réparer leurs chaussures, ce qui menace le savoir-faire des cordonniers",
+      "score": 3,
+      "topic": "Déclin des cordonniers",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "\"Ciao les panneaux\" : la mairie de Paris annonce le retrait de 1 800 panneaux directionnels",
+      "score": 2,
+      "topic": "Retrait de panneaux à Paris",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "\"Il y a vraiment une grande différence\" : enfin du gazole sous les 2 euros dans les stations-services",
+      "score": 6,
+      "topic": "Baisse des prix à la pompe",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "Les distributeurs indépendants de SFR assignent l'opérateur en justice dans le cadre de son rachat",
+      "score": 5,
+      "topic": "Rachat de SFR",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/economie",
+      "section": "eco",
+      "title": "En Haute-Garonne, des ramoneurs ont-ils généré des photos par IA pour alourdir la facture d'une cliente ?",
+      "score": 3,
+      "topic": "Escroquerie par photos IA",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "Mathilde Panot saisit la justice après des menaces de mort contre plusieurs députés de la France insoumise",
+      "score": 3,
+      "topic": "Menaces contre députés LFI",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "La préfecture de l'Isère interdit un concert organisé par \"une mouvance identitaire nationaliste, voire néonazie\" samedi",
+      "score": 2,
+      "topic": "Concert interdit en Isère",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "David Lisnard, c'est Zemmour 2022 ou Macron 2017 ?",
+      "score": 3,
+      "topic": "Campagne de David Lisnard",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "Marine Le Pen promet une \"grande loi-programme\" pour l'outre-mer",
+      "score": 3,
+      "topic": "Programme RN outre-mer",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "REPLAY. \"David Lisnard, les secrets d'une percée éclair\" : regardez le documentaire de franceinfo consacré aux coulisses de l'entrée en campagne présidentielle du maire de Cannes",
+      "score": 3,
+      "topic": "Campagne de David Lisnard",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "L'hommage national aux victimes de l'attentat raciste de Trappes et de La Verrière aura lieu le 4 décembre aux Invalides",
+      "score": 3,
+      "topic": "Hommage aux victimes de Trappes",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "\"L’étau se resserre pour Jordan Bardella\", estime Stéphane Zumsteeg",
+      "score": 3,
+      "topic": "Sondages de Jordan Bardella",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "Eric Zemmour placé sous le statut de témoin assisté dans l'affaire des prêts accordés au parti Reconquête",
+      "score": 3,
+      "topic": "Zemmour et Reconquête",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "\"Franc-Jeu\". Avec Thierry Breton",
+      "score": 3,
+      "topic": "Entretien Thierry Breton",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "ÉDITO. Marine Le Pen peut-elle finir par lâcher Jordan Bardella ?",
+      "score": 3,
+      "topic": "Affaire Bardella et RN",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "“Ce n’est pas Jean Moulin que vous êtes, c’est plutôt des méthodes proches de Staline”",
+      "score": 3,
+      "topic": "Affaire Bardella et RN",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "Perquisition du RN : un procureur peut-il s’afficher dans les locaux d’un parti politique ?",
+      "score": 3,
+      "topic": "Perquisition au RN",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "Présidentielle : David Lisnard, c'est Zemmour 2022 ou Macron 2017 ? \"On/Off\", épisode 11",
+      "score": 3,
+      "topic": "Campagne de David Lisnard",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "Marine Le Pen réitère sa confiance à Jordan Bardella, après de nouveaux éléments sur des écrits antisémites attribués au patron du RN",
+      "score": 3,
+      "topic": "Affaire Bardella et RN",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "Les informés du matin du vendredi 27 novembre 2026",
+      "score": 2,
+      "topic": "Revue de presse du matin",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "Écrits antisémites attribués à Jordan Bardella : \"On voit ici le vrai visage du Rassemblement national\", selon l'eurodéputée LFI Manon Aubry",
+      "score": 3,
+      "topic": "Affaire Bardella et RN",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "Agriculture, guerre en Ukraine, présidentielle en France... On vous explique pourquoi les négociations sur le budget de l'Union européenne sont dans l'impasse",
+      "score": 6,
+      "topic": "Impasse budget de l'UE",
+      "selected": true
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "Une crise diplomatique après la bagarre entre marseillais et bulgares",
+      "score": 2,
+      "topic": "Bagarre OM et Levski",
+      "selected": false
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "Négociations annuelles entre la grande distribution et l'industrie agroalimentaire : \"Le sujet des prix ne peut pas devenir une guerre contre nos producteurs\", avertit la ministre de l'Agriculture",
+      "score": 7,
+      "topic": "Négociations prix grande distribution",
+      "selected": true
+    },
+    {
+      "source": "franceinfo/politique",
+      "section": "france",
+      "title": "Ukraine, accusations contre Jordan Bardella... Le \"8h30 franceinfo\" de Manon Aubry",
+      "score": 2,
+      "topic": "Entretien Manon Aubry",
+      "selected": false
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "Les villes ont besoin d’argent pour parer au plus urgent. Quelles autres solutions que des flambées de taxes ?",
+      "score": 3,
+      "topic": "Financement des villes",
+      "selected": false
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "« Le Journal d’un prisonnier » de Nicolas Sarkozy, un tour de passe-passe rhétorique ?",
+      "score": 2,
+      "topic": "Livre de Sarkozy",
+      "selected": false
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "Lutte contre le paludisme : le climat et les coupes budgétaires menacent les progrès en Afrique australe",
+      "score": 4,
+      "topic": "Paludisme en Afrique australe",
+      "selected": false
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "Comment une astuce utilisée en marketing incite les rats à entrer dans les pièges",
+      "score": 3,
+      "topic": "Rats et pièges",
+      "selected": false
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "Hongrie, Serbie : pourquoi jouer l’Est contre l’Ouest pourrait ne plus rapporter aux petits États européens",
+      "score": 4,
+      "topic": "Petits États européens",
+      "selected": false
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "Le journalisme scientifique est-il en train de mourir ? Ce qu’enseigne le « krach » de 1986",
+      "score": 5,
+      "topic": "Journalisme scientifique en crise",
+      "selected": true
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "Pourquoi faire confiance à la science n’empêche pas de croire aux théories du complot",
+      "score": 4,
+      "topic": "Science et complotisme",
+      "selected": false
+    },
+    {
+      "source": "theconversation/fr",
+      "section": "france",
+      "title": "Fausses images scientifiques et IA : quand la méfiance gagne jusqu’aux revues académiques",
+      "score": 5,
+      "topic": "Fausses images scientifiques IA",
+      "selected": false
+    }
+  ]
+}
